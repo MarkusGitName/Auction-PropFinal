@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="~/assets/img/fat.png">
+    <title>Auction-Prop</title>
+
+
+    <script src="https://kit.fontawesome.com/ef4e2c1ac6.js" crossorigin="anonymous"></script>
+
+    @Styles.Render("~/Content/Bootstrap.css")
+    @Styles.Render("~/Content/StylesOne.css")
+    @Styles.Render("~/Content/bootstrap.min")
+
+</head>
+<body>
+    <!--------Header Start---------->
+
+    <div class="container-fluid">
+        <div class="navigation">
+            <header class="navbar" id="top" role="banner">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-brand" id="brand">
+
+                    <a href="@Url.Action("Index", "Home")" class="navbar-brand">
+                        <img src="~/Logo/Asset 1.png" width="350" height="60" alt="Auction-Prop Logo">
+                    </a>
+                </div>
+                <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+                    <ul class="nav navbar-nav">
+
+                        <li class="active">@Html.ActionLink("Properties", "Properties", "Home")</li>
+                        <li>@Html.ActionLink("Buyers", "Buyers", "Home")</li>
+                        <li>@Html.ActionLink("Sellers", "Sellers", "Home")</li>
+                        <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("FAQ", "FAQ", "Home")</li>
+                        <li>@Html.ActionLink("Details", "Details", "Home")</li>
+                        <li>@Html.Partial("_LoginPartial")</li>
+
+                    </ul>
+
+
+                    <div class="add-your-property">
+                        <a href="@Url.Action("Add", "Home")" class="btn btn-default"><i class="fa fa-plus"></i><span class="text">Add Your Property</span></a>
+                    </div>
+
+                </nav><!-- /.navbar collapse-->
+
+
+            </header><!-- /.navbar -->
+        </div><!-- /.container -->
+    </div><!-- /.navigation -->
+
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+
+    <!-- Page Footer -->
+    <footer id="page-footer">
+        <div class="inner">
+            <aside id="footer-main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3">
+                            <article>
+                                <a href="#"><img src="~/Logo/Asset 1.png" width="250" height="45" alt="Auction-Prop Logo"></a>
+                                <address>
+                                    <br>
+                                    Fintech Campus<br>
+                                    81 Botterklapper Street<br>
+                                    The Willows, 0083<br>
+                                    Pretoria East
+                                </address>
+                                083 556 3529<br>
+                                <a href="mailto:info@auction-prop.com">info@auction-prop.com</a>
+                            </article>
+                        </div><!-- /.col-sm-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <article>
+                                <h3>Auctions</h3>
+                                <ul class="list-unstyled list-links">
+                                    <li><a href="#">Residential</a></li>
+                                    <li><a href="#">Commercial</a></li>
+                                    <li><a href="#">Agricultural</a></li>
+                                    <li><a href="#">Investment</a></li>
+                                </ul>
+                            </article>
+                        </div><!-- /.col-sm-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <article>
+                                <h3>Useful Links</h3>
+                                <ul class="list-unstyled list-links">
+                                    <li>@Html.ActionLink("This is Us", "About", "This is Us")</li>
+                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="#">FAQ</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Terms and Conditions</a></li>
+                                </ul>
+                            </article>
+                        </div><!-- /.col-sm-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <article>
+                                <h3>Recent Properties</h3>
+                                <div class="property small">
+                                    <a href="property-detail.html">
+                                        <div class="property-image">
+                                            <img alt="" src="~/img/properties/property-06.jpg">
+                                        </div>
+                                    </a>
+                                    <div class="info">
+                                        <a href="property-detail.html"><h4>218 Rinehart Road</h4></a>
+                                        <figure>Olivedale, Johannesburg </figure>
+                                        <div class="tag price">15 May at 14:00</div>
+                                    </div>
+                                </div><!-- /.property -->
+                                <div class="property small">
+                                    <a href="property-detail.html">
+                                        <div class="property-image">
+                                            <img alt="" src="~/img/properties/property-06.jpg">
+                                        </div>
+                                    </a>
+                                    <div class="info">
+                                        <a href="property-detail.html"><h4>249 Murphy Court</h4></a>
+                                        <figure>Sandhurst, Johannesburg</figure>
+                                        <div class="tag price">22 June at 14:00</div>
+                                    </div>
+                                </div><!-- /.property -->
+                            </article>
+                        </div><!-- /.col-sm-3 -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </aside><!-- /#footer-main -->
+            <aside id="footer-thumbnails" class="footer-thumbnails"></aside><!-- /#footer-thumbnails -->
+            <aside id="footer-copyright">
+                <div class="container">
+                    <span>All Rights Reserved Auction-Prop. Copyright © 2020.</span>
+                    <span class="pull-right"><a href="#page-top" class="roll">Go to top</a></span>
+                </div>
+            </aside>
+        </div><!-- /.inner -->
+        </>
+        <!-- end Page Footer -->
+    </footer>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
+
+    @RenderSection("JavaScript", required: false)
+
+</body>
+</html>

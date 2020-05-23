@@ -1,0 +1,531 @@
+﻿@using Auction_Prop_Sellers.Models.DataViewModels
+@model Property
+@{
+    ViewBag.Title = "Add Property";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+@*
+    @Styles.Render("~/Content/Bootstrap.css")
+    @Styles.Render("~/Content/StylesOne.css")
+    @Styles.Render("~/Content/bootstrap-select.min.css")
+    @Styles.Render("~/Content/magnific-popup.css")
+    @Styles.Render("~/Content/owl.carousel.css")
+    @Styles.Render("~/Content/owl.transitions.css")
+    @Styles.Render("~/Content/jquery.slider.min.css")
+    @Scripts.Render("~/Scripts/bootstrap-select.min.js")
+    @Scripts.Render("~/Scripts/bootstrap.min.js")
+    @Scripts.Render("~/Scripts/custom.js")
+    @Scripts.Render("~/jquery-2.1.0.min.js")
+    @Scripts.Render("~/Scripts/jquery.countTo.js")
+*@
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
+    <script src="https://kit.fontawesome.com/ef4e2c1ac6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/Content/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="~/Content2/bootstrap-select.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content2/jquery.slider.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content2/owl.carousel.css" type="text/css">
+    <link rel="stylesheet" href="~/Content2/owl.transitions.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/StyleSheet1.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <title>Auction-Prop.com | Add Your Property</title>
+
+</head>
+
+<body class="page-sub-page page-submit" id="page-top">
+    <!-- Page Content -->
+    <div id="page-content">
+        <!-- Breadcrumb -->
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li class="active">Add your property</li>
+            </ol>
+        </div>
+        <!-- end Breadcrumb -->
+
+        <div class="container">
+            <header><h1>Add Your Property</h1></header>
+
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="block">
+                        <div class="col-md-9 col-sm-9">
+                            <section id="submit-form">
+                                <section id="basic-information">
+                                    <header><h2>Basic Information</h2></header>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label for="submit-title">Title</label>
+                                                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+
+                                            </div><!-- /.form-group -->
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="submit-price">Price</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">R</span>
+                                                    @Html.EditorFor(model => model.PrpertyValue, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.PrpertyValue, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="submit-description">Description</label>
+                                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                    </div><!-- /.form-group -->
+                                </section><!-- /#basic-information -->
+
+                                <section>
+                                    <div class="row">
+                                        <div class="block clearfix">
+                                            <div class="col-md-6 col-sm-6">
+                                                <section id="summary">
+                                                    <header><h2>Summary</h2></header>
+                                                    <div class="form-group">
+                                                        <label for="submit-location">Province</label>
+                                                        @Html.DropDownListFor(model => model.Province, new SelectList(new[] { new { Value = "Free State", Text = "Free State" }, new { Value = "Gauteng", Text = "Gauteng" }, new { Value = "Limpopo", Text = "Limpopo" }, new { Value = "Mpumalanga", Text = "Mpumalanga" }, new { Value = "Limpopo", Text = "Limpopo" }, new { Value = "North West", Text = "North West" }, new { Value = "Kwazulu-Natal", Text = "Kwazulu-Natal" }, new { Value = "Eastern Cape", Text = "Eastern Cape" }, new { Value = "Northern Cape", Text = "Northern Cape" }, new { Value = "Western Cape", Text = "Western Cape" } }, "Value", "Text", Model))
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="submit-location">Town/City</label>
+
+                                                        @Html.DropDownListFor(model => model.City, new SelectList(new[] { new { Value = "Johannesburg", Text = "Johannesburg" }, new { Value = "Pretoria", Text = "Pretoria" }, new { Value = "Bloemfontein", Text = "Bloemfontein" }, new { Value = "Nelspruit", Text = "Nelspruit" }, new { Value = "Polokwane", Text = "Polokwane" }, new { Value = "Durban", Text = "Durban" }, new { Value = "Cape Town", Text = "Cape Town" }, new { Value = "Port Elizabath", Text = "Port Elizabath" }, new { Value = "Other", Text = "Other" } }, "Value", "Text", Model))
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="submit-property-type">Property Type</label>
+                                                                @Html.DropDownListFor(model => model.Type, new SelectList(new[] { new { Value = "Residential", Text = "Residential" }, new { Value = "Commertial", Text = "Commertial" }, new { Value = "Agricultural", Text = "Agricultural" }, new { Value = "Investment", Text = "Investment" } }, "Value", "Text", Model))
+                                                            </div><!-- /.form-group -->
+                                                        </div><!-- /.col-md-6 -->
+                                                        <div class="col-md-6 col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="submit-status">Status</label>
+                                                                <select name="type" id="submit-status">
+                                                                    <option value="1">For Sale</option>
+                                                                    <option value="2">On Auction</option>
+                                                                </select>
+                                                                @Html.DropDownListFor(model => model.Type, new SelectList(new[] { new { Value = "For Sale", Text = "For Sale" }, new { Value = "On Auction", Text = "On Auction" } }, "Value", "Text", Model))
+
+                                                            </div><!-- /.form-group -->
+                                                        </div><!-- /.col-md-6 -->
+                                                    </div><!-- /.row -->
+                                                    <div class="row">
+                                                        <div class="col-md-6 col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="submit-Beds">Beds</label>
+                                                                @Html.EditorFor(model => model.BedRooms, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.BedRooms, "", new { @class = "text-danger" })
+
+                                                            </div><!-- /.form-group -->
+                                                        </div><!-- /.col-md-6 -->
+                                                        <div class="col-md-6 col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="submit-Baths">Baths</label>
+                                                                @Html.EditorFor(model => model.BathRooms, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.BathRooms, "", new { @class = "text-danger" })
+                                                            </div><!-- /.form-group -->
+                                                        </div><!-- /.col-md-6 -->
+                                                    </div><!-- /.row -->
+                                                    <div class="row">
+                                                        <div class="col-md-6 col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="submit-area">Building Area</label>
+                                                                <div class="input-group">
+                                                                    @Html.EditorFor(model => model.BuildingArea, new { htmlAttributes = new { @class = "form-control" } })
+                                                                    @Html.ValidationMessageFor(model => model.BuildingArea, "", new { @class = "text-danger" })
+                                                                    <span class="input-group-addon">m<sup>2</sup></span>
+                                                                </div>
+                                                                <label for="submit-area">Terrace Area</label>
+                                                                <div class="input-group">
+                                                                    @Html.EditorFor(model => model.TerraceArea, new { htmlAttributes = new { @class = "form-control" } })
+                                                                    @Html.ValidationMessageFor(model => model.TerraceArea, "", new { @class = "text-danger" })
+                                                                    <span class="input-group-addon">m<sup>2</sup></span>
+                                                                </div>
+                                                            </div><!-- /.form-group -->
+                                                        </div><!-- /.col-md-6 -->
+                                                        <div class="col-md-6 col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="submit-garages">Garages</label>
+                                                                @Html.EditorFor(model => model.Garages, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.Garages, "", new { @class = "text-danger" })
+                                                            </div><!-- /.form-group -->
+                                                        </div><!-- /.col-md-6 -->
+                                                    </div><!-- /.row -->
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox">Allow user rating <i class="fa fa-question-circle tool-tip" data-toggle="tooltip" data-placement="right" title="Users can give you a stars rating which is displayed in property detail"></i>
+                                                        </label>
+                                                    </div>
+                                                </section><!-- /#summary -->
+                                            </div><!-- /.col-md-6 -->
+                                            <div class="col-md-6 col-sm-6">
+                                                <section id="place-on-map">
+                                                    <header class="section-title">
+                                                        <h2>Place on Map</h2>
+                                                        <span class="link-arrow geo-location">Get My Position</span>
+                                                    </header>
+                                                    <div class="form-group">
+                                                        <label for="address-map">Address</label>
+                                                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+
+                                                    </div><!-- /.form-group -->
+                                                    <label for="address-map">Or drag the marker to property position</label>
+                                                    <div id="submit-map"></div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" id="latitude" name="latitude" readonly>
+                                                            </div><!-- /.form-group -->
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" id="longitude" name="longitude" readonly>
+                                                            </div><!-- /.form-group -->
+                                                        </div>
+                                                    </div>
+                                                </section><!-- /#place-on-map -->
+                                            </div><!-- /.col-md-6 -->
+                                        </div><!-- /.block -->
+                                    </div><!-- /.row -->
+                                </section>
+                                <section>
+                                    <header><h2>Paper Work</h2></header>
+                                    <section>
+                                        <div class="center">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.PlansPath, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="input-group">
+                                                    @Html.TextBoxFor(model => model.PlansPath, new { @class = "form-control", Type="file" })
+                                                    @Html.ValidationMessageFor(model => model.PlansPath, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.TaxesAndRates, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="input-group">
+                                                    @Html.TextBoxFor(model => model.TaxesAndRates, new { @class = "form-control", Type = "file" })
+                                                    @Html.ValidationMessageFor(model => model.TaxesAndRates, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.TitleDeedPath, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="input-group">
+                                                    @Html.TextBoxFor(model => model.TitleDeedPath, new { @class = "form-control", Type = "file" })
+                                                    @Html.ValidationMessageFor(model => model.TitleDeedPath, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                   
+                                </section>
+                                <section class="block" id="gallery">
+                                    <header><h2>Gallery</h2></header>
+                                    <div class="center">
+                                        <div class="form-group">
+
+                                            @{Html.RenderAction("_PhotoPartial");
+                                            }
+                                            @try
+                                            {
+                                                if (Model.PropertyPhotos == null)
+                                                {
+                                                    <div>No Photos Added</div>
+                                                    @Html.EditorFor(model => model.PropertyPhotos, new { htmlAttributes = new { @class = "form-control" } })
+
+                                                }
+                                                else
+                                                {
+                                                    foreach (PropertyPhoto photo in Model.PropertyPhotos)
+                                                    {
+                                                        <div>Photos</div>
+
+                                                        <div>@photo.PropertyPhotoPath</div>
+
+                                                    }
+                                                    @Html.EditorFor(model => model.PropertyPhotos, new { htmlAttributes = new { @class = "form-control" } })
+
+                                                }
+
+                                            }
+                                            catch
+                                            {
+                                                <div>No Photos Added</div>
+                                                @Html.EditorFor(model => model.PropertyPhotos, new { htmlAttributes = new { @class = "form-control" } })
+                                            }
+
+                                            <figure class="note"><strong>Hint:</strong> You can upload all images at once!</figure>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section id="property-features" class="block">
+                                    <section>
+                                        <header><h2>Property Features</h2></header>
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3" style="Padding:10px">
+                                                    <div style="float:left">
+                                                        @Html.LabelFor(model => model.A_C, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    </div>
+                                                    <div style="float:right">
+                                                        @Html.CheckBoxFor(model => model.A_C, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3" style="Padding:10px">
+                                                    <div style="float:left">
+                                                        @Html.LabelFor(model => model.PetsAllowed, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    </div>
+                                                    <div style="float:right">
+                                                        @Html.CheckBoxFor(model => model.PetsAllowed, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3" style="Padding:10px">
+                                                    <div style="float:left">
+                                                        @Html.LabelFor(model => model.Garden, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    </div>
+                                                    <div style="float:right">
+                                                        @Html.CheckBoxFor(model => model.Garden, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3" style="Padding:10px">
+                                                    <div style="float:left">
+                                                        @Html.LabelFor(model => model.CableTV, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    </div>
+                                                    <div style="float:right">
+                                                        @Html.CheckBoxFor(model => model.CableTV, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-3" style="Padding:10px">
+                                                    <div style="float:left">
+                                                        @Html.LabelFor(model => model.Terrace, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    </div>
+                                                    <div style="float:right">
+                                                        @Html.CheckBoxFor(model => model.Terrace, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3" style="Padding:10px">
+                                                    <div style="float:left">
+                                                        @Html.LabelFor(model => model.wi_fi, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    </div>
+                                                    <div style="float:right">
+                                                        @Html.CheckBoxFor(model => model.wi_fi, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3" style="Padding:10px">
+                                                    <div style="float:left">
+                                                        @Html.LabelFor(model => model.Fibre, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    </div>
+                                                    <div style="float:right">
+                                                        @Html.CheckBoxFor(model => model.Fibre, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3" style="Padding:10px">
+                                                    <div style="float:left">
+                                                        @Html.LabelFor(model => model.Pool, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    </div>
+                                                    <div style="float:right">
+
+                                                        @Html.CheckBoxFor(model => model.Pool, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3" style="Padding:10px">
+                                                    <div style="float:left">
+                                                        @Html.LabelFor(model => model.Balcony, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    </div>
+                                                    <div style="float:right">
+
+                                                        @Html.CheckBoxFor(model => model.Balcony, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3" style="Padding:10px">
+                                                    <div style="float:left">
+                                                        @Html.LabelFor(model => model.Parquet, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    </div>
+                                                    <div style="float:right">
+                                                        @Html.CheckBoxFor(model => model.Parquet, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3" style="Padding:10px">
+                                                    <div style="float:left">
+                                                        @Html.LabelFor(model => model.Beach, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    </div>
+                                                    <div style="float:right">
+                                                        @Html.CheckBoxFor(model => model.Beach, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3" style="Padding:10px">
+                                                    <div style="float:left">
+                                                        @Html.LabelFor(model => model.Gerage, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    </div>
+                                                    <div style="float:right">
+                                                        @Html.CheckBoxFor(model => model.Gerage, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3" style="Padding:10px">
+                                                    <div style="float:left">
+                                                        @Html.LabelFor(model => model.RoofTarrace, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    </div>
+                                                    <div style="float:right">
+                                                        @Html.CheckBoxFor(model => model.RoofTarrace, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3" style="Padding:10px">
+                                                    <div style="float:left">
+                                                        @Html.LabelFor(model => model.Sauna, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    </div>
+                                                    <div style="float:right">
+                                                        @Html.CheckBoxFor(model => model.Sauna, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3" style="Padding:10px">
+                                                    <div style="float:left">
+                                                        @Html.LabelFor(model => model.OutdoorKitchen, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    </div>
+                                                    <div style="float:right">
+                                                        @Html.CheckBoxFor(model => model.OutdoorKitchen, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3" style="Padding:10px">
+                                                    <div style="float:left">
+                                                        @Html.LabelFor(model => model.FireplacePit, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    </div>
+                                                    <div style="float:right">
+                                                        @Html.CheckBoxFor(model => model.FireplacePit, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3" style="Padding:10px">
+                                                    <div style="float:left">
+                                                        @Html.LabelFor(model => model.SunRoom, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    </div>
+                                                    <div style="float:right">
+                                                        @Html.CheckBoxFor(model => model.SunRoom, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3" style="Padding:10px">
+                                                    <div style="float:left">
+                                                        @Html.LabelFor(model => model.ConcreteFlooring, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    </div>
+                                                    <div style="float:right">
+                                                        @Html.CheckBoxFor(model => model.ConcreteFlooring, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3" style="Padding:10px">
+                                                    <div style="float:left">
+                                                        @Html.LabelFor(model => model.WoodFloring, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    </div>
+                                                    <div style="float:right">
+                                                        @Html.CheckBoxFor(model => model.WoodFloring, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3" style="Padding:10px">
+                                                    <div style="float:left">
+                                                        @Html.LabelFor(model => model.TennisCourts, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    </div>
+                                                    <div style="float:right">
+                                                        @Html.CheckBoxFor(model => model.TennisCourts, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                    </section>
+                                </section>
+                                <hr>
+                            </section>
+                        </div><!-- /.col-md-9 -->
+                        <div class="col-md-3 col-sm-3">
+                            <aside class="submit-step">
+                                <figure class="step-number">2</figure>
+                                <div class="description">
+                                    <h4>Enter Information About Your Property</h4>
+                                    <p>
+                                        Supply as much information about your property as possible. Be descriptive.
+                                    </p>
+                                </div>
+                            </aside><!-- /.submit-step -->
+                        </div><!-- /.col-md-3 -->
+                    </div>
+                </div><!-- /.row -->
+                <div class="row">
+                    <div class="block">
+                        <div class="col-md-9 col-sm-9">
+                            <div class="center">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-default large" value="Create">Submit Your Property</button>
+                                   
+                                </div><!-- /.form-group -->
+                                <figure class="note block">By clicking the “Submit” button you agree with our <a href="terms-conditions.html">Terms and conditions</a></figure>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <aside class="submit-step">
+                                <figure class="step-number">3</figure>
+                                <div class="description">
+                                    <h4>Review the Information and Proceed to Submit your Property</h4>
+                                    <p>
+                                        Carefully check entered information and then click the "Submit Your Property" button to submit and proceed with pyament.
+                                    </p>
+                                </div>
+                            </aside><!-- /.submit-step -->
+                        </div><!-- /.col-md-3 -->
+                    </div>
+                </div>
+            
+            </form><!-- /#form-submit -->
+           
+        </div><!-- /.container -->
+    </div>
+    <!-- end Page Content -->
+
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=places"></script>
+    <script type="text/javascript" src="~/Scripts2/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="~/Scripts2/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts2/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Scripts2/smoothscroll.js"></script>
+    <script type="text/javascript" src="~/Scripts2/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="~/Scripts2/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="~/Scripts2/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts2/jquery.placeholder.js"></script>
+    <script type="text/javascript" src="~/Scripts2/icheck.min.js"></script>
+    <script type="text/javascript" src="~/Scripts2/jquery.vanillabox-0.1.5.min.js"></script>
+    <script type="text/javascript" src="~/Scripts2/retina-1.1.0.min.js"></script>
+    <script type="text/javascript" src="~/Scripts2/jshashtable-2.1_src.js"></script>
+    <script type="text/javascript" src="~/Scripts2/jquery.numberformatter-1.2.3.js"></script>
+    <script type="text/javascript" src="~/Scripts2/tmpl.js"></script>
+    <script type="text/javascript" src="~/Scripts2/jquery.dependClass-0.1.js"></script>
+    <script type="text/javascript" src="~/Scripts2/draggable-0.1.js"></script>
+    <script type="text/javascript" src="~/Scripts2/jquery.slider.js"></script>
+    <script type="text/javascript" src="~/Scripts2/custom.js"></script>
+
+</body>
+</html>

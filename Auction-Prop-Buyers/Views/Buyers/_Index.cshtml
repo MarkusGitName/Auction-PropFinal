@@ -1,0 +1,171 @@
+﻿@using Auction_Prop_Buyers.Models.DisplayMadels
+@using Microsoft.AspNet.Identity;
+
+@using AutoMapper;
+@model Property
+
+@{
+    <h1>Profile</h1>
+    RegisteredBuyer mod = new RegisteredBuyer();
+
+
+    try
+    {
+        mod = APILibrary.APIMethods.APIGet<RegisteredBuyer>(User.Identity.GetUserId(), "RegisteredBuyers");
+
+    }
+    catch
+    {
+
+        mod = null;
+
+
+    }
+
+
+    if (mod == null)
+    {
+        <h3>
+            You are not registered
+        </h3>
+        @Html.ActionLink("Click here to register and bid on this Auction", "Index", "Buyers")
+    }
+    else if (mod.BuyerAddresses.Count == 0)
+    {
+        <h3>
+            Youre acoount is almost completed.
+        </h3>
+        @Html.ActionLink("Click here to enter youre address", "CreateAddress", "Buyers")
+    }
+    else
+    {
+        <h3>
+            Welcome @mod.FirstName
+        </h3>
+
+        bool isRegistered = false;
+        if (mod.AuctionRegistrations.Count != 0)
+        {
+
+            foreach (AuctionRegistration reg in mod.AuctionRegistrations)
+            {
+                if (Model.PropertyID == reg.PropertyID)
+                {
+                    isRegistered = true;
+                    if (reg.AdminFee != null && mod.Deposit.Paid)
+                    {
+                        try
+                        {
+                            <p>Con</p>
+                            if (Model.Auction.StartTime >= DateTime.Now)
+                            {
+                                <p>This Auction Starts at @Model.Auction.StartTime</p>
+                            }
+                            else if (Model.Auction.StartTime <= DateTime.Now && DateTime.Now <= Model.Auction.EndTime)
+                            {
+                                @Html.ActionLink("Click Here to go to Auction", "Index", "AuctionRoom",new {id = Model.Auction.PropertyID },null)
+                            }
+
+
+
+                        }
+                        catch
+                        {
+                            <p>This Propperty is not yet Scheduled for auction.</p>
+                        }
+                    }
+                    else
+                    {
+                        if (!mod.BondedOrCash || (mod.BondedOrCash && mod.Guarintees.Count != 0))
+                        {
+                            if (!reg.RegistrationFees && mod.Deposit== null)
+                            {
+
+                                @Html.ActionLink("Click Here to Pay Deposit and Admin fees.", "PaymentPage", "Buyers", new { id = Model.PropertyID }, reg)
+
+                                @Html.Partial("~/Views/PaymentGate/_PayDeposiAndAdminFees.cshtml", reg)
+
+
+                            }
+                            else if (reg.RegistrationFees)
+                            {
+
+                                @Html.ActionLink("Click Here to Pay Deposit.", "PaymentPage", "Buyers");
+
+                                @Html.Partial("~/Views/PaymentGate/PayDeposit.cshtml", reg)
+                            }
+                            else if (mod.Deposit != null)
+                            {
+                                @Html.ActionLink("Click Here to Pay AdminFees.", "PaymentPage", "Buyers");
+
+                                @Html.Partial("~/Views/PaymentGate/PayAdmin.cshtml", reg)
+
+                            }
+                         
+                        }
+                        else if (mod.BondedOrCash && mod.Guarintees.Count == 0)
+                        {
+                            @Html.ActionLink("Click Here to complete youre geristration.", "AddBankGuarintee", "Buyers", new { id = Model.PropertyID }, reg)
+
+                        }
+
+                    }
+
+                }
+
+            }
+        }
+
+        if (!isRegistered)
+        {
+            @Html.ActionLink("Click Here to Register for this Auction.", "RegisterForAuction", "Buyers", new { id = Model.PropertyID }, Model)
+
+        }
+
+
+
+    }
+
+
+    @*if (mod.Deposits.Paid == false && mod.AuctionRegistrations.Count == 0)
+        {
+            <p>Registration fees = R190</p>
+            <p>Deposit fees = R5 000</p>
+
+            @Html.ActionLink("Click here to Pay depisit and Admin fees", "CreateAddress", "Buyers")
+        }
+        else if (mod.Deposits.Paid == false)
+        {
+            <p>Deposit fees = R5 000</p>
+
+            @Html.ActionLink("Click here to Pay deposit", "CreateAddress", "Buyers")
+
+        }
+        else if (mod.AuctionRegistration.RegistrationFees == false)
+        {
+            <p>Registration fees = R190</p>
+            @Html.ActionLink("Click here to Pay Admin fees", "CreateAddress", "Buyers")
+
+        }
+        else
+        {
+            if (mod.ApprovalStatus == true)
+            {
+                <p>You are approved to bid on this auction.</p>
+                @Html.ActionLink("Click here to go to the Auction room.", "CreateAddress", "Buyers")
+            }
+            else
+            {
+
+                <p>
+                    The aution prop Admin team are reveiwing youre registration.
+                    You will be Emailed When youre registration is approved.
+                </p>
+
+            }
+        }*@
+
+}
+
+
+
