@@ -11,7 +11,7 @@ namespace APILibrary
 {
     public class APIMethods
     {
-        public static string url = "https://localhost:44320/api/";
+        public static string url = "https://auction-prop-api20200523090812.azurewebsites.net/api/";
 
 
         public static T APIPost<T>(object model, string APIAddress)
@@ -255,21 +255,21 @@ namespace APILibrary
             string ResponseString = "";
             HttpWebResponse response = null;
             var request = (HttpWebRequest)WebRequest.Create(url + APIAddress );
-            //var request = (HttpWebRequest)WebRequest.Create("sellers/bb9d734c-b26d-4dd3-ae0b-605ac6623407                                                                                            ");
+            
             request.Accept = "application/json"; //"application/xml"; 
             request.Method = "GET";
 
          
             try
             {
-   JavaScriptSerializer jss = new JavaScriptSerializer();
+                 JavaScriptSerializer jss = new JavaScriptSerializer();
 
 
-                jss.MaxJsonLength = 10 * 1024 * 1024;
-            response = (HttpWebResponse)request.GetResponse();
+                    jss.MaxJsonLength = 10 * 1024 * 1024;
+                response = (HttpWebResponse)request.GetResponse();
 
-            ResponseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-            model = jss.Deserialize<T>(ResponseString);
+                ResponseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+                model = jss.Deserialize<T>(ResponseString);
 
             }
             catch (WebException ex)

@@ -34,7 +34,7 @@ namespace Auction_Prop_Buyers.Controllers
                 {
                    
                    
-                    return View();
+                    return RedirectToAction("Create");
                 }
 
             }

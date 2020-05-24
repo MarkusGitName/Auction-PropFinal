@@ -569,6 +569,8 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="assets\img\marker.psd" />
     <Content Include="assets\img\property-types\property-types.psd" />
+    <None Include="Properties\PublishProfiles\Auction-Prop-API20200523090812 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Auction-Prop-Sellers20200523103348 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

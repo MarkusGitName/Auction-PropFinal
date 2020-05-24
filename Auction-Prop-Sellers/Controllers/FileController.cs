@@ -9,7 +9,7 @@ namespace Auction_Prop_Sellers.Controllers
 {
     public class FileController : Controller
     {
-        public static string uri = "https://localhost:44317";
+        public static string uri = "https://auction-prop-sellers20200523103348.azurewebsites.net";
         [HttpPost]
         public static string PostFile(HttpPostedFileBase file, string filePath, string uriExtension)
         {

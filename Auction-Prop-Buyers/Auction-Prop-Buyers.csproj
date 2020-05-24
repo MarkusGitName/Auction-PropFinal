@@ -605,6 +605,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Properties\PublishProfiles\Auction-Prop-Buyers20200523105717 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Logo\Asset 1.png" />
     <Content Include="Scripts\bootstrap-select.min.js" />

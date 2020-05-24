@@ -296,6 +296,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <None Include="Properties\PublishProfiles\Auction-Prop-API20200523015539 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Auction-Prop-API20200523090812 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -359,6 +360,11 @@
     <Content Include="Views\Guarintees\Details.cshtml" />
     <Content Include="Views\Guarintees\Edit.cshtml" />
     <Content Include="Views\Guarintees\Index.cshtml" />
+    <Content Include="Views\AuctionRegistrations\Create.cshtml" />
+    <Content Include="Views\AuctionRegistrations\Delete.cshtml" />
+    <Content Include="Views\AuctionRegistrations\Details.cshtml" />
+    <Content Include="Views\AuctionRegistrations\Edit.cshtml" />
+    <Content Include="Views\AuctionRegistrations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
