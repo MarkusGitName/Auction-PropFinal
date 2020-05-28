@@ -34,6 +34,8 @@ namespace Auction_Prop_API.Models.DataBaseModels
 
         public bool ApprovalStatus { get; set; }
 
+        public virtual Actioneer Actioneer { get; set; }
+
         public virtual PrivateSeller PrivateSeller { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

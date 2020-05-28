@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Auction_Prop_Buyers.Models.DisplayMadels
 {
-    public class AuctionRegistrationViewModel
+    public partial class AuctionRegistrationViewModel
     {
 
         public int id { get; set; }
@@ -29,11 +29,12 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
 
         public virtual RegisteredBuyer RegisteredBuyer { get; set; }
     }
-    public partial class AuctionRegistration
+    public  class AuctionRegistration
     {
+        public int id { get; set; }
+
         [Required]
-        [StringLength(128)]
-        public string BuyerId { get; set; }
+         public string BuyerId { get; set; }
 
         public int PropertyID { get; set; }
 
@@ -45,13 +46,26 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
 
         public bool RegistrationStatus { get; set; }
 
-         public int id { get; set; }
+        public bool Bonded { get; set; }
 
         public virtual AdminFee AdminFee { get; set; }
 
         public virtual Property Property { get; set; }
 
         public virtual RegisteredBuyer RegisteredBuyer { get; set; }
-    }
 
+        public virtual BankApproval BankApproval { get; set; }
+
+        public virtual Guarintee Guarintee { get; set; }
+    }
+    public class AuctionRegistrationInvitation
+    {
+        [Required]
+        [Display(Name = "Enter youre invitation code.")]
+        public string inInvitationCode { get; set; }
+
+
+        public const string cInvitationCode = "AuctionInv-01";
+        public virtual AuctionRegistration registration{get;set;}
+    }
 }

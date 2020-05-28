@@ -1,18 +1,20 @@
 ﻿using APILibrary;
 using Auction_Prop_Sellers.Models.DataViewModels;
+using Auction_Prop_Sellers.Models.ErrorModels;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Mvc;
 
 namespace Auction_Prop_Sellers.Controllers
 {
     public class SellerDashboardController : Controller
     {
-        public ActionResult Index(Sellers model)
+        public ActionResult Index(Seller model)
         {
             if (ModelState.IsValid)
             {
@@ -24,16 +26,15 @@ namespace Auction_Prop_Sellers.Controllers
 
                 try
                 {
-                    Sellers sellerModel = APIMethods.APIGet<Sellers>(User.Identity.GetUserId(), "Sellers");
+                    Seller sellerModel = APIMethods.APIGet<Seller>(User.Identity.GetUserId(), "Sellers");
 
                     return View(sellerModel);
 
 
                 }
-                catch
+                catch (Exception E)
                 {
-
-                    return ErrorView();
+                    return View();
                 }
 
             }
@@ -41,7 +42,7 @@ namespace Auction_Prop_Sellers.Controllers
 
 
         }
-        public ActionResult ErrorView()
+        public ActionResult ErrorView(ErrorView error)
         {
             return View();
         }
@@ -60,9 +61,9 @@ namespace Auction_Prop_Sellers.Controllers
                 IMapper mapper = config.CreateMapper();
                 Property NewProp = mapper.Map<PropertyView, Property>(model);
                 NewProp.SellerID = User.Identity.GetUserId();
-                NewProp.TaxesAndRates = FileController.PostFile(model.TaxesAndRates, Server.MapPath("~/uploads/TaxesAndRates"), "uploads/TaxesAndRates");
-                NewProp.PlansPath = FileController.PostFile(model.PlansPath, Server.MapPath("~/uploads/Plans"), "uploads/Plans");
-                NewProp.TitleDeedPath = FileController.PostFile(model.TitleDeedPath, Server.MapPath("~/uploads/TitleDeeds"), "uploads/TitleDeeds");
+                NewProp.TaxesAndRates = FileController.PostFile(model.TaxesAndRates, Server.MapPath("~/App_Data/uploads/TaxesAndRates"), "taxesandrates");
+                NewProp.PlansPath = FileController.PostFile(model.PlansPath, Server.MapPath("~/App_Data/uploads/Plans"), "plans");
+                NewProp.TitleDeedPath = FileController.PostFile(model.TitleDeedPath, Server.MapPath("~/App_Data/uploads/TitleDeeds"), "titledeeds");
 
 
                 try
@@ -72,9 +73,13 @@ namespace Auction_Prop_Sellers.Controllers
 
                     return RedirectToAction("Index");
                 }
-                catch
+                catch (Exception E)
                 {
-                    return RedirectToAction("ErrorView");
+                    ErrorViewModel error = new ErrorViewModel()
+                    {
+                        Msge = E.ToString(),
+                    };
+                    return RedirectToAction("ErrorView", "SellerDashboard", error);
                 }
             }
             else
@@ -84,6 +89,7 @@ namespace Auction_Prop_Sellers.Controllers
 
 
         }
+
         public ActionResult AddPropertyStyled(Property model)
         {
             model.SellerID = User.Identity.GetUserId();
@@ -99,9 +105,13 @@ namespace Auction_Prop_Sellers.Controllers
                     //Call Post Method
                     return RedirectToAction("Index");
                 }
-                catch
+                catch (Exception E)
                 {
-                    return RedirectToAction("ErrorView");
+                    ErrorViewModel error = new ErrorViewModel()
+                    {
+                        Msge = E.ToString(),
+                    };
+                    return RedirectToAction("ErrorView", "SellerDashboard", error);
                 }
             }
             else
@@ -119,8 +129,7 @@ namespace Auction_Prop_Sellers.Controllers
             if (ModelState.IsValid)
             {
 
-                try
-                {
+                
                     PropertyPhoto model = new PropertyPhoto();
                     if (file != null)
                     {
@@ -128,7 +137,7 @@ namespace Auction_Prop_Sellers.Controllers
                         model.Description = file.Description;
                         model.Title = file.Title;
                         model.PropertyId = id;
-                        model.PropertyPhotoPath = FileController.PostFile(file.PropertyPhotoPath, Server.MapPath("~/uploads/PropertyPhotos"), "uploads/PropertyPhotos");
+                        model.PropertyPhotoPath = FileController.PostFile(file.PropertyPhotoPath, Server.MapPath("~/App_Data/uploads/PropertyPhotos"), "propertyphotos");
 
                         //Call Post Method
                        APIMethods.APIPost<PropertyPhoto>(model, "PropertyPhotoes");
@@ -137,13 +146,8 @@ namespace Auction_Prop_Sellers.Controllers
 
 
                     return RedirectToAction("Index");
-                }
-                catch (Exception e)
-                {
-
-                    ViewBag.Message = "Error while file uploading." + e + " e";
-                    return RedirectToAction("ErrorView");
-                }
+                
+            
             }
             else
             {
@@ -154,6 +158,7 @@ namespace Auction_Prop_Sellers.Controllers
         }
 
         // GET: SellersAccount/Edit/5
+
         public ActionResult Edit(int id, Property model)
         {
             if (ModelState.IsValid)
@@ -163,9 +168,13 @@ namespace Auction_Prop_Sellers.Controllers
                APIMethods.APIPut<Property>(model, id.ToString(), "Properties");
                 return RedirectToAction("Index");
                 }
-                catch
+                catch (Exception E)
                 {
-                    return RedirectToAction("ErrorView");
+                    ErrorViewModel error = new ErrorViewModel()
+                    {
+                        Msge = E.ToString(),
+                    };
+                    return RedirectToAction("ErrorView", "SellerDashboard", error);
                 }
 
             }
@@ -186,9 +195,13 @@ namespace Auction_Prop_Sellers.Controllers
                     APIMethods.APIDelete<Property>( model.PropertyID.ToString(), "Properties");
                     return RedirectToAction("Index");
                 }
-                catch
+                catch (Exception E)
                 {
-                    return RedirectToAction("ErrorView");
+                    ErrorViewModel error = new ErrorViewModel()
+                    {
+                        Msge = E.ToString(),
+                    };
+                    return RedirectToAction("ErrorView", "SellerDashboard", error);
                 }
 
             }
@@ -219,7 +232,6 @@ namespace Auction_Prop_Sellers.Controllers
 
 
 
-        [ChildActionOnly]
         public ActionResult _PhotoPartial(PropertyPhoto propertyPhoto)
         {
            

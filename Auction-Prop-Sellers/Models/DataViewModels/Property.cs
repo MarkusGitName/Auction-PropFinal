@@ -11,7 +11,7 @@
     {
        public Property()
         {
-            Auctions = new HashSet<Auction>();
+            AuctionRegistrations = new HashSet<AuctionRegistration>();
             PromoVideos = new HashSet<PromoVideo>();
             PropertyPhotos = new HashSet<PropertyPhoto>();
         }
@@ -91,7 +91,6 @@
 
         public bool SellerSigniture { get; set; }
 
-        [Column("A/C")]
         public bool A_C { get; set; }
 
         public bool PetsAllowed { get; set; }
@@ -102,7 +101,6 @@
 
         public bool Terrace { get; set; }
 
-        [Column("wi-fi")]
         public bool wi_fi { get; set; }
 
         public bool Fibre { get; set; }
@@ -133,15 +131,15 @@
 
         public bool TennisCourts { get; set; }
 
-        public virtual ICollection<Auction> Auctions { get; set; }
+         public virtual ICollection<AuctionRegistration> AuctionRegistrations { get; set; }
 
-        public virtual ConcludedAuction ConcludedAuction { get; set; }
+        public virtual Auction Auction { get; set; }
 
         public virtual ICollection<PromoVideo> PromoVideos { get; set; }
 
-        public virtual Sellers Seller { get; set; }
+        public virtual Seller Seller { get; set; }
 
-       public virtual ICollection<PropertyPhoto> PropertyPhotos { get; set; }
+        public virtual ICollection<PropertyPhoto> PropertyPhotos { get; set; }
     }
 
     public partial class PropertyView
@@ -269,7 +267,7 @@
 
         public virtual ICollection<PromoVideo> PromoVideos { get; set; }
 
-        public virtual Sellers Seller { get; set; }
+        public virtual Seller Seller { get; set; }
 
         public virtual ICollection<PropertyPhoto> PropertyPhotos { get; set; }
 

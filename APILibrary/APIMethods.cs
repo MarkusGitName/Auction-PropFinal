@@ -11,7 +11,7 @@ namespace APILibrary
 {
     public class APIMethods
     {
-        public static string url = "https://auction-prop-api20200523090812.azurewebsites.net/api/";
+        public static string url = "https://auction-prop-api.azurewebsites.net/api/";
 
 
         public static T APIPost<T>(object model, string APIAddress)
@@ -86,8 +86,11 @@ namespace APILibrary
             object model = new object();
             string ResponseString = "";
             HttpWebResponse response = null;
-            var request = (HttpWebRequest)WebRequest.Create(url + APIAddress + "/" + id);
-            //var request = (HttpWebRequest)WebRequest.Create("sellers/bb9d734c-b26d-4dd3-ae0b-605ac6623407                                                                                            ");
+        
+            try
+            {
+                var request = (HttpWebRequest)WebRequest.Create(url + APIAddress + "/" + id);
+                //var request = (HttpWebRequest)WebRequest.Create("sellers/bb9d734c-b26d-4dd3-ae0b-605ac6623407                                                                                            ");
                 request.Accept = "application/json"; //"application/xml"; 
                 request.Method = "GET";
 
@@ -98,9 +101,6 @@ namespace APILibrary
 
                 ResponseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
                 model = jss.Deserialize<T>(ResponseString);
-            try
-            {
-             
 
             }
             catch (WebException ex)
@@ -121,7 +121,7 @@ namespace APILibrary
             }
             else
             {
-                throw new Exception();
+                throw new Exception(""+response.StatusCode);
 
             }
         }
@@ -253,15 +253,14 @@ namespace APILibrary
 
             object model = new object();
             string ResponseString = "";
-            HttpWebResponse response = null;
+         HttpWebResponse response = null;
             var request = (HttpWebRequest)WebRequest.Create(url + APIAddress );
-            
+         
+            try
+            {   
             request.Accept = "application/json"; //"application/xml"; 
             request.Method = "GET";
 
-         
-            try
-            {
                  JavaScriptSerializer jss = new JavaScriptSerializer();
 
 
@@ -283,6 +282,11 @@ namespace APILibrary
                 {
                     ResponseString = "Some error occured: " + ex.Status.ToString();
                 }
+            }
+            catch(NullReferenceException ex)
+            {
+
+                ResponseString = "Some error occured: " + ex.ToString();
             }
             if (response.StatusCode == HttpStatusCode.OK)
             {

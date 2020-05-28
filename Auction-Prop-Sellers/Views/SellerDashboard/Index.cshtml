@@ -1,6 +1,6 @@
 ﻿@using Auction_Prop_Sellers.Models.DataViewModels
 
-@model Sellers
+@model Seller
 @{
     ViewBag.Title = "Dashboard.";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -100,7 +100,13 @@
                 </td>
                 <td>
                     <div>
-                        <img src="" alt="" />
+                        <p>Photos:</p>
+                        @foreach (PropertyPhoto photo in item.PropertyPhotos)
+                        {
+                            <p>@photo.PropertyPhotoPath</p>
+                            <img src=@photo.PropertyPhotoPath alt="" style="height:100px; width:100px"/>
+                        }
+
                     </div>
                     @Html.ActionLink("Add a Photo", "AddPhoto", new { id = item.PropertyID })
                 </td>

@@ -26,6 +26,6 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
 
         public bool Signature { get; set; }
 
-        public virtual Sellers Seller { get; set; }
+        public virtual Seller Seller { get; set; }
     }
 }

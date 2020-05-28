@@ -43,49 +43,57 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.DateOfBirth, new { Type = "date" })
+                @Html.TextBoxFor(model => model.DateOfBirth, new { type = "date" })
                 @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProofOfResidencePath, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.TextBoxFor(model => model.ProofOfResidencePath, new { @class = "form-control", Type = "file" })
+                    @Html.ValidationMessageFor(model => model.ProofOfResidencePath, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProofOfBankAccount, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.TextBoxFor(model => model.ProofOfBankAccount, new { @class = "form-control", Type = "file" })
+                    @Html.ValidationMessageFor(model => model.ProofOfBankAccount, "", new { @class = "text-danger" })
+                </div>
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.ProfilePhotoPath, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.ProfilePhotoPath, new { Type = "file" })
-                @Html.ValidationMessageFor(model => model.ProfilePhotoPath, "", new { @class = "text-danger" })
-            </div>
-        </div>    <div class="form-group">
-            @Html.LabelFor(model => model.CopyOfIDPath, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.CopyOfIDPath, new { Type = "file" })
-                @Html.ValidationMessageFor(model => model.CopyOfIDPath, "", new { @class = "text-danger" })
+                <div class="checkbox">
+                    @Html.TextBoxFor(model => model.ProfilePhotoPath, new { @class = "form-control", Type = "file" })
+                    @Html.ValidationMessageFor(model => model.ProfilePhotoPath, "", new { @class = "text-danger" })
+                </div>
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.ProofOfResidencePath, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.ProofOfResidencePath, new { Type = "file" })
-                @Html.ValidationMessageFor(model => model.ProofOfResidencePath, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.BondedOrCash, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IDBuyerVerifyPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.CheckBoxFor(model => model.BondedOrCash)
-                    @Html.ValidationMessageFor(model => model.BondedOrCash, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(model => model.IDBuyerVerifyPhoto, new { @class = "form-control", Type = "file" })
+                    @Html.ValidationMessageFor(model => model.IDBuyerVerifyPhoto, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.CopyOfIDPath, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.TextBoxFor(model => model.CopyOfIDPath, new { @class = "form-control", Type = "file" })
+                    @Html.ValidationMessageFor(model => model.CopyOfIDPath, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
 
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.RegistrationDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RegistrationDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RegistrationDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Signiture, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -103,8 +111,8 @@
             </div>
         </div>
     </div>
+    
     </form>
-
     <div>
         @Html.ActionLink("Back to List", "Index")
     </div>

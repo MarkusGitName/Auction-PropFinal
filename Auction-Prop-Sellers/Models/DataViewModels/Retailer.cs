@@ -26,7 +26,7 @@ namespace Auction_Prop_Sellers.Models.DataViewModels
 
         public bool Signature { get; set; }
 
-        public virtual Sellers seller { get; set; }
+        public virtual Seller seller { get; set; }
     }
 
     public class Retailer
@@ -49,6 +49,6 @@ namespace Auction_Prop_Sellers.Models.DataViewModels
 
         public bool Signature { get; set; }
 
-        public virtual Sellers seller { get; set; }
+        public virtual Seller seller { get; set; }
     }
 }

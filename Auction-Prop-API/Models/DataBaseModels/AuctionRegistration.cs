@@ -9,6 +9,8 @@ namespace Auction_Prop_API.Models.DataBaseModels
     [Table("AuctionRegistration")]
     public partial class AuctionRegistration
     {
+        public int id { get; set; }
+
         [Required]
         [StringLength(128)]
         public string BuyerId { get; set; }
@@ -23,13 +25,16 @@ namespace Auction_Prop_API.Models.DataBaseModels
 
         public bool RegistrationStatus { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int id { get; set; }
+        public bool Bonded { get; set; }
 
         public virtual AdminFee AdminFee { get; set; }
 
         public virtual Property Property { get; set; }
 
         public virtual RegisteredBuyer RegisteredBuyer { get; set; }
+
+        public virtual BankApproval BankApproval { get; set; }
+
+        public virtual Guarintee Guarintee { get; set; }
     }
 }

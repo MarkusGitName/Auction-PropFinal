@@ -101,11 +101,10 @@ namespace Auction_Prop_Buyers.Controllers
             return PartialView();
         }
 
-
         public ActionResult _PayDeposiAndAdminFees(AuctionRegistration reg)
         {
             if(ModelState.IsValid)
-            _PayAdminFees(reg);
+            _PayAdminFees(0,reg);
             _PayDeposit();
            // return RedirectToAction("Detailss", "home",new { id = prop.PropertyID});
             return PartialView();
@@ -166,15 +165,36 @@ namespace Auction_Prop_Buyers.Controllers
               //return PartialView(redirectUrl);*/
 
         }
+
+        public ActionResult InvitedBiderView(int id,AuctionRegistrationInvitation model)
+        {
+            if(model.registration == null)
+            {
+                model.registration = APILibrary.APIMethods.APIGet<AuctionRegistration>(id.ToString(),"AuctionRegistrations");
+            }
+            if(ModelState.IsValid)
+            {
+                if(model.inInvitationCode == "AuctionInv-01")
+                {
+                    _PayAdminFees(0,model.registration);
+                    _PayDeposit();
+                    return RedirectToAction("Detailss", "Home",model.registration.Property);
+                }
+            }
+            return View(model);
+        }
+
+
         public ActionResult PayAdmin(AuctionRegistration reg)
         {
-            _PayAdminFees(reg);
+            _PayAdminFees(0,reg);
             return PartialView();
         }
 
 
 
-        public void _PayAdminFees(AuctionRegistration reg)
+        [HttpPost]
+        public void _PayAdminFees(int id ,AuctionRegistration reg)
         {
             AdminFee fees = new AdminFee
             {
@@ -189,12 +209,15 @@ namespace Auction_Prop_Buyers.Controllers
 
 
         }
-        
+
         public ActionResult PayDeposit()
         {
             _PayDeposit();
             return View();
         }
+
+
+        [HttpPost]
         public void _PayDeposit()
         {
             Deposit dep = new Deposit

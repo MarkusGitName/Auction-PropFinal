@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Spatial;
 using System.Linq;
@@ -9,30 +10,50 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
 {
     public class Property
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Property()
         {
+            AuctionRegistrations = new HashSet<AuctionRegistration>();
             PromoVideos = new HashSet<PromoVideo>();
             PropertyPhotos = new HashSet<PropertyPhoto>();
         }
 
         public int PropertyID { get; set; }
 
+        [Required]
+        [StringLength(128)]
         public string SellerID { get; set; }
 
+        [Required]
+        [StringLength(50)]
         public string Title { get; set; }
 
+        [Required]
+        [StringLength(128)]
         public string Country { get; set; }
 
+        [Required]
+        [StringLength(128)]
         public string Province { get; set; }
 
+        [Required]
+        [StringLength(128)]
         public string City { get; set; }
 
+        [Required]
+        [StringLength(500)]
         public string Address { get; set; }
 
+        [Column(TypeName = "text")]
+        [Required]
         public string Description { get; set; }
 
+        [Required]
+        [StringLength(20)]
         public string Type { get; set; }
 
+        [Required]
+        [StringLength(10)]
         public string Status { get; set; }
 
         public int? BedRooms { get; set; }
@@ -52,12 +73,18 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
         public decimal MinimubBid { get; set; }
 
         [Column(TypeName = "money")]
-        public decimal? Reserve { get; set; }
+        public decimal Reserve { get; set; }
 
+        [Required]
+        [StringLength(500)]
         public string PlansPath { get; set; }
 
+        [Required]
+        [StringLength(500)]
         public string TaxesAndRates { get; set; }
 
+        [Required]
+        [StringLength(500)]
         public string TitleDeedPath { get; set; }
 
         public DbGeography Location { get; set; }
@@ -66,6 +93,7 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
 
         public bool SellerSigniture { get; set; }
 
+        [Column("A/C")]
         public bool A_C { get; set; }
 
         public bool PetsAllowed { get; set; }
@@ -76,6 +104,7 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
 
         public bool Terrace { get; set; }
 
+        [Column("wi-fi")]
         public bool wi_fi { get; set; }
 
         public bool Fibre { get; set; }
@@ -106,17 +135,14 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
 
         public bool TennisCourts { get; set; }
 
+        public virtual ICollection<AuctionRegistration> AuctionRegistrations { get; set; }
 
         public virtual Auction Auction { get; set; }
 
+        public virtual ICollection<PromoVideo> PromoVideos { get; set; }
 
+        public virtual Seller Seller { get; set; }
 
-        // public virtual ConcludedAuction ConcludedAuction { get; set; }
-
-         public virtual ICollection<PromoVideo> PromoVideos { get; set; }
-
-        public virtual Sellers Seller { get; set; }
-
-        public virtual ICollection<PropertyPhoto> PropertyPhotos { get; set; }
+         public virtual ICollection<PropertyPhoto> PropertyPhotos { get; set; }
     }
 }

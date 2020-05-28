@@ -19,15 +19,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PropertyID, "PropertyID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @try
-                {
-
-                    @Html.DropDownList("PropertyID", null, htmlAttributes: new { @class = "form-control" })
-                }
-                catch
-                {
-                <input Value=@Model.PropertyID  name="PropertyID" type="text" value="" />
-                }
+                @Html.DropDownList("PropertyID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.PropertyID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -35,7 +27,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.StartTime, new { Type = "date" } )
+                @Html.TextBoxFor(model => model.StartTime, new {type="datetime-local" })
                 @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -43,7 +35,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.EndTime, new { Type = "date" })
+                @Html.TextBoxFor(model => model.EndTime,new {type="datetime-local" })
                 @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "text-danger" })
             </div>
         </div>

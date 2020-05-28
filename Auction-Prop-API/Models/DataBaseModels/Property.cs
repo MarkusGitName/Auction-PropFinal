@@ -138,8 +138,6 @@ namespace Auction_Prop_API.Models.DataBaseModels
 
         public virtual Auction Auction { get; set; }
 
-        public virtual ConcludedAuction ConcludedAuction { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PromoVideo> PromoVideos { get; set; }
 

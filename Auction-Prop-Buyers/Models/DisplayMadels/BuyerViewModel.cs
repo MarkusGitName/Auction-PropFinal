@@ -11,64 +11,14 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
     {
         public BuyerViewModel()
         {
-            Bids = new HashSet<Bid>();
-            BuyerAddresses = new HashSet<BuyerAddress>();
-            Guarintees = new HashSet<Guarintee>();
-        }
-
-        public string UserId { get; set; }
-
-        [Required]
-        public string FirstName { get; set; }
-
-        [Required]
-        public string LastName { get; set; }
-
-        [Required]
-        public string IDNumber { get; set; }
-
-        [Column(TypeName = "date")]
-        public DateTime DateOfBirth { get; set; }
-
-        public bool BondedOrCash { get; set; }
-
-        [Required]
-        public HttpPostedFileBase ProofOfResidencePath { get; set; }
-
-        [Required]
-        public HttpPostedFileBase CopyOfIDPath { get; set; }
-
-        public HttpPostedFileBase ProfilePhotoPath { get; set; }
-
-        public bool ApprovalStatus { get; set; }
-
-        [Column(TypeName = "date")]
-        public DateTime RegistrationDate { get; set; }
-
-        public bool Signiture { get; set; }
-
-        public virtual ICollection<AuctionRegistration> AuctionRegistrations { get; set; }
-
-        public virtual ICollection<Bid> Bids { get; set; }
-
-        public virtual ICollection<BuyerAddress> BuyerAddresses { get; set; }
-
-        public virtual Deposit Deposits { get; set; }
-
-        public virtual ICollection<Guarintee> Guarintees { get; set; }
-
-    }
-    public partial class RegisteredBuyer
-    {
-        public RegisteredBuyer()
-        {
             AuctionRegistrations = new HashSet<AuctionRegistration>();
+            BankApprovals = new HashSet<BankApproval>();
             Bids = new HashSet<Bid>();
             BuyerAddresses = new HashSet<BuyerAddress>();
+            ConcludedAuctions = new HashSet<ConcludedAuction>();
             Guarintees = new HashSet<Guarintee>();
         }
 
-        [Key]
         public string UserId { get; set; }
 
         [Required]
@@ -83,10 +33,81 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
         [StringLength(10)]
         public string IDNumber { get; set; }
 
+         public DateTime DateOfBirth { get; set; }
+
+        public bool BondedOrCash { get; set; }
+
+        [Required]
+        public HttpPostedFileBase ProfilePhotoPath { get; set; }
+
+        [Required]
+        public HttpPostedFileBase ProofOfResidencePath { get; set; }
+
+        [Required]
+        public HttpPostedFileBase CopyOfIDPath { get; set; }
+
+        [Required]
+         public HttpPostedFileBase ProofOfBankAccount { get; set; }
+
+        [Required]
+        public HttpPostedFileBase IDBuyerVerifyPhoto { get; set; }
+
+        public bool ApprovalStatus { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime RegistrationDate { get; set; }
+
+        [Required]
+        public bool Signiture { get; set; }
+
+        public virtual ICollection<AuctionRegistration> AuctionRegistrations { get; set; }
+
+        public virtual ICollection<BankApproval> BankApprovals { get; set; }
+
+        public virtual ICollection<Bid> Bids { get; set; }
+
+        public virtual ICollection<BuyerAddress> BuyerAddresses { get; set; }
+
+        public virtual ICollection<ConcludedAuction> ConcludedAuctions { get; set; }
+
+        public virtual Deposit Deposit { get; set; }
+
+        public virtual ICollection<Guarintee> Guarintees { get; set; }
+
+
+    }
+    
+    public partial class RegisteredBuyer
+    {
+         public RegisteredBuyer()
+        {
+            AuctionRegistrations = new HashSet<AuctionRegistration>();
+            Bids = new HashSet<Bid>();
+            BuyerAddresses = new HashSet<BuyerAddress>();
+            ConcludedAuctions = new HashSet<ConcludedAuction>();
+        }
+
+        [Key]
+        public string UserId { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string FirstName { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string LastName { get; set; }
+
+        [Required]
+        [StringLength(13)]
+        public string IDNumber { get; set; }
+
         [Column(TypeName = "date")]
         public DateTime DateOfBirth { get; set; }
 
-        public bool BondedOrCash { get; set; }
+        [Required]
+        [StringLength(500)]
+        public string ProfilePhotoPath { get; set; }
 
         [Required]
         [StringLength(500)]
@@ -96,8 +117,13 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
         [StringLength(500)]
         public string CopyOfIDPath { get; set; }
 
+        [Required]
         [StringLength(500)]
-        public string ProfilePhotoPath { get; set; }
+        public string ProofOfBankAccount { get; set; }
+
+        [Required]
+        [StringLength(500)]
+        public string IDBuyerVerifyPhoto { get; set; }
 
         public bool ApprovalStatus { get; set; }
 
@@ -112,10 +138,9 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
 
         public virtual ICollection<BuyerAddress> BuyerAddresses { get; set; }
 
+        public virtual ICollection<ConcludedAuction> ConcludedAuctions { get; set; }
+
         public virtual Deposit Deposit { get; set; }
-
-        public virtual ICollection<Guarintee> Guarintees { get; set; }
-
 
     }
     }

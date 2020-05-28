@@ -34,27 +34,17 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
 
     public partial class Guarintee
     {
-       public Guarintee()
-        {
-            AuctionRegistrations = new HashSet<AuctionRegistration>();
-        }
 
-         public int GuarinteeID { get; set; }
-
-
-
-        public string BuyerID { get; set; }
+        [Key]
+        public int AuctionRegistrationID { get; set; }
 
         [Required]
-       public string GuarinteePath { get; set; }
+        public string GuarinteePath { get; set; }
 
         public bool GuarinteeApproval { get; set; }
 
-        [Column(TypeName = "date")]
         public DateTime DateOfSubmition { get; set; }
 
-       public virtual ICollection<AuctionRegistration> AuctionRegistrations { get; set; }
-
-        public virtual RegisteredBuyer RegisteredBuyer { get; set; }
+        public virtual AuctionRegistration AuctionRegistration { get; set; }
     }
 }

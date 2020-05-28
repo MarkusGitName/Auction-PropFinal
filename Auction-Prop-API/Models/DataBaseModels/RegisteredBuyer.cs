@@ -14,7 +14,7 @@ namespace Auction_Prop_API.Models.DataBaseModels
             AuctionRegistrations = new HashSet<AuctionRegistration>();
             Bids = new HashSet<Bid>();
             BuyerAddresses = new HashSet<BuyerAddress>();
-            Guarintees = new HashSet<Guarintee>();
+            ConcludedAuctions = new HashSet<ConcludedAuction>();
         }
 
         [Key]
@@ -29,13 +29,15 @@ namespace Auction_Prop_API.Models.DataBaseModels
         public string LastName { get; set; }
 
         [Required]
-        [StringLength(10)]
+        [StringLength(13)]
         public string IDNumber { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime DateOfBirth { get; set; }
 
-        public bool BondedOrCash { get; set; }
+        [Required]
+        [StringLength(500)]
+        public string ProfilePhotoPath { get; set; }
 
         [Required]
         [StringLength(500)]
@@ -45,8 +47,13 @@ namespace Auction_Prop_API.Models.DataBaseModels
         [StringLength(500)]
         public string CopyOfIDPath { get; set; }
 
+        [Required]
         [StringLength(500)]
-        public string ProfilePhotoPath { get; set; }
+        public string ProofOfBankAccount { get; set; }
+
+        [Required]
+        [StringLength(500)]
+        public string IDBuyerVerifyPhoto { get; set; }
 
         public bool ApprovalStatus { get; set; }
 
@@ -64,9 +71,9 @@ namespace Auction_Prop_API.Models.DataBaseModels
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BuyerAddress> BuyerAddresses { get; set; }
 
-        public virtual Deposit Deposit { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Guarintee> Guarintees { get; set; }
+        public virtual ICollection<ConcludedAuction> ConcludedAuctions { get; set; }
+
+        public virtual Deposit Deposit { get; set; }
     }
 }

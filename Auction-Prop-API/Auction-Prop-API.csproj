@@ -45,9 +45,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=9.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.Storage.9.3.2\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -210,38 +216,54 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\DBControllers\AddressesController.cs" />
-    <Compile Include="Controllers\DBControllers\AdminFeesController.cs" />
-    <Compile Include="Controllers\DBControllers\AuctionRegistrationsController.cs" />
-    <Compile Include="Controllers\DBControllers\AuctionsController.cs" />
-    <Compile Include="Controllers\DBControllers\BidsController.cs" />
-    <Compile Include="Controllers\DBControllers\BuyerAddressesController.cs" />
-    <Compile Include="Controllers\DBControllers\DepositsController.cs" />
-    <Compile Include="Controllers\DBControllers\GuarinteesController.cs" />
-    <Compile Include="Controllers\DBControllers\PrivateSellersController.cs" />
-    <Compile Include="Controllers\DBControllers\PropertiesController.cs" />
-    <Compile Include="Controllers\DBControllers\PropertyPhotoesController.cs" />
-    <Compile Include="Controllers\DBControllers\RegisteredBuyersController.cs" />
-    <Compile Include="Controllers\DBControllers\RetailelersController.cs" />
-    <Compile Include="Controllers\DBControllers\SellerAddressesController.cs" />
-    <Compile Include="Controllers\DBControllers\SellersController.cs" />
+    <Compile Include="Controllers\APIControllers\AddressesController.cs" />
+    <Compile Include="Controllers\APIControllers\AdminFeesController.cs" />
+    <Compile Include="Controllers\APIControllers\AuctionRegistrationsController.cs" />
+    <Compile Include="Controllers\APIControllers\AuctionsController.cs" />
+    <Compile Include="Controllers\APIControllers\BankApprovalsController.cs" />
+    <Compile Include="Controllers\APIControllers\BidsController.cs" />
+    <Compile Include="Controllers\APIControllers\BuyerAddressesController.cs" />
+    <Compile Include="Controllers\APIControllers\ConcludedAuctionsController.cs" />
+    <Compile Include="Controllers\APIControllers\DepositsController.cs" />
+    <Compile Include="Controllers\APIControllers\GuarinteesController.cs" />
+    <Compile Include="Controllers\APIControllers\MessagesController.cs" />
+    <Compile Include="Controllers\APIControllers\PrivateSellersController.cs" />
+    <Compile Include="Controllers\APIControllers\PromoVideosController.cs" />
+    <Compile Include="Controllers\APIControllers\PropertiesController.cs" />
+    <Compile Include="Controllers\APIControllers\PropertyPhotoesController.cs" />
+    <Compile Include="Controllers\APIControllers\RegisteredBuyersController.cs" />
+    <Compile Include="Controllers\APIControllers\RetailelersController.cs" />
+    <Compile Include="Controllers\APIControllers\SellerAddressesController.cs" />
+    <Compile Include="Controllers\APIControllers\SellersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MVC\AuctionsController.cs" />
-    <Compile Include="Controllers\MVC\GuarinteesController.cs" />
-    <Compile Include="Controllers\MVC\PropertiesController.cs" />
-    <Compile Include="Controllers\MVC\RegisteredBuyersController.cs" />
-    <Compile Include="Controllers\MVC\SellersController.cs" />
+    <Compile Include="Controllers\MVCControllers\AddressesController.cs" />
+    <Compile Include="Controllers\MVCControllers\AdminFeesController.cs" />
+    <Compile Include="Controllers\MVCControllers\AuctionRegistrationsController.cs" />
+    <Compile Include="Controllers\MVCControllers\AuctionsController.cs" />
+    <Compile Include="Controllers\MVCControllers\BidsController.cs" />
+    <Compile Include="Controllers\MVCControllers\BuyerAddressesController.cs" />
+    <Compile Include="Controllers\MVCControllers\ConcludedAuctionsController.cs" />
+    <Compile Include="Controllers\MVCControllers\MessagesController.cs" />
+    <Compile Include="Controllers\MVCControllers\PrivateSellersController.cs" />
+    <Compile Include="Controllers\MVCControllers\PromoVideosController.cs" />
+    <Compile Include="Controllers\MVCControllers\PropertiesController.cs" />
+    <Compile Include="Controllers\MVCControllers\PropertyPhotoesController.cs" />
+    <Compile Include="Controllers\MVCControllers\RetailelersController.cs" />
+    <Compile Include="Controllers\MVCControllers\SellerAddressesController.cs" />
+    <Compile Include="Controllers\MVCControllers\SellersController.cs" />
+    <Compile Include="Controllers\toetsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DataBaseModels\Actioneer.cs" />
     <Compile Include="Models\DataBaseModels\Address.cs" />
     <Compile Include="Models\DataBaseModels\AdminFee.cs" />
-    <Compile Include="Models\DataBaseModels\AdminFeesPayment.cs" />
     <Compile Include="Models\DataBaseModels\Auction.cs" />
     <Compile Include="Models\DataBaseModels\AuctionRegistration.cs" />
+    <Compile Include="Models\DataBaseModels\BankApproval.cs" />
     <Compile Include="Models\DataBaseModels\Bid.cs" />
     <Compile Include="Models\DataBaseModels\BuyerAddress.cs" />
     <Compile Include="Models\DataBaseModels\ConcludedAuction.cs" />
@@ -257,7 +279,6 @@
     <Compile Include="Models\DataBaseModels\Retaileler.cs" />
     <Compile Include="Models\DataBaseModels\Seller.cs" />
     <Compile Include="Models\DataBaseModels\SellerAddress.cs" />
-    <Compile Include="Models\DataBaseModels\sysdiagram.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -295,8 +316,11 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <None Include="Properties\PublishProfiles\Auction-Prop - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Auction-Prop-API - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Auction-Prop-API20200523015539 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Auction-Prop-API20200523090812 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Auction-Prop-API20200524092754 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -365,9 +389,85 @@
     <Content Include="Views\AuctionRegistrations\Details.cshtml" />
     <Content Include="Views\AuctionRegistrations\Edit.cshtml" />
     <Content Include="Views\AuctionRegistrations\Index.cshtml" />
+    <Content Include="Views\AuctionRegistrations1\Create.cshtml" />
+    <Content Include="Views\AuctionRegistrations1\Delete.cshtml" />
+    <Content Include="Views\AuctionRegistrations1\Details.cshtml" />
+    <Content Include="Views\AuctionRegistrations1\Edit.cshtml" />
+    <Content Include="Views\AuctionRegistrations1\Index.cshtml" />
+    <Content Include="Views\Addresses\Create.cshtml" />
+    <Content Include="Views\Addresses\Delete.cshtml" />
+    <Content Include="Views\Addresses\Details.cshtml" />
+    <Content Include="Views\Addresses\Edit.cshtml" />
+    <Content Include="Views\Addresses\Index.cshtml" />
+    <Content Include="Views\AdminFees\Create.cshtml" />
+    <Content Include="Views\AdminFees\Delete.cshtml" />
+    <Content Include="Views\AdminFees\Details.cshtml" />
+    <Content Include="Views\AdminFees\Edit.cshtml" />
+    <Content Include="Views\AdminFees\Index.cshtml" />
+    <Content Include="Views\BankApprovals\Create.cshtml" />
+    <Content Include="Views\BankApprovals\Delete.cshtml" />
+    <Content Include="Views\BankApprovals\Details.cshtml" />
+    <Content Include="Views\BankApprovals\Edit.cshtml" />
+    <Content Include="Views\BankApprovals\Index.cshtml" />
+    <Content Include="Views\Bids\Create.cshtml" />
+    <Content Include="Views\Bids\Delete.cshtml" />
+    <Content Include="Views\Bids\Details.cshtml" />
+    <Content Include="Views\Bids\Edit.cshtml" />
+    <Content Include="Views\Bids\Index.cshtml" />
+    <Content Include="Views\BuyerAddresses\Create.cshtml" />
+    <Content Include="Views\BuyerAddresses\Delete.cshtml" />
+    <Content Include="Views\BuyerAddresses\Details.cshtml" />
+    <Content Include="Views\BuyerAddresses\Edit.cshtml" />
+    <Content Include="Views\BuyerAddresses\Index.cshtml" />
+    <Content Include="Views\ConcludedAuctions\Create.cshtml" />
+    <Content Include="Views\ConcludedAuctions\Delete.cshtml" />
+    <Content Include="Views\ConcludedAuctions\Details.cshtml" />
+    <Content Include="Views\ConcludedAuctions\Edit.cshtml" />
+    <Content Include="Views\ConcludedAuctions\Index.cshtml" />
+    <Content Include="Views\Deposits\Create.cshtml" />
+    <Content Include="Views\Deposits\Delete.cshtml" />
+    <Content Include="Views\Deposits\Details.cshtml" />
+    <Content Include="Views\Deposits\Edit.cshtml" />
+    <Content Include="Views\Deposits\Index.cshtml" />
+    <Content Include="Views\Messages\Create.cshtml" />
+    <Content Include="Views\Messages\Delete.cshtml" />
+    <Content Include="Views\Messages\Details.cshtml" />
+    <Content Include="Views\Messages\Edit.cshtml" />
+    <Content Include="Views\Messages\Index.cshtml" />
+    <Content Include="Views\PrivateSellers\Create.cshtml" />
+    <Content Include="Views\PrivateSellers\Delete.cshtml" />
+    <Content Include="Views\PrivateSellers\Details.cshtml" />
+    <Content Include="Views\PrivateSellers\Edit.cshtml" />
+    <Content Include="Views\PrivateSellers\Index.cshtml" />
+    <Content Include="Views\PromoVideos\Create.cshtml" />
+    <Content Include="Views\PromoVideos\Delete.cshtml" />
+    <Content Include="Views\PromoVideos\Details.cshtml" />
+    <Content Include="Views\PromoVideos\Edit.cshtml" />
+    <Content Include="Views\PromoVideos\Index.cshtml" />
+    <Content Include="Views\PropertyPhotoes\Create.cshtml" />
+    <Content Include="Views\PropertyPhotoes\Delete.cshtml" />
+    <Content Include="Views\PropertyPhotoes\Details.cshtml" />
+    <Content Include="Views\PropertyPhotoes\Edit.cshtml" />
+    <Content Include="Views\PropertyPhotoes\Index.cshtml" />
+    <Content Include="Views\PropertyPhotoes1\Create.cshtml" />
+    <Content Include="Views\PropertyPhotoes1\Delete.cshtml" />
+    <Content Include="Views\PropertyPhotoes1\Details.cshtml" />
+    <Content Include="Views\PropertyPhotoes1\Edit.cshtml" />
+    <Content Include="Views\PropertyPhotoes1\Index.cshtml" />
+    <Content Include="Views\Retailelers\Create.cshtml" />
+    <Content Include="Views\Retailelers\Delete.cshtml" />
+    <Content Include="Views\Retailelers\Details.cshtml" />
+    <Content Include="Views\Retailelers\Edit.cshtml" />
+    <Content Include="Views\Retailelers\Index.cshtml" />
+    <Content Include="Views\SellerAddresses\Create.cshtml" />
+    <Content Include="Views\SellerAddresses\Delete.cshtml" />
+    <Content Include="Views\SellerAddresses\Details.cshtml" />
+    <Content Include="Views\SellerAddresses\Edit.cshtml" />
+    <Content Include="Views\SellerAddresses\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\toets\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -159,6 +159,7 @@ $(document).ready(function ($) {
             score: function () {
                 return $(this).attr('data-score');
             }
+            
         });
     }
     var ratingUser = $('.rating-user');

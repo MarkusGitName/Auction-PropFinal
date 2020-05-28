@@ -1,4 +1,5 @@
 ﻿using APILibrary;
+using Auction_Prop_Buyers.Models;
 using Auction_Prop_Buyers.Models.DisplayMadels;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
@@ -6,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Mvc;
 
 namespace Auction_Prop_Buyers.Controllers
@@ -21,8 +23,6 @@ namespace Auction_Prop_Buyers.Controllers
             }
             else
             {
-
-
                 
                 try
                 {
@@ -30,10 +30,8 @@ namespace Auction_Prop_Buyers.Controllers
 
                     return View(buyer);
                 }
-                catch
+                catch (Exception E)
                 {
-                   
-                   
                     return RedirectToAction("Create");
                 }
 
@@ -55,6 +53,7 @@ namespace Auction_Prop_Buyers.Controllers
         }
 
         // GET: Buyers/Create
+
         public ActionResult Create(BuyerViewModel model)
         {
             model.UserId = User.Identity.GetUserId();
@@ -62,21 +61,23 @@ namespace Auction_Prop_Buyers.Controllers
             {
                 try
                 {
-                    var newData = new RegisteredBuyer
+                    RegisteredBuyer newData = new RegisteredBuyer
                     {
-                        UserId = model.UserId,
+                        UserId = User.Identity.GetUserId(),
                         FirstName = model.FirstName,
                         LastName = model.LastName,
                         IDNumber = model.IDNumber,
                         DateOfBirth = model.DateOfBirth,
-                        BondedOrCash = model.BondedOrCash,
                         Signiture = model.Signiture,
-                        RegistrationDate = DateTime.Now
+                        RegistrationDate = DateTime.Now,
+                        
                     };
 
-                    newData.ProfilePhotoPath = FileController.PostFile(model.ProfilePhotoPath, Server.MapPath("~/uploads/ProfilePhotos"), "uploads/ProfilePhotos");
-                    newData.ProofOfResidencePath = FileController.PostFile(model.ProofOfResidencePath, Server.MapPath("~/uploads/ProofOfResedence"), "uploads/ProofOfResedence");
-                    newData.CopyOfIDPath = FileController.PostFile(model.CopyOfIDPath, Server.MapPath("~/uploads/CopyOfIDPath"), "uploads/ProofOfResedence");
+                    newData.ProfilePhotoPath = FileController.PostFile(model.ProfilePhotoPath, Server.MapPath("~/App_Data/uploads/ProfilePhotos"), "profilephotos");
+                    newData.ProofOfResidencePath = FileController.PostFile(model.ProofOfResidencePath, Server.MapPath("~/App_Data/uploads/ProofOfResedence"), "proofofresedence");
+                    newData.CopyOfIDPath = FileController.PostFile(model.CopyOfIDPath, Server.MapPath("~/App_Data/uploads/CopyOfIDPath"), "copyofid");
+                    newData.IDBuyerVerifyPhoto = FileController.PostFile(model.IDBuyerVerifyPhoto, Server.MapPath("~/App_Data/uploads/CopyOfIDPath"), "idbuyerferifyphoto");
+                    newData.ProofOfBankAccount = FileController.PostFile(model.ProofOfBankAccount, Server.MapPath("~/App_Data/uploads/CopyOfIDPath"), "proofofbankaccount");
 
 
 
@@ -84,9 +85,9 @@ namespace Auction_Prop_Buyers.Controllers
                     RegisteredBuyer ob = APIMethods.APIPost<RegisteredBuyer>(newData, "RegisteredBuyers");
                     return RedirectToAction("Index");
                 }
-                catch
+                catch (Exception E)
                 {
-                    return RedirectToAction("ErrorView");
+                    throw new Exception("Something went wrong. Please try again"+E.ToString());
                 }
 
             }
@@ -97,6 +98,7 @@ namespace Auction_Prop_Buyers.Controllers
         }
 
         // GET: Buyers/Create
+
         public ActionResult CreateAddress(Address model)
         {
             if (ModelState.IsValid)
@@ -113,11 +115,9 @@ namespace Auction_Prop_Buyers.Controllers
                     return RedirectToAction("Index");
 
                 }
-                catch
+                catch (Exception E)
                 {
-
-                    return RedirectToAction("ErrorView");
-
+                    throw new Exception("Something went wrong. Please try again");
                 }
 
             }
@@ -128,28 +128,28 @@ namespace Auction_Prop_Buyers.Controllers
 
         }
         // GET: Buyers/Create
+
         public ActionResult RegisterForAuction(int id,AuctionRegistrationViewModel model)
         {
             if (ModelState.IsValid && model.Signiture)
             {
 
-                model.PropertyID = id;
-                model.BuyerId = User.Identity.GetUserId();
-                model.RegesterDate = DateTime.Now;
-
-                AuctionRegistration objec = APIMethods.APIPost<AuctionRegistration>(model, "AuctionRegistrations");
-
+             
                 try
                 {  //Call Post Method
-                   
-                    return RedirectToAction("Index");
+                    model.PropertyID = id;
+                    model.BuyerId = User.Identity.GetUserId();
+                    model.RegesterDate = DateTime.Now;
+                    
+
+                    AuctionRegistration objec = APIMethods.APIPost<AuctionRegistration>(model, "AuctionRegistrations");
+
+                    return RedirectToAction("Index",model.Property);
 
                 }
-                catch
+                catch (Exception e)
                 {
-
-                    return RedirectToAction("ErrorView");
-
+                    throw new Exception("Registreation faled."+ e.ToString());
                 }
 
             }
@@ -160,34 +160,61 @@ namespace Auction_Prop_Buyers.Controllers
 
         }
 
-        public ActionResult AddBankGuarintee(GuarinteeViewModel model)
+        public ActionResult AddBankGuarintee(int id,GuarinteeViewModel model)
         {
             
             if (ModelState.IsValid)
             {
+                
 
                 try
                 {
-                    Guarintee newModel = new Guarintee
-                    {
-                        BuyerID = User.Identity.GetUserId(),
+                     Guarintee newModel = new Guarintee
+                     {
+                        AuctionRegistrationID = id,
                         DateOfSubmition = DateTime.Now
-                    };
-                    newModel.GuarinteePath = FileController.PostFile(model.GuarinteePath, Server.MapPath("~/uploads/Guarintees"), "uploads/Guarintees");
+                      };
+                     newModel.GuarinteePath = FileController.PostFile(model.GuarinteePath, Server.MapPath("~/App_Data/uploads/Guarintees"), "guarintees");
 
-                        //Call Post Method
-                        APIMethods.APIPost<Guarintee>(newModel, "Guarintees");
+                     //Call Post Method
+                      APIMethods.APIPost<Guarintee>(newModel, "Guarintees");
                     
-
-
-
                     return RedirectToAction("Index");
                 }
-                catch (Exception e)
+                catch (Exception E)
                 {
+                    throw new Exception("Something went wrong. Please try again");
+                }
+            }
+            else
+            {
+                return View(id);
+            }
+        }
+        public ActionResult AdPreApproval(int id,BankApprovalView model)
+        {
+            
+            if (ModelState.IsValid)
+            {
+                
 
-                    ViewBag.Message = "Error while file uploading." + e + " e";
-                    return RedirectToAction("ErrorView");
+                try
+                {
+                     BankApproval newModel = new BankApproval
+                     {
+                        AuctionRegistrationID = id,
+                        DateOfSubmision = DateTime.Now
+                      };
+                     newModel.ApprovalPath = FileController.PostFile(model.ApprovalPath, Server.MapPath("~/App_Data/uploads/Guarintees"), "bankapprovals");
+
+                     //Call Post Method
+                      APIMethods.APIPost<Guarintee>(newModel, "BankApprovals");
+                    
+                    return RedirectToAction("Index");
+                }
+                catch (Exception E)
+                {
+                    throw new Exception("Something went wrong. Please try again"+E.Message);
                 }
             }
             else
@@ -196,49 +223,12 @@ namespace Auction_Prop_Buyers.Controllers
             }
         }
 
-
-        // GET: Buyers/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult ErrorView(ErrorView error)
         {
             return View();
         }
+       
+      
 
-        // POST: Buyers/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Buyers/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Buyers/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

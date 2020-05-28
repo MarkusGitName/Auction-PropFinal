@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>AddBankGuarintee</h2>
+<h2>Submit youre bank guarintees</h2>
 
 <form action="" method="post" enctype="multipart/form-data">
     
@@ -20,7 +20,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.GuarinteePath, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.GuarinteePath, new { @class = "form-control" , Type="file" })
+                @Html.TextBoxFor(model => model.GuarinteePath, new { @class = "form-control" , Type="file" })
                 @Html.ValidationMessageFor(model => model.GuarinteePath, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -32,7 +32,6 @@
         </div>
     </div>
     </form>
-
     <div>
         @Html.ActionLink("Back to List", "Index")
     </div>

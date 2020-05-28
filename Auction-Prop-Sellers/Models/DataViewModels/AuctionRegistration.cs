@@ -13,16 +13,13 @@ namespace Auction_Prop_Sellers.Models.DataViewModels
 
     public partial class AuctionRegistration
     {
-        [Key]
+        [Required]
+        [StringLength(128)]
         public string BuyerId { get; set; }
 
-        public int AuctionID { get; set; }
-
-        public int GuarinteeID { get; set; }
+        public int PropertyID { get; set; }
 
         public bool RegistrationFees { get; set; }
-
-        public int PaymentID { get; set; }
 
         public DateTime RegesterDate { get; set; }
 
@@ -30,11 +27,8 @@ namespace Auction_Prop_Sellers.Models.DataViewModels
 
         public bool RegistrationStatus { get; set; }
 
-        //public virtual AdminFeesPayment AdminFeesPayment { get; set; }
 
-        //public virtual Guarintee Guarintee { get; set; }
-
-        public virtual Auction Auction { get; set; }
+        public virtual Property Property { get; set; }
 
         public virtual RegisteredBuyer RegisteredBuyer { get; set; }
     }

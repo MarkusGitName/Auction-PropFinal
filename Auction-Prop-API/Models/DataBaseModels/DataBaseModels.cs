@@ -12,11 +12,12 @@ namespace Auction_Prop_API.Models.DataBaseModels
         {
         }
 
+        public virtual DbSet<Actioneer> Actioneers { get; set; }
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<AdminFee> AdminFees { get; set; }
-        public virtual DbSet<AdminFeesPayment> AdminFeesPayments { get; set; }
         public virtual DbSet<AuctionRegistration> AuctionRegistrations { get; set; }
         public virtual DbSet<Auction> Auctions { get; set; }
+        public virtual DbSet<BankApproval> BankApprovals { get; set; }
         public virtual DbSet<Bid> Bids { get; set; }
         public virtual DbSet<BuyerAddress> BuyerAddresses { get; set; }
         public virtual DbSet<ConcludedAuction> ConcludedAuctions { get; set; }
@@ -31,7 +32,6 @@ namespace Auction_Prop_API.Models.DataBaseModels
         public virtual DbSet<Retaileler> Retailelers { get; set; }
         public virtual DbSet<SellerAddress> SellerAddresses { get; set; }
         public virtual DbSet<Seller> Sellers { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -64,16 +64,16 @@ namespace Auction_Prop_API.Models.DataBaseModels
                 .Property(e => e.ProofOfPaymentPath)
                 .IsFixedLength();
 
-            modelBuilder.Entity<AdminFeesPayment>()
-                .Property(e => e.ProofOfPaymentPath)
-                .IsFixedLength();
-
-            modelBuilder.Entity<AuctionRegistration>()
-                .Property(e => e.BuyerId)
-                .IsFixedLength();
-
             modelBuilder.Entity<AuctionRegistration>()
                 .HasOptional(e => e.AdminFee)
+                .WithRequired(e => e.AuctionRegistration);
+
+            modelBuilder.Entity<AuctionRegistration>()
+                .HasOptional(e => e.BankApproval)
+                .WithRequired(e => e.AuctionRegistration);
+
+            modelBuilder.Entity<AuctionRegistration>()
+                .HasOptional(e => e.Guarintee)
                 .WithRequired(e => e.AuctionRegistration);
 
             modelBuilder.Entity<Auction>()
@@ -82,28 +82,14 @@ namespace Auction_Prop_API.Models.DataBaseModels
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Bid>()
-                .Property(e => e.BuyerID)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Bid>()
                 .Property(e => e.AmuntOfBid)
                 .HasPrecision(19, 4);
 
-            modelBuilder.Entity<BuyerAddress>()
-                .Property(e => e.UserID)
-                .IsFixedLength();
-
-            modelBuilder.Entity<ConcludedAuction>()
-                .Property(e => e.HiegestBid)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<ConcludedAuction>()
-                .Property(e => e.WinningBidder)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Deposit>()
-                .Property(e => e.BuyerID)
-                .IsFixedLength();
+            modelBuilder.Entity<Bid>()
+                .HasMany(e => e.ConcludedAuctions)
+                .WithRequired(e => e.Bid)
+                .HasForeignKey(e => e.HiegestBid)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Deposit>()
                 .Property(e => e.ProofOfPaymentPath)
@@ -111,10 +97,6 @@ namespace Auction_Prop_API.Models.DataBaseModels
 
             modelBuilder.Entity<Deposit>()
                 .Property(e => e.ProofOfReturnPayment)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Guarintee>()
-                .Property(e => e.BuyerID)
                 .IsFixedLength();
 
             modelBuilder.Entity<Guarintee>()
@@ -199,17 +181,9 @@ namespace Auction_Prop_API.Models.DataBaseModels
                 .WithRequired(e => e.Property);
 
             modelBuilder.Entity<Property>()
-                .HasOptional(e => e.ConcludedAuction)
-                .WithRequired(e => e.Property);
-
-            modelBuilder.Entity<Property>()
                 .HasMany(e => e.PromoVideos)
                 .WithRequired(e => e.Property)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<RegisteredBuyer>()
-                .Property(e => e.UserId)
-                .IsFixedLength();
 
             modelBuilder.Entity<RegisteredBuyer>()
                 .Property(e => e.FirstName)
@@ -224,15 +198,7 @@ namespace Auction_Prop_API.Models.DataBaseModels
                 .IsFixedLength();
 
             modelBuilder.Entity<RegisteredBuyer>()
-                .Property(e => e.ProofOfResidencePath)
-                .IsFixedLength();
-
-            modelBuilder.Entity<RegisteredBuyer>()
-                .Property(e => e.CopyOfIDPath)
-                .IsFixedLength();
-
-            modelBuilder.Entity<RegisteredBuyer>()
-                .Property(e => e.ProfilePhotoPath)
+                .Property(e => e.IDBuyerVerifyPhoto)
                 .IsFixedLength();
 
             modelBuilder.Entity<RegisteredBuyer>()
@@ -253,14 +219,14 @@ namespace Auction_Prop_API.Models.DataBaseModels
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<RegisteredBuyer>()
-                .HasOptional(e => e.Deposit)
-                .WithRequired(e => e.RegisteredBuyer);
+                .HasMany(e => e.ConcludedAuctions)
+                .WithRequired(e => e.RegisteredBuyer)
+                .HasForeignKey(e => e.WinningBidder)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<RegisteredBuyer>()
-                .HasMany(e => e.Guarintees)
-                .WithRequired(e => e.RegisteredBuyer)
-                .HasForeignKey(e => e.BuyerID)
-                .WillCascadeOnDelete(false);
+                .HasOptional(e => e.Deposit)
+                .WithRequired(e => e.RegisteredBuyer);
 
             modelBuilder.Entity<Retaileler>()
                 .Property(e => e.RetailerName)
@@ -293,6 +259,10 @@ namespace Auction_Prop_API.Models.DataBaseModels
             modelBuilder.Entity<Seller>()
                 .Property(e => e.SellerType)
                 .IsFixedLength();
+
+            modelBuilder.Entity<Seller>()
+                .HasOptional(e => e.Actioneer)
+                .WithRequired(e => e.Seller);
 
             modelBuilder.Entity<Seller>()
                 .HasOptional(e => e.PrivateSeller)

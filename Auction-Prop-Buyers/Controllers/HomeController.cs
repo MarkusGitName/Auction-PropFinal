@@ -1,4 +1,5 @@
 ﻿using APILibrary;
+using Auction_Prop_Buyers.Models;
 using Auction_Prop_Buyers.Models.DisplayMadels;
 using System;
 using System.Collections.Generic;
@@ -71,21 +72,57 @@ namespace Auction_Prop_Buyers.Controllers
      
         public ActionResult Details(int id)
         {
+            try
+            {
+                 Property prop = APIMethods.APIGet<Property>(id.ToString(), "Properties");
+                 return View(prop);
+            }
+            catch (Exception E)
+            {
+                ErrorViewModel error = new ErrorViewModel()
+                {
+                    msge = E.ToString(),
+                };
+                return RedirectToAction("ErrorView", "Home", error);
+            }
 
-            Property prop = APIMethods.APIGet<Property>(id.ToString(), "Properties");
-            return View(prop);
         }
         public ActionResult Detailss(int id)
         {
-
-            Property prop = APIMethods.APIGet<Property>(id.ToString(), "Properties");
-            return View(prop);
+            try
+            {
+                Property prop = APIMethods.APIGet<Property>(id.ToString(), "Properties");
+                return View(prop);
+            }
+            catch (Exception E)
+            {
+                ErrorViewModel error = new ErrorViewModel()
+                {
+                    msge = E.ToString(),
+                };
+                return RedirectToAction("ErrorView", "Home", error);
+            }
         }
         public ActionResult DetailsID(int id)
         {
+            try
+            {
+                Property prop = APIMethods.APIGet<Property>(id.ToString(),"Properties");
+                return View(prop);
+            }
+            catch (Exception E)
+            {
+                ErrorViewModel error = new ErrorViewModel()
+                {
+                    msge = E.ToString(),
+                };
+                return RedirectToAction("ErrorView", "Home", error);
+            }
 
-            Property prop = APIMethods.APIGet<Property>(id.ToString(),"Properties");
-            return View(prop);
+        }
+        public ActionResult ErrorView(ErrorView error)
+        {
+            return View();
         }
     }
 }

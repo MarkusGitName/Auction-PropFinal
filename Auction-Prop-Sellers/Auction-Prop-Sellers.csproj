@@ -48,9 +48,15 @@
     <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=9.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.Storage.9.3.2\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -195,7 +201,7 @@
     <Compile Include="Models\DataViewModels\RegisteredBuyer.cs" />
     <Compile Include="Models\DataViewModels\Retailer.cs" />
     <Compile Include="Models\DataViewModels\SellerAddress.cs" />
-    <Compile Include="Models\DataViewModels\Sellers.cs" />
+    <Compile Include="Models\DataViewModels\Seller.cs" />
     <Compile Include="Models\ErrorModels\ErrorView.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -569,7 +575,9 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="assets\img\marker.psd" />
     <Content Include="assets\img\property-types\property-types.psd" />
+    <None Include="Properties\PublishProfiles\Auction-Prop - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Auction-Prop-API20200523090812 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Auction-Prop-Sellers - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Auction-Prop-Sellers20200523103348 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -646,15 +654,15 @@
     <Content Include="Views\SellerDashboard\Delete.cshtml" />
     <Content Include="Views\SellerDashboard\Details.cshtml" />
     <Content Include="Views\SellerDashboard\ErrorView.cshtml" />
+    <Content Include="Views\Home\ErrorView.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="uploads\Plans\" />
-    <Folder Include="uploads\ProfilePhotos\" />
-    <Folder Include="uploads\ProofOfResedence\" />
-    <Folder Include="uploads\PropertyPhotos\" />
-    <Folder Include="uploads\TaxesAndRates\" />
-    <Folder Include="uploads\TitleDeeds\" />
+    <Folder Include="App_Data\uploads\Plans\" />
+    <Folder Include="App_Data\uploads\ProfilePhotos\" />
+    <Folder Include="App_Data\uploads\ProofOfResedence\" />
+    <Folder Include="App_Data\uploads\PropertyPhotos\" />
+    <Folder Include="App_Data\uploads\TaxesAndRates\" />
+    <Folder Include="App_Data\uploads\TitleDeeds\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

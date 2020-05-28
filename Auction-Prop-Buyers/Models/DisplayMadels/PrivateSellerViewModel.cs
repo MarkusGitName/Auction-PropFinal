@@ -24,6 +24,6 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
         public string email { get; set; }
         public string PhoneNumber { get; set; }
 
-        public virtual Sellers Seller { get; set; }
+        public virtual Seller Seller { get; set; }
     }
 }

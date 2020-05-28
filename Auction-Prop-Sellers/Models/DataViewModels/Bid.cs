@@ -13,13 +13,12 @@ namespace Auction_Prop_Sellers.Models.DataViewModels
 
     public partial class Bid
     {
-        public int BidID { get; set; }
 
         [Required]
         [StringLength(128)]
         public string BuyerID { get; set; }
 
-        public int AuctionID { get; set; }
+        public int PropertyID { get; set; }
 
         [Column(TypeName = "money")]
         public decimal AmuntOfBid { get; set; }
@@ -29,7 +28,5 @@ namespace Auction_Prop_Sellers.Models.DataViewModels
         public virtual Auction Auction { get; set; }
 
         public virtual RegisteredBuyer RegisteredBuyer { get; set; }
-
-        public virtual ConcludedAuction ConcludedAuction { get; set; }
     }
 }

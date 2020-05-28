@@ -15,19 +15,16 @@ namespace Auction_Prop_Sellers.Models.DataViewModels
     {
         public Auction()
         {
-            AuctionRegistrations = new HashSet<AuctionRegistration>();
             Bids = new HashSet<Bid>();
         }
 
-         public int AuctionID { get; set; }
-
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int PropertyID { get; set; }
 
         public DateTime StartTime { get; set; }
 
         public DateTime EndTime { get; set; }
-
-        public virtual ICollection<AuctionRegistration> AuctionRegistrations { get; set; }
 
         public virtual Property Property { get; set; }
 

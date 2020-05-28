@@ -1,5 +1,6 @@
 ﻿using APILibrary;
 using Auction_Prop_Sellers.Models.DataViewModels;
+using Auction_Prop_Sellers.Models.ErrorModels;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace Auction_Prop_Sellers.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index(Sellers model)
+        public ActionResult Index(Seller model)
         {
             if (ModelState.IsValid)
             {
@@ -23,15 +24,14 @@ namespace Auction_Prop_Sellers.Controllers
 
                 try
                 {
-                    Sellers sellerModel = APIMethods.APIGet<Sellers>(User.Identity.GetUserId(), "Sellers");
+                    Seller sellerModel = APIMethods.APIGet<Seller>(User.Identity.GetUserId(), "Sellers");
 
                     return View(sellerModel);
 
 
                 }
-                catch
+                catch(Exception E)
                 {
-
                     return View();
                 }
 
@@ -39,6 +39,11 @@ namespace Auction_Prop_Sellers.Controllers
 
 
 
+        }
+
+        public ActionResult ErrorView(ErrorView error)
+        {
+            return View();
         }
 
         public ActionResult About()

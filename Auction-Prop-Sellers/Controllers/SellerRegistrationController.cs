@@ -7,13 +7,15 @@ using System.Web;
 using System.Web.Mvc;
 using APILibrary;
 using Auction_Prop_Sellers.Models.ErrorModels;
+using System.Web.Hosting;
 
 namespace Auction_Prop_Sellers.Controllers
 {
     public class SellerRegistrationController : Controller
     {
         // GET: SellersAccount/RegistrationWiz
-        public ActionResult Index(Sellers model)
+
+        public ActionResult Index(Seller model)
         {
             if (ModelState.IsValid)
             {
@@ -25,11 +27,11 @@ namespace Auction_Prop_Sellers.Controllers
                    
                 try
                 {
-                     Sellers sellerModel = APIMethods.APIGet<Sellers>(User.Identity.GetUserId(), "sellers");
+                     Seller sellerModel = APIMethods.APIGet<Seller>(User.Identity.GetUserId(), "sellers");
                    
                       return View(sellerModel);
                 }
-                catch
+                catch (Exception E)
                 {
                     return View();
                 }
@@ -40,7 +42,8 @@ namespace Auction_Prop_Sellers.Controllers
 
 
         // POST: SellersAccount/Create     
-        public ActionResult CreateSeller(Sellers model)
+
+        public ActionResult CreateSeller(Seller model)
         {
             model.UserID = User.Identity.GetUserId();
 
@@ -50,14 +53,16 @@ namespace Auction_Prop_Sellers.Controllers
                    
                 try
                 { //Call Post Method
-                    Sellers ob = APIMethods.APIPost<Sellers>(model, "Sellers");
+                    Seller ob = APIMethods.APIPost<Seller>(model, "Sellers");
                     return Index(ob);
                 }
-                catch
+                catch (Exception E)
                 {
-                    ErrorViewModel e = new ErrorViewModel();
-                    e.Msge = "you are already registered";
-                    return RedirectToAction("ErrorView");
+                    ErrorViewModel error = new ErrorViewModel()
+                    {
+                        Msge = E.ToString(),
+                    };
+                    return RedirectToAction("ErrorView", "SellerRegistration", error);
                 }
             }
             else
@@ -85,8 +90,8 @@ namespace Auction_Prop_Sellers.Controllers
                         CompanyEmail = model.CompanyEmail
                     };
 
-                    newData.ProfilePhotoPath = FileController.PostFile(model.ProfilePhotoPath, Server.MapPath("~/uploads/ProfilePhotos"), "uploads/ProfilePhotos");
-                    newData.ProofOfResedence = FileController.PostFile(model.ProofOfResedence, Server.MapPath("~/uploads/ProofOfResedence"), "uploads/ProofOfResedence");
+                    newData.ProfilePhotoPath = FileController.PostFile(model.ProfilePhotoPath, Server.MapPath("~/App_Data/uploads/ProfilePhotos"), "profilephotos");
+                    newData.ProofOfResedence = FileController.PostFile(model.ProofOfResedence, Server.MapPath("~/App_Data/uploads/ProofOfResedence"), "proofofresedence");
 
 
 
@@ -94,11 +99,13 @@ namespace Auction_Prop_Sellers.Controllers
                     Retailer ob = APIMethods.APIPost<Retailer>(newData, "Retailelers");
                     return RedirectToAction("Index");
                 }
-                catch
+                catch (Exception E)
                 {
-                    ErrorViewModel error = new ErrorViewModel();
-                    error.Msge = "Could not add youre information. Please try again.";
-                    return RedirectToAction("ErrorView");
+                    ErrorViewModel error = new ErrorViewModel()
+                    {
+                        Msge = E.ToString(),
+                    };
+                    return RedirectToAction("ErrorView", "SellerRegistration", error);
                 }
             }
             else
@@ -125,19 +132,21 @@ namespace Auction_Prop_Sellers.Controllers
                         Signiture = model.Signiture,
                     };
 
-                    newData.ProfilePhotoPath = FileController.PostFile(model.ProfilePhotoPath, Server.MapPath("~/uploads/ProfilePhotos"), "uploads/ProfilePhotos");
-                    newData.ProofOfResedence = FileController.PostFile(model.ProofOfResedence, Server.MapPath("~/uploads/ProofOfResedence"), "uploads/ProofOfResedence");
+                    newData.ProfilePhotoPath = FileController.PostFile(model.ProfilePhotoPath, Server.MapPath("~/App_Data/uploads/ProfilePhotos"), "profilephotos");
+                    newData.ProofOfResedence = FileController.PostFile(model.ProofOfResedence, Server.MapPath("~/App_Data/uploads/ProofOfResedence"), "proofofresedence");
 
                     //Call Post Method
                     PrivateSeller ob = APIMethods.APIPost<PrivateSeller>(newData, "PrivateSellers");
 
                     return RedirectToAction("Index");
                 }
-                catch
+                catch (Exception E)
                 {
-                    ErrorViewModel error = new ErrorViewModel();
-                    error.Msge = APIMethods.APIPost<string>(model, "PrivateSellers");
-                    return RedirectToAction("ErrorView" );
+                    ErrorViewModel error = new ErrorViewModel()
+                    {
+                        Msge = E.ToString(),
+                    };
+                    return RedirectToAction("ErrorView", "SellerRegistration", error);
                 }
             }
             else
@@ -164,13 +173,13 @@ namespace Auction_Prop_Sellers.Controllers
                     return RedirectToAction("Index");
 
                 }
-                catch
+                catch (Exception E)
                 {
-
-                    ErrorViewModel error = new ErrorViewModel();
-                  //  error.Message = APIMethods.APIPost<string>(sAdd, "SellerAddresses");
-                    return ErrorView(error);
-
+                    ErrorViewModel error = new ErrorViewModel()
+                    {
+                        Msge = E.ToString(),
+                    };
+                    return RedirectToAction("ErrorView", "SellerRegistration", error);
                 }
 
             }

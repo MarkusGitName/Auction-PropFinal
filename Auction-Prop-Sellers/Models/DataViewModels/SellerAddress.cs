@@ -17,6 +17,6 @@ namespace Auction_Prop_Sellers.Models.DataViewModels
 
         public virtual Address Address { get; set; }
 
-        public virtual Sellers Seller { get; set; }
+        public virtual Seller Seller { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace Auction_Prop_Sellers.Models.DataViewModels
 
         public bool Signiture { get; set; }
 
-        public virtual Sellers Seller { get; set; }
+        public virtual Seller Seller { get; set; }
     }
     public class PrivateSeller
     {
@@ -30,17 +30,19 @@ namespace Auction_Prop_Sellers.Models.DataViewModels
         public string UserID { get; set; }
 
         [Required]
+        [StringLength(13)]
         public string IDNumber { get; set; }
 
-
+        [StringLength(500)]
         public string ProfilePhotoPath { get; set; }
 
         [Required]
+        [StringLength(500)]
         public string ProofOfResedence { get; set; }
 
         public bool Signiture { get; set; }
 
-        public virtual Sellers Seller { get; set; }
+        public virtual Seller Seller { get; set; }
 
     }
 }

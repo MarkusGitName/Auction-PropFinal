@@ -16,9 +16,6 @@
             @Html.DisplayNameFor(model => model.Auction.PropertyID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ConcludedAuction.WinningBidder)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Seller.FirtstName)
         </th>
         <th>
@@ -156,9 +153,6 @@
             @Html.DisplayFor(modelItem => item.Auction.PropertyID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ConcludedAuction.WinningBidder)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Seller.FirtstName)
         </td>
         <td>
@@ -286,9 +280,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TennisCourts)
-        </td>
-        <td>
-            @Html.ActionLink("Schedule this Auction","Create","Auctions",new { id = item.PropertyID},null)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.PropertyID }) |

@@ -6,20 +6,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Profile</h2>
 
 <div>
-    <h4>RegisteredBuyer</h4>
+    <h4>Youre Information</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.UserId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserId)
-        </dd>
-
+   
         <dt>
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
@@ -37,51 +30,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.IDNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IDNumber)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.DateOfBirth)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.DateOfBirth)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BondedOrCash)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BondedOrCash)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProofOfResidencePath)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProofOfResidencePath)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CopyOfIDPath)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CopyOfIDPath)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProfilePhotoPath)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProfilePhotoPath)
         </dd>
 
         <dt>
@@ -108,53 +61,115 @@
             @Html.DisplayFor(model => model.Signiture)
         </dd>
 
-    </dl>
-</div>
-@if (Model.AuctionRegistrations.Count == 0)
-{
-    <h1>
-        You are registerred as a buyer.
-    </h1>
-
-
-}
-else if (Model.AuctionRegistrations != null)
-{
-    <h2>You are regesterd for the folowing auctions</h2>
-    foreach (AuctionRegistration Auc in Model.AuctionRegistrations)
+    </dl><div style="max-width:20%">
+    @if (Model.AuctionRegistrations == null)
     {
-        <div class="property-image">
+        <h1>
+            Congatsulations!
+        </h1>
+        <p>
+            You are nou registered as a buyer with Auction-Prop. Youre registration wil be reviewed and approved as suited.
+            You can view our Listings and register for auctions while you wait.
+            @Html.ActionLink("View Property lListings.", "Properties", "Home");
+        </p>
 
-        </div>
-        <h2>
-            @Auc.Property.Title
-        </h2>
-        <h3>
-            @Auc.Property.Address
-        </h3>
 
-        <img alt="" src=@Auc.Property.PropertyPhotos.First()>
-        if (Auc.AdminFee == null && Auc.RegisteredBuyer.Deposit.Paid)
-        {
-            @Html.Partial("~/Views/PaymentGate/PayAdmin.cshtml", Auc)
-        }
-        else if (Auc.AdminFee != null && !Auc.RegisteredBuyer.Deposit.Paid)
-        {
-            @Html.Partial("~/Views/PaymentGate/PayDeposit.cshtml", Auc)
-        }
-        else if (Auc.AdminFee == null && !Auc.RegisteredBuyer.Deposit.Paid)
-        {
-            @Html.Partial("~/Views/PaymentGate/_PayDeposiAndAdminFees.cshtml", Auc)
-        }
-        if (Auc.RegisteredBuyer.BondedOrCash)
-        {
-
-            @Html.ActionLink("Submit youre banks pe approvals", "AddBankGuarintee")
-        }
-        @Html.ActionLink("Register for this Auction", "RegisterForAuction")
     }
-   
-}
+    else
+    {
+
+        <h1>You are regesterd for the folowing auctions</h1>
+        <div class="row">
+            @foreach (AuctionRegistration Auc in Model.AuctionRegistrations)
+            {
+                bool bankG = false;
+                bool bankApp = false;
+            <div class="col-md-4">
+                <h2>@Auc.Property.Title</h2>
+                <h3>@Auc.Property.Address</h3>
+
+                @if (Auc.Bonded)
+                {
+                    try
+                    {
+                        if (Auc.BankApproval == null)
+                        {
+                            throw new Exception();
+                        }
+                        else
+                        {
+                            bankApp = true;
+                        }
+
+                    }
+                    catch
+                    {
+                        @Html.ActionLink("Click Here to submit youre Bank Pre Approval", "AdPreApproval", "Buyers", new { id = Auc.PropertyID }, null)
+                        <p>Or Contact one of our bond originators: admin@infinitymortgagefinance.co.za </p>
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        if (Auc.Guarintee == null )
+                        {
+                            throw new NullReferenceException();
+
+
+                        }
+                         else
+                        {
+                            bankG = true;
+                        }
+                     
+                    }
+                    catch(NullReferenceException e)
+                    {
+
+                        @Html.ActionLink("Click Here to go to Auction", "AddBankGuarintee", "Buyers", new { id = Auc.PropertyID }, null)
+                    }
+                }
+                @if (bankApp || bankG)
+                {
+                    try
+                    {
+                        <h3>Congratulations.</h3>
+                        <p>You are nou Registered to Bid on this Auction.</p>
+                        if (Auc.Property.Auction.StartTime >= DateTime.Now)
+                        {
+                            <p>This Auction Starts at @Auc.Property.Auction.StartTime</p>
+                        }
+                        else if (Auc.Property.Auction.StartTime <= DateTime.Now && DateTime.Now <= Auc.Property.Auction.EndTime)
+                        {
+                            @Html.ActionLink("Click Here to go to Auction", "Index", "AuctionRoom", new { id = Auc.Property.Auction.PropertyID }, null)
+                        }
+
+
+
+                    }
+                    catch
+                    {
+
+                        <h3>Congratulations.</h3>
+                        <p>You are nou Registered to Bid on this Auction.</p>
+
+                        <p>This Propperty is not yet Scheduled for auction.</p>
+                    }
+                }
+
+
+                <img alt="" src=@Auc.Property.PropertyPhotos.First().PropertyPhotoPath>
+            </div>
+            }
+        </div>
+     
+
+    }
+</div>
+</div>
+
+
 
 <p>
     @Html.ActionLink("Click here to go back to Property listings", "Properties", "home")

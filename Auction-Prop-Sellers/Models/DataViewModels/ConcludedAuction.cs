@@ -36,4 +36,5 @@ namespace Auction_Prop_Sellers.Models.DataViewModels
 
         public virtual RegisteredBuyer RegisteredBuyer { get; set; }
     }
+
 }

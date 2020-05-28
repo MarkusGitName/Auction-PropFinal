@@ -13,13 +13,15 @@ namespace Auction_Prop_Sellers.Models.DataViewModels
 
     public partial class RegisteredBuyer
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public RegisteredBuyer()
         {
+            AuctionRegistrations = new HashSet<AuctionRegistration>();
+          //  BankApprovals = new HashSet<BankApproval>();
             Bids = new HashSet<Bid>();
-           // BuyerAddresses = new HashSet<BuyerAddress>();
+         //   BuyerAddresses = new HashSet<BuyerAddress>();
             ConcludedAuctions = new HashSet<ConcludedAuction>();
-            //Deposits = new HashSet<Deposit>();
-           // Guarintees = new HashSet<Guarintee>();
+          //  Guarintees = new HashSet<Guarintee>();
         }
 
         [Key]
@@ -44,14 +46,23 @@ namespace Auction_Prop_Sellers.Models.DataViewModels
 
         [Required]
         [StringLength(500)]
+        public string ProfilePhotoPath { get; set; }
+
+        [Required]
+        [StringLength(500)]
         public string ProofOfResidencePath { get; set; }
 
         [Required]
         [StringLength(500)]
         public string CopyOfIDPath { get; set; }
 
+        [Required]
         [StringLength(500)]
-        public string ProfilePhotoPath { get; set; }
+        public string ProofOfBankAccount { get; set; }
+
+        [Required]
+        [StringLength(500)]
+        public string IDBuyerVerifyPhoto { get; set; }
 
         public bool ApprovalStatus { get; set; }
 
@@ -60,16 +71,18 @@ namespace Auction_Prop_Sellers.Models.DataViewModels
 
         public bool Signiture { get; set; }
 
-        public virtual AuctionRegistration AuctionRegistration { get; set; }
+        public virtual ICollection<AuctionRegistration> AuctionRegistrations { get; set; }
+
+      //  public virtual ICollection<BankApproval> BankApprovals { get; set; }
 
         public virtual ICollection<Bid> Bids { get; set; }
 
-     //   public virtual ICollection<BuyerAddress> BuyerAddresses { get; set; }
+      //  public virtual ICollection<BuyerAddress> BuyerAddresses { get; set; }
 
         public virtual ICollection<ConcludedAuction> ConcludedAuctions { get; set; }
 
-      // public virtual ICollection<Deposit> Deposits { get; set; }
+     //   public virtual Deposit Deposit { get; set; }
 
-       //  public virtual ICollection<Guarintee> Guarintees { get; set; }
+        //public virtual ICollection<Guarintee> Guarintees { get; set; }
     }
 }

@@ -8,12 +8,9 @@ namespace Auction_Prop_API.Models.DataBaseModels
 
     public partial class Guarintee
     {
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int GuarinteeID { get; set; }
-
-        [Required]
-        [StringLength(128)]
-        public string BuyerID { get; set; }
+        public int AuctionRegistrationID { get; set; }
 
         [Required]
         [StringLength(500)]
@@ -24,6 +21,6 @@ namespace Auction_Prop_API.Models.DataBaseModels
         [Column(TypeName = "date")]
         public DateTime DateOfSubmition { get; set; }
 
-        public virtual RegisteredBuyer RegisteredBuyer { get; set; }
+        public virtual AuctionRegistration AuctionRegistration { get; set; }
     }
 }
