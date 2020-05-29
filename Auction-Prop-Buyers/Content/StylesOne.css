@@ -21,6 +21,10 @@ a {
             color: #fa7f15;
         }
 
+        a:hover h3 {
+            color: #fa7f15;
+        }
+
     a:focus, a:active {
         outline: none !important;
         text-decoration: none;
@@ -51,7 +55,7 @@ blockquote {
             height: 180px;
             position: relative;
             overflow: hidden;
-            width: 160px;
+            width: 120px;
         }
 
             blockquote figure .image:after {
@@ -2441,7 +2445,7 @@ ul.list-links {
 }
 
     .member h3 {
-        color: #073855;
+        color: #1d293d;
         font-size: 18px;
         font-weight: bold;
         margin-bottom: 5px;
@@ -3975,14 +3979,22 @@ ul.list-links {
     -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
-    background-color: #fff;
+    background-color: #fa1515;
     display: inline-block;
     padding: 3px 8px;
 }
 
-    .tag.price {
+    .tag.date {
         text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
         background-color: #fa7f15;
+        color: #fff;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .tag.sold {
+        text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
+        background: #fa1515;
         color: #fff;
         font-size: 14px;
         font-weight: bold;
@@ -5999,12 +6011,14 @@ body, html {
             margin-bottom: 20px;
             text-align: center;
             width: 100%;
+            text-decoration: none;
         }
 
         .banner .submit {
             display: block;
             text-align: center;
             width: 100%;
+            text-decoration: none;
         }
 
     .comment .name, .comment .date {

@@ -38,21 +38,21 @@ namespace Auction_Prop_Buyers.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Your Contact page.";
 
             return View();
         }
 
         public ActionResult FAQ()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Your FAQ page.";
 
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Your About us page.";
 
             return View();
         }
@@ -69,7 +69,21 @@ namespace Auction_Prop_Buyers.Controllers
 
             return View();
         }
-     
+
+        public ActionResult Terms()
+        {
+            ViewBag.Message = "Terms and Conditions Page.";
+
+            return View();
+        }
+
+        public ActionResult Privacy()
+        {
+            ViewBag.Message = "Privacy Policy Page.";
+
+            return View();
+        }
+
         public ActionResult Details(int id)
         {
             try

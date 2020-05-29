@@ -65,7 +65,7 @@ blockquote {
             height: 180px;
             position: relative;
             overflow: hidden;
-            width: 160px;
+            width: 120px;
         }
 
             blockquote figure .image:after {
@@ -170,7 +170,7 @@ hr {
     }
 
     hr.divider {
-        border-color: #1396e2;
+        border-color: #fa7f15;
         border-width: 2px;
         width: 40px;
     }
@@ -300,6 +300,7 @@ ul.list-links {
 
 .background-color-default-darker {
     background-color: #073855;
+    background-image: url('~/assets/img/Glass Dining.jpg')
 }
 
 .background-image {
@@ -1048,7 +1049,7 @@ ul.list-links {
 }
 
 #about-us #ceo-section h3 {
-    color: #073855;
+    color: #1d293d;
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 5px;
@@ -1534,6 +1535,7 @@ ul.list-links {
         font-size: 24px;
         font-weight: lighter;
         width: 70%;
+        text-decoration: none;
     }
 
     .banner .submit {
@@ -1541,6 +1543,7 @@ ul.list-links {
         font-size: 18px;
         text-align: right;
         width: 30%;
+        text-decoration: none;
     }
 
         .banner .submit:hover {
@@ -2514,7 +2517,7 @@ ul.flip {
         }
 
         .fun-facts .number-wrapper .number {
-            color: #1396e2;
+            color: #fa7f15;
             font-size: 48px;
             font-weight: lighter;
             position: relative;
@@ -4347,7 +4350,7 @@ ul.flip {
 
     .tag.sold {
         text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
-        background-color: #e4002b;
+        background: #fa1515;
         color: #fff;
         font-size: 14px;
         font-weight: bold;
