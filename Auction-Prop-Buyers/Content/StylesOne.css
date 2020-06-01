@@ -865,6 +865,7 @@ ul.list-links {
 
         .navigation .add-your-property .btn {
             width: 38px;
+            border-radius: 0px;
         }
 
         .navigation .add-your-property .text {
@@ -1182,11 +1183,13 @@ ul.list-links {
         right: 0px;
         top: 60px;
         width: 38px;
+        border-radius: 0px;
     }
 
         .geo-location-wrapper .btn:hover {
             background-color: #fff;
             color: #1396e2;
+            border-radius: 0px;
         }
 
     .geo-location-wrapper .fa {
@@ -1346,6 +1349,7 @@ ul.list-links {
 
 #agent-detail .agent-social .btn {
     width: 36px;
+    border-radius: 0px;
 }
 
 #agent-detail .agency-logo {
@@ -3467,6 +3471,7 @@ ul.list-links {
 
 #sidebar form .btn {
     width: 100%;
+    border-radius: 0px;
 }
 
 #sidebar ul {
@@ -3890,6 +3895,7 @@ ul.list-links {
 
                 .submit-pricing table tbody tr.buttons td.package-selected .btn {
                     display: none;
+                    border-radius: 0px;
                 }
 
         .submit-pricing table tbody tr.prices td {
@@ -4079,6 +4085,7 @@ ul.list-links {
         .timeline-item:hover .wrapper .social .btn {
             filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
             opacity: 1;
+            border-radius: 0px;
         }
 
     .timeline-item:after {
@@ -4184,6 +4191,7 @@ ul.list-links {
                 opacity: 0.3;
                 padding: 3px 0;
                 width: 25px;
+                border-radius: 0px;
             }
 
 .thumbnail {
@@ -4609,11 +4617,13 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
     outline: none !important;
     padding: 10px 9px 9px 9px;
     width: auto;
+    border-radius: 0px;
 }
 
     .btn:hover, select:hover {
         background-color: #ebebeb;
         color: #5a5a5a;
+        border-radius: 0px;
     }
 
     .btn:active, .btn:focus, select:active, select:focus {
@@ -4622,6 +4632,7 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
         box-shadow: 0px 1px 2px transparent, inset 0px 2px 2px rgba(0, 0, 0, 0.2);
         background-color: #ebebeb;
         color: #5a5a5a;
+        border-radius: 0px;
     }
 
     .btn.btn-default, select.btn-default {
@@ -4631,50 +4642,63 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
         -moz-transition: 0.2s;
         -webkit-transition: 0.2s;
         transition: 0.2s;
-        background-color: #1d293f;
+        background-color: #1d293d;
         color: #fff;
+        border: none;
+        border-radius: 0px;
     }
 
         .btn.btn-default:hover, select.btn-default:hover {
             background-color: #fa7f15;
+            border: none;
+            color: #fff;
+            border-radius: 0px;
         }
 
         .btn.btn-default:active, select.btn-default:active {
             -moz-box-shadow: 0px 2px 2px transparent, inset 0px 2px 2px rgba(0, 0, 0, 0.2);
             -webkit-box-shadow: 0px 2px 2px transparent, inset 0px 2px 2px rgba(0, 0, 0, 0.2);
             box-shadow: 0px 2px 2px transparent, inset 0px 2px 2px rgba(0, 0, 0, 0.2);
+            border-radius: 0px;
         }
 
     .btn.btn-grey-dark, select.btn-grey-dark {
         background-color: #2a2a2a;
         color: #fff;
+        border-radius: 0px;
     }
 
         .btn.btn-grey-dark:hover, select.btn-grey-dark:hover {
             background-color: #393939;
+            border-radius: 0px;
         }
 
     .btn.btn-danger, select.btn-danger {
         background-color: #C9302C;
         color: #fff;
+        border-radius: 0px;
     }
 
         .btn.btn-danger:hover, select.btn-danger:hover {
             background-color: #b42b27;
+            border-radius: 0px;
         }
 
     .btn.btn-success, select.btn-success {
         background-color: #5CB85C;
         color: #fff;
+        border-radius: 0px;
     }
 
         .btn.btn-success:hover, select.btn-success:hover {
             background-color: #4cae4c;
+            border-radius: 0px;
         }
 
     .btn.btn-info, select.btn-info {
         background-color: #31B0D5;
         color: #fff;
+        border-radius: 0px;
     }
 
         .btn.btn-info:hover, select.btn-info:hover {
@@ -4684,20 +4708,24 @@ input[type="text"], input[type="email"], input[type="search"], input[type="passw
     .btn.btn-warning, select.btn-warning {
         background-color: #EC971F;
         color: #fff;
+        border-radius: 0px;
     }
 
         .btn.btn-warning:hover, select.btn-warning:hover {
             background-color: #df8a13;
+            border-radius: 0px;
         }
 
     .btn.small, select.small {
         font-size: 12px;
         padding: 5px 12px 5px;
+        border-radius: 0px;
     }
 
     .btn.large, select.large {
         font-size: 18px;
         padding: 15px 20px;
+        border-radius: 0px;
     }
 
 .checkbox, .radio {
@@ -5242,6 +5270,7 @@ form label.error {
 
     .search-box .btn {
         width: 100%;
+        border-radius: 0px;
     }
 
     .search-box .nav-pills li a {
@@ -6085,6 +6114,7 @@ body, html {
 
     .geo-location-wrapper .btn {
         top: 20px;
+        border-radius: 0px;
     }
 
     .horizontal-search .advanced-search-toggle {
@@ -6470,6 +6500,7 @@ body, html {
     .rating-form .btn {
         float: none !important;
         width: 100%;
+        border-radius: 0px;
     }
 
     #search-filter {

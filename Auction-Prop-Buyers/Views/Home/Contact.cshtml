@@ -67,19 +67,34 @@
                                             The Willows, 0081
                                         </address>
                                         082 316 3702<br>
-                                        <a href="#">info@auction-prop.com</a><br>
+                                        <a href="mailto:info@auction-prop.com" style="text-decoration: none">info@auction-prop.com</a><br>
                                     </section><!-- /#address -->
                                     <section id="social">
                                         <div class="agent-social">
                                             <a href="#" class="fa fa-twitter btn"></a>
-                                            <a href="#" class="fa fa-facebook btn"></a>
+                                            <a href="https://www.facebook.com/auctionprop/" class="fa fa-facebook btn"></a>
                                             <a href="#" class="fa fa-linkedin btn"></a>
                                         </div>
                                     </section><!-- /#social -->
                                 </div><!-- /.col-md-4 -->
                                 <div class="col-md-8 col-sm-7">
                                     <header><h3>Where To Find Us</h3></header>
-                                    <div id="contact-map"></div>
+                                    <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=fintech%20campus&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/nordvpn-coupon-code/">nordvpn deals</a></div>
+                                    <style>
+                                        .mapouter {
+                                            position: relative;
+                                            text-align: right;
+                                            height: 450px;
+                                            width: 550px;
+                                        }
+
+                                        .gmap_canvas {
+                                            overflow: hidden;
+                                            background: none !important;
+                                            height: 450px;
+                                            width: 550px;
+                                        }
+                                    </style></div>
                                 </div><!-- /.col-md-8 -->
                             </div><!-- /.row -->
                         </section><!-- /#agent-info -->
@@ -178,50 +193,50 @@
                         <aside id="featured-properties">
                             <header><h3>Featured Properties</h3></header>
                             <div class="property small">
-                                <a href="property-detail.html">
+                                <a href="property-detail.html" style="text-decoration: none">
                                     <div class="property-image">
-                                        <img alt="" src="~/img/properties/property-04.jpg">
+                                        <img alt="" src="~/assets/img/properties/property-04.jpg">
                                     </div>
                                 </a>
                                 <div class="info">
-                                    <a href="property-detail.html"><h4>218 Rinehart Road</h4></a>
+                                    <a href="property-detail.html" style="text-decoration: none"><h4>218 Rinehart Road</h4></a>
                                     <figure>Olivedale, Johannesburg </figure>
-                                    <div class="tag price">15 May at 14:00</div>
+                                    <div class="tag date">15 May at 14:00</div>
                                 </div>
                             </div><!-- /.property -->
                             <div class="property small">
-                                <a href="property-detail.html">
+                                <a href="property-detail.html" style="text-decoration: none">
                                     <div class="property-image">
-                                        <img alt="" src="~/img/properties/property-04.jpg">
+                                        <img alt="" src="~/assets/img/properties/property-04.jpg">
                                     </div>
                                 </a>
                                 <div class="info">
-                                    <a href="property-detail.html"><h4>249 Murphy Court</h4></a>
+                                    <a href="property-detail.html" style="text-decoration: none"><h4>249 Murphy Court</h4></a>
                                     <figure>Sandhurst, Johannesburg</figure>
-                                    <div class="tag price">22 June at 14:00</div>
+                                    <div class="tag date">22 June at 14:00</div>
                                 </div>
                             </div><!-- /.property -->
                             <div class="property small">
-                                <a href="property-detail.html">
+                                <a href="property-detail.html" style="text-decoration: none">
                                     <div class="property-image">
-                                        <img alt="" src="~/img/properties/property-04.jpg">
+                                        <img alt="" src="~/assets/img/properties/property-04.jpg">
                                     </div>
                                 </a>
                                 <div class="info">
-                                    <a href="property-detail.html"><h4>194 Tennessee Avenue</h4></a>
+                                    <a href="property-detail.html" style="text-decoration: none"><h4>194 Tennessee Avenue</h4></a>
                                     <figure>Faerie Glen, Pretoria</figure>
-                                    <div class="tag price">22 June at 15:00</div>
+                                    <div class="tag date">22 June at 15:00</div>
                                 </div>
                             </div><!-- /.property -->
                         </aside><!-- /#featured-properties -->
                         <aside id="our-guides">
                             <header><h3>Our Guides</h3></header>
-                            <a href="#" class="universal-button">
+                            <a href="#" class="universal-button" style="text-decoration: none">
                                 <figure class="fa fa-home"></figure>
                                 <span>Buyers Guide</span>
                                 <span class="arrow fa fa-angle-right"></span>
                             </a><!-- /.universal-button -->
-                            <a href="#" class="universal-button">
+                            <a href="#" class="universal-button" style="text-decoration: none">
                                 <figure class="fa fa-home"></figure>
                                 <span>Sellers Guide</span>
                                 <span class="arrow fa fa-angle-right"></span>
@@ -251,6 +266,19 @@
             <script type="text/javascript" src="~/Scripts2/draggable-0.1.js"></script>
             <script type="text/javascript" src="~/Scripts2/jquery.slider.js"></script>
             <script type="text/javascript" src="~/Scripts2/custom.js"></script>
+
+            <script>
+                function myMap() {
+                    var mapProp = {
+                        center: new google.maps.LatLng(28.311815, -25.765966),
+                        zoom: 5,
+                    };
+                    var map = new google.maps.Map(document.getElementById("contact-map"), mapProp);
+                }
+            </script>
+
+            <script src="https://g.page/FinTechCampus?share"></script>
+
 
 </body>
 </html>

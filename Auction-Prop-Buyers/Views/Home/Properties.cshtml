@@ -29,16 +29,19 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
     <script src="https://kit.fontawesome.com/ef4e2c1ac6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="~/Content/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="~/Content2/bootstrap-select.min.css" type="text/css">
     <link rel="stylesheet" href="~/Content2/jquery.slider.min.css" type="text/css">
-    <link rel="stylesheet" href="~/Content2/owl.carousel.css" type="text/css">
-    <link rel="stylesheet" href="~/Content2/owl.transitions.css" type="text/css">
     <link rel="stylesheet" href="~/Content/StyleSheet1.css" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 
     <title>Auction-Prop.com | Auctions Listings</title>
@@ -130,19 +133,13 @@
                                                         <div class="info">
                                                             <h3>@p.Address</h3>
                                                             <figure>@p.City, @p.Province</figure>
-                                                            <div class="tag price">@p.PrpertyValue</div>
+                                                            <div class="tag date">@p.PrpertyValue</div>
                                                         </div>
                                                         <ul class="additional-info">
                                                             <li>
                                                                 @if (p.BuildingArea != null)
-                                                                {<header>Terrace Size:</header>
+                                                                {<header>Building Size:</header>
                                                                     <figure>@p.BuildingArea<sup>2</sup></figure>
-
-                                                                }
-                                                                @if (p.TerraceArea != null)
-                                                                {<header>Terrace Size:</header>
-                                                                    <figure>@p.TerraceArea<sup>2</sup></figure>
-
                                                                 }
 
                                                             </li>
@@ -249,50 +246,50 @@
                         <aside id="featured-properties">
                             <header><h3>Featured Properties</h3></header>
                             <div class="property small">
-                                <a href="property-detail.html">
+                                <a href="property-detail.html" style="text-decoration: none">
                                     <div class="property-image">
-                                        <img alt="" src="~/img/properties/property-06.jpg">
+                                        <img alt="" src="~/assets/img/properties/property-06.jpg">
                                     </div>
                                 </a>
                                 <div class="info">
-                                    <a href="property-detail.html"><h4>218 Rinehart Road</h4></a>
+                                    <a href="property-detail.html" style="text-decoration: none"><h4>218 Rinehart Road</h4></a>
                                     <figure>Olivedale, Johannesburg </figure>
-                                    <div class="tag price">15 May at 14:00</div>
+                                    <div class="tag date">15 May at 14:00</div>
                                 </div>
                             </div><!-- /.property -->
                             <div class="property small">
-                                <a href="property-detail.html">
+                                <a href="property-detail.html" style="text-decoration: none">
                                     <div class="property-image">
-                                        <img alt="" src="~/img/properties/property-06.jpg">
+                                        <img alt="" src="~/assets/img/properties/property-06.jpg">
                                     </div>
                                 </a>
                                 <div class="info">
-                                    <a href="property-detail.html"><h4>249 Murphy Court</h4></a>
+                                    <a href="property-detail.html" style="text-decoration: none"><h4>249 Murphy Court</h4></a>
                                     <figure>Sandhurst, Johannesburg</figure>
-                                    <div class="tag price">22 June at 14:00</div>
+                                    <div class="tag date">22 June at 14:00</div>
                                 </div>
                             </div><!-- /.property -->
                             <div class="property small">
-                                <a href="property-detail.html">
+                                <a href="property-detail.html" style="text-decoration: none">
                                     <div class="property-image">
-                                        <img alt="" src="~/img/properties/property-06.jpg">
+                                        <img alt="" src="~/assets/img/properties/property-06.jpg">
                                     </div>
                                 </a>
                                 <div class="info">
-                                    <a href="property-detail.html"><h4>194 Tennessee Avenue</h4></a>
+                                    <a href="property-detail.html" style="text-decoration: none"><h4>194 Tennessee Avenue</h4></a>
                                     <figure>Faerie Glen, Pretoria</figure>
-                                    <div class="tag price">22 June at 15:00</div>
+                                    <div class="tag date">22 June at 15:00</div>
                                 </div>
                             </div><!-- /.property -->
                         </aside><!-- /#featured-properties -->
                         <aside id="our-guides">
                             <header><h3>Our Guides</h3></header>
-                            <a href="#" class="universal-button">
+                            <a href="#" class="universal-button" style="text-decoration: none">
                                 <figure class="fa fa-home"></figure>
                                 <span>Buyers Guide</span>
                                 <span class="arrow fa fa-angle-right"></span>
                             </a><!-- /.universal-button -->
-                            <a href="#" class="universal-button">
+                            <a href="#" class="universal-button" style="text-decoration: none">
                                 <figure class="fa fa-home"></figure>
                                 <span>Sellers Guide</span>
                                 <span class="arrow fa fa-angle-right"></span>
@@ -309,8 +306,7 @@
     <script type="text/javascript" src="~/Scripts2/jquery-2.1.0.min.js"></script>
     <script type="text/javascript" src="~/Scripts2/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="~/Scripts2/bootstrap.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/smoothscroll.js"></script>
-    <script type="text/javascript" src="~/Scripts2/jquery.countTo.js"></script>
+    <script type="text/javascript" src="~/Scripts2/smoothscroll.js"></script>
     <script type="text/javascript" src="~/Scripts2/owl.carousel.min.js"></script>
     <script type="text/javascript" src="~/Scripts2/bootstrap-select.min.js"></script>
     <script type="text/javascript" src="~/Scripts2/jquery.validate.min.js"></script>

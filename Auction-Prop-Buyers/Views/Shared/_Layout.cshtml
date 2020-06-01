@@ -97,46 +97,64 @@
                         <div class="col-md-3 col-sm-3" style="text-decoration: none">
                             <article>
                                 <h3>Useful Links</h3>
-                                <ul class="list-unstyled list-links">
-                                    <li>@Html.ActionLink("This is Us", "About", "Home")</li>
-                                    <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
-                                    <li>@Html.ActionLink("FAQ", "FAQ", "Home")</li>
-                                    <li>@Html.ActionLink("Privacy Policy", "Privacy", "Home")</li>
-                                    <li>@Html.ActionLink("Terms and Conditions", "Terms", "Home")</li>
+                                <ul class="list-unstyled list-links" style="text-decoration: none">
+                                    <li style="text-decoration: none">@Html.ActionLink("This is Us", "About", "Home")</li>
+                                    <li style="text-decoration: none">@Html.ActionLink("Contact Us", "Contact", "Home")</li>
+                                    <li style="text-decoration: none">@Html.ActionLink("FAQ", "FAQ", "Home")</li>
+                                    <li style="text-decoration: none">@Html.ActionLink("Privacy Policy", "Privacy", "Home")</li>
+                                    <li style="text-decoration: none">@Html.ActionLink("Terms and Conditions", "Terms", "Home")</li>
                                 </ul>
                             </article>
-                        </div><!-- /.col-sm-3 -->
+                        </div>
                         <div class="col-md-3 col-sm-3">
                             <article>
-                                <h3>Recent Properties</h3>
-                                <div class="property small">
-                                    <a href="property-detail.html" style="text-decoration: none">
-                                        <div class="property-image">
-                                            <img alt="" src="~/img/properties/property-06.jpg">
+                                <h3>Newsletter Sign Up</h3>
+                                    <div class="panel-body">
+                                        <div class="media">
+                                            <div class="media-body">
+                                                <form>
+                                                    <div class="form-group">
+                                                        <label for="newsletter-name" class="hidden">Name</label>
+                                                        <input type="name" class="form-control" id="newsletter-name" placeholder="Name">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="newsletter-email" class="hidden">Email address</label>
+                                                        <input type="email" class="form-control" id="newsletter-email" placeholder="Email">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-default btn-block">Submit</button>
+                                                </form>
+                                            </div>
                                         </div>
-                                    </a>
-                                    <div class="info">
-                                        <a href="property-detail.html" style="text-decoration: none"><h4>218 Rinehart Road</h4></a>
-                                        <figure>Olivedale, Johannesburg </figure>
-                                        <div class="tag date">15 May at 14:00</div>
                                     </div>
-                                </div><!-- /.property -->
-                                <div class="property small">
-                                    <a href="property-detail.html" style="text-decoration: none">
-                                        <div class="property-image">
-                                            <img alt="" src="~/img/properties/property-06.jpg">
-                                        </div>
-                                    </a>
-                                    <div class="info">
-                                        <a href="property-detail.html" style="text-decoration: none"><h4>249 Murphy Court</h4></a>
-                                        <figure>Sandhurst, Johannesburg</figure>
-                                        <div class="tag date">22 June at 14:00</div>
-                                    </div>
-                                </div><!-- /.property -->
+                                <!--<h3>Recent Properties</h3>
+    <div class="property small">
+        <a href="property-detail.html" style="text-decoration: none">
+            <div class="property-image">
+                <img alt="" src="~/assets/img/properties/property-06.jpg">
+            </div>
+        </a>
+        <div class="info">
+            <a href="property-detail.html" style="text-decoration: none"><h4>218 Rinehart Road</h4></a>
+            <figure>Olivedale, Johannesburg </figure>
+            <div class="tag date">15 May at 14:00</div>
+        </div>
+    </div>
+    <div class="property small">
+        <a href="property-detail.html" style="text-decoration: none">
+            <div class="property-image">
+                <img alt="" src="~/assets/img/properties/property-06.jpg">
+            </div>
+        </a>
+        <div class="info">
+            <a href="property-detail.html" style="text-decoration: none"><h4>249 Murphy Court</h4></a>
+            <figure>Sandhurst, Johannesburg</figure>
+            <div class="tag date">22 June at 14:00</div>
+        </div>
+    </div>-->
                             </article>
-                        </div><!-- /.col-sm-3 -->
-                    </div><!-- /.row -->
-                </div><!-- /.container -->
+                        </div>
+                    </div>
+                </div>
             </aside><!-- /#footer-main -->
             <aside id="footer-thumbnails" class="footer-thumbnails"></aside><!-- /#footer-thumbnails -->
             <aside id="footer-copyright">
