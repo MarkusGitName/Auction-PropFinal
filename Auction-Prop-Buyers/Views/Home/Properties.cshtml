@@ -6,23 +6,526 @@
 }
 
 
-@{
-    ViewBag.Title = "Auction";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-@*
-@Styles.Render("~/Content2/Bootstrap.css")
-@Styles.Render("~/Content2/Styles.css")
-@Styles.Render("~/Content2/bootstrap-select.min.css")
-@Styles.Render("~/Content2/magnific-popup.css")
-@Scripts.Render("~/Scripts2/bootstrap-select.min.js")
-@Scripts.Render("~/Scripts2/bootstrap.min.js")
-@Scripts.Render("~/Scripts2/custom.js")
-@Scripts.Render("~/Scripts2/jquery-2.1.0.min.js")
-*@
-
 <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>EstateAgency Bootstrap Template - Index</title>
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ef4e2c1ac6.js" crossorigin="anonymous"></script>
+
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="~/Content2/bootstrap1.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content2/ionicons.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content2/animate.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content2/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/font-awesome.css" type="text/css">
+
+    <!-- Template Main CSS File -->
+    <link href="~/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- ======= Property Search Section ======= -->
+    <div class="click-closed"></div>
+    <!--/ Form Search Star /-->
+    <div class="box-collapse">
+        <div class="title-box-d">
+            <h3 class="title-d">Search Property</h3>
+        </div>
+        <span class="close-box-collapse right-boxed ion-ios-close"></span>
+        <div class="box-collapse-wrap form">
+            <form class="form-a">
+                <div class="row">
+                    <div class="col-md-12 mb-2">
+                        <div class="form-group">
+                            <label for="Type">Keyword</label>
+                            <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group">
+                            <label for="Type">Type</label>
+                            <select class="form-control form-control-lg form-control-a" id="Type">
+                                <option>All Types</option>
+                                <option>Residential</option>
+                                <option>Commercial</option>
+                                <option>Agricultural</option>
+                                <option>Investment</option>
+                                <option>Bank Instrution</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <select class="form-control form-control-lg form-control-a" id="city">
+                                <option>All City's</option>
+                                <option>Johannesburg</option>
+                                <option>Pretoria</option>
+                                <option>Durban</option>
+                                <option>Cape Town</option>
+                                <option>Nelspruit</option>
+                                <option>Polokwane</option>
+                                <option>East London</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group">
+                            <label for="bedrooms">Bedrooms</label>
+                            <select class="form-control form-control-lg form-control-a" id="bedrooms">
+                                <option>Any</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>3+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group">
+                            <label for="garages">Garages</label>
+                            <select class="form-control form-control-lg form-control-a" id="garages">
+                                <option>Any</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>3+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group">
+                            <label for="bathrooms">Bathrooms</label>
+                            <select class="form-control form-control-lg form-control-a" id="bathrooms">
+                                <option>Any</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>3+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-b">Search Property</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div><!-- End Property Search Section -->
+
+    <main id="main">
+
+        <!-- ======= Intro Single ======= -->
+        <section class="intro-single">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-8">
+                        <div class="title-single-box">
+                            <h1 class="title-single">Properties</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4">
+                        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="#">Home</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Properties
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End Intro Single-->
+        <!-- ======= Property Grid ======= -->
+        <section class="property-grid grid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="grid-option">
+                            <form>
+                                <select class="custom-select">
+                                    <option selected>All</option>
+                                    <option value="1">Newest to Oldest</option>
+                                    <option value="2">For Sale</option>
+                                    <option value="3">For Auction</option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card-box-a card-shadow">
+                            <div class="img-box-a">
+                                <img src="~/assets/img/property-1.jpg" alt="" class="img-a img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-overlay-a-content">
+                                    <div class="card-header-a">
+                                        <h2 class="card-title-a">
+                                            <a href="#">
+                                                204 Mount
+                                                <br /> Olive Road Two
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-body-a">
+                                        <div class="price-box d-flex">
+                                            <span class="price-a">Auction Date | 10 June 2020</span>
+                                        </div>
+                                        <a href="property-single.html" class="link-a">
+                                            Learn More
+                                            <span class="ion-ios-arrow-forward"></span>
+                                        </a>
+                                    </div>
+                                    <div class="card-footer-a">
+                                        <ul class="card-info d-flex justify-content-around">
+                                            <li>
+                                                <h4 class="card-info-title">Building</h4>
+                                                <span>
+                                                    340m
+                                                    <sup>2</sup>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Beds</h4>
+                                                <span>2</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Baths</h4>
+                                                <span>4</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Garages</h4>
+                                                <span>1</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card-box-a card-shadow">
+                            <div class="img-box-a">
+                                <img src="~/assets/img/property-3.jpg" alt="" class="img-a img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-overlay-a-content">
+                                    <div class="card-header-a">
+                                        <h2 class="card-title-a">
+                                            <a href="#">
+                                                204 Mount
+                                                <br /> Olive Road Two
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-body-a">
+                                        <div class="price-box d-flex">
+                                            <span class="price-a">Auction Date | 12 June 2020</span>
+                                        </div>
+                                        <a href="property-single.html" class="link-a">
+                                            Learn More
+                                            <span class="ion-ios-arrow-forward"></span>
+                                        </a>
+                                    </div>
+                                    <div class="card-footer-a">
+                                        <ul class="card-info d-flex justify-content-around">
+                                            <li>
+                                                <h4 class="card-info-title">Building</h4>
+                                                <span>
+                                                    340m
+                                                    <sup>2</sup>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Beds</h4>
+                                                <span>2</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Baths</h4>
+                                                <span>4</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Garages</h4>
+                                                <span>1</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card-box-a card-shadow">
+                            <div class="img-box-a">
+                                <img src="~/assets/img/property-6.jpg" alt="" class="img-a img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-overlay-a-content">
+                                    <div class="card-header-a">
+                                        <h2 class="card-title-a">
+                                            <a href="#">
+                                                204 Mount
+                                                <br /> Olive Road Two
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-body-a">
+                                        <div class="price-box d-flex">
+                                            <span class="price-a">Auction Date | 14 June 2020</span>
+                                        </div>
+                                        <a href="property-single.html" class="link-a">
+                                            Learn More
+                                            <span class="ion-ios-arrow-forward"></span>
+                                        </a>
+                                    </div>
+                                    <div class="card-footer-a">
+                                        <ul class="card-info d-flex justify-content-around">
+                                            <li>
+                                                <h4 class="card-info-title">Building</h4>
+                                                <span>
+                                                    340m
+                                                    <sup>2</sup>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Beds</h4>
+                                                <span>2</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Baths</h4>
+                                                <span>4</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Garages</h4>
+                                                <span>1</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card-box-a card-shadow">
+                            <div class="img-box-a">
+                                <img src="~/assets/img/property-7.jpg" alt="" class="img-a img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-overlay-a-content">
+                                    <div class="card-header-a">
+                                        <h2 class="card-title-a">
+                                            <a href="#">
+                                                204 Mount
+                                                <br /> Olive Road Two
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-body-a">
+                                        <div class="price-box d-flex">
+                                            <span class="price-a">Auction Date | 16 June 2020</span>
+                                        </div>
+                                        <a href="property-single.html" class="link-a">
+                                            Learn More
+                                            <span class="ion-ios-arrow-forward"></span>
+                                        </a>
+                                    </div>
+                                    <div class="card-footer-a">
+                                        <ul class="card-info d-flex justify-content-around">
+                                            <li>
+                                                <h4 class="card-info-title">Building</h4>
+                                                <span>
+                                                    340m
+                                                    <sup>2</sup>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Beds</h4>
+                                                <span>2</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Baths</h4>
+                                                <span>4</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Garages</h4>
+                                                <span>1</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card-box-a card-shadow">
+                            <div class="img-box-a">
+                                <img src="~/assets/img/property-8.jpg" alt="" class="img-a img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-overlay-a-content">
+                                    <div class="card-header-a">
+                                        <h2 class="card-title-a">
+                                            <a href="#">
+                                                204 Mount
+                                                <br /> Olive Road Two
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-body-a">
+                                        <div class="price-box d-flex">
+                                            <span class="price-a">Auction Date | 18 June 2020</span>
+                                        </div>
+                                        <a href="property-single.html" class="link-a">
+                                            Learn More
+                                            <span class="ion-ios-arrow-forward"></span>
+                                        </a>
+                                    </div>
+                                    <div class="card-footer-a">
+                                        <ul class="card-info d-flex justify-content-around">
+                                            <li>
+                                                <h4 class="card-info-title">Building</h4>
+                                                <span>
+                                                    340m
+                                                    <sup>2</sup>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Beds</h4>
+                                                <span>2</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Baths</h4>
+                                                <span>4</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Garages</h4>
+                                                <span>1</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card-box-a card-shadow">
+                            <div class="img-box-a">
+                                <img src="~/assets/img/property-10.jpg" alt="" class="img-a img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-overlay-a-content">
+                                    <div class="card-header-a">
+                                        <h2 class="card-title-a">
+                                            <a href="#">
+                                                204 Mount
+                                                <br /> Olive Road Two
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-body-a">
+                                        <div class="price-box d-flex">
+                                            <span class="price-a">Auction Date | 20 June 2020</span>
+                                        </div>
+                                        <a href="property-single.html" class="link-a">
+                                            Learn More
+                                            <span class="ion-ios-arrow-forward"></span>
+                                        </a>
+                                    </div>
+                                    <div class="card-footer-a">
+                                        <ul class="card-info d-flex justify-content-around">
+                                            <li>
+                                                <h4 class="card-info-title">Building</h4>
+                                                <span>
+                                                    340m
+                                                    <sup>2</sup>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Beds</h4>
+                                                <span>2</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Baths</h4>
+                                                <span>4</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Garages</h4>
+                                                <span>1</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <nav class="pagination-a">
+                            <ul class="pagination justify-content-end">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1">
+                                        <span class="ion-ios-arrow-back"></span>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">1</a>
+                                </li>
+                                <li class="page-item active">
+                                    <a class="page-link" href="#">2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">3</a>
+                                </li>
+                                <li class="page-item next">
+                                    <a class="page-link" href="#">
+                                        <span class="ion-ios-arrow-forward"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End Property Grid Single-->
+
+    </main><!-- End #main -->
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/jquery.easing.min.js"></script>
+    <script src="~/Scripts/validate.js"></script>
+    <script src="~/Scripts/owl.carousel.min.js"></script>
+    <script src="~/Scripts/scrollreveal.min.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/Scripts/main.js"></script>
+
+</body>
+
+</html>
+
+<!--<!DOCTYPE html>
 
 <html lang="en-US">
 <head>
@@ -48,20 +551,20 @@
 
 </head>
 <body>
-    <!-- Page Content -->
+
     <div id="page-content">
-        <!-- Breadcrumb -->
+
         <div class="container">
             <ol class="breadcrumb">
                 <li><a href="#">Home</a></li>
                 <li class="active">Auction Listings</li>
             </ol>
         </div>
-        <!-- end Breadcrumb -->
+
 
         <div class="container">
             <div class="row">
-                <!-- Results -->
+
                 <div class="col-md-9 col-sm-9">
                     <section id="results">
                         <header><h1>Auction Listings</h1></header>
@@ -77,7 +580,7 @@
                                             <option value="2">Highest price first</option>
                                             <option value="3">Date added</option>
                                         </select>
-                                    </div><!-- /.form-group -->
+                                    </div>
                                 </div>
                             </figure>
                         </section>
@@ -170,8 +673,8 @@
                                                         </ul>
                                                     </div>
                                                 </a>
-                                            </div><!-- /.property -->
-                                        </div><!-- /.col-md-3 -->
+                                            </div>
+                                        </div>
                                     }
 
 
@@ -184,9 +687,8 @@
 
                         </section>
                     </section>
-                </div><!-- /.col-md-9 -->
-                <!-- end Results -->
-                <!-- sidebar -->
+                </div>
+
                 <div class="col-md-3 col-sm-3">
                     <section id="sidebar">
                         <aside id="edit-search">
@@ -198,13 +700,13 @@
                                         <option value="1">Auction</option>
                                         <option value="2">For Sale</option>
                                     </select>
-                                </div><!-- /.form-group -->
+                                </div>
                                 <div class="form-group">
                                     <select name="country" style="width:200px">
                                         <option value="">Country</option>
                                         <option value="1">South Africa</option>
                                     </select>
-                                </div><!-- /.form-group -->
+                                </div>
                                 <div class="form-group">
                                     <select name="city" style="width:200px">
                                         <option value="">City</option>
@@ -214,7 +716,7 @@
                                         <option value="4">Durban</option>
                                         <option value="5">Nelspruit</option>
                                     </select>
-                                </div><!-- /.form-group -->
+                                </div>
                                 <div class="form-group">
                                     <select name="district" style="width:200px">
                                         <option value="">Province</option>
@@ -228,7 +730,7 @@
                                         <option value="8">Northern Cape</option>
                                         <option value="9">Eastern Cape</option>
                                     </select>
-                                </div><!-- /.form-group -->
+                                </div>
                                 <div class="form-group">
                                     <select name="property-type" style="width:200px">
                                         <option value="">Property Type</option>
@@ -237,12 +739,12 @@
                                         <option value="3">Agricultural</option>
                                         <option value="4">Investment</option>
                                     </select>
-                                </div><!-- /.form-group -->
+                                </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-default">Search Now</button>
-                                </div><!-- /.form-group -->
-                            </form><!-- /#form-map -->
-                        </aside><!-- /#edit-search -->
+                                </div>
+                            </form>
+                        </aside>
                         <aside id="featured-properties">
                             <header><h3>Featured Properties</h3></header>
                             <div class="property small">
@@ -256,7 +758,7 @@
                                     <figure>Olivedale, Johannesburg </figure>
                                     <div class="tag date">15 May at 14:00</div>
                                 </div>
-                            </div><!-- /.property -->
+                            </div>
                             <div class="property small">
                                 <a href="property-detail.html" style="text-decoration: none">
                                     <div class="property-image">
@@ -268,7 +770,7 @@
                                     <figure>Sandhurst, Johannesburg</figure>
                                     <div class="tag date">22 June at 14:00</div>
                                 </div>
-                            </div><!-- /.property -->
+                            </div>
                             <div class="property small">
                                 <a href="property-detail.html" style="text-decoration: none">
                                     <div class="property-image">
@@ -280,28 +782,28 @@
                                     <figure>Faerie Glen, Pretoria</figure>
                                     <div class="tag date">22 June at 15:00</div>
                                 </div>
-                            </div><!-- /.property -->
-                        </aside><!-- /#featured-properties -->
+                            </div>
+                        </aside>
                         <aside id="our-guides">
                             <header><h3>Our Guides</h3></header>
                             <a href="#" class="universal-button" style="text-decoration: none">
                                 <figure class="fa fa-home"></figure>
                                 <span>Buyers Guide</span>
                                 <span class="arrow fa fa-angle-right"></span>
-                            </a><!-- /.universal-button -->
+                            </a>
                             <a href="#" class="universal-button" style="text-decoration: none">
                                 <figure class="fa fa-home"></figure>
                                 <span>Sellers Guide</span>
                                 <span class="arrow fa fa-angle-right"></span>
-                            </a><!-- /.universal-button -->
-                        </aside><!-- /#our-guide -->
-                    </section><!-- /#sidebar -->
-                </div><!-- /.col-md-3 -->
-                <!-- end Sidebar -->
-            </div><!-- /.row -->
-        </div><!-- /.container -->
+                            </a>
+                        </aside>
+                    </section>
+                </div>
+
+            </div>
+        </div>
     </div>
-    <!-- end Page Content -->
+
 
     <script type="text/javascript" src="~/Scripts2/jquery-2.1.0.min.js"></script>
     <script type="text/javascript" src="~/Scripts2/jquery-migrate-1.2.1.min.js"></script>
@@ -323,6 +825,4 @@
     <script type="text/javascript" src="~/Scripts2/custom.js"></script>
 
 </body>
-</html>
-
-
+</html>-->

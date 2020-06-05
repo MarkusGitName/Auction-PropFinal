@@ -965,16 +965,16 @@ a:hover {
 }
 
 .intro .owl-theme .owl-dots .owl-dot span {
-  background: #ffffff;
-  border: 0px solid #ffffff;
+  background: #1d293d;
+  border: 0px solid #1d293d;
 }
 
 .intro .owl-theme .owl-dots .owl-dot:hover span {
-  background-color: #2eca6a;
+  background-color: #fa7f15;
 }
 
 .intro .owl-theme .owl-dots .owl-dot.active span {
-  background-color: #2eca6a;
+  background-color: #fa7f15;
 }
 
 .intro .intro-item {
@@ -1339,7 +1339,7 @@ a:hover {
   width: 100%;
   position: absolute;
   z-index: 2;
-  background-color: #2eca6a;
+  background-color: #1d293d;
 }
 
 .card-info {
@@ -1350,7 +1350,7 @@ a:hover {
 
 .card-info .card-info-title {
   font-size: 1rem;
-  color: #313131;
+  color: #ffffff;
 }
 
 @media (min-width: 768px) {
@@ -1479,9 +1479,9 @@ a:hover {
 
 .card-header-b .category-b {
   font-size: .9rem;
-  background-color: #2eca6a;
+  background-color: #ce181e;
   padding: .3rem .7rem;
-  color: #313131;
+  color: #ffffff;
   letter-spacing: 0.030em;
   border-radius: 50px;
   text-decoration: none;
