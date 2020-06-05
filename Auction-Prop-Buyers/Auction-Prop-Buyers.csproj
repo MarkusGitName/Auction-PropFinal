@@ -594,6 +594,7 @@
     <Content Include="assets\img\user-02.jpg" />
     <Content Include="assets\img\video.jpg" />
     <Content Include="assets\videos\WIN_20200324_16_07_18_Pro.mp4" />
+    <Content Include="Content2\animate.min.css" />
     <Content Include="Content2\bootstrap-rtl.min.css" />
     <Content Include="Content2\bootstrap-select.min.css" />
     <Content Include="Content2\bootstrap-theme.css" />
@@ -607,12 +608,14 @@
     <Content Include="Content2\bootstrap1.min.css" />
     <Content Include="Content2\BootstrapOne.css" />
     <Content Include="Content2\fileinput.min.css" />
+    <Content Include="Content2\ionicons.min.css" />
     <Content Include="Content2\jquery.slider.min.css" />
     <Content Include="Content2\leaflet.css" />
     <Content Include="Content2\magnific-popup.css" />
     <Content Include="Content2\MarkerCluster.css" />
     <Content Include="Content2\osm.css" />
     <Content Include="Content2\owl.carousel.css" />
+    <Content Include="Content2\owl.carousel.min.css" />
     <Content Include="Content2\owl.transitions.css" />
     <Content Include="Content2\rtl.css" />
     <Content Include="Content2\Site.css" />
@@ -717,7 +720,7 @@
     <Content Include="Scripts2\masonry.pkgd.min.js" />
     <Content Include="Scripts2\owl.carousel.min.js" />
     <Content Include="Scripts2\retina-1.1.0.min.js" />
-    <Content Include="Scripts2\scrollReveal.min.js" />
+    <Content Include="Scripts2\scrollreveal.min.js" />
     <Content Include="Scripts2\selectize.min.js" />
     <Content Include="Scripts2\smoothscroll.js" />
     <Content Include="Scripts2\tmpl.js" />
@@ -732,17 +735,22 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.countTo.js" />
+    <Content Include="Scripts\jquery.easing.min.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.signalR-2.4.1.js" />
     <Content Include="Scripts\jquery.signalR-2.4.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\owl.carousel.min.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\scrollreveal.min.js" />
     <Content Include="Scripts\smoothscroll.js" />
     <Content Include="Scripts\src\index.js" />
     <Content Include="Scripts\src\methods\defaults.js" />
@@ -811,6 +819,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\validate.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

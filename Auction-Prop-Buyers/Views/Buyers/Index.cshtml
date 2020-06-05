@@ -10,7 +10,7 @@
 <h2>Profile</h2>
 
 <div>
-    <h4>Youre Information</h4>
+    <h4>Your Information</h4>
     <hr />
     <dl class="dl-horizontal">
    
@@ -66,11 +66,11 @@
     @if (Model.AuctionRegistrations == null)
     {
         <h1>
-            Congatsulations!
+            Congratulations!
         </h1>
         <p>
-            You are now Registered as a Buyer with Auction-Prop. You're Registration wil be reviewed and approved as suited.
-            You can view our Listings and Register for Auctions while you wait.
+            You are now Registered as a Buyer with Auction-Prop. You're Registration will be reviewed for approval
+            You can view all our listings on the Properties page whilest you await approval
             @Html.ActionLink("View Property lListings.", "Properties", "Home");
         </p>
 
@@ -79,7 +79,7 @@
     else
     {
 
-        <h1>You are regesterd for the folowing auctions</h1>
+        <h1>You Are Registered For The Following Aucitons</h1>
         <div class="row">
             @foreach (AuctionRegistration Auc in Model.AuctionRegistrations)
             {
@@ -106,7 +106,7 @@
                     catch
                     {
                         @Html.ActionLink("Click Here to submit youre Bank Pre Approval", "AdPreApproval", "Buyers", new { id = Auc.PropertyID }, null)
-                        <p>Or Contact one of our bond originators: admin@infinitymortgagefinance.co.za </p>
+            <p>For Any Assistance Please Contact One Of Our Bond Originators:  admin@infinitymortgagefinance.co.za</p>
                     }
                 }
                 else
@@ -135,11 +135,11 @@
                 {
                     try
                     {
-                        <h3>Congratulations.</h3>
-                        <p>You are nou Registered to Bid on this Auction.</p>
+                        <h3>Congratulations</h3>
+                        <p>You Are Now Registered To Bid On This Auction</p>
                         if (Auc.Property.Auction.StartTime >= DateTime.Now)
                         {
-                            <p>This Auction Starts at @Auc.Property.Auction.StartTime</p>
+                            <p>This Auction Starts At @Auc.Property.Auction.StartTime</p>
                         }
                         else if (Auc.Property.Auction.StartTime <= DateTime.Now && DateTime.Now <= Auc.Property.Auction.EndTime)
                         {
@@ -152,10 +152,10 @@
                     catch
                     {
 
-                        <h3>Congratulations.</h3>
-                        <p>You are nou Registered to Bid on this Auction.</p>
+                        <h3>Congratulations</h3>
+                        <p>You Are Now Registered to Bid On This Auction</p>
 
-                        <p>This Propperty is not yet Scheduled for auction.</p>
+                        <p>This Propperty Is Not Yet Scheduled For Auction</p>
                     }
                 }
 

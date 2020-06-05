@@ -6,7 +6,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewBag.Title.</h2>
+<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
+<script src="https://kit.fontawesome.com/ef4e2c1ac6.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="~/Content/bootstrap.css" type="text/css">
+<link rel="stylesheet" href="~/Content2/bootstrap-select.min.css" type="text/css">
+<link rel="stylesheet" href="~/Content2/jquery.slider.min.css" type="text/css">
+<link rel="stylesheet" href="~/Content2/owl.carousel.css" type="text/css">
+<link rel="stylesheet" href="~/Content2/owl.transitions.css" type="text/css">
+<link rel="stylesheet" href="~/Content/StyleSheet1.css" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li class="active">User Registration</li>
+    </ol>
+</div>
+
+<h2>@ViewBag.Title</h2>
 
 
 <div class="row">
@@ -15,8 +34,8 @@
             @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h4>Create a new account.</h4>
-                <hr />
+
+
                 @Html.ValidationSummary("", new { @class = "text-danger" })
 
                 <div class="form-group">
@@ -51,7 +70,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" class="btn btn-default" value="Register" />
+                        <input type="submit" class="btn btn-default" value="Create an Account" />
                     </div>
                 </div>
 

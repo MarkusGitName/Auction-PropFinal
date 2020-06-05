@@ -11,37 +11,206 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <script src="https://kit.fontawesome.com/ef4e2c1ac6.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="~/Content/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="~/Content2/bootstrap-select.min.css" type="text/css">
-    <link rel="stylesheet" href="~/Content2/jquery.slider.min.css" type="text/css">
-    <link rel="stylesheet" href="~/Content/StyleSheet1.css" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <style>
-        .carousel-inner > .item > img,
-        .carousel-inner > .item > a > img {
-            width: 100%;
-            margin: auto;
-        }
-    </style>
+
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="~/Content2/bootstrap1.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content2/ionicons.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content2/animate.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content2/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/font-awesome.css" type="text/css">
+
+    <!-- Template Main CSS File -->
+    <link href="~/assets/css/style.css" rel="stylesheet">
+
 
     <title>Auction-Prop.com | Home</title>
 
 </head>
 <body>
+
+    <!-- ======= Property Search Section ======= -->
+    <div class="click-closed"></div>
+    <!--/ Form Search Star /-->
+    <div class="box-collapse">
+        <div class="title-box-d">
+            <h3 class="title-d">Search Property</h3>
+        </div>
+        <span class="close-box-collapse right-boxed ion-ios-close"></span>
+        <div class="box-collapse-wrap form">
+            <form class="form-a">
+                <div class="row">
+                    <div class="col-md-12 mb-2">
+                        <div class="form-group">
+                            <label for="Type">Keyword</label>
+                            <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group">
+                            <label for="Type">Type</label>
+                            <select class="form-control form-control-lg form-control-a" id="Type">
+                                <option>All Types</option>
+                                <option>Residential</option>
+                                <option>Commercial</option>
+                                <option>Agricultural</option>
+                                <option>Investment</option>
+                                <option>Bank Instrution</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <select class="form-control form-control-lg form-control-a" id="city">
+                                <option>All City's</option>
+                                <option>Johannesburg</option>
+                                <option>Pretoria</option>
+                                <option>Durban</option>
+                                <option>Cape Town</option>
+                                <option>Nelspruit</option>
+                                <option>Polokwane</option>
+                                <option>East London</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group">
+                            <label for="bedrooms">Bedrooms</label>
+                            <select class="form-control form-control-lg form-control-a" id="bedrooms">
+                                <option>Any</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>3+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group">
+                            <label for="garages">Garages</label>
+                            <select class="form-control form-control-lg form-control-a" id="garages">
+                                <option>Any</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>3+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group">
+                            <label for="bathrooms">Bathrooms</label>
+                            <select class="form-control form-control-lg form-control-a" id="bathrooms">
+                                <option>Any</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>3+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-b">Search Property</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div><!-- End Property Search Section -->
+    <!-- ======= Intro Section ======= -->
+    <div class="intro intro-carousel">
+        <div id="carousel" class="owl-carousel owl-theme">
+            <div class="carousel-item-a intro-item bg-image" style="background-image: url(~/img/glass.jpg)">
+                <div class="overlay overlay-a"></div>
+                <div class="intro-content display-table">
+                    <div class="table-cell">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="intro-body">
+                                        <p class="intro-title-top">
+                                            Doral, Florida
+                                            <br> 78345
+                                        </p>
+                                        <h1 class="intro-title mb-4">
+                                            <span class="color-b">204 </span> Mount
+                                            <br> Olive Road Two
+                                        </h1>
+                                        <p class="intro-subtitle intro-price">
+                                            <a href="#"><span class="price-a">rent | $ 12.000</span></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item-a intro-item bg-image" style="background-image: url(~/assets/img/slide-2.jpg)">
+                <div class="overlay overlay-a"></div>
+                <div class="intro-content display-table">
+                    <div class="table-cell">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="intro-body">
+                                        <p class="intro-title-top">
+                                            Doral, Florida
+                                            <br> 78345
+                                        </p>
+                                        <h1 class="intro-title mb-4">
+                                            <span class="color-b">204 </span> Rino
+                                            <br> Venda Road Five
+                                        </h1>
+                                        <p class="intro-subtitle intro-price">
+                                            <a href="#"><span class="price-a">rent | $ 12.000</span></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item-a intro-item bg-image" style="background-image: url(~/assets/img/slide-3.jpg)">
+                <div class="overlay overlay-a"></div>
+                <div class="intro-content display-table">
+                    <div class="table-cell">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="intro-body">
+                                        <p class="intro-title-top">
+                                            Doral, Florida
+                                            <br> 78345
+                                        </p>
+                                        <h1 class="intro-title mb-4">
+                                            <span class="color-b">204 </span> Alira
+                                            <br> Roan Road One
+                                        </h1>
+                                        <p class="intro-subtitle intro-price">
+                                            <a href="#"><span class="price-a">rent | $ 12.000</span></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End Intro Section -->
+
     <section>
-        <div class="container" style="min-width:100%">
+        <!--<div class="container" style="min-width:100%">
             <br>
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
                         <img src="~/assets/img/carousel1.jpg" class="d-block w-100" alt="...">
@@ -125,8 +294,6 @@
                     </div>
                 </div>
 
-
-                <!-- Left and right controls -->
                 <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
@@ -136,8 +303,60 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-        </div>
-
+        </div>-->
+        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="mask flex-center">
+                        <div class="container-fluid">
+                            <div class="row align-items-center">
+                                <div class="carousel_caption">
+                                    <!--<h1></h1>
+                                    <h2>Your choice has been approved</h2>
+                                    <p>It is a long established fact that a reader will be happy</p>
+                                    <a href="#">Learn More</a>-->
+                                </div>
+                                <div><img src="~/assets/img/white.jpg" class="mx-auto" alt="slide" height="720"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="mask flex-center">
+                        <div class="container-fluid">
+                            <div class="row align-items-center">
+                                <div class="carousel_caption">
+                                    <!--<h1></h1>
+                                    <h2>Pixel Event on Digital Design</h2>
+                                    <p>It is a long established fact that a reader will be happy</p>
+                                    <a href="#">Learn More</a>-->
+                                </div>
+                                <div><img src="~/assets/img/glass.jpg" class="mx-auto" alt="slide" height="720"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="mask flex-center">
+                        <div class="container-fluid">
+                            <div class="row align-items-center">
+                                <div class="carousel_caption">
+                                    <!--<h1></h1>
+                                    <h2>Giver a timeless classic a home</h2>
+                                    <p>It is a long established fact that a reader will be happy</p>
+                                    <a href="#">Learn More</a>-->
+                                </div>
+                                <div><img src="~/assets/img/wood.jpg" class="mx-auto" alt="slide" height="720"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </section>
     <!-- Our Services End -->
     <section id="price-drop" class="block">
@@ -237,7 +456,6 @@
             </a>
         </div>
     </aside><!-- /#adveritsing-->
-
     <!-- /#banner Start -->
     <section id="banner">
         <div class="block has-dark-background background-color-default-darker center text-banner">
@@ -259,7 +477,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="property">
                         <div class="property-image">
-                            <img alt="#" src="~/assets/img/Glass Dining.jpg">
+                            <img alt="#" src="~/assets/img/glass.jpg">
                         </div>
                         <div class="overlay">
                             <div class="info">
@@ -292,7 +510,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="property">
                         <div class="property-image">
-                            <img alt="#" src="~/assets/img/Glass Dining.jpg">
+                            <img alt="#" src="~/assets/img/glass.jpg">
                         </div>
                         <div class="overlay">
                             <div class="info">
@@ -325,7 +543,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="property">
                         <div class="property-image">
-                            <img alt="#" src="~/assets/img/Glass Dining.jpg">
+                            <img alt="#" src="~/assets/img/glass.jpg">
                         </div>
                         <div class="overlay">
                             <div class="info">
@@ -358,7 +576,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="property">
                         <div class="property-image">
-                            <img alt="#" src="~/assets/img/Glass Dining.jpg">
+                            <img alt="#" src="~/assets/img/glass.jpg">
                         </div>
                         <div class="overlay">
                             <div class="info">
@@ -392,65 +610,65 @@
         </div><!-- /.container-->
     </section><!-- /#new-properties-->
     <section>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="carousel slide" data-ride="carousel" id="quote-carousel">
 
-                    <!-- Carousel Slides / Quotes -->
-                    <header class="section-title"><h2>Testimonials</h2></header>
-                    <div class="carousel-inner text-center">
-                        <!-- Quote 1 -->
-                        <div class="item active">
-                            <blockquote>
-                                <div class="row">
-                                    <div class="col-sm-8 col-sm-offset-2">
-                                        <p> Edureka has the best online courses! </p>
-                                        <small> Reviewer's Name </small>
+                        <!-- Carousel Slides / Quotes -->
+                        <header class="section-title"><h2>Testimonials</h2></header>
+                        <div class="carousel-inner text-center">
+                            <!-- Quote 1 -->
+                            <div class="item active">
+                                <blockquote>
+                                    <div class="row">
+                                        <div class="col-sm-8 col-sm-offset-2">
+                                            <p><i> Every staff member we spoke to or had contact with, was super helpful and understanding. The day of the Auction, we had some technical problems and the team really went over and above the call of duty to assist us. </i></p>
+                                            <small><strong><i>Maria Van Wyk, Buyer</i></strong></small>
+                                        </div>
                                     </div>
-                                </div>
-                            </blockquote>
-                        </div>
-                        <!-- Quote 2 -->
-                        <div class="item">
-                            <blockquote>
-                                <div class="row">
-                                    <div class="col-sm-8 col-sm-offset-2">
-                                        <p> Edureka has the best online courses!  </p>
-                                        <small> Reviewer's Name </small>
+                                </blockquote>
+                            </div>
+                            <!-- Quote 2 -->
+                            <div class="item">
+                                <blockquote>
+                                    <div class="row">
+                                        <div class="col-sm-8 col-sm-offset-2">
+                                            <p><i> I've already sent Auction-Prop's contact info to two of my friends, looking to downsize and wondering how to get it done. This is the way!  </i></p>
+                                            <small><strong><i>Jim Frein, Seller</i></strong></small>
+                                        </div>
                                     </div>
-                                </div>
-                            </blockquote>
-                        </div>
-                        <!-- Quote 3 -->
-                        <div class="item">
-                            <blockquote>
-                                <div class="row">
-                                    <div class="col-sm-8 col-sm-offset-2">
-                                        <p> Edureka has the best online courses! </p>
-                                        <small> Someone famous </small>
+                                </blockquote>
+                            </div>
+                            <!-- Quote 3 -->
+                            <div class="item">
+                                <blockquote>
+                                    <div class="row">
+                                        <div class="col-sm-8 col-sm-offset-2">
+                                            <p> Edureka has the best online courses! </p>
+                                            <small> Someone famous </small>
+                                        </div>
                                     </div>
-                                </div>
-                            </blockquote>
+                                </blockquote>
+                            </div>
                         </div>
+                        <!-- Bottom Carousel Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#quote-carousel" data-slide-to="0" class="active">
+                                <img class="img-responsive " src="~/assets/img/Woman.jpg" alt="">
+                            </li>
+                            <li data-target="#quote-carousel" data-slide-to="1">
+                                <img class="img-responsive" src="~/assets/img/Guy.jpg" alt="">
+                            </li>
+                            <li data-target="#quote-carousel" data-slide-to="2">
+                                <img class="img-responsive" src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg" alt="">
+                            </li>
+                        </ol>
+                        <!-- Carousel Buttons Next/Prev -->
                     </div>
-                    <!-- Bottom Carousel Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#quote-carousel" data-slide-to="0" class="active">
-                            <img class="img-responsive " src="~/assets/img/Woman.jpg" alt="">
-                        </li>
-                        <li data-target="#quote-carousel" data-slide-to="1">
-                            <img class="img-responsive" src="~/assets/img/Guy.jpg" alt="">
-                        </li>
-                        <li data-target="#quote-carousel" data-slide-to="2">
-                            <img class="img-responsive" src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg" alt="">
-                        </li>
-                    </ol>
-                    <!-- Carousel Buttons Next/Prev -->
                 </div>
             </div>
         </div>
-    </div>
     </section>
     <!--<section id="testimonials" class="block">
         <div class="container">
@@ -496,28 +714,19 @@
     </section><!-- /#partners -->
     </div>
     <!-- end Page Content -->
+    <!--<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <div id="preloader"></div>-->
 
-    <script type="text/javascript" src="~/Scripts2/jquery-2.1.0.min.js"></script>
-    <script type="text/javascript" src="~/Scripts2/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="~/Scripts2/bootstrap.min.js"></script>
-    <script type="text/javascript" src="~/Scripts2/smoothscroll.js"></script>
-    <script type="text/javascript" src="~/Scripts2/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="~/Scripts2/bootstrap-select.min.js"></script>
-    <script type="text/javascript" src="~/Scripts2/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="~/Scripts2/jquery.placeholder.js"></script>
-    <script type="text/javascript" src="~/Scripts2/icheck.min.js"></script>
-    <script type="text/javascript" src="~/Scripts2/jquery.vanillabox-0.1.5.min.js"></script>
-    <script type="text/javascript" src="~/Scripts2/retina-1.1.0.min.js"></script>
-    <script type="text/javascript" src="~/Scripts2/jshashtable-2.1_src.js"></script>
-    <script type="text/javascript" src="~/Scripts2/jquery.numberformatter-1.2.3.js"></script>
-    <script type="text/javascript" src="~/Scripts2/tmpl.js"></script>
-    <script type="text/javascript" src="~/Scripts2/jquery.dependClass-0.1.js"></script>
-    <script type="text/javascript" src="~/Scripts2/draggable-0.1.js"></script>
-    <script type="text/javascript" src="~/Scripts2/jquery.slider.js"></script>
-    <script type="text/javascript" src="~/Scripts2/custom.js"></script>
+    <!-- Vendor JS Files -->
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/jquery.easing.min.js"></script>
+    <script src="~/Scripts/validate.js"></script>
+    <script src="~/Scripts/owl.carousel.min.js"></script>
+    <script src="~/Scripts/scrollreveal.min.js"></script>
 
-    <div id="overlay"></div>
-
+    <!-- Template Main JS File -->
+    <script src="~/Scripts/main.js"></script>
 
 </body>
 </html>
