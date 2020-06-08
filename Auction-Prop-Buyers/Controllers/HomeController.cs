@@ -77,6 +77,13 @@ namespace Auction_Prop_Buyers.Controllers
             return View();
         }
 
+        public ActionResult AccountReg()
+        {
+            ViewBag.Message = "Account Register Page.";
+
+            return View();
+        }
+
         public ActionResult Privacy()
         {
             ViewBag.Message = "Privacy Policy Page.";

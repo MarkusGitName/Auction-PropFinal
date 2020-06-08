@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
@@ -52,9 +52,9 @@
     list-style-type: none
 }
 
-.fa-ul>li {
-    position: relative
-}
+    .fa-ul > li {
+        position: relative
+    }
 
 .fa-li {
     position: absolute;
@@ -64,9 +64,9 @@
     text-align: center
 }
 
-.fa-li.fa-lg {
-    left: -1.85714286em
-}
+    .fa-li.fa-lg {
+        left: -1.85714286em
+    }
 
 .fa-border {
     padding: .2em .25em .15em;

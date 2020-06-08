@@ -202,11 +202,11 @@ a:hover {
   margin: 0 .2rem;
   border-color: transparent;
   padding: .5rem .8rem;
-  color: #000000;
+  color: #fa7f15;
 }
 
 .pagination-a .pagination .page-link:hover, .pagination-a .pagination .page-link:active, .pagination-a .pagination .page-link:focus {
-  background-color: #2eca6a;
+  background-color: #1d293d;
 }
 
 .pagination-a .pagination .page-link span {
@@ -233,7 +233,7 @@ a:hover {
 }
 
 .pagination-a .pagination .page-item.active .page-link {
-  background-color: #2eca6a;
+  background-color: #1d293d;
 }
 
 .a {
@@ -1661,7 +1661,7 @@ a:hover {
 
 .card-box-ico span {
   font-size: 4rem;
-  color: #000000;
+  color: #1d293d;
 }
 
 .title-c {
@@ -1839,7 +1839,7 @@ a:hover {
 }
 
 .sinse-box {
-  background-color: #2eca6a;
+  background-color: #1d293d;
   padding: 1rem 2rem;
   position: absolute;
   left: 15px;
@@ -1869,6 +1869,7 @@ a:hover {
   font-weight: 700;
   letter-spacing: 0.043em;
   font-size: 1rem;
+  text-emphasis-color: #fa7f15;
 }
 
 @media (min-width: 576px) {
@@ -2187,3 +2188,57 @@ a:hover {
           width: 100%;
       }
 
+/*--------------------------------------------------------------
+# FAQ Section
+--------------------------------------------------------------*/
+
+.faq {
+  position: relative;
+  padding-left: 50px;
+  margin-bottom: 50px;
+}
+
+  .faq .icon {
+      background-color: #1d293d;
+      color: #fff;
+      height: 35px;
+      left: 0;
+      width: 35px;
+      position: absolute;
+      top: 0;
+      text-align: center;
+      line-height: 35px;
+  }
+
+      .faq .icon:after {
+          bottom: -7px;
+          content: "";
+          height: 0px;
+          border-style: solid;
+          border-width: 0px 10px 10px 10px;
+          border-color: transparent #1d293d transparent transparent;
+          position: absolute;
+          right: 0;
+          width: 0px;
+      }
+
+  .faq header {
+      color: #fa7f15;
+      font-size: 18px;
+      margin-top: 6px;
+      margin-bottom: 15px;
+  }
+
+  .faq p {
+      border-bottom: 2px solid #fa7f15;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+  }
+
+  .faq aside {
+      font-size: 12px;
+  }
+
+      .faq aside a {
+          margin-left: 10px;
+      }

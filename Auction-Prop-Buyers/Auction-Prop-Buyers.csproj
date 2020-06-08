@@ -637,6 +637,8 @@
     <Content Include="Content\bootstrap1.css" />
     <Content Include="Content\bootstrap1.min.css" />
     <Content Include="Content\BootstrapOne.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\jquery.slider.min.css" />
     <Content Include="Content\magnific-popup.css" />
     <Content Include="Content\owl.carousel.css" />

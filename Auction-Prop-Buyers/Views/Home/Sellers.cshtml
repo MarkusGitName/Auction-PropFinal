@@ -4,229 +4,217 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@*
-    @Styles.Render("~/Content2/Bootstrap1.css")
-    @Styles.Render("~/Content2/Style.css")
-    @Styles.Render("~/Content2/bootstrap-select.min.css")
-    @Styles.Render("~/Content2/magnific-popup.css")
-    @Scripts.Render("~/Scripts2/bootstrap-select.min.js")
-    @Scripts.Render("~/Scripts2/bootstrap.min.js")
-    @Scripts.Render("~/Scripts2/custom.js")
-    @Scripts.Render("~/Scripts2/jquery-2.1.0.min.js")
-*@
-
 <!DOCTYPE html>
 
 <html lang="en-US">
 <head>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
-    <script src="https://kit.fontawesome.com/ef4e2c1ac6.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="~/Content/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="~/Content2/bootstrap-select.min.css" type="text/css">
-    <link rel="stylesheet" href="~/Content2/jquery.slider.min.css" type="text/css">
-    <link rel="stylesheet" href="~/Content2/owl.carousel.css" type="text/css">
-    <link rel="stylesheet" href="~/Content2/owl.transitions.css" type="text/css">
-    <link rel="stylesheet" href="~/Content/StyleSheet1.css" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <title>Auction-Prop.com | Sellers</title>
 
-    <title>Auction-Prop.com | Sellers Guide</title>
+    <!-- Favicons -->
+    <link href="~/assets/img/fat.png" rel="icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ef4e2c1ac6.js" crossorigin="anonymous"></script>
+
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="~/Content2/bootstrap1.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content2/ionicons.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content2/animate.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content2/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/font-awesome.css" type="text/css">
+
+    <!-- Template Main CSS File -->
+    <link href="~/assets/css/style.css" rel="stylesheet">
 
 </head>
 
-<body class="page-sub-page page-legal" id="page-top">
-    <!-- Page Content -->
-    <div id="page-content">
-        <!-- Breadcrumb -->
-        <div class="container">
-            <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">Sellers Guide</li>
-            </ol>
-        </div>
-        <!-- end Breadcrumb -->
+<body>
 
+    <!-- ======= Property Search Section Start ======= -->
+    <div class="click-closed"></div>
+
+    <div class="box-collapse">
+        <div class="title-box-d">
+            <h3 class="title-d">Search Property</h3>
+        </div>
+        <span class="close-box-collapse right-boxed ion-ios-close"></span>
+        <div class="box-collapse-wrap form">
+            <form class="form-a">
+                <div class="row">
+                    <div class="col-md-12 mb-2">
+                        <div class="form-group">
+                            <label for="Type">Keyword</label>
+                            <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group">
+                            <label for="Type">Type</label>
+                            <select class="form-control form-control-lg form-control-a" id="Type">
+                                <option>All Types</option>
+                                <option>Residential</option>
+                                <option>Commercial</option>
+                                <option>Agricultural</option>
+                                <option>Investment</option>
+                                <option>Bank Instruction</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <select class="form-control form-control-lg form-control-a" id="city">
+                                <option>All City's</option>
+                                <option>Johannesburg</option>
+                                <option>Pretoria</option>
+                                <option>Durban</option>
+                                <option>Cape Town</option>
+                                <option>Nelspruit</option>
+                                <option>Polokwane</option>
+                                <option>East London</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group">
+                            <label for="bedrooms">Bedrooms</label>
+                            <select class="form-control form-control-lg form-control-a" id="bedrooms">
+                                <option>Any</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>3+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group">
+                            <label for="garages">Garages</label>
+                            <select class="form-control form-control-lg form-control-a" id="garages">
+                                <option>Any</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>3+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group">
+                            <label for="bathrooms">Bathrooms</label>
+                            <select class="form-control form-control-lg form-control-a" id="bathrooms">
+                                <option>Any</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>3+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-b">Search Property</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- ======= Property Search Section End ======= -->
+    <!-- ======= Intro and Breadcrumb Section Start ======= -->
+    <section class="intro-single">
         <div class="container">
             <div class="row">
-                <!-- Content -->
-                <div class="col-md-9 col-sm-9">
-                    <section id="content">
-                        <header><h1>Sellers Guide</h1></header>
-                        <section id="legal">
-                            <section>
-                                <h3>What are the advantages of Auctions?</h3>
-                                <p>1. <strong>Immediacy</strong> – At the ‘fall of the hammer’ you will exchange contracts.</p>
-                                <p>2. <strong>Speed</strong> – From the time we commence marketing to exchange of contracts is only 4-6 weeks.</p>
-                                <p>3. <strong>Wider Marketing</strong> – Your property will receive maximum exposure of the market and inclusion on all social media as well as our website.</p>
-                                <p>4. <strong>Confidence</strong> – Buyers have more confidence, because they know that sellers are committed to selling and not likely to waste time. If buyers are more confident, then that’s good for you, the seller.</p>
-                                <p>5. <strong>Decisive</strong> – Buyers are forced to get organized and make decisions.</p>
-                                <p>6. <strong>Competitive</strong> – Buyers bid in a competitive atmosphere.</p>
-                                <p>7. <strong>Certainty</strong> – The fall of the gavel is the point when automatic exchange of contracts takes place.</p>
-                                <p>8. <strong>Transparency</strong> – The best price is seen to be achieved, thus satisfying all parties.</p>
-                                <p>9. <strong>Completion</strong> – This usually takes place 30-45 days from the Auction.</p>
-                            </section>
-                            <section>
-                                <h3>What happens when selling by Auction?</h3>
-                                <p>1. Auction-Prop will carry out a valuation and either advise you or confirm that the property is suitable to be sold by auction.</p>
-                                <p>2. The price guide and expected reserve price will be discussed and agreed.</p>
-                                <p>3. We have preset dates for auctions and the best date and venue to sell your property will be agreed.</p>
-                                <p>4. The marketing campaign will be explained.</p>
-                                <p>5. You will need to sign our sole and auction agency agreements and pay an entry fee.</p>
-                                <p>6. After our agency agreements are signed, we will instruct your solicitors to prepare a legal pack. This pack will be published on our auction website as soon as it is available and therefore the quicker that you instruct your solicitor the better.</p>
-                                <p>7. Sales details will be prepared for your approval.</p>
-                                <p>8. Adverts will be placed, details circulated on mailing lists and viewings arranged.</p>
-                                <p>9. You will be kept informed of the interest levels in the property.</p>
-                                <p>10. You will be advised of offers that have been qualified. Unqualified or uncorroborated offers may not be put forward to you.</p>
-                                <p>11. You will be advised of our final recommendation for the reserve in the week prior to the auction having considered the level of interest shown during marketing.</p>
-                                <p>12. You will need to sign and return the final reserve figure by letter.</p>
-                                <p>13. Completion will take place with your solicitors in the usual way.</p>
-                            </section>
-                            <section>
-                                <h3>Please contact us for more information. Or attend one of our auctions to see how they work.</h3>
-                            </section>
+                <div class="col-md-12 col-lg-8">
+                    <div class="title-single-box">
+                        <h1 class="title-single">Sellers Guide</h1>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4">
+                    <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="#">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Sellers Guide
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ======= Intro and Breadcrumb Section End ======= -->
+
+    <div class="container">
+        <div class="row">
+            <!-- Content -->
+            <div class="col-md-9 col-sm-9">
+                <section id="content">
+                    <section id="legal">
+                        <section>
+                            <h3>What are the advantages of Auctions?</h3>
+                            <br />
+                            <p>1. <strong>Immediacy</strong> – At the ‘fall of the hammer’ you will exchange contracts.</p>
+                            <p>2. <strong>Speed</strong> – From the time we commence marketing to exchange of contracts is only 4-6 weeks.</p>
+                            <p>3. <strong>Wider Marketing</strong> – Your property will receive maximum exposure of the market and inclusion on all social media as well as our website.</p>
+                            <p>4. <strong>Confidence</strong> – Buyers have more confidence, because they know that sellers are committed to selling and not likely to waste time. If buyers are more confident, then that’s good for you, the seller.</p>
+                            <p>5. <strong>Decisive</strong> – Buyers are forced to get organized and make decisions.</p>
+                            <p>6. <strong>Competitive</strong> – Buyers bid in a competitive atmosphere.</p>
+                            <p>7. <strong>Certainty</strong> – The fall of the gavel is the point when automatic exchange of contracts takes place.</p>
+                            <p>8. <strong>Transparency</strong> – The best price is seen to be achieved, thus satisfying all parties.</p>
+                            <p>9. <strong>Completion</strong> – This usually takes place 30-45 days from the Auction.</p>
                         </section>
-                    </section><!-- /#agent-detail -->
-                </div><!-- /.col-md-9 -->
-                <!-- end Content -->
-                <!-- sidebar -->
-                <div class="col-md-3 col-sm-3">
-                    <section id="sidebar">
-                        <aside id="edit-search">
-                            <header><h3>Search Properties</h3></header>
-                            <form role="form" id="form-sidebar" class="form-search" action="properties-listing.html">
-                                <div class="form-group">
-                                    <select name="type">
-                                        <option value="">Status</option>
-                                        <option value="1">Auction</option>
-                                        <option value="2">For Sale</option>
-                                    </select>
-                                </div><!-- /.form-group -->
-                                <div class="form-group">
-                                    <select name="country">
-                                        <option value="">Country</option>
-                                        <option value="1">South Africa</option>
-                                    </select>
-                                </div><!-- /.form-group -->
-                                <div class="form-group">
-                                    <select name="city">
-                                        <option value="">City</option>
-                                        <option value="1">Johannesburg</option>
-                                        <option value="2">Pretoria</option>
-                                        <option value="3">Cape Town</option>
-                                        <option value="4">Durban</option>
-                                        <option value="5">Nelspruit</option>
-                                    </select>
-                                </div><!-- /.form-group -->
-                                <div class="form-group">
-                                    <select name="district">
-                                        <option value="">Province</option>
-                                        <option value="1">Gauteng</option>
-                                        <option value="2">Free State</option>
-                                        <option value="3">Mpumalanga</option>
-                                        <option value="4">Limpopo</option>
-                                        <option value="5">North West</option>
-                                        <option value="6">Kwazulu Natal</option>
-                                        <option value="7">Western Cape</option>
-                                        <option value="8">Northern Cape</option>
-                                        <option value="9">Eastern Cape</option>
-                                    </select>
-                                </div><!-- /.form-group -->
-                                <div class="form-group">
-                                    <select name="property-type">
-                                        <option value="">Property Type</option>
-                                        <option value="1">Residential</option>
-                                        <option value="2">Commercial</option>
-                                        <option value="3">Agricultural</option>
-                                        <option value="4">Investment</option>
-                                    </select>
-                                </div><!-- /.form-group -->
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-default">Search Now</button>
-                                </div><!-- /.form-group -->
-                            </form><!-- /#form-map -->
-                        </aside><!-- /#edit-search -->
-                        <aside id="featured-properties">
-                            <header><h3>Featured Properties</h3></header>
-                            <div class="property small">
-                                <a href="property-detail.html">
-                                    <div class="property-image">
-                                        <img alt="" src="~/assets/img/properties/property-04.jpg">
-                                    </div>
-                                </a>
-                                <div class="info">
-                                    <a href="property-detail.html"><h4>218 Rinehart Road</h4></a>
-                                    <figure>Olivedale, Johannesburg </figure>
-                                    <div class="tag date">15 May at 14:00</div>
-                                </div>
-                            </div><!-- /.property -->
-                            <div class="property small">
-                                <a href="property-detail.html">
-                                    <div class="property-image">
-                                        <img alt="" src="~/assets/img/properties/property-04.jpg">
-                                    </div>
-                                </a>
-                                <div class="info">
-                                    <a href="property-detail.html"><h4>249 Murphy Court</h4></a>
-                                    <figure>Sandhurst, Johannesburg</figure>
-                                    <div class="tag date">22 June at 14:00</div>
-                                </div>
-                            </div><!-- /.property -->
-                            <div class="property small">
-                                <a href="property-detail.html">
-                                    <div class="property-image">
-                                        <img alt="" src="~/assets/img/properties/property-04.jpg">
-                                    </div>
-                                </a>
-                                <div class="info">
-                                    <a href="property-detail.html"><h4>194 Tennessee Avenue</h4></a>
-                                    <figure>Faerie Glen, Pretoria</figure>
-                                    <div class="tag date">22 June at 15:00</div>
-                                </div>
-                            </div><!-- /.property -->
-                        </aside><!-- /#featured-properties -->
-                        <aside id="our-guides">
-                            <header><h3>Our Guides</h3></header>
-                            <a href="Buyers Guide.html" class="universal-button">
-                                <figure class="fa fa-home"></figure>
-                                <span>Buyers Guide</span>
-                                <span class="arrow fa fa-angle-right"></span>
-                            </a><!-- /.universal-button -->
-                            <a href="Sellers Guide.html" class="universal-button">
-                                <figure class="fa fa-home"></figure>
-                                <span>Sellers Guide</span>
-                                <span class="arrow fa fa-angle-right"></span>
-                            </a><!-- /.universal-button -->
-                        </aside><!-- /#our-guide -->
-                    </section><!-- /#sidebar -->
-                </div><!-- /.col-md-3 -->
-                <!-- end Sidebar -->
-            </div><!-- /.row -->
-        </div><!-- /.container -->
+                        <br />
+                        <section>
+                            <h3>What happens when selling by Auction?</h3>
+                            <br />
+                            <p>1. Auction-Prop will carry out a valuation and either advise you or confirm that the property is suitable to be sold by auction.</p>
+                            <p>2. The price guide and expected reserve price will be discussed and agreed.</p>
+                            <p>3. We have preset dates for auctions and the best date and venue to sell your property will be agreed.</p>
+                            <p>4. The marketing campaign will be explained.</p>
+                            <p>5. You will need to sign our sole and auction agency agreements and pay an entry fee.</p>
+                            <p>6. After our agency agreements are signed, we will instruct your solicitors to prepare a legal pack. This pack will be published on our auction website as soon as it is available and therefore the quicker that you instruct your solicitor the better.</p>
+                            <p>7. Sales details will be prepared for your approval.</p>
+                            <p>8. Adverts will be placed, details circulated on mailing lists and viewings arranged.</p>
+                            <p>9. You will be kept informed of the interest levels in the property.</p>
+                            <p>10. You will be advised of offers that have been qualified. Unqualified or uncorroborated offers may not be put forward to you.</p>
+                            <p>11. You will be advised of our final recommendation for the reserve in the week prior to the auction having considered the level of interest shown during marketing.</p>
+                            <p>12. You will need to sign and return the final reserve figure by letter.</p>
+                            <p>13. Completion will take place with your solicitors in the usual way.</p>
+                        </section>
+                        <section>
+                            <br />
+                            <h3>Please contact us for more information. Or attend one of our auctions to see how they work.</h3>
+                        </section>
+                        <br />
+                    </section>
+                </section><!-- /#agent-detail -->
+            </div><!-- /.col-md-9 -->
+            <!-- end Content -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
     </div>
     <!-- end Page Content -->
 
-    <script type="text/javascript" src="~/Scripts2/jquery-2.1.0.min.js"></script>
-    <script type="text/javascript" src="~/Scripts2/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="~/Scripts2/bootstrap.min.js"></script>
-    <script type="text/javascript" src="~/Scripts2/smoothscroll.js"></script>
-    <script type="text/javascript" src="~/Scripts2/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="~/Scripts2/bootstrap-select.min.js"></script>
-    <script type="text/javascript" src="~/Scripts2/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="~/Scripts2/jquery.placeholder.js"></script>
-    <script type="text/javascript" src="~/Scripts2/icheck.min.js"></script>
-    <script type="text/javascript" src="~/Scripts2/jquery.vanillabox-0.1.5.min.js"></script>
-    <script type="text/javascript" src="~/Scripts2/retina-1.1.0.min.js"></script>
-    <script type="text/javascript" src="~/Scripts2/jshashtable-2.1_src.js"></script>
-    <script type="text/javascript" src="~/Scripts2/jquery.numberformatter-1.2.3.js"></script>
-    <script type="text/javascript" src="~/Scripts2/tmpl.js"></script>
-    <script type="text/javascript" src="~/Scripts2/jquery.dependClass-0.1.js"></script>
-    <script type="text/javascript" src="~/Scripts2/draggable-0.1.js"></script>
-    <script type="text/javascript" src="~/Scripts2/jquery.slider.js"></script>
-    <script type="text/javascript" src="~/Scripts2/custom.js"></script>
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/jquery.easing.min.js"></script>
+    <script src="~/Scripts/validate.js"></script>
+    <script src="~/Scripts/owl.carousel.min.js"></script>
+    <script src="~/Scripts/scrollreveal.min.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/Scripts/main.js"></script>
 
 </body>
 </html>
