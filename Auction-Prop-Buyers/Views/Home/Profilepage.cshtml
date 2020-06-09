@@ -1,19 +1,26 @@
-﻿@model Auction_Prop_Buyers.Models.SendCodeViewModel
+﻿
 @{
-    ViewBag.Title = "Send";
+    ViewBag.Title = "Profilepage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@using Auction_Prop_Buyers.Models.DisplayMadels*
+@using Microsoft.AspNet.Identity;
+
+@using AutoMapper;
+@model Property
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Auction-Prop.com | Verification Code</title>
+<title>Auction-Prop.com | User Profile</title>
 
 <!-- Favicons -->
 <link href="~/assets/img/fat.png" rel="icon">
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-<script src="https://kit.fontawesome.com/5cb4d6169e.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/ef4e2c1ac6.js" crossorigin="anonymous"></script>
 
 <!-- Vendor CSS Files -->
 <link rel="stylesheet" href="~/Content2/bootstrap1.min.css" type="text/css">
@@ -115,14 +122,13 @@
     </div>
 </div>
 <!-- ======= Property Search Section End ======= -->
-
 <!-- ======= Intro and Breadcrumb Section Start ======= -->
 <section class="intro-single">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-lg-8">
                 <div class="title-single-box">
-                    <h1 class="title-single">Verificaiton Code</h1>
+                    <h1 class="title-single">Your Profile</h1>
                 </div>
             </div>
             <div class="col-md-12 col-lg-4">
@@ -132,7 +138,7 @@
                             <a href="#">Home</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            Verification Code
+                            User Profile
                         </li>
                     </ol>
                 </nav>
@@ -143,21 +149,161 @@
 
 <!-- ======= Intro and Breadcrumb Section End ======= -->
 
-<h2>@ViewBag.Title</h2>
-
-@using (Html.BeginForm("SendCode", "Account", new { ReturnUrl = Model.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@if (Request.IsAuthenticated)
 {
-    @Html.AntiForgeryToken()
-    @Html.Hidden("rememberMe", @Model.RememberMe)
-    <h4>Send verification code</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-8">
-            Select Two-Factor Authentication Provider:
-            @Html.DropDownListFor(model => model.SelectedProvider, Model.Providers)
-            <input type="submit" value="Submit" class="btn btn-b" />
-        </div>
-    </div>
+    <h1>Profile</h1>
+    RegisteredBuyer mod = new RegisteredBuyer();
+
+
+    try
+    {
+        mod = APILibrary.APIMethods.APIGet<RegisteredBuyer>(User.Identity.GetUserId(), "RegisteredBuyers");
+
+    }
+    catch
+    {
+
+        mod = null;
+
+
+    }
+
+
+    if (mod == null)
+    {
+        <h2>Step 1: Buyer Registration</h2>
+        <h3>
+            You Are Not Registered As A Buyer
+        </h3>
+        @Html.ActionLink("Click here to register and qualify to bid on this Auction", "Index", "Buyers")
+    }
+    else if (mod.BuyerAddresses.Count == 0)
+    {
+        <h2>
+            Step 2: Address
+        </h2>
+        <h3>
+            In Order To Complete Your Registration You Need To Submit Atleast One Address
+        </h3>
+        @Html.ActionLink("Click here to enter youre address", "CreateAddress", "Buyers")
+    }
+    else
+    {
+        if (mod.AuctionRegistrations.Count > 0)
+        {
+            bool registered = false;
+            bool bankG = false;
+            bool guarintees = false;
+            foreach (AuctionRegistration reg in mod.AuctionRegistrations)
+            {
+                if (reg.PropertyID == Model.PropertyID)
+                {
+                    if (reg.Bonded)
+                    {
+                        try
+                        {
+                            if (reg.BankApproval == null)
+                            {
+                                throw new Exception();
+                            }
+                        }
+                        catch
+                        {
+
+                            <h2>
+                                Step 3: Address
+                            </h2>
+                            <h3>
+                                Please Submit Your Pre Approval Documents
+                                For Any Assistance Please Contact One Of Our Bond Originators:  admin@infinitymortgagefinance.co.za
+                            </h3>
+                            @Html.ActionLink("Click here to Submit Bank Pre Approvals", "AdPreApproval", "Buyers", new { id = reg.id }, null)
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            if (reg.Guarintee == null)
+                            {
+                                throw new Exception();
+                            }
+                        }
+                        catch
+                        {
+
+                            <h2>
+                                Step 3: Address
+                            </h2>
+                            <h3>
+                                Please Submit Your Pre Approval Documents
+                                For Any Assistance Please Contact One Of Our Bond Originators:  admin@infinitymortgagefinance.co.za
+                            </h3>
+                            @Html.ActionLink("Click here to Submit Bank Guarintees", "AdPreApproval", "Buyers", new { id = reg.id }, null)
+                        }
+                    }
+                    registered = true;
+                    if (guarintees || bankG)
+                    {
+                        try
+                        {
+                            <h3>Congratulations</h3>
+                            <p>You Are Now Registered To Bid On This Auction</p>
+                            if (Model.Auction.StartTime >= DateTime.Now)
+                            {
+                                <p>This Auction Starts At @Model.Auction.StartTime</p>
+                            }
+                            else if (Model.Auction.StartTime <= DateTime.Now && DateTime.Now <= Model.Auction.EndTime)
+                            {
+                                @Html.ActionLink("Click Here to go to Auction", "Index", "AuctionRoom", new { id = Model.Auction.PropertyID }, null)
+                            }
+
+
+
+                        }
+                        catch
+                        {
+
+
+                            <p>This Property Is Not Yet Scheduled For Auction</p>
+                        }
+                    }
+
+                }
+            }
+            if (registered == false)
+            {
+                <h2>
+                    Step 3: Auction Registration
+                </h2>
+                <h3>
+                    You Need To Register For Each Property You Want To Bid On
+                </h3>
+
+                @Html.ActionLink("Click Here to Register for this Auction.", "RegisterForAuction", "Buyers", new { id = Model.PropertyID }, Model)
+            }
+
+        }
+        else
+        {
+            <h2>
+                Step 3: Auction Registration
+            </h2>
+            <h3>
+                You Need To Register For Each Property You Want To Bid On
+            </h3>
+
+            @Html.ActionLink("Click Here to Register for this Auction.", "RegisterForAuction", "Buyers", new { id = Model.PropertyID }, Model)
+        }
+
+    }
+}
+
+else
+{
+    <h1>Profile</h1>
+    <h5>You Have To Sign Up Or Login With Auction-Prop Before You Can Register For Any Auction</h5>
+    <button onclick="@Html.ActionLink("Sign up | Log in","Register","Account")" />
 }
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
@@ -173,3 +319,5 @@
 
 <!-- Template Main JS File -->
 <script src="~/Scripts/main.js"></script>
+
+

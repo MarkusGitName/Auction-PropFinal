@@ -1103,7 +1103,7 @@ a:hover {
   }
 }
 
-/*------/ Intro Single /------*/
+/*------/ Intro1 Single /------*/
 .intro-single {
   padding: 12rem 0 3rem;
 }
@@ -1144,6 +1144,54 @@ a:hover {
 }
 
 .intro-single .breadcrumb {
+  background-color: transparent;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+/*------/ Intro /------*/
+
+.intro1 {
+  padding: 3rem 0 3rem;
+  color: #555555;
+}
+
+@media (max-width: 767px) {
+  .intro1 {
+    padding-top: 9rem;
+  }
+}
+
+.intro1 .title-single-box {
+  padding: 1rem 0 1rem 2rem;
+}
+
+.intro1 .title-single-box {
+  border-left: 3px solid #fa7f15;
+}
+
+.intro1 .title-single-box .title-single {
+  font-weight: 600;
+  font-size: 2.2rem;
+}
+
+@media (min-width: 768px) {
+  .intro1 .title-single-box .title-single {
+    font-size: 2.1rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .intro1 .title-single-box .title-single {
+    font-size: 2.5rem;
+  }
+}
+
+.intro1 .breadcrumb-box {
+  padding: 1rem 0 0 .5rem;
+}
+
+.intro1 .breadcrumb {
   background-color: transparent;
   padding-right: 0;
   padding-left: 0;

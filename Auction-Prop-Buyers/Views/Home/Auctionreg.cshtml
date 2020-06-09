@@ -1,19 +1,18 @@
-﻿@model Auction_Prop_Buyers.Models.SendCodeViewModel
+﻿@model Auction_Prop_Buyers.Models.DisplayMadels.AuctionRegistration
+
 @{
-    ViewBag.Title = "Send";
+    ViewBag.Title = "Auctionreg";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Auction-Prop.com | Verification Code</title>
+<title>Auction-Prop.com | Auction Registration</title>
 
 <!-- Favicons -->
 <link href="~/assets/img/fat.png" rel="icon">
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-<script src="https://kit.fontawesome.com/5cb4d6169e.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/ef4e2c1ac6.js" crossorigin="anonymous"></script>
 
 <!-- Vendor CSS Files -->
 <link rel="stylesheet" href="~/Content2/bootstrap1.min.css" type="text/css">
@@ -122,7 +121,7 @@
         <div class="row">
             <div class="col-md-12 col-lg-8">
                 <div class="title-single-box">
-                    <h1 class="title-single">Verificaiton Code</h1>
+                    <h1 class="title-single">Auction Registration</h1>
                 </div>
             </div>
             <div class="col-md-12 col-lg-4">
@@ -132,7 +131,7 @@
                             <a href="#">Home</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            Verification Code
+                            Auction Registration
                         </li>
                     </ol>
                 </nav>
@@ -143,21 +142,55 @@
 
 <!-- ======= Intro and Breadcrumb Section End ======= -->
 
-<h2>@ViewBag.Title</h2>
-
-@using (Html.BeginForm("SendCode", "Account", new { ReturnUrl = Model.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    @Html.Hidden("rememberMe", @Model.RememberMe)
-    <h4>Send verification code</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-8">
-            Select Two-Factor Authentication Provider:
-            @Html.DropDownListFor(model => model.SelectedProvider, Model.Providers)
-            <input type="submit" value="Submit" class="btn btn-b" />
-        </div>
-    </div>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <section class="intro1">
+        <div class="form-horizontal">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Signiture, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <div class="checkbox">
+                                        @Html.EditorFor(model => model.Signiture)
+                                        @Html.ValidationMessageFor(model => model.Signiture, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Bonded, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <div class="checkbox">
+                                        @Html.EditorFor(model => model.Bonded)
+                                        @Html.ValidationMessageFor(model => model.Bonded, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Submit" class="btn btn-b" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <div>
+                                        @Html.ActionLink("Back to List", "Index")
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </section>
+
 }
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>

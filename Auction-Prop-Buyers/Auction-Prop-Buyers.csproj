@@ -894,6 +894,10 @@
     <Content Include="Views\Home\Terms.cshtml" />
     <Content Include="Views\Home\Privacy.cshtml" />
     <Content Include="Views\Home\Add.cshtml" />
+    <Content Include="Views\Home\Auctionreg.cshtml" />
+    <Content Include="Views\Home\Bankgaurantee.cshtml" />
+    <Content Include="Views\Home\Preapproval.cshtml" />
+    <Content Include="Views\Home\Profilepage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

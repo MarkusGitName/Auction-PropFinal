@@ -36,9 +36,37 @@ namespace Auction_Prop_Buyers.Controllers
             return View();
         }
 
+        public ActionResult Profilepage()
+        {
+            ViewBag.Message = "Your Profile page.";
+
+            return View();
+        }
+
+        public ActionResult Bankgaurantee()
+        {
+            ViewBag.Message = "Bank Gaurantees page.";
+
+            return View();
+        }
+
+        public ActionResult Preapproval()
+        {
+            ViewBag.Message = "Pre Approvals page.";
+
+            return View();
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your Contact page.";
+
+            return View();
+        }
+
+        public ActionResult Auctionreg()
+        {
+            ViewBag.Message = "Auction Registration Page.";
 
             return View();
         }
