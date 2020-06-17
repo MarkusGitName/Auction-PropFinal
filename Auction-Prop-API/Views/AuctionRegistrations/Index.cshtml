@@ -16,6 +16,12 @@
             @Html.DisplayNameFor(model => model.AdminFee.ProofOfPaymentPath)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.BankApproval.ApprovalPath)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Guarintee.GuarinteePath)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Property.SellerID)
         </th>
         <th>
@@ -33,6 +39,9 @@
         <th>
             @Html.DisplayNameFor(model => model.RegistrationStatus)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bonded)
+        </th>
         <th></th>
     </tr>
 
@@ -40,6 +49,12 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.AdminFee.ProofOfPaymentPath)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BankApproval.ApprovalPath)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Guarintee.GuarinteePath)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Property.SellerID)
@@ -58,6 +73,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.RegistrationStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bonded)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

@@ -47,96 +47,94 @@ namespace Auction_Prop_API.Models.DataBaseModels
         public string Description { get; set; }
 
         [Required]
-        [StringLength(20)]
-        public string Type { get; set; }
+        [StringLength(50)]
+        public string RegistrationType { get; set; }
 
         [Required]
-        [StringLength(10)]
-        public string Status { get; set; }
+        [StringLength(50)]
+        public string PropertyType { get; set; }
 
         public int? BedRooms { get; set; }
 
         public int? BathRooms { get; set; }
 
-        public int? BuildingArea { get; set; }
+        public int? FloorSize { get; set; }
 
-        public int? TerraceArea { get; set; }
+        public int? YardSize { get; set; }
 
         public int? Garages { get; set; }
 
         [Column(TypeName = "money")]
-        public decimal PrpertyValue { get; set; }
-
-        [Column(TypeName = "money")]
-        public decimal? MinimubBid { get; set; }
+        public decimal? OpeningBid { get; set; }
 
         [Column(TypeName = "money")]
         public decimal? Reserve { get; set; }
 
-        [Required]
         [StringLength(500)]
         public string PlansPath { get; set; }
 
-        [Required]
+        [Column(TypeName = "money")]
+        public decimal? TaxesAndRate { get; set; }
+
+        [Column(TypeName = "money")]
+        public decimal? levies { get; set; }
+
         [StringLength(500)]
         public string TaxesAndRates { get; set; }
 
-        [Required]
         [StringLength(500)]
         public string TitleDeedPath { get; set; }
 
-        public DbGeography Location { get; set; }
+        [StringLength(500)]
+        public string HOARules { get; set; }
+
+       // public DbGeography Location = DbGeography.FromText("POINT(53.095124 -0.864716)", 4326);
 
         public bool ApprovalStatus { get; set; }
 
         public bool SellerSigniture { get; set; }
 
-        [Column("A/C")]
-        public bool A_C { get; set; }
-
-        public bool PetsAllowed { get; set; }
-
         public bool Garden { get; set; }
-
-        public bool CableTV { get; set; }
 
         public bool Terrace { get; set; }
 
-        [Column("wi-fi")]
-        public bool wi_fi { get; set; }
+        public bool Gerages { get; set; }
+
+        public bool SwimmingPool { get; set; }
 
         public bool Fibre { get; set; }
 
-        public bool Pool { get; set; }
+        public bool Clubhouse { get; set; }
 
-        public bool Balcony { get; set; }
-
-        public bool Parquet { get; set; }
-
-        public bool Beach { get; set; }
-
-        public bool Gerage { get; set; }
-
-        public bool RoofTarrace { get; set; }
-
-        public bool Sauna { get; set; }
+        public bool Braai { get; set; }
 
         public bool OutdoorKitchen { get; set; }
 
         public bool FireplacePit { get; set; }
 
-        public bool SunRoom { get; set; }
-
-        public bool ConcreteFlooring { get; set; }
-
-        public bool WoodFloring { get; set; }
-
         public bool TennisCourts { get; set; }
+
+        public bool Jacquizzi { get; set; }
+
+        public bool Parking { get; set; }
+
+        public bool Borehole { get; set; }
+
+        [StringLength(10)]
+        public string MandateType { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime? MandateSingedDate { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime? MandateExpireDate { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AuctionRegistration> AuctionRegistrations { get; set; }
 
         public virtual Auction Auction { get; set; }
+
+        public virtual ConcludedAuction ConcludedAuction { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PromoVideo> PromoVideos { get; set; }
@@ -146,4 +144,6 @@ namespace Auction_Prop_API.Models.DataBaseModels
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PropertyPhoto> PropertyPhotos { get; set; }
     }
+
+
 }

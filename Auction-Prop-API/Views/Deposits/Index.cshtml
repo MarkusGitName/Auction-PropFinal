@@ -30,6 +30,9 @@
         <th>
             @Html.DisplayNameFor(model => model.ProofOfReturnPayment)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
         <th></th>
     </tr>
 
@@ -52,6 +55,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ProofOfReturnPayment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.BuyerID }) |

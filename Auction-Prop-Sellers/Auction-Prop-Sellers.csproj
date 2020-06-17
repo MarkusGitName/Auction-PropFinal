@@ -38,7 +38,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -58,9 +58,13 @@
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=9.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsAzure.Storage.9.3.2\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
+    <Reference Include="SendGrid, Version=9.15.1.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\SendGrid.9.15.1\lib\net452\SendGrid.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -191,6 +195,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DataViewModels\Address.cs" />
     <Compile Include="Models\DataViewModels\Auction.cs" />
+    <Compile Include="Models\DataViewModels\Auctioneer.cs" />
     <Compile Include="Models\DataViewModels\AuctionRegistration.cs" />
     <Compile Include="Models\DataViewModels\Bid.cs" />
     <Compile Include="Models\DataViewModels\ConcludedAuction.cs" />
@@ -202,6 +207,7 @@
     <Compile Include="Models\DataViewModels\Retailer.cs" />
     <Compile Include="Models\DataViewModels\SellerAddress.cs" />
     <Compile Include="Models\DataViewModels\Seller.cs" />
+    <Compile Include="Models\EmailMessageInfo.cs" />
     <Compile Include="Models\ErrorModels\ErrorView.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -579,6 +585,7 @@
     <None Include="Properties\PublishProfiles\Auction-Prop-API20200523090812 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Auction-Prop-Sellers - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Auction-Prop-Sellers20200523103348 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -645,7 +652,6 @@
     <Content Include="Views\SellerRegistration\CreatePrivate.cshtml" />
     <Content Include="Views\SellerRegistration\AddAddress.cshtml" />
     <Content Include="Views\Shared\_SellersPartial.cshtml" />
-    <Content Include="Views\SellerDashboard\AddPropertyStyled.cshtml" />
     <Content Include="Views\SellerDashboard\Index.cshtml" />
     <Content Include="Views\SellerDashboard\CreateProperty.cshtml" />
     <Content Include="Views\SellerDashboard\_PhotoPartial.cshtml" />
@@ -655,6 +661,8 @@
     <Content Include="Views\SellerDashboard\Details.cshtml" />
     <Content Include="Views\SellerDashboard\ErrorView.cshtml" />
     <Content Include="Views\Home\ErrorView.cshtml" />
+    <Content Include="Views\SellerRegistration\CreateAuctioneer.cshtml" />
+    <Content Include="Views\SellerDashboard\AddPromoVideo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\Plans\" />
@@ -663,6 +671,11 @@
     <Folder Include="App_Data\uploads\PropertyPhotos\" />
     <Folder Include="App_Data\uploads\TaxesAndRates\" />
     <Folder Include="App_Data\uploads\TitleDeeds\" />
+    <Folder Include="uploads\HOARules\" />
+    <Folder Include="uploads\Plans\" />
+    <Folder Include="uploads\Propertyphotos\" />
+    <Folder Include="uploads\TaxesAndRates\" />
+    <Folder Include="uploads\Titledeeds\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

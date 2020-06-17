@@ -14,6 +14,8 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
         public string BuierID { get; set; }
 
         [Required]
+
+        [Display(Name = "Ubload youre banks Approvals.")]
         public HttpPostedFileBase ApprovalPath { get; set; }
 
         public bool BankApprovalApprovalstatus { get; set; }

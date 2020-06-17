@@ -13,14 +13,14 @@ namespace Auction_Prop_Sellers.Models.DataViewModels
 
     public partial class ConcludedAuction
     {
+
         [Key]
-        public int AuctionID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int PropertyID { get; set; }
 
-        public int? PropertyID { get; set; }
+        public int HiegestBid { get; set; }
 
-        [Column(TypeName = "money")]
-        public decimal? HiegestBid { get; set; }
-
+        [Required]
         [StringLength(128)]
         public string WinningBidder { get; set; }
 
@@ -28,13 +28,11 @@ namespace Auction_Prop_Sellers.Models.DataViewModels
 
         public bool? ExceededReserve { get; set; }
 
-        public virtual Auction Auction { get; set; }
-
         public virtual Bid Bid { get; set; }
 
-        public virtual Property Property { get; set; }
-
         public virtual RegisteredBuyer RegisteredBuyer { get; set; }
+
+        public virtual Property Property { get; set; }
     }
 
 }

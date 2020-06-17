@@ -1,4 +1,4 @@
-﻿@model Auction_Prop_Sellers.Models.DataViewModels.Seller
+﻿@model Auction_Prop_Sellers.Models.DataViewModels.SellersView
 
 @{
     ViewBag.Title = "CreateSeller";
@@ -7,12 +7,13 @@
 
 <h2>CreateSeller</h2>
 
-@using (Html.BeginForm())
-{
+
+<form action="" method="post" enctype="multipart/form-data">
+    
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Sellers</h4>
+        <h4>SellersView</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -34,9 +35,33 @@
         <div class="form-group">
             @Html.LabelFor(model => model.SellerType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.SellerType, new SelectList(new[] { new { Value = "Private", Text = "Private" }, new { Value = "Retailer", Text = "Retailer" }, new { Value = "Other", Text = "Other" } }, "Value", "Text", Model))
-
+                @Html.DropDownListFor(model => model.SellerType, new SelectList(new String[] { "Auctioneer", "Retailer", "Private" }) , new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.SellerType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProfilePhoto, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ProfilePhoto, new {Type = "file" })
+                @Html.ValidationMessageFor(model => model.ProfilePhoto, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SellerNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SellerNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SellerNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SellerEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SellerEmail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SellerEmail, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -50,7 +75,7 @@
             </div>
         </div>
 
-
+        
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -58,8 +83,12 @@
             </div>
         </div>
     </div>
-}
+    </form>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

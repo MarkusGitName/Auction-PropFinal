@@ -25,5 +25,7 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
         public virtual Bid Bid { get; set; }
 
         public virtual RegisteredBuyer RegisteredBuyer { get; set; }
+
+        public virtual Property Property { get; set; }
     }
 }

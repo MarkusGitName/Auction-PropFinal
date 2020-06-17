@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Auction_Prop_API.Models.DataBaseModels.Seller>
+﻿@model Auction_Prop_API.Models.DataBaseModels.Seller
 
 @{
     ViewBag.Title = "Index";
@@ -7,64 +7,101 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
+<div>
+    <h4>Seller</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Auctioneer.CompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Auctioneer.CompanyName)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.PrivateSeller.IDNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Retaileler.RetailerName)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrivateSeller.IDNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Retailer.RetailerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Retailer.RetailerName)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.FirtstName)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirtstName)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.SellerType)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SellerType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProfilePhoto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProfilePhoto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SellerNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SellerNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SellerEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SellerEmail)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Signature)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Signature)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.ApprovalStatus)
-        </th>
-        <th></th>
-    </tr>
+        </dt>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PrivateSeller.IDNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Retaileler.RetailerName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirtstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SellerType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Signature)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApprovalStatus)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UserID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UserID })
-        </td>
-    </tr>
-}
+        <dd>
+            @Html.DisplayFor(model => model.ApprovalStatus)
+        </dd>
 
-</table>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

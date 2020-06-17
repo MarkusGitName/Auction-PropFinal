@@ -12,21 +12,25 @@ namespace Auction_Prop_Sellers.Models.DataViewModels
         public string UserID { get; set; }
 
         [Required]
+        [StringLength(128)]
         public string RetailerName { get; set; }
+
+        [StringLength(40)]
+        public string Branch { get; set; }
 
         [StringLength(11)]
         public string CompanyContactNumber { get; set; }
 
+        [StringLength(128)]
         public string CompanyEmail { get; set; }
-
-        public HttpPostedFileBase ProfilePhotoPath { get; set; }
-
-        [Required]
-        public HttpPostedFileBase ProofOfResedence { get; set; }
+    
+        public HttpPostedFileBase CompaynLogoPath { get; set; }
 
         public bool Signature { get; set; }
 
-        public virtual Seller seller { get; set; }
+        public string CompanyDescription { get; set; }
+
+        public virtual Seller Seller { get; set; }
     }
 
     public class Retailer
@@ -35,20 +39,26 @@ namespace Auction_Prop_Sellers.Models.DataViewModels
         public string UserID { get; set; }
 
         [Required]
+        [StringLength(128)]
         public string RetailerName { get; set; }
+
+        [StringLength(40)]
+        public string Branch { get; set; }
 
         [StringLength(11)]
         public string CompanyContactNumber { get; set; }
 
+        [StringLength(128)]
         public string CompanyEmail { get; set; }
 
-        public string ProfilePhotoPath { get; set; }
-
-        [Required]
-        public string ProofOfResedence { get; set; }
+        [StringLength(500)]
+        public string CompaynLogoPath { get; set; }
 
         public bool Signature { get; set; }
 
-        public virtual Seller seller { get; set; }
+        [StringLength(500)]
+        public string CompanyDescription { get; set; }
+
+        public virtual Seller Seller { get; set; }
     }
 }

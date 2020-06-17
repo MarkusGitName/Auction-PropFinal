@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Auction_Prop_API.Models.DataBaseModels.Property>
+﻿@using Auction_Prop_API.Models.DataBaseModels
+@model IEnumerable<Property>
 
 @{
     ViewBag.Title = "Index";
@@ -14,6 +15,9 @@
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Auction.PropertyID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Seller.UserID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Seller.FirtstName)
@@ -37,10 +41,10 @@
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Type)
+            @Html.DisplayNameFor(model => model.RegistrationType)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Status)
+            @Html.DisplayNameFor(model => model.PropertyType)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.BedRooms)
@@ -49,19 +53,16 @@
             @Html.DisplayNameFor(model => model.BathRooms)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BuildingArea)
+            @Html.DisplayNameFor(model => model.FloorSize)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TerraceArea)
+            @Html.DisplayNameFor(model => model.YardSize)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Garages)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PrpertyValue)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MinimubBid)
+            @Html.DisplayNameFor(model => model.OpeningBid)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Reserve)
@@ -70,13 +71,19 @@
             @Html.DisplayNameFor(model => model.PlansPath)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.TaxesAndRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.levies)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.TaxesAndRates)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TitleDeedPath)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Location)
+            @Html.DisplayNameFor(model => model.HOARules)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ApprovalStatus)
@@ -85,46 +92,25 @@
             @Html.DisplayNameFor(model => model.SellerSigniture)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.A_C)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PetsAllowed)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Garden)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CableTV)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Terrace)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.wi_fi)
+            @Html.DisplayNameFor(model => model.Gerages)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SwimmingPool)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Fibre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Pool)
+            @Html.DisplayNameFor(model => model.Clubhouse)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Balcony)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Parquet)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Beach)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gerage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RoofTarrace)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sauna)
+            @Html.DisplayNameFor(model => model.Braai)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.OutdoorKitchen)
@@ -133,16 +119,25 @@
             @Html.DisplayNameFor(model => model.FireplacePit)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SunRoom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConcreteFlooring)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.WoodFloring)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.TennisCourts)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Jacquizzi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Parking)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Borehole)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MandateType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MandateSingedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MandateExpireDate)
         </th>
         <th></th>
     </tr>
@@ -151,6 +146,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Auction.PropertyID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seller.UserID)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Seller.FirtstName)
@@ -174,10 +172,10 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Type)
+            @Html.DisplayFor(modelItem => item.RegistrationType)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Status)
+            @Html.DisplayFor(modelItem => item.PropertyType)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.BedRooms)
@@ -186,19 +184,16 @@
             @Html.DisplayFor(modelItem => item.BathRooms)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.BuildingArea)
+            @Html.DisplayFor(modelItem => item.FloorSize)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TerraceArea)
+            @Html.DisplayFor(modelItem => item.YardSize)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Garages)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PrpertyValue)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MinimubBid)
+            @Html.DisplayFor(modelItem => item.OpeningBid)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Reserve)
@@ -207,13 +202,21 @@
             @Html.DisplayFor(modelItem => item.PlansPath)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.TaxesAndRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.levies)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.TaxesAndRates)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TitleDeedPath)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Location)
+            @Html.DisplayFor(modelItem => item.HOARules)
+        </td>
+        <td>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ApprovalStatus)
@@ -222,46 +225,25 @@
             @Html.DisplayFor(modelItem => item.SellerSigniture)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.A_C)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PetsAllowed)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Garden)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CableTV)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Terrace)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.wi_fi)
+            @Html.DisplayFor(modelItem => item.Gerages)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SwimmingPool)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Fibre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Pool)
+            @Html.DisplayFor(modelItem => item.Clubhouse)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Balcony)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Parquet)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Beach)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gerage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RoofTarrace)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sauna)
+            @Html.DisplayFor(modelItem => item.Braai)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.OutdoorKitchen)
@@ -270,16 +252,32 @@
             @Html.DisplayFor(modelItem => item.FireplacePit)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SunRoom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConcreteFlooring)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WoodFloring)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.TennisCourts)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Jacquizzi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parking)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Borehole)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MandateType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MandateSingedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MandateExpireDate)
+        </td>
+        <td>
+            @foreach(PropertyPhoto pp in item.PropertyPhotos)
+            {
+              <p> pp.PropertyPhotoPath</p>
+               <img src=@pp.PropertyPhotoPath />
+            }
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.PropertyID }) |

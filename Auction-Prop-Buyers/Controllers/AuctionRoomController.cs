@@ -28,6 +28,11 @@ namespace Auction_Prop_Buyers.Controllers
             }
 
         }
+        public ActionResult Auction()
+        {
+            return View();
+
+        }
         public ActionResult ErrorView(ErrorView error)
         {
             return View();

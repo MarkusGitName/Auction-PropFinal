@@ -15,6 +15,10 @@ namespace Auction_Prop_Buyers.Controllers
         {
             return View();
         }
+         public ActionResult HowItWorks()
+        {
+            return View();
+        }
 
 
         public ActionResult Properties()
@@ -24,7 +28,7 @@ namespace Auction_Prop_Buyers.Controllers
 
         public ActionResult Buyers()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Buyers";
 
             return View();
         }
@@ -74,8 +78,8 @@ namespace Auction_Prop_Buyers.Controllers
         {
             try
             {
-                 Property prop = APIMethods.APIGet<Property>(id.ToString(), "Properties");
-                 return View(prop);
+                Property prop = APIMethods.APIGet<Property>(id.ToString(), "Properties");
+                return View(prop);
             }
             catch (Exception E)
             {

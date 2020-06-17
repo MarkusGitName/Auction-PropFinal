@@ -11,7 +11,6 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Auction_Prop_API.Models.DataBaseModels;
 
-
 namespace Auction_Prop_API.Controllers.APIControllers
 {
     public class AddressesController : ApiController

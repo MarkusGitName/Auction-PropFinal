@@ -21,6 +21,9 @@
         <th>
             @Html.DisplayNameFor(model => model.DateOfPayment)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
         <th></th>
     </tr>
 
@@ -34,6 +37,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DateOfPayment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.PaymentID }) |

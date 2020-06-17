@@ -73,17 +73,17 @@ namespace Auction_Prop_Buyers.Controllers
                         
                     };
 
-                    newData.ProfilePhotoPath = FileController.PostFile(model.ProfilePhotoPath, Server.MapPath("~/App_Data/uploads/ProfilePhotos"), "profilephotos");
-                    newData.ProofOfResidencePath = FileController.PostFile(model.ProofOfResidencePath, Server.MapPath("~/App_Data/uploads/ProofOfResedence"), "proofofresedence");
-                    newData.CopyOfIDPath = FileController.PostFile(model.CopyOfIDPath, Server.MapPath("~/App_Data/uploads/CopyOfIDPath"), "copyofid");
-                    newData.IDBuyerVerifyPhoto = FileController.PostFile(model.IDBuyerVerifyPhoto, Server.MapPath("~/App_Data/uploads/CopyOfIDPath"), "idbuyerferifyphoto");
-                    newData.ProofOfBankAccount = FileController.PostFile(model.ProofOfBankAccount, Server.MapPath("~/App_Data/uploads/CopyOfIDPath"), "proofofbankaccount");
+                    newData.ProfilePhotoPath = FileController.PostFile(model.ProfilePhotoPath, "ProfilePhotos", "ProfilePhotos");
+                    newData.ProofOfResidencePath = FileController.PostFile(model.ProofOfResidencePath, "ProofOfResedence", "ProofOfResedence");
+                    newData.CopyOfIDPath = FileController.PostFile(model.CopyOfIDPath, "CopyOfIDPath", "CopyOfIDPath");
+                    newData.IDBuyerVerifyPhoto = FileController.PostFile(model.IDBuyerVerifyPhoto, "IdBuyerVerifyPhoto", "IdBuyerVerifyPhoto");
+                    newData.ProofOfBankAccount = FileController.PostFile(model.ProofOfBankAccount, "ProofOfBankAccount", "ProofOfBankAccount");
 
 
 
                     //Call Post Method
                     RegisteredBuyer ob = APIMethods.APIPost<RegisteredBuyer>(newData, "RegisteredBuyers");
-                    return RedirectToAction("Index");
+                    return RedirectToAction("CreateAddress");
                 }
                 catch (Exception E)
                 {
@@ -160,7 +160,7 @@ namespace Auction_Prop_Buyers.Controllers
 
         }
 
-        public ActionResult AddBankGuarintee(int id,GuarinteeViewModel model)
+        public ActionResult AddBankGuarintee(int id, GuarinteeViewModel model)
         {
             
             if (ModelState.IsValid)
@@ -174,7 +174,7 @@ namespace Auction_Prop_Buyers.Controllers
                         AuctionRegistrationID = id,
                         DateOfSubmition = DateTime.Now
                       };
-                     newModel.GuarinteePath = FileController.PostFile(model.GuarinteePath, Server.MapPath("~/App_Data/uploads/Guarintees"), "guarintees");
+                     newModel.GuarinteePath = FileController.PostFile(model.GuarinteePath, "Guarintees", "guarintees");
 
                      //Call Post Method
                       APIMethods.APIPost<Guarintee>(newModel, "Guarintees");
@@ -183,21 +183,20 @@ namespace Auction_Prop_Buyers.Controllers
                 }
                 catch (Exception E)
                 {
-                    throw new Exception("Something went wrong. Please try again");
+                    throw new Exception("Something went wrong. Please try again"+E.Message);
                 }
             }
             else
             {
-                return View(id);
+                return View(model);
             }
         }
-        public ActionResult AdPreApproval(int id,BankApprovalView model)
+        public ActionResult AdPreApproval(int id, BankApprovalView model)
         {
             
             if (ModelState.IsValid)
             {
                 
-
                 try
                 {
                      BankApproval newModel = new BankApproval
@@ -205,7 +204,7 @@ namespace Auction_Prop_Buyers.Controllers
                         AuctionRegistrationID = id,
                         DateOfSubmision = DateTime.Now
                       };
-                     newModel.ApprovalPath = FileController.PostFile(model.ApprovalPath, Server.MapPath("~/App_Data/uploads/Guarintees"), "bankapprovals");
+                     newModel.ApprovalPath = FileController.PostFile(model.ApprovalPath, "bankapprovals", "bankapprovals");
 
                      //Call Post Method
                       APIMethods.APIPost<Guarintee>(newModel, "BankApprovals");
@@ -219,7 +218,7 @@ namespace Auction_Prop_Buyers.Controllers
             }
             else
             {
-                return View();
+                return View(model);
             }
         }
 

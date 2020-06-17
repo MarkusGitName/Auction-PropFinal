@@ -18,6 +18,9 @@ namespace Auction_Prop_API.Models.DataBaseModels
         [Column(TypeName = "date")]
         public DateTime? DateOfPayment { get; set; }
 
+        [Column(TypeName = "money")]
+        public decimal? Amount { get; set; }
+
         public virtual AuctionRegistration AuctionRegistration { get; set; }
     }
 }

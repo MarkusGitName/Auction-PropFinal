@@ -15,10 +15,13 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
 
         public int PropertyID { get; set; }
 
+
         public bool RegistrationFees { get; set; }
 
         public DateTime RegesterDate { get; set; }
+
         [Required]
+        [Display(Name = "Click the checkbox if you accept our Terms And Conditions")]
         public bool Signiture { get; set; }
 
         public bool RegistrationStatus { get; set; }

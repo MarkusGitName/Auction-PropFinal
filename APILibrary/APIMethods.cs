@@ -11,7 +11,10 @@ namespace APILibrary
 {
     public class APIMethods
     {
-        public static string url = "https://auction-prop-api.azurewebsites.net/api/";
+      //  public static string url = "https://auction-prop-api.azurewebsites.net/api/";
+       // public static string url = "https://localhost:44320/api/";
+        public static string url = "http://api.auction-prop.com/api/";
+      // public static string url = "https://localhost:44320/api/";
 
 
         public static T APIPost<T>(object model, string APIAddress)
@@ -90,7 +93,6 @@ namespace APILibrary
             try
             {
                 var request = (HttpWebRequest)WebRequest.Create(url + APIAddress + "/" + id);
-                //var request = (HttpWebRequest)WebRequest.Create("sellers/bb9d734c-b26d-4dd3-ae0b-605ac6623407                                                                                            ");
                 request.Accept = "application/json"; //"application/xml"; 
                 request.Method = "GET";
 
@@ -264,7 +266,7 @@ namespace APILibrary
                  JavaScriptSerializer jss = new JavaScriptSerializer();
 
 
-                    jss.MaxJsonLength = 10 * 1024 * 1024;
+                    jss.MaxJsonLength = 10 * 2024 * 2024;
                 response = (HttpWebResponse)request.GetResponse();
 
                 ResponseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
@@ -288,13 +290,17 @@ namespace APILibrary
 
                 ResponseString = "Some error occured: " + ex.ToString();
             }
+            catch(System.StackOverflowException Stack)
+            {
+
+            }
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 return (T)model;
             }
             else
             {
-                throw new Exception();
+                throw new Exception(response.StatusDescription+ url + APIAddress);
 
             }
         }

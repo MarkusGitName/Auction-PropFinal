@@ -12,9 +12,9 @@ namespace Auction_Prop_API.Models.DataBaseModels
         {
         }
 
-        public virtual DbSet<Actioneer> Actioneers { get; set; }
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<AdminFee> AdminFees { get; set; }
+        public virtual DbSet<Auctioneer> Auctioneers { get; set; }
         public virtual DbSet<AuctionRegistration> AuctionRegistrations { get; set; }
         public virtual DbSet<Auction> Auctions { get; set; }
         public virtual DbSet<BankApproval> BankApprovals { get; set; }
@@ -29,7 +29,7 @@ namespace Auction_Prop_API.Models.DataBaseModels
         public virtual DbSet<Property> Properties { get; set; }
         public virtual DbSet<PropertyPhoto> PropertyPhotos { get; set; }
         public virtual DbSet<RegisteredBuyer> RegisteredBuyers { get; set; }
-        public virtual DbSet<Retaileler> Retailelers { get; set; }
+        public virtual DbSet<Retailer> Retailers { get; set; }
         public virtual DbSet<SellerAddress> SellerAddresses { get; set; }
         public virtual DbSet<Seller> Sellers { get; set; }
 
@@ -62,6 +62,14 @@ namespace Auction_Prop_API.Models.DataBaseModels
 
             modelBuilder.Entity<AdminFee>()
                 .Property(e => e.ProofOfPaymentPath)
+                .IsFixedLength();
+
+            modelBuilder.Entity<AdminFee>()
+                .Property(e => e.Amount)
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<Auctioneer>()
+                .Property(e => e.CompanyContactNumber)
                 .IsFixedLength();
 
             modelBuilder.Entity<AuctionRegistration>()
@@ -99,6 +107,10 @@ namespace Auction_Prop_API.Models.DataBaseModels
                 .Property(e => e.ProofOfReturnPayment)
                 .IsFixedLength();
 
+            modelBuilder.Entity<Deposit>()
+                .Property(e => e.Amount)
+                .HasPrecision(19, 4);
+
             modelBuilder.Entity<Guarintee>()
                 .Property(e => e.GuarinteePath)
                 .IsFixedLength();
@@ -120,10 +132,6 @@ namespace Auction_Prop_API.Models.DataBaseModels
                 .IsFixedLength();
 
             modelBuilder.Entity<PrivateSeller>()
-                .Property(e => e.ProfilePhotoPath)
-                .IsFixedLength();
-
-            modelBuilder.Entity<PrivateSeller>()
                 .Property(e => e.ProofOfResedence)
                 .IsFixedLength();
 
@@ -132,27 +140,11 @@ namespace Auction_Prop_API.Models.DataBaseModels
                 .IsFixedLength();
 
             modelBuilder.Entity<Property>()
-                .Property(e => e.Address)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Property>()
                 .Property(e => e.Description)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Property>()
-                .Property(e => e.Type)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Property>()
-                .Property(e => e.Status)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Property>()
-                .Property(e => e.PrpertyValue)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<Property>()
-                .Property(e => e.MinimubBid)
+                .Property(e => e.OpeningBid)
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Property>()
@@ -160,15 +152,15 @@ namespace Auction_Prop_API.Models.DataBaseModels
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Property>()
-                .Property(e => e.PlansPath)
-                .IsFixedLength();
+                .Property(e => e.TaxesAndRate)
+                .HasPrecision(19, 4);
 
             modelBuilder.Entity<Property>()
-                .Property(e => e.TaxesAndRates)
-                .IsFixedLength();
+                .Property(e => e.levies)
+                .HasPrecision(19, 4);
 
             modelBuilder.Entity<Property>()
-                .Property(e => e.TitleDeedPath)
+                .Property(e => e.MandateType)
                 .IsFixedLength();
 
             modelBuilder.Entity<Property>()
@@ -178,6 +170,10 @@ namespace Auction_Prop_API.Models.DataBaseModels
 
             modelBuilder.Entity<Property>()
                 .HasOptional(e => e.Auction)
+                .WithRequired(e => e.Property);
+
+            modelBuilder.Entity<Property>()
+                .HasOptional(e => e.ConcludedAuction)
                 .WithRequired(e => e.Property);
 
             modelBuilder.Entity<Property>()
@@ -228,24 +224,8 @@ namespace Auction_Prop_API.Models.DataBaseModels
                 .HasOptional(e => e.Deposit)
                 .WithRequired(e => e.RegisteredBuyer);
 
-            modelBuilder.Entity<Retaileler>()
-                .Property(e => e.RetailerName)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Retaileler>()
+            modelBuilder.Entity<Retailer>()
                 .Property(e => e.CompanyContactNumber)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Retaileler>()
-                .Property(e => e.CompanyEmail)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Retaileler>()
-                .Property(e => e.ProfilePhotoPath)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Retaileler>()
-                .Property(e => e.ProofOfResedence)
                 .IsFixedLength();
 
             modelBuilder.Entity<Seller>()
@@ -261,7 +241,7 @@ namespace Auction_Prop_API.Models.DataBaseModels
                 .IsFixedLength();
 
             modelBuilder.Entity<Seller>()
-                .HasOptional(e => e.Actioneer)
+                .HasOptional(e => e.Auctioneer)
                 .WithRequired(e => e.Seller);
 
             modelBuilder.Entity<Seller>()
@@ -276,9 +256,10 @@ namespace Auction_Prop_API.Models.DataBaseModels
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Seller>()
-                .HasOptional(e => e.Retaileler)
+                .HasOptional(e => e.Retailer)
                 .WithRequired(e => e.Seller)
                 .WillCascadeOnDelete();
         }
-    }
+
+   }
 }

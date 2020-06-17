@@ -15,9 +15,6 @@ namespace Auction_Prop_API.Models.DataBaseModels
         [StringLength(13)]
         public string IDNumber { get; set; }
 
-        [StringLength(500)]
-        public string ProfilePhotoPath { get; set; }
-
         [Required]
         [StringLength(500)]
         public string ProofOfResedence { get; set; }

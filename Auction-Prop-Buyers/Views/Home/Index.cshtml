@@ -11,586 +11,624 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
-    <script src="https://kit.fontawesome.com/ef4e2c1ac6.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="~/Content/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="~/Content2/bootstrap-select.min.css" type="text/css">
-    <link rel="stylesheet" href="~/Content2/jquery.slider.min.css" type="text/css">
-    <link rel="stylesheet" href="~/Content/StyleSheet1.css" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
     <title>Auction-Prop.com | Home</title>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <style>
-        .carousel-inner > .item > img,
-        .carousel-inner > .item > a > img {
-            width: 100%;
-            margin: auto;
-        }
-    </style>
+    <!-- Favicons -->
+    <link href="~/assets/img/fat.png" rel="icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ef4e2c1ac6.js" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" crossorigin="anonymous"></script>
+
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="~/Content2/bootstrap1.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content2/ionicons.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content2/animate.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content2/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="~/assets/css/counter.css" type="text/css">
+
+    <!-- Template Main CSS File -->
+    <link href="~/assets/css/style.css" rel="stylesheet">
+
 </head>
 <body>
-    <section>
-        <div class="container" style="min-width:100%">
-            <br>
-            <div id="myCarousel" class="carousel slide" data-ride="carousel" >
-                <!-- Indicators -->
 
-                <!-- Wrapper for slides -->
-                    <div class="carousel-inner" role="listbox">
+    <!-- ======= Property Search Section Start ======= -->
+    <div class="click-closed"></div>
 
-                        <div class="item active">
-                            <img src="https://pbs.twimg.com/media/EGHYvttU4AAYKb7?format=jpg&name=large" class="d-block w-100" alt="...", style="im">
-                           
-                        </div>
-
-                        <div class="item">
-                            <img src="https://pbs.twimg.com/media/EGHYvtkUcAAuc8T?format=jpg&name=large" class="d-block w-100" alt="...">
-                           
-                        </div>
-
-                        <div class="item">
-                            <img src="https://pbs.twimg.com/media/EGHYvtjU0AAO8w1?format=jpg&name=large" class="d-block w-100" alt="...">
-                           
-                        </div>
-
-                        <div class="item">
-                            <img src="https://pbs.twimg.com/media/EGHYvtkUcAAuc8T?format=jpg&name=large" class="d-block w-100" alt="...">
-                           
-                        </div>
-
-                    <div>
-                        <section class="search-sec" >
-                            <div class="container">
-                                <form action="#" method="post" novalidate="novalidate">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="row">
-                                                <div class="col-md-2 col-sm-4">
-                                                    <select class="form-control search-slt" id="exampleFormControlSelect1">
-                                                        <option>Country</option>
-                                                        <option>South Africa</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-2 col-sm-4">
-                                                    <select class="form-control search-slt" id="exampleFormControlSelect1">
-                                                        <option>Province</option>
-                                                        <option>Gauteng</option>
-                                                        <option>Free State</option>
-                                                        <option>North West</option>
-                                                        <option>Limpopo</option>
-                                                        <option>Mpumalanga</option>
-                                                        <option>Kwazulu Natal</option>
-                                                        <option>Eastern Cape</option>
-                                                        <option>Northern Cape</option>
-                                                        <option>Western Cape</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-2 col-sm-4">
-                                                    <select class="form-control search-slt" id="exampleFormControlSelect1">
-                                                        <option>City</option>
-                                                        <option>Johannesburg</option>
-                                                        <option>Pretoria</option>
-                                                        <option>Bloemfontein</option>
-                                                        <option>Nelspruit</option>
-                                                        <option>Polokwane</option>
-                                                        <option>Durban
-                                                        <option>
-                                                        <option>Cape Town</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-2 col-sm-4">
-                                                    <select class="form-control search-slt" id="exampleFormControlSelect1">
-                                                        <option>Property Type</option>
-                                                        <option>Residential</option>
-                                                        <option>Commercial</option>
-                                                        <option>Agricultural</option>
-                                                        <option>Investment</option>
-                                                        <option>Bank Instruction</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-2 col-sm-4">
-                                                    <select class="form-control search-slt" id="exampleFormControlSelect1">
-                                                        <option>Property Status</option>
-                                                        <option>For Sale</option>
-                                                        <option>On Auction</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-2 col-sm-4">
-                                                    <button type="button" class="btn btn-default wrn-btn">Search</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-
-                        </section>
-                    </div>
-                </div>
-           
-
-                <!-- Left and right controls -->
-                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev" >
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
+    <div class="box-collapse">
+        <div class="title-box-d">
+            <h3 class="title-d">Search Property</h3>
         </div>
-      
-     </section>
-
-
-      
-
-            <!-- Slider End -->
-            <!-- Start Search Box -->
-            <!--<div class="search-box-wrapper">
-            <div class="search-box-inner">
-                <div class="container">
-                    <div class="search-box map">
-                        <form role="form" id="form-map-sale" class="form-map form-search clearfix">
-                            <div class="row">
-                                <div class="col-md-2 col-sm-4">
-                                    <div class="form-group">
-                                        <select name="form-sale-country">
-                                            <option value="">Country</option>
-                                            <option value="1">South Africa</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 col-sm-4">
-                                    <div class="form-group">
-                                        <select name="form-sale-district">
-                                            <option value="">Province</option>
-                                            <option value="1">Gauteng</option>
-                                            <option value="2">Free State</option>
-                                            <option value="3">North West</option>
-                                            <option value="4">Limpopo</option>
-                                            <option value="5">Mpumalanga</option>
-                                            <option value="6">Kwazulu-Natal</option>
-                                            <option value="7">Western Cape</option>
-                                            <option value="8">Northern Cape</option>
-                                            <option value="9">Eastern Cape</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 col-sm-4">
-                                    <div class="form-group">
-                                        <select name="form-sale-city">
-                                            <option value="">City</option>
-                                            <option value="1">Johannesburg</option>
-                                            <option value="2">Pretoria</option>
-                                            <option value="3">Cape Town</option>
-                                            <option value="4">Bloemfontein</option>
-                                            <option value="5">Durban</option>
-                                            <option value="6">Nelspruit</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 col-sm-4">
-                                    <div class="form-group">
-                                        <select name="form-sale-property-type">
-                                            <option value="">Property Type</option>
-                                            <option value="1">Residential</option>
-                                            <option value="2">Commercial</option>
-                                            <option value="3">Agricultural</option>
-                                            <option value="4">Investment</option>
-                                            <option value="5">Bank Instruction</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 col-sm-4">
-                                    <div class="form-group">
-                                        <select name="form-sale-price">
-                                            <option value="">Property Status</option>
-                                            <option value="1">Auction</option>
-                                            <option value="2">For Sale</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 col-sm-4">
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-default">Search Now</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>-->
-            <!-- End Search Box -->
-            <!-- Page Content -->
-       <!-- /#banner -->
-        <!-- Our Services Start -->
-        <!--<section id="our-services" class="block">
-        <div class="container">
-            <header class="section-title"><h2>Our Services:</h2></header>
-            <div class="row">
-                <div class="col-md-4 col-sm-4">
-                    <div class="feature-box equal-height">
-                        <figure class="icon"><i class="fa fa-folder"></i></figure>
-                        <aside class="description">
-                            <header><h3>Wide Range of Properties</h3></header>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                            <a href="properties-listing.html" class="link-arrow">Read More</a>
-                        </aside>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                    <div class="feature-box equal-height">
-                        <figure class="icon"><i class="fa fa-users"></i></figure>
-                        <aside class="description">
-                            <header><h3>14 Agents for Your Service</h3></header>
-                            <p>Aliquam gravida magna et fringilla convallis. Pellentesque habitant morbi </p>
-                            <a href="agents-listing.html" class="link-arrow">Read More</a>
-                        </aside>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                    <div class="feature-box equal-height">
-                        <figure class="icon"><i class="fa fa-money"></i></figure>
-                        <aside class="description">
-                            <header><h3>Best Price Guarantee!</h3></header>
-                            <p>Phasellus non viverra tortor, id auctor leo. Suspendisse id nibh placerat</p>
-                            <a href="#" class="link-arrow">Read More</a>
-                        </aside>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>-->
-        <!-- Our Services End -->
-        <section id="price-drop" class="block">
-            @{
-                ICollection<Property> PropLys = APILibrary.APIMethods.APIGetALL<ICollection<Property>>("Properties");
-
-                List<Property> DisplyPropLys = new List<Property>();
-
-
-
-                <div class="container">
-                    <header class="section-title">
-                        <h2>Upcoming Auctions</h2>
-                        <a href="properties-listing.html" class="link-arrow">All Properties</a>
-                    </header>
-                </div>
+        <span class="close-box-collapse right-boxed ion-ios-close"></span>
+        <div class="box-collapse-wrap form">
+            <form class="form-a">
                 <div class="row">
-                    @foreach (Property prop in PropLys)
-                    {
+                    <div class="col-md-12 mb-2">
+                        <div class="form-group">
+                            <label for="Type">Keyword</label>
+                            <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group">
+                            <label for="Type">Type</label>
+                            <select class="form-control form-control-lg form-control-a" id="Type">
+                                <option>All Types</option>
+                                <option>Residential</option>
+                                <option>Commercial</option>
+                                <option>Agricultural</option>
+                                <option>Investment</option>
+                                <option>Bank Instruction</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <select class="form-control form-control-lg form-control-a" id="city">
+                                <option>All City's</option>
+                                <option>Johannesburg</option>
+                                <option>Pretoria</option>
+                                <option>Durban</option>
+                                <option>Cape Town</option>
+                                <option>Nelspruit</option>
+                                <option>Polokwane</option>
+                                <option>East London</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group">
+                            <label for="bedrooms">Bedrooms</label>
+                            <select class="form-control form-control-lg form-control-a" id="bedrooms">
+                                <option>Any</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>3+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group">
+                            <label for="garages">Garages</label>
+                            <select class="form-control form-control-lg form-control-a" id="garages">
+                                <option>Any</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>3+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group">
+                            <label for="bathrooms">Bathrooms</label>
+                            <select class="form-control form-control-lg form-control-a" id="bathrooms">
+                                <option>Any</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>3+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-b">Search Property</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- ======= Property Search Section End ======= -->
+    <!-- ======= Intro Section Start ======= -->
+    <div class="intro intro-carousel">
+        <div id="carousel" class="owl-carousel owl-theme">
+            <div class="carousel-item-a intro-item bg-image" style="background-image: url()">
+                <div class="overlay overlay-a"></div>
+                <div class="intro-content display-table">
+                    <div class="table-cell">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="intro-body text-lg-center">
 
+                                        <h1 class="intro-title text-center">
+                                            SA's HOME FOR ONLINE PROPERTY AUCTIONS
+                                            <br />
+                                        </h1>
+                                        <p class="intro-subtitle intro-price">
+                                            <a href="#"><span><strong>@Html.ActionLink("Upcomming Auctions", "Properties", "Home", new { @class = "price-a" })</strong></span></a>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <img src="~/assets/img/door.jpeg" />
+            </div>
+            <div class="carousel-item-a intro-item bg-image" style="background-image: url()">
+                <div class="overlay overlay-a"></div>
+                <div class="intro-content display-table">
+                    <div class="table-cell">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="intro-body text-lg-center">
+
+                                        <h1 class="intro-title text-center">
+
+                                            BUYING A PROPERTY ON<span class="color-b"> AUCTION </span> MADE EASY
+                                            <br />
+
+                                        </h1>
+                                        <p class="intro-subtitle intro-price">
+                                            <a href="#"><span><strong>@Html.ActionLink("Buyers Guide", "Buyers", "Home", new { @class = "price-a" })</strong></span></a>
+                                        </p>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <img src="~/assets/img/white.jpg" />
+            </div>
+            <div class="carousel-item-a intro-item bg-image" style="background-image: url(~/assets/img/slide-3.jpg)">
+                <div class="overlay overlay-a"></div>
+                <div class="intro-content display-table">
+                    <div class="table-cell">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="intro-body text-lg-center">
+
+                                        <h1 class="intro-title text-center">
+                                            DO YOU WANT TO    <span class="color-b"> SELL </span> YOUR PROPERTY?
+                                            <br />
+
+                                        </h1>
+                                        <p class="intro-subtitle intro-price">
+                                            <a href="#"><span><strong>@Html.ActionLink("Sellers Guide", "Sellers", "Home", new { @class = "price-a" })</strong></span></a>
+                                        </p>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <img src="~/assets/img/night.jpg" />
+            </div>
+        </div>
+    </div>
+
+    <!-- ======= Latest Properties Section Start ======= -->
+    <section class="section-property section-t8">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title-wrap d-flex justify-content-between">
+                        <div class="title-box">
+                            <h2 class="title-a">Upcoming Auctions</h2>
+                        </div>
+                        <div class="title-link">
+                            <a>
+                                @Html.ActionLink("All Properties", "Properties", "home", new { @class = "nav-link" }, null)
+                                <span class="ion-ios-arrow-forward"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="property-carousel" class="owl-carousel owl-theme">
+                @{
+
+                    ICollection<Property> propertiesList = APILibrary.APIMethods.APIGetALL<ICollection<Property>>("Properties");
+
+                    foreach (Property prop in propertiesList)
+                    {
                         if (prop.Auction != null)
                         {
-                            DisplyPropLys.Add(prop);
-                        }
+                            <div class="carousel-item-b">
+                                <div class="card-box-a card-shadow">
 
-
-                    }
-
-                    @{
-                        IEnumerable<Property> query = from prop in DisplyPropLys
-                                                      orderby prop.Auction.StartTime
-                                                      select prop;
-
-                        int count = 0;
-                        foreach (Property auc in query)
-                        {
-                            while (count < 4)
-                            {
-                                <div class="col-md-3 col-sm-6" >
-                                    <div class="property">
-                                        <a href="property-detail.html"style="min-height:100px; max-width:300px; padding:15px">
-                                            <div class="property-image">
-                                                <img alt="" src=@auc.PropertyPhotos.First().PropertyPhotoPath >
+                                    <div class="img-box-a" style="min-height:460px" href=@Html.ActionLink("","Detailss", "home", new { id = prop.PropertyID })>
+                                        <img src=@prop.PropertyPhotos.First().PropertyPhotoPath alt="" class="img-a img-fluid">
+                                    </div>
+                                    <div class="card-overlay">
+                                        <div class="card-overlay-a-content">
+                                            <div class="card-header-a">
+                                                <h2 class="card-title-a">
+                                                    <a href='@Url.Action("Detailss", "home", new { id = prop.PropertyID })'>
+                                                        @prop.Address
+                                                        <br /> @prop.City, @prop.Province
+                                                    </a>
+                                                </h2>
                                             </div>
-                                            <div class="overlay">
-                                                <div class="info">
-                                                    <div class="tag date">@auc.Auction.StartTime</div>
-                                                    <h3>@auc.Address</h3>
-                                                    <figure>@auc.City, @auc.Province</figure>
+                                            <div class="card-body-a">
+                                                <div class="price-box d-flex">
+                                                    <span class="price-a">Auction Date | @prop.Auction.StartTime</span>
                                                 </div>
-                                                <ul class="additional-info">
+                                                <a href='@Url.Action("Detailss", "home", new { id = prop.PropertyID })' class="link-a">
+                                                    Learn More
+                                                    <span class="ion-ios-arrow-forward"></span>
+                                                </a>
+                                            </div>
+                                            <div class="card-footer-a">
+                                                <ul class="card-info d-flex justify-content-around">
                                                     <li>
-                                                        <header>Area:</header>
-                                                        <figure>@auc.BuildingArea<sup>2</sup></figure>
+                                                        <h4 class="card-info-title">Building</h4>
+                                                        <span>
+                                                            @prop.FloorSize
+                                                            <sup>2</sup>
+                                                        </span>
                                                     </li>
                                                     <li>
-                                                        <header>Beds:</header>
-                                                        <figure>@auc.BedRooms</figure>
+                                                        <h4 class="card-info-title">Beds</h4>
+                                                        <span>@prop.BedRooms</span>
                                                     </li>
                                                     <li>
-                                                        <header>Baths:</header>
-                                                        <figure>@auc.BathRooms</figure>
+                                                        <h4 class="card-info-title">Baths</h4>
+                                                        <span>@prop.BathRooms</span>
                                                     </li>
                                                     <li>
-                                                        <header>Garages:</header>
-                                                        <figure>@auc.Garages</figure>
+                                                        <h4 class="card-info-title">Garages</h4>
+                                                        <span>@prop.Garages</span>
                                                     </li>
                                                 </ul>
                                             </div>
-                                        </a>
-                                    </div><!-- /.property -->
-                                </div><!-- /.col-md-3 -->
-                                count++;
-                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         }
+
+
                     }
 
-                </div>
-
-            }
+                }
 
 
-
-        </section>
-
-
-
-        <aside id="advertising" class="block">
-            <div class="container">
-                <a href="submit.html">
-                    <div class="banner">
-                        <div class="wrapper">
-                            <span class="title">Want to list your property with us?</span>
-                            <span class="submit">Contact Us Now! <i class="fa fa-plus-square"></i></span>
-                        </div>
-                    </div><!-- /.banner-->
-                </a>
             </div>
-        </aside><!-- /#adveritsing-->
-        <!-- /#banner Start -->
-        <section id="banner">
-            <div class="block has-dark-background background-color-default-darker center text-banner">
-                <div class="container">
-                    <h1 class="no-bottom-margin no-border">Insert Property or Real Estate related qoute here (Maybe even replace this with Jumbotron)</h1>
-                </div>
-            </div>
-        </section>
-        <!-- /#banner End -->
-        <!-- Jumbotron Start -->
-        <!-- Jumbotron End -->
-        <section id="new-properties" class="block">
-            <div class="container">
-                <header class="section-title">
-                    <h2>Recently Sold Properties</h2>
-                </header>
-                <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="property">
-                            <div class="property-image">
-                                <img alt="#" src="~/assets/img/properties/property-02.jpg">
-                            </div>
-                            <div class="overlay">
-                                <div class="info">
-                                    <div class="tag sold">Sold!</div>
-                                    <h3>2506 B Street</h3>
-                                    <figure>New Brighton, MN 55112</figure>
-                                </div>
-                                <ul class="additional-info">
-                                    <li>
-                                        <header>Area:</header>
-                                        <figure>280m<sup>2</sup></figure>
-                                    </li>
-                                    <li>
-                                        <header>Beds:</header>
-                                        <figure>3</figure>
-                                    </li>
-                                    <li>
-                                        <header>Baths:</header>
-                                        <figure>2</figure>
-                                    </li>
-                                    <li>
-                                        <header>Garages:</header>
-                                        <figure>1</figure>
-                                    </li>
-                                </ul>
-                            </div>
-                            </a>
-                        </div><!-- /.property -->
-                    </div><!-- /.col-md-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="property">
-                            <div class="property-image">
-                                <img alt="" src="~/assets/img/properties/property-12.jpg">
-                            </div>
-                            <div class="overlay">
-                                <div class="info">
-                                    <div class="tag sold">Sold!</div>
-                                    <h3>3990 Late Avenue</h3>
-                                    <figure>Kingfisher, OK 73750</figure>
-                                </div>
-                                <ul class="additional-info">
-                                    <li>
-                                        <header>Area:</header>
-                                        <figure>30m<sup>2</sup></figure>
-                                    </li>
-                                    <li>
-                                        <header>Beds:</header>
-                                        <figure>1</figure>
-                                    </li>
-                                    <li>
-                                        <header>Baths:</header>
-                                        <figure>1</figure>
-                                    </li>
-                                    <li>
-                                        <header>Garages:</header>
-                                        <figure>0</figure>
-                                    </li>
-                                </ul>
-                            </div>
-                            </a>
-                        </div><!-- /.property -->
-                    </div><!-- /.col-md-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="property">
-                            <div class="property-image">
-                                <img alt="#" src="~/assets/img/properties/property-05.jpg">
-                            </div>
-                            <div class="overlay">
-                                <div class="info">
-                                    <div class="tag sold">Sold!</div>
-                                    <h3>297 Marie Street</h3>
-                                    <figure>Towson, MD 21204 </figure>
-                                </div>
-                                <ul class="additional-info">
-                                    <li>
-                                        <header>Area:</header>
-                                        <figure>240m<sup>2</sup></figure>
-                                    </li>
-                                    <li>
-                                        <header>Beds:</header>
-                                        <figure>3</figure>
-                                    </li>
-                                    <li>
-                                        <header>Baths:</header>
-                                        <figure>1</figure>
-                                    </li>
-                                    <li>
-                                        <header>Garages:</header>
-                                        <figure>1</figure>
-                                    </li>
-                                </ul>
-                            </div>
-                            </a>
-                        </div><!-- /.property -->
-                    </div><!-- /.col-md-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="property">
-                            <div class="property-image">
-                                <img alt="#" src="~/assets/img/properties/property-10.jpg">
-                            </div>
-                            <div class="overlay">
-                                <div class="info">
-                                    <div class="tag sold">Sold!</div>
-                                    <h3>64 Timberbrook Lane</h3>
-                                    <figure>Denver, CO 80202</figure>
-                                </div>
-                                <ul class="additional-info">
-                                    <li>
-                                        <header>Area:</header>
-                                        <figure>240m<sup>2</sup></figure>
-                                    </li>
-                                    <li>
-                                        <header>Beds:</header>
-                                        <figure>3</figure>
-                                    </li>
-                                    <li>
-                                        <header>Baths:</header>
-                                        <figure>1</figure>
-                                    </li>
-                                    <li>
-                                        <header>Garages:</header>
-                                        <figure>1</figure>
-                                    </li>
-                                </ul>
-                            </div>
-                            </a>
-                        </div><!-- /.property -->
-                    </div><!-- /.col-md-3 -->
-                </div><!-- /.row-->
-            </div><!-- /.container-->
-        </section><!-- /#new-properties-->
-        <section id="testimonials" class="block">
-            <div class="container">
-                <header class="section-title"><h2>Testimonials</h2></header>
-                <div class="owl-carousel testimonials-carousel">
-                    <blockquote class="testimonial">
-                        <figure>
-                            <div class="image">
-                                <img alt="#" src="~/assets/img/Woman.jpg">
-                            </div>
-                        </figure>
-                        <aside class="cite">
-                            <p>Fusce risus metus, placerat in consectetur eu, porttitor a est sed sed dolor lorem cras adipiscing</p>
-                            <footer>Natalie Jenkins</footer>
-                        </aside>
-                    </blockquote>
-                    <blockquote class="testimonial">
-                        <figure>
-                            <div class="image">
-                                <img alt="#" src="~/assets/img/Guy.jpg">
-                            </div>
-                        </figure>
-                        <aside class="cite">
-                            <p>Fusce risus metus, placerat in consectetur eu, porttitor a est sed sed dolor lorem cras adipiscing</p>
-                            <footer>Martin Schimms</footer>
-                        </aside>
-                    </blockquote>
-                </div><!-- /.testimonials-carousel -->
-            </div><!-- /.container -->
-        </section><!-- /#testimonials -->
-        <section id="partners" class="block">
-            <div class="container">
-                <header class="section-title"><h2>Our Partners</h2></header>
-                <div class="logos">
-                    <div class="logo"><a href="https://www.sahomeloans.com/"><img src="~/assets/img/SA Home Loans.png" width="120" height="100" alt=""></a></div>
-                    <div class="logo"><a href="https://www.standardbank.co.za/"><img src="~/assets/img/StandardBank.png" width="140" height="140" alt=""></a></div>
-                    <div class="logo"><a href="https://www.nedbank.co.za/content/nedbank/desktop/gt/en/personal.html"><img src="~/assets/img/NEDBANK.png" width="70" height="70" alt=""></a></div>
-                    <div class="logo"><a href="https://www.fnb.co.za/"><img src="~/assets/img/FNB.png" width="120" height="80" alt=""></a></div>
-                    <div class="logo"><a href="https://www.absa.co.za/personal/"><img src="~/assets/img/absa.png" width="80" height="80" alt=""></a></div>
-                </div>
-            </div><!-- /.container -->
-        </section><!-- /#partners -->
         </div>
+    </section>
+    <!-- ======= Latest Properties Section End ======= -->
+    <!-- ======= Services Section Start ======= -->
+    <section class="section-property section-t8">
+        <div class="container" style="padding: 40px; border-top: solid #1d293d; border-bottom: solid #1d293d">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title-wrap d-flex justify-content-between">
+                        <div class="title-box" style="border-bottom: solid #fa7f15">
+                            <h2 class="title-a">@Html.ActionLink("How It Works", "HowItWorks", "home")</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card-box-c foo">
+                        <div class="card-header-c d-flex">
+                            <div class="card-box-ico">
+                                <span class="fa fa-pencil"></span>
+                            </div>
+                            <div class="card-title-c align-self-center">
+                                <h2 class="title-c" style="padding-left: 60px">Register</h2>
+                            </div>
+                        </div>
+                        <div class="card-body-c">
+                            <p class="content-c text-justify">
+                                Create your user profile by registering as a buyer with us.
+                                Upload the all the necessary documents. Wait for your welcoming email to arrive and just like that,
+                                you are just a few clicks away to start bidding in your first online auction.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-box-c foo">
+                        <div class="card-header-c d-flex">
+                            <div class="card-box-ico">
+                                <span class="fa fa-home"></span>
+                            </div>
+                            <div class="card-title-c align-self-center">
+                                <h2 class="title-c" style="padding-left: 60px">View</h2>
+                            </div>
+                        </div>
+                        <div class="card-body-c">
+                            <p class="content-c text-justify">
+                                Whilst you wait for your welcoming email. Why don't you visit our Properties page,
+                                and browse through our wide variety of properties on offer. And find your next dream home,
+                                company head quarters, or investment property.
+                            </p>
+                        </div>
+                        <br />
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-box-c foo">
+                        <div class="card-header-c d-flex">
+                            <div class="card-box-ico">
+                                <span class="fa fa-gavel"></span>
+                            </div>
+                            <div class="card-title-c align-self-center">
+                                <h2 class="title-c" style="padding-left: 60px">Bid</h2>
+                            </div>
+                        </div>
+                        <div class="card-body-c">
+                            <p class="content-c text-justify">
+                                Found the perfect property. Contact one of our viewing agents for a viewing. Register for the specific property,
+                                pay your bidders Registration fee that is refundable as well as your Admin fee and start bidding.
+                            </p>
+                        </div>
+                        <a href="https://auction-prop.com/Home/HowItWorks" class="btn btn-b">Learn More</a>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="conatiner text-center">
+
+        </div>
+        <section class="property-single nav-arrow-b">
+            <div class="container" style="padding:60px">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
+                            <div class="carousel-item-b">
+                                <h1 class="intro-title">
+                                    <strong>THE PERFECT PLATFORM FOR INVESTORS</strong>
+                                </h1>
+                                <img src="~/assets/img/bus.jpg">
+                            </div>
+                            <div class="carousel-item-b">
+                                <h1 class="intro-title">
+                                    <strong>BANK INSTRUCTED PROPERTIES</strong>
+                                </h1>
+
+                                <img src="~/assets/img/bank.jpg" alt="">
+
+                            </div>
+
+                            <div class="carousel-item-b">
+                                <h1 class="intro-title">
+                                    <strong>SELL YOUR PROPERTY IN TWO WEEKS</strong>
+                                </h1>
+                                <img src="~/assets/img/sellp.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ======= Services Section End ======= -->
+        <!-- ======= Latest News Section ======= -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="title-wrap d-flex justify-content-between">
+                            <div class="title-box" style="border-bottom: solid #fa7f15">
+                                <h2 class="title-a">Recently Sold Properties</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="new-carousel" class="owl-carousel owl-theme">
+                    <div class="carousel-item-c">
+                        <div class="card-box-b card-shadow news-box">
+                            <div class="img-box-b">
+                                <img src="~/assets/img/post-2.jpg" alt="" class="img-b img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-header-b">
+                                    <div class="card-category-b">
+                                        <a href="#" class="category-b">SOLD</a>
+                                    </div>
+                                    <div class="card-title-b">
+                                        <h2 class="title-2">
+                                            <a href="blog-single.html">
+                                                R 1,860,000
+                                                <br>
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-date">
+                                        <span class="date-b">Centurion, Pretoria</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item-c">
+                        <div class="card-box-b card-shadow news-box">
+                            <div class="img-box-b">
+                                <img src="~/assets/img/post-5.jpg" alt="" class="img-b img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-header-b">
+                                    <div class="card-category-b">
+                                        <a href="#" class="category-b">SOLD</a>
+                                    </div>
+                                    <div class="card-title-b">
+                                        <h2 class="title-2">
+                                            <a href="blog-single.html">
+                                                R 2,500,000
+                                                <br>
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-date">
+                                        <span class="date-b">Olympus, Pretoria</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item-c">
+                        <div class="card-box-b card-shadow news-box">
+                            <div class="img-box-b">
+                                <img src="~/assets/img/post-7.jpg" alt="" class="img-b img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-header-b">
+                                    <div class="card-category-b">
+                                        <a href="#" class="category-b">SOLD</a>
+                                    </div>
+                                    <div class="card-title-b">
+                                        <h2 class="title-2">
+                                            <a href="blog-single.html">
+                                                R 3,200,000
+                                                <br>
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-date">
+                                        <span class="date-b">Lombardy Estate, Pretoria</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item-c">
+                        <div class="card-box-b card-shadow news-box">
+                            <div class="img-box-b">
+                                <img src="~/assets/img/post-3.jpg" alt="" class="img-b img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-header-b">
+                                    <div class="card-category-b">
+                                        <a href="#" class="category-b">SOLD</a>
+                                    </div>
+                                    <div class="card-title-b">
+                                        <h2 class="title-2">
+                                            <a href="#">
+                                                R 2,550,000
+                                                <br>
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-date">
+                                        <span class="date-b">Tenkwa Park, Kempton Park</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Latest News Section -->
         <!-- end Page Content -->
+        <!-- ======= Counter ======= -->
+        <section class="section-property section-t8">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="title-wrap d-flex justify-content-between">
+                            <div class="title-box" style="border-bottom: solid #fa7f15">
+                                <h2 class="title-a">Fun Facts</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="four col-md-3">
+                        <div class="counter-box colored">
+                            <i class="fa fa-thumbs-o-up"></i> <span class="counter">147</span>
+                            <p>Properties Listed</p>
+                        </div>
+                    </div>
+                    <div class="four col-md-3">
+                        <div class="counter-box">
+                            <i class="fa fa-group"></i> <span class="counter">140</span>
+                            <p>Satisfied Clients</p>
+                        </div>
+                    </div>
+                    <div class="four col-md-3">
+                        <div class="counter-box">
+                            <i class="fa fa-shopping-cart"></i> <span class="counter">101</span>
+                            <p>Properties Sold</p>
+                        </div>
+                    </div>
+                    <div class="four col-md-3">
+                        <div class="counter-box">
+                            <i class="fa fa-user"></i> <span class="counter">1963</span>
+                            <p>Days of our Lives</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+        </section>
+        <!-- ======= Counter  End ======= -->
 
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
+        <!-- Vendor JS Files -->
+        <script src="~/Scripts/jquery.min.js"></script>
+        <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+        <script src="~/Scripts/jquery.easing.min.js"></script>
+        <script src="~/Scripts/validate.js"></script>
+        <script src="~/Scripts/owl.carousel.min.js"></script>
+        <script src="~/Scripts/scrollreveal.min.js"></script>
+        <script>
+            $(document).ready(function () {
 
-        <script type="text/javascript" src="~/Scripts2/jquery-2.1.0.min.js"></script>
-        <script type="text/javascript" src="~/Scripts2/jquery-migrate-1.2.1.min.js"></script>
-        <script type="text/javascript" src="~/Scripts2/bootstrap.min.js"></script>
-        <script type="text/javascript" src="~/Scripts2/smoothscroll.js"></script>
-        <script type="text/javascript" src="~/Scripts2/owl.carousel.min.js"></script>
-        <script type="text/javascript" src="~/Scripts2/bootstrap-select.min.js"></script>
-        <script type="text/javascript" src="~/Scripts2/jquery.validate.min.js"></script>
-        <script type="text/javascript" src="~/Scripts2/jquery.placeholder.js"></script>
-        <script type="text/javascript" src="~/Scripts2/icheck.min.js"></script>
-        <script type="text/javascript" src="~/Scripts2/jquery.vanillabox-0.1.5.min.js"></script>
-        <script type="text/javascript" src="~/Scripts2/retina-1.1.0.min.js"></script>
-        <script type="text/javascript" src="~/Scripts2/jshashtable-2.1_src.js"></script>
-        <script type="text/javascript" src="~/Scripts2/jquery.numberformatter-1.2.3.js"></script>
-        <script type="text/javascript" src="~/Scripts2/tmpl.js"></script>
-        <script type="text/javascript" src="~/Scripts2/jquery.dependClass-0.1.js"></script>
-        <script type="text/javascript" src="~/Scripts2/draggable-0.1.js"></script>
-        <script type="text/javascript" src="~/Scripts2/jquery.slider.js"></script>
-        <script type="text/javascript" src="~/Scripts2/custom.js"></script>
+                $('.counter').each(function () {
+                    $(this).prop('Counter', 0).animate({
+                        Counter: $(this).text()
+                    }, {
+                        duration: 4000,
+                        easing: 'swing',
+                        step: function (now) {
+                            $(this).text(Math.ceil(now));
+                        }
+                    });
+                });
 
-        <div id="overlay"></div>
+            });
+        </script>
 
+        <!-- Template Main JS File -->
+        <script src="~/Scripts/main.js"></script>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
