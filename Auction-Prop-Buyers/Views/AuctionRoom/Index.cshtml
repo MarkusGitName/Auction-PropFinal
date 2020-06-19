@@ -327,9 +327,9 @@
             <div class="container" style="border-right: solid #fa7f15; border-left: solid #fa7f15; padding-bottom:30px">
                 <h1 class="title-single; text-center"><strong>AUCTION ENDS</strong></h1>
                 <div class="title-single-box">
-                    <span class="clock" id="CountDown">
+                    <div id="CountDown">
                         @Html.DisplayFor(model => model.EndTime)
-                    </span>
+                    </div>
                 </div>
                
             </div>
@@ -349,7 +349,8 @@
                         <div class="Yourbid" style=" width:240px;float:inherit;margin:auto;">
                             <input type="button" id="Decriment5k" value="-" style="float:left; width:25px; border: solid #07033c  " />
                             <input type="button" id="Increment5k" value="+" style="float:right; width:25px; border: solid #07033c" />
-                            <div id="Bidd" style="        margin: auto;       width: 150px;       border: 3px solid #fa7f15;        border-radius: 3px;        float: none; border: solid #fa7f15">@Model.Property.OpeningBid</div>
+
+                            <div id="Biddd" style="        margin: auto;       width: 150px;       border: 3px solid #fa7f15;        border-radius: 3px;        float: none; border: solid #fa7f15">@Model.Property.OpeningBid</div>
                         </div>
                         <div class="Increments" style="padding-top:30px; margin:auto">
                             <div>Add increment of:</div>
@@ -363,6 +364,22 @@
                             <div class="Maximumbid" style="padding-top: 40px ;padding-bottom:20px">
                                 <input type="button" id="PlaceMaximumBid" value="Place Maximum Bid" style="border: solid #07033c" />
                             </div>
+                        </div>
+                        <div style=" width:240px;float:inherit;margin:auto">
+
+                            <input type="button" id="Decriment5k" value="-" style="float:left; width:8px " />
+                            <input type="button" id="Increment5k" value="+" style="float:right; width:8px" />
+                            <div id="Biddd" style=" margin:auto;width:150px;border:solid; border-radius:3px;float:none">@Model.Property.OpeningBid</div>
+
+                        </div>
+                        <div style="padding-top:30px; margin:auto">
+                            <div>Add increment of:</div>
+
+
+                            <input type="button" id="10KIncreas" value="R10 000" style="float:left " />
+                            <input type="button" id="50KIncreas" value="R50 000" />
+                            <input type="button" id="100KIncreas" value="R100 000" style="float:right " />
+
                         </div>
                     </div>
                 </div>

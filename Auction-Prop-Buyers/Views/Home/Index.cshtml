@@ -242,56 +242,66 @@
                         if (prop.Auction != null)
                         {
                             <div class="carousel-item-b">
-                                <div class="card-box-a card-shadow">
+                                                <div class="card-box-a card-shadow">
 
-                                    <div class="img-box-a" style="min-height:460px" href=@Html.ActionLink("","Detailss", "home", new { id = prop.PropertyID })>
-                                        <img src=@prop.PropertyPhotos.First().PropertyPhotoPath alt="" class="img-a img-fluid">
-                                    </div>
-                                    <div class="card-overlay">
-                                        <div class="card-overlay-a-content">
-                                            <div class="card-header-a">
-                                                <h2 class="card-title-a">
-                                                    <a href='@Url.Action("Detailss", "home", new { id = prop.PropertyID })'>
-                                                        @prop.Address
-                                                        <br /> @prop.City, @prop.Province
-                                                    </a>
-                                                </h2>
-                                            </div>
-                                            <div class="card-body-a">
-                                                <div class="price-box d-flex">
-                                                    <span class="price-a">Auction Date | @prop.Auction.StartTime</span>
+                                                    @try
+                                                    {
+                                                        <div class="img-box-a">
+                                                            <img src=@prop.PropertyPhotos.First().PropertyPhotoPath alt="" class="img-a img-fluid">
+                                                        </div>
+                                                    }
+                                                    catch
+                                                    { <div class="img-box-a">
+                                                            <img src="~/assets/img/property-1.jpg" class="img-a img-fluid">
+                                                        </div>
+                                                    }
+
+                                                  
+                                                    <div class="card-overlay">
+                                                        <div class="card-overlay-a-content">
+                                                            <div class="card-header-a">
+                                                                <h2 class="card-title-a">
+                                                                    <a href='@Url.Action("Detailss", "home", new { id = prop.PropertyID })'>
+                                                                        @prop.Address
+                                                                        <br /> @prop.City, @prop.Province
+                                                                    </a>
+                                                                </h2>
+                                                            </div>
+                                                            <div class="card-body-a">
+                                                                <div class="price-box d-flex">
+                                                                    <span class="price-a">Auction Date | @prop.Auction.StartTime</span>
+                                                                </div>
+                                                                <a href='@Url.Action("Detailss", "home", new { id = prop.PropertyID })' class="link-a">
+                                                                    Learn More
+                                                                    <span class="ion-ios-arrow-forward"></span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="card-footer-a">
+                                                                <ul class="card-info d-flex justify-content-around">
+                                                                    <li>
+                                                                        <h4 class="card-info-title">Building</h4>
+                                                                        <span>
+                                                                            @prop.FloorSize
+                                                                            <sup>2</sup>
+                                                                        </span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <h4 class="card-info-title">Beds</h4>
+                                                                        <span>@prop.BedRooms</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <h4 class="card-info-title">Baths</h4>
+                                                                        <span>@prop.BathRooms</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <h4 class="card-info-title">Garages</h4>
+                                                                        <span>@prop.Garages</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <a href='@Url.Action("Detailss", "home", new { id = prop.PropertyID })' class="link-a">
-                                                    Learn More
-                                                    <span class="ion-ios-arrow-forward"></span>
-                                                </a>
-                                            </div>
-                                            <div class="card-footer-a">
-                                                <ul class="card-info d-flex justify-content-around">
-                                                    <li>
-                                                        <h4 class="card-info-title">Building</h4>
-                                                        <span>
-                                                            @prop.FloorSize
-                                                            <sup>2</sup>
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <h4 class="card-info-title">Beds</h4>
-                                                        <span>@prop.BedRooms</span>
-                                                    </li>
-                                                    <li>
-                                                        <h4 class="card-info-title">Baths</h4>
-                                                        <span>@prop.BathRooms</span>
-                                                    </li>
-                                                    <li>
-                                                        <h4 class="card-info-title">Garages</h4>
-                                                        <span>@prop.Garages</span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         }
 
@@ -613,6 +623,8 @@
 
 </body>
 </html>
+
+
 
 
 

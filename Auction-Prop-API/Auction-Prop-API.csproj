@@ -247,7 +247,6 @@
     <Compile Include="Controllers\MVCController\MessagesController.cs" />
     <Compile Include="Controllers\MVCController\PrivateSellersController.cs" />
     <Compile Include="Controllers\MVCController\PromoVideosController.cs" />
-    <Compile Include="Controllers\MVCController\PropertiesController.cs" />
     <Compile Include="Controllers\APIControllers\PrivateSellersController.cs" />
     <Compile Include="Controllers\APIControllers\PromoVideosController.cs" />
     <Compile Include="Controllers\APIControllers\PropertiesController.cs" />
@@ -258,6 +257,8 @@
     <Compile Include="Controllers\APIControllers\DepositsController.cs" />
     <Compile Include="Controllers\APIControllers\SellersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MVCController\PropertiesController.cs" />
+    <Compile Include="Controllers\MVCController\PropertyPhotoesController.cs" />
     <Compile Include="Controllers\MVCController\RegisteredBuyersController.cs" />
     <Compile Include="Controllers\MVCController\RetailersController.cs" />
     <Compile Include="Controllers\MVCController\SellerAddressesController.cs" />

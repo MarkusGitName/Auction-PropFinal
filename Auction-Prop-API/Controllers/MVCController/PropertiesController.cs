@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using Auction_Prop_API.Models.DataBaseModels;
 
-namespace Auction_Prop_API.Controllers.APIControllers.MVCController
+namespace Auction_Prop_API.Controllers.MVCController
 {
     public class PropertiesController : Controller
     {
@@ -51,7 +51,7 @@ namespace Auction_Prop_API.Controllers.APIControllers.MVCController
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "PropertyID,SellerID,Title,Country,Province,City,Address,Description,RegistrationType,PropertyType,BedRooms,BathRooms,FloorSize,YardSize,Garages,OpeningBid,Reserve,PlansPath,TaxesAndRate,levies,TaxesAndRates,TitleDeedPath,HOARules,Location,ApprovalStatus,SellerSigniture,Garden,Terrace,Gerages,SwimmingPool,Fibre,Clubhouse,Braai,OutdoorKitchen,FireplacePit,TennisCourts,Jacquizzi,Parking,Borehole,MandateType,MandateSingedDate,MandateExpireDate")] Property property)
+        public async Task<ActionResult> Create([Bind(Include = "PropertyID,SellerID,Title,Country,Province,City,Address,Description,RegistrationType,PropertyType,BedRooms,BathRooms,FloorSize,YardSize,Garages,OpeningBid,Reserve,PlansPath,TaxesAndRate,levies,TaxesAndRates,TitleDeedPath,HOARules,ApprovalStatus,SellerSigniture,Garden,Terrace,Gerages,SwimmingPool,Fibre,Clubhouse,Braai,OutdoorKitchen,FireplacePit,TennisCourts,Jacquizzi,Parking,Borehole,MandateType,MandateSingedDate,MandateExpireDate")] Property property)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace Auction_Prop_API.Controllers.APIControllers.MVCController
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "PropertyID,SellerID,Title,Country,Province,City,Address,Description,RegistrationType,PropertyType,BedRooms,BathRooms,FloorSize,YardSize,Garages,OpeningBid,Reserve,PlansPath,TaxesAndRate,levies,TaxesAndRates,TitleDeedPath,HOARules,Location,ApprovalStatus,SellerSigniture,Garden,Terrace,Gerages,SwimmingPool,Fibre,Clubhouse,Braai,OutdoorKitchen,FireplacePit,TennisCourts,Jacquizzi,Parking,Borehole,MandateType,MandateSingedDate,MandateExpireDate")] Property property)
+        public async Task<ActionResult> Edit([Bind(Include = "PropertyID,SellerID,Title,Country,Province,City,Address,Description,RegistrationType,PropertyType,BedRooms,BathRooms,FloorSize,YardSize,Garages,OpeningBid,Reserve,PlansPath,TaxesAndRate,levies,TaxesAndRates,TitleDeedPath,HOARules,ApprovalStatus,SellerSigniture,Garden,Terrace,Gerages,SwimmingPool,Fibre,Clubhouse,Braai,OutdoorKitchen,FireplacePit,TennisCourts,Jacquizzi,Parking,Borehole,MandateType,MandateSingedDate,MandateExpireDate")] Property property)
         {
             if (ModelState.IsValid)
             {

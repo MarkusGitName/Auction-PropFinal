@@ -135,22 +135,23 @@
                         <div class="title-single-box">
                             <h1 class="title-single">@Model.Address</h1>
                             <span class="color-text-a">@Model.City, @Model.Province</span>
-                            <div class="col-md-12 col-lg-4">
+                            <ol class="col-md-12 col-lg-4">
                                 <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item">
                                             <a href="index.html">Home</a>
                                         </li>
                                         <li class="breadcrumb-item">
-                                            <a >@Html.ActionLink("Properties","Properties","Home")</a>
+                                            <a>@Html.ActionLink("Properties", "Properties", "Home")</a>
                                         </li>
-                            </div>
-                        </div>
-                        <li class="breadcrumb-item active" aria-current="page">
-                            304 Vista Drive
-                        </li>
-                        </ol>
-                        </nav>
+                                    </ol>
+
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        304 Vista Drive
+                                    </li>
+
+                                </nav>
+                            </ol>
                     </div>
                 </div>
             </div>
@@ -168,8 +169,8 @@
                                 </div>
 
                             }
-
                           
+
                         </div>
                         <div class="row justify-content-between">
                             <div class="col-md-5 col-lg-4">

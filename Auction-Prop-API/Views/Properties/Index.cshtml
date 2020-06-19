@@ -1,5 +1,4 @@
-﻿@using Auction_Prop_API.Models.DataBaseModels
-@model IEnumerable<Property>
+﻿@model IEnumerable<Auction_Prop_API.Models.DataBaseModels.Property>
 
 @{
     ViewBag.Title = "Index";
@@ -17,7 +16,7 @@
             @Html.DisplayNameFor(model => model.Auction.PropertyID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Seller.UserID)
+            @Html.DisplayNameFor(model => model.ConcludedAuction.WinningBidder)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Seller.FirtstName)
@@ -148,7 +147,7 @@
             @Html.DisplayFor(modelItem => item.Auction.PropertyID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Seller.UserID)
+            @Html.DisplayFor(modelItem => item.ConcludedAuction.WinningBidder)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Seller.FirtstName)
@@ -217,8 +216,6 @@
             @Html.DisplayFor(modelItem => item.HOARules)
         </td>
         <td>
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.ApprovalStatus)
         </td>
         <td>
@@ -271,13 +268,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.MandateExpireDate)
-        </td>
-        <td>
-            @foreach(PropertyPhoto pp in item.PropertyPhotos)
-            {
-              <p> pp.PropertyPhotoPath</p>
-               <img src=@pp.PropertyPhotoPath />
-            }
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.PropertyID }) |

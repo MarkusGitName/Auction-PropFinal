@@ -20,7 +20,14 @@
             @Html.DisplayFor(model => model.Auction.PropertyID)
         </dd>
 
-     
+        <dt>
+            @Html.DisplayNameFor(model => model.ConcludedAuction.WinningBidder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConcludedAuction.WinningBidder)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Seller.FirtstName)
         </dt>
@@ -195,14 +202,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.HOARules)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Location)
         </dd>
 
         <dt>
