@@ -13,10 +13,13 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.RegisteredBuyer.UserId)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.AdminFee.ProofOfPaymentPath)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Property.SellerID)
+            @Html.DisplayNameFor(model => model.Property.Seller)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.RegisteredBuyer.FirstName)
@@ -39,6 +42,8 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.RegisteredBuyer.UserId)
+        </td> <td>
             @Html.DisplayFor(modelItem => item.AdminFee.ProofOfPaymentPath)
         </td>
         <td>

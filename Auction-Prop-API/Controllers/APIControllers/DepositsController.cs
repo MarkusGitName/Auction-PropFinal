@@ -20,7 +20,9 @@ namespace Auction_Prop_API.Controllers
         // GET: api/Deposits
         public IQueryable<Deposit> GetDeposits()
         {
-            return db.Deposits;
+
+            var deposits = db.Deposits.Include(d => d.RegisteredBuyer.UserId);
+            return deposits;
         }
 
         // GET: api/Deposits/5

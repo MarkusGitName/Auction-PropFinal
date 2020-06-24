@@ -20,7 +20,9 @@ namespace Auction_Prop_API.Controllers.APIControllers
         // GET: api/Bids
         public IQueryable<Bid> GetBids()
         {
-            return db.Bids;
+
+            var bids = db.Bids.Include(b => b.Auction).Include(b => b.RegisteredBuyer);
+            return bids;
         }
 
         // GET: api/Bids/5

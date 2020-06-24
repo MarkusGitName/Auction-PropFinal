@@ -39,7 +39,7 @@ namespace Auction_Prop_API.Controllers.MVCController
         // GET: Auctions1/Create
         public ActionResult Create()
         {
-            ViewBag.PropertyID = new SelectList(db.Properties, "PropertyID", "SellerID");
+            ViewBag.PropertyID = new SelectList(db.Properties, "PropertyID", "PropertyID");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace Auction_Prop_API.Controllers.MVCController
                 return RedirectToAction("Index");
             }
 
-            ViewBag.PropertyID = new SelectList(db.Properties, "PropertyID", "SellerID", auction.PropertyID);
+            ViewBag.PropertyID = new SelectList(db.Properties, "PropertyID", "PropertyID", auction.PropertyID);
             return View(auction);
         }
 
@@ -73,7 +73,7 @@ namespace Auction_Prop_API.Controllers.MVCController
             {
                 return HttpNotFound();
             }
-            ViewBag.PropertyID = new SelectList(db.Properties, "PropertyID", "SellerID", auction.PropertyID);
+            ViewBag.PropertyID = new SelectList(db.Properties, "PropertyID", "PropertyID", auction.PropertyID);
             return View(auction);
         }
 
@@ -90,7 +90,7 @@ namespace Auction_Prop_API.Controllers.MVCController
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.PropertyID = new SelectList(db.Properties, "PropertyID", "SellerID", auction.PropertyID);
+            ViewBag.PropertyID = new SelectList(db.Properties, "PropertyID", "PropertyID", auction.PropertyID);
             return View(auction);
         }
 

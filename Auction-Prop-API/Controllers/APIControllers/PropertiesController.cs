@@ -20,7 +20,9 @@ namespace Auction_Prop_API.Controllers.APIControllers
         // GET: api/Properties
         public IQueryable<Property> GetProperties()
         {
-            return db.Properties;
+            var properties = db.Properties.Include(p => p.Auction.EndTime).Include(p => p.ConcludedAuction.WinningBidder).Include(p => p.ConcludedAuction.HiegestBid).Include(p => p.Seller.PrivateSeller).Include(p => p.Seller.ProfilePhoto).Include(p => p.Seller.Retailer).Include(p => p.Seller.Auctioneer).Include(p => p.Seller.FirtstName).Include(p => p.Seller.LastName).Include(p => p.Seller.SellerType).Include(p => p.Seller.SellerNumber).Include(p => p.Seller.SellerEmail);
+
+            return properties;
         }
 
         // GET: api/Properties/5

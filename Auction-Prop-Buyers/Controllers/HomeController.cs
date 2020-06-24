@@ -83,7 +83,7 @@ namespace Auction_Prop_Buyers.Controllers
             }
             catch (Exception E)
             {
-                ErrorViewModel error = new ErrorViewModel()
+                 ErrorViewModel error = new ErrorViewModel()
                 {
                     msge = E.ToString(),
                 };
@@ -124,9 +124,9 @@ namespace Auction_Prop_Buyers.Controllers
             }
 
         }
-        public ActionResult ErrorView(ErrorView error)
+        public ActionResult ErrorView(ErrorViewModel error)
         {
-            return View();
+            return View(error);
         }
     }
 }

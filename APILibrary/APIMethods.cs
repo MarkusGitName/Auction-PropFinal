@@ -29,6 +29,8 @@ namespace APILibrary
                 request.Method = "POST";
 
                 JavaScriptSerializer jss = new JavaScriptSerializer();
+
+                jss.MaxJsonLength = 10 * 8096 * 8096;
                 // serialize into json string 
                 var myContent = jss.Serialize(model);
 
@@ -99,6 +101,8 @@ namespace APILibrary
                 JavaScriptSerializer jss = new JavaScriptSerializer();
 
 
+                jss.MaxJsonLength = 10 * 8096 * 8096;
+
                 response = (HttpWebResponse)request.GetResponse();
 
                 ResponseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
@@ -140,6 +144,9 @@ namespace APILibrary
                 request.Method = "PUT";
 
                 JavaScriptSerializer jss = new JavaScriptSerializer();
+
+
+                jss.MaxJsonLength = 10 * 8096 * 8096;
                 // serialize into json string 
                 var myContent = jss.Serialize(model);
 
@@ -206,6 +213,8 @@ namespace APILibrary
                 JavaScriptSerializer jss = new JavaScriptSerializer();
                 // serialize into json string 
 
+                jss.MaxJsonLength = 10 * 8096 * 8096;
+
 
                 response = (HttpWebResponse)request.GetResponse();
 
@@ -266,7 +275,8 @@ namespace APILibrary
                  JavaScriptSerializer jss = new JavaScriptSerializer();
 
 
-                    jss.MaxJsonLength = 10 * 2024 * 2024;
+
+                jss.MaxJsonLength = 10 * 8096 * 8096;
                 response = (HttpWebResponse)request.GetResponse();
 
                 ResponseString = new StreamReader(response.GetResponseStream()).ReadToEnd();

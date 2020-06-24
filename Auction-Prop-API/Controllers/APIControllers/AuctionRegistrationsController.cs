@@ -20,7 +20,9 @@ namespace Auction_Prop_API.Controllers.APIControllers
         // GET: api/AuctionRegistrations
         public IQueryable<AuctionRegistration> GetAuctionRegistrations()
         {
-            return db.AuctionRegistrations;
+            var auctionRegistrations = db.AuctionRegistrations.Include(a => a.AdminFee).Include(a => a.BankApproval).Include(a => a.Guarintee).Include(a => a.Property).Include(a => a.RegisteredBuyer);
+
+            return auctionRegistrations;
         }
 
         // GET: api/AuctionRegistrations/5

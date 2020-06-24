@@ -20,7 +20,9 @@ namespace Auction_Prop_API.Controllers.APIControllers
         // GET: api/BankApprovals
         public IQueryable<BankApproval> GetBankApprovals()
         {
-            return db.BankApprovals;
+
+            var bankApprovals = db.BankApprovals.Include(b => b.AuctionRegistration.id);
+            return bankApprovals;
         }
 
         // GET: api/BankApprovals/5

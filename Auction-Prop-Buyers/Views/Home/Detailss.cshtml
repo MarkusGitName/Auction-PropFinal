@@ -1,5 +1,6 @@
 ﻿@model Auction_Prop_Buyers.Models.DisplayMadels.Property
 @using Auction_Prop_Buyers.Models.DisplayMadels
+@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "Add";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -131,31 +132,66 @@
         <section class="intro-single">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12 col-lg-8">
+                    <div class="col">
                         <div class="title-single-box">
-                            <h1 class="title-single">@Model.Address</h1>
-                            <span class="color-text-a">@Model.City, @Model.Province</span>
-                            <ol class="col-md-12 col-lg-4">
-                                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item">
-                                            <a href="index.html">Home</a>
-                                        </li>
-                                        <li class="breadcrumb-item">
-                                            <a>@Html.ActionLink("Properties", "Properties", "Home")</a>
-                                        </li>
-                                    </ol>
+                            <h1 class="title-single">@Model.Address - @Model.City - @Model.Province</h1>
+                            @try
+                            {
 
-                                    <li class="breadcrumb-item active" aria-current="page">
-                                        304 Vista Drive
-                                    </li>
+                                <h1 class="title-single"> @Model.Auction.StartTime</h1>
+                            }
+                            catch
+                            {
 
-                                </nav>
-                            </ol>
+                                <h1 class="title-single"> Not Scheduled for Auction</h1>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="title-single-box">
+                            @try
+                            {
+
+                                <img src=@Model.Seller.Auctioneer.CompanyLogo alt="..." class="img-thumbnail">
+                            }
+                            catch
+                            {
+                                try
+                                {
+
+                                    <img src=@Model.Seller.ProfilePhoto alt="..." class="img-thumbnail">
+                                }
+                                catch
+                                {
+
+                                }
+                            }
+                            @try
+                            {
+
+                                <img src=@Model.Seller.Retailer.CompaynLogoPath alt="..." class="img-thumbnail">
+                            }
+                            catch
+                            {
+                                try
+                                {
+
+                                    <img src=@Model.Seller.ProfilePhoto alt="..." class="img-thumbnail">
+                                }
+                                catch
+                                {
+
+                                }
+                            }
+
+
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </section><!-- End Intro Single-->
+        </section>
+        <!-- End Intro Single-->
         <!-- ======= Property Single ======= -->
         <section class="property-single nav-arrow-b">
             <div class="container">
@@ -169,19 +205,25 @@
                                 </div>
 
                             }
-                          
+
 
                         </div>
                         <div class="row justify-content-between">
-                            <div class="col-md-5 col-lg-4">
+                            <div class="col">
+                                <div class="title-box-d">
+                                    <h1 class="title-d">Opening Bid</h1>
+                                </div>
                                 <div class="property-price d-flex justify-content-center foo">
                                     <div class="card-header-c d-flex">
                                         <div class="card-box-ico">
                                             <span class="ion-money">R</span>
                                         </div>
                                         <div class="card-title-c align-self-center">
-                                            <h5 class="title-c">@Model.OpeningBid</h5>
+                                            <h2 class="title-c" style="padding-left: 60px">
+                                                @Model.OpeningBid.ToString("C0").Substring(1)
+                                            </h2>
                                         </div>
+
                                     </div>
                                 </div>
                                 <div class="property-summary">
@@ -200,7 +242,7 @@
                                             </li>
                                             <li class="d-flex justify-content-between">
                                                 <strong>Bidding Starts At:</strong>
-                                                <span>R @Model.OpeningBid</span>
+                                                <span>R @Model.OpeningBid.ToString("C0").Substring(1)</span>
                                             </li>
                                             <li class="d-flex justify-content-between">
                                                 <strong>Buyers Commission:</strong>
@@ -208,7 +250,7 @@
                                             </li>
                                             <li class="d-flex justify-content-between">
                                                 <strong>Location:</strong>
-                                                <span>Pretoria East, Gauteng</span>
+                                                <span>@Model.Address, @Model.City</span>
                                             </li>
                                             <li class="d-flex justify-content-between">
                                                 <strong>Title Deed:</strong>
@@ -216,11 +258,11 @@
                                             </li>
                                             <li class="d-flex justify-content-between">
                                                 <strong>Rates & Taxes:</strong>
-                                                <span>R @Model.TaxesAndRate</span>
+                                                <span>R @Model.TaxesAndRate.ToString("C0").Substring(1)</span>
                                             </li>
                                             <li class="d-flex justify-content-between">
                                                 <strong>Levies:</strong>
-                                                <span>R @Model.levies</span>
+                                                <span>R @Model.levies.ToString("C0").Substring(1)</span>
                                             </li>
                                             <li class="d-flex justify-content-between">
                                                 <strong>Property Type:</strong>
@@ -254,7 +296,7 @@
                                             </li>
                                             <li class="d-flex justify-content-between">
                                                 <strong>Garage:</strong>
-                                                <span>@Model.Gerages</span>
+                                                <span>@Model.Garages</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -270,9 +312,43 @@
                                 </div>
                                 <div class="property-description">
                                     <p class="description color-text-a">
-                                      @Model.Description
+                                        @Model.Description
                                     </p>
-                                  
+
+                                    <div class="col-lg-12">
+                                        <ul class="nav nav-pills-a nav-pills mb-3 section-t3 navbar-expand-md" id="pills-tab" role="tablist">
+                                            <li class="nav-item pull-left">
+                                                <a class="nav-link active" id="pills-video-tab" data-toggle="pill" href="#pills-video" role="tab" aria-controls="pills-video" aria-selected="true" style="position:center">Video</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="pills-plans-tab" data-toggle="pill" href="#pills-plans" role="tab" aria-controls="pills-plans" aria-selected="false" style="position:center">Floor Plans</a>
+                                            </li>
+                                            <li class="nav-item pull-right">
+                                                <a class="nav-link" id="pills-map-tab" data-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map" aria-selected="false" style="position:center">Location</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="pills-tabContent">
+                                            <div class="tab-pane fade show active" id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
+                                                @try
+                                                {
+                                                    @Model.PromoVideos
+                                                    <iframe src=@Model.PromoVideos width="100%" height="460" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                                }
+                                                catch
+                                                {
+                                                    <h1>No Video Available</h1>
+                                                }
+                                            </div>
+                                            <div class="tab-pane fade" id="pills-plans" role="tabpanel" aria-labelledby="pills-plans-tab">
+                                                <img src=@Model.PlansPath alt="" class="img-fluid">
+                                            </div>
+                                            <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
+                                                <iframe src="~/assets/videos/video1" width="100%" height="460" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                 </div>
                                 <div class="row section-t3">
                                     <div class="col-sm-12">
@@ -282,84 +358,160 @@
                                     </div>
                                 </div>
                                 <div class="amenities-list color-text-a">
-                                    <ul class="list-a no-margin">
+                                    <ul class="list-a">
                                         @if (Model.OutdoorKitchen)
                                         {
-                                            <li>Outdoor Kitchen</li>
+                                            <li style="width:130px">Outdoor Kitchen</li>
                                         }
                                         @if (Model.Garden)
                                         {
-                                            <li>Garden</li>
+                                            <li style="width:100px">Garden</li>
                                         }
                                         @if (Model.Terrace)
                                         {
-                                            <li>Terrace </li>
-                                        } @if (Model.Clubhouse)
-                                        {
-                                    <li>Clubhouse </li>
+                                            <li style="width:130px" >Terrace </li>
                                         }
-                                        } 
+                                        @if (Model.Clubhouse)
+                                        {
+                                            <li style="width:130px">Clubhouse </li>
+                                        }
+
                                         @if (Model.Braai)
                                         {
-                                    <li>Braai </li>
+                                            <li style="width:130px">Braai </li>
                                         }
                                         @if (Model.FireplacePit)
                                         {
-                                    <li>Fireplace </li>
+                                            <li style="width:130px">Fireplace </li>
                                         }
                                         @if (Model.TennisCourts)
                                         {
-                                    <li>Tennis Court </li>
+                                            <li style="width:130px">Tennis Court </li>
                                         }
                                         @if (Model.Jacquizzi)
                                         {
-                                    <li>Jacquizzi </li>
+                                            <li style="width:130px">Jacquizzi </li>
                                         }
                                         @if (Model.Parking)
                                         {
-                                    <li>Parking </li>
-                                        }                                        
+                                            <li style="width:130px">Parking </li>
+                                        }
                                         @if (Model.Borehole)
                                         {
-                                    <li>Borehole </li>
+                                            <li style="width:130px">Borehole </li>
                                         }
-                                        
+
                                     </ul>
                                 </div>
+
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-10 offset-md-1">
-                        <ul class="nav nav-pills-a nav-pills mb-3 section-t3" id="pills-tab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="pills-video-tab" data-toggle="pill" href="#pills-video" role="tab" aria-controls="pills-video" aria-selected="true">Video</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="pills-plans-tab" data-toggle="pill" href="#pills-plans" role="tab" aria-controls="pills-plans" aria-selected="false">Floor Plans</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="pills-map-tab" data-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map" aria-selected="false">Location</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
-                                @try
+                    <div style="text-align:center">
+                        @{
+                            bool admin = false;
+                            bool deposit = false;
+                            bool registered = false;
+                            int registratinID = 0;
+
+                           
+                            foreach (AuctionRegistration reg in Model.AuctionRegistrations)
+                            {
+                                if (reg.BuyerId == User.Identity.GetUserId() && Model.PropertyID == reg.PropertyID)
                                 {
-                                    @Model.PromoVideos
-                                    <iframe src=@Model.PromoVideos width="100%" height="460" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                    registered = true;
+                                    registratinID = reg.id;
+                                    if (reg.AdminFee != null)
+                                    {
+                                        admin = true;
+                                    }
+                                }
+                                try
+                                {
+                                    if (reg.RegisteredBuyer.Deposit.Paid)
+                                    {
+                                        deposit = true;
+                                    }
                                 }
                                 catch
                                 {
-                                    <h1>No Video Available</h1>
+
                                 }
-                            </div>
-                            <div class="tab-pane fade" id="pills-plans" role="tabpanel" aria-labelledby="pills-plans-tab">
-                                <img src=@Model.PlansPath alt="" class="img-fluid">
-                            </div>
-                            <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968482413!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes+Square!5e0!3m2!1ses-419!2sve!4v1510329142834" width="100%" height="460" frameborder="0" style="border:0" allowfullscreen></iframe>
-                            </div>
-                        </div>
+                            }
+
+                            if (registered && admin && deposit)
+                            {
+
+                                @Html.ActionLink("Go To Auction", "Index", "AuctionRoom", new {area = "", id = Model.PropertyID}, new { @class = "btn btn-b" })
+                            }
+                            else
+                            {
+                                if (!registered)
+                                {
+                                    @Html.ActionLink("Bid On Auction", "RegisterForAuction", "Buyers", new {area = "", id = Model.PropertyID }, new { @class = "btn btn-b" })
+
+                                }
+                                else if (registered && admin && !deposit)
+                                {
+                                    <div class="col">
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">Deposit</h3>
+                                            </div>
+
+                                            <div class="panel-body">
+                                                <p><h5>Pay R5,000 as Deosit</h5></p>
+                                                <p>The Deposit wil be refunded.</p>
+                                            </div>
+                                            <div class="text-right">
+                                                @Html.ActionLink("Pay Now", "Deposit", "Payment", new { area = "", id = 5000 }, new { @class = "btn btn-block btn-success" })
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else if (registered && !admin && deposit)
+                                {
+                                    <div class="col">
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">Administration fees</h3>
+                                            </div>
+
+                                            <div class="panel-body">
+                                                <p><h5>Pay R150 for Administration fees</h5></p>
+                                                <p></p>
+                                            </div>
+                                            <div class="text-right">
+                                                @Html.ActionLink("Pay Now", "AdminFees", "Payment", new { area = "",id = registratinID }, new { @class = "btn btn-block btn-success" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else if (registered && !admin && !deposit)
+                                {
+                                    <div class="col">
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">Registration and Deposit</h3>
+                                            </div>
+
+                                            <div class="panel-body">
+                                                <p><h5>Pay R5,150 for registartion fees and Deposit</h5></p>
+                                                <p>Youre Deposit of R5,000 will be refunded after the auction is concluded.</p>
+                                            </div>
+                                            <div class="text-right">
+                                                @Html.ActionLink("Pay Now", "AdminAndDeposit", "Payment", new { area = "", id = registratinID}, new { @class = "btn btn-block btn-success" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                            }
+                        }
+
+
+
                     </div>
                     <div class="col-md-12">
                         <div class="row section-t3">
@@ -371,34 +523,86 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6 col-lg-4">
-                                <img src="~/assets/img/agent-4.jpg" alt="" class="img-fluid">
+                                @if (Model.Seller.Retailer != null)
+                                {
+                                    <img src=@Model.Seller.Retailer.CompaynLogoPath alt="" class="img-fluid">
+                                }
+                                else if (Model.Seller.Auctioneer != null)
+                                {
+                                    <img src=@Model.Seller.Auctioneer.CompanyLogo alt="" class="img-fluid">
+                                }
+                                else
+                                {
+                                    <img src=@Model.Seller.ProfilePhoto alt="" class="img-fluid">
+                                }
                             </div>
                             <div class="col-md-6 col-lg-4">
                                 <div class="property-agent">
-                                    <h4 class="title-agent">Anabella Geller</h4>
-                                    <p class="color-text-a">
-                                        Nulla porttitor accumsan tincidunt. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
-                                        dui. Quisque velit nisi,
-                                        pretium ut lacinia in, elementum id enim.
-                                    </p>
-                                    <ul class="list-unstyled">
+                                    <h4 class="title-agent">@Model.Seller.FirtstName @Model.Seller.LastName</h4>
+
+                                    @if (Model.Seller.Retailer != null)
+                                    {
+                                        <h5>
+                                            Company: @Model.Seller.Retailer.RetailerName;
+                                        </h5>
+                                        <p class="color-text-a">
+                                            @Model.Seller.Retailer.CompanyDescription
+                                        </p>
+                                        <ul>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Phone:</strong>
+                                                <span class="color-text-a">@Model.Seller.Retailer.CompanyContactNumber</span>
+                                            </li>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Email:</strong>
+                                                <span class="color-text-a">@Model.Seller.Retailer.CompanyEmail</span>
+                                            </li>
+                                        </ul>
+
+                                    }
+                                    else if (Model.Seller.Auctioneer != null)
+                                    {
+                                        <h5>
+                                            Company: @Model.Seller.Auctioneer.CompanyName
+                                        </h5>
+                                        <p class="color-text-a">
+                                            @Model.Seller.Auctioneer.CompanyDescriprion
+                                        </p>
+                                        <ul>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Phone:</strong>
+                                                <span class="color-text-a">@Model.Seller.Auctioneer.CompanyContactNumber</span>
+                                            </li>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Email:</strong>
+                                                <span class="color-text-a">@Model.Seller.Auctioneer.CompanyEmail</span>
+                                            </li>
+                                        </ul>
+                                    }
+                                    else
+                                    {
+                                        <h5>
+                                            Company: Private
+                                        </h5>
+
+                                    }
+
+
+
+
+                                  <!--  <ul class="list-unstyled">
                                         <li class="d-flex justify-content-between">
-                                            <strong>Phone:</strong>
-                                            <span class="color-text-a">(222) 4568932</span>
+                                            <strong>Agent Phone:</strong>
+                                            <span class="color-text-a">@Model.Seller.SellerNumber</span>
                                         </li>
+
                                         <li class="d-flex justify-content-between">
-                                            <strong>Mobile:</strong>
-                                            <span class="color-text-a">777 287 378 737</span>
+                                            <strong>Agent Email:</strong>
+                                            <span class="color-text-a">@Model.Seller.SellerEmail</span>
                                         </li>
-                                        <li class="d-flex justify-content-between">
-                                            <strong>Email:</strong>
-                                            <span class="color-text-a">annabella@example.com</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between">
-                                            <strong>Skype:</strong>
-                                            <span class="color-text-a">Annabela.ge</span>
-                                        </li>
-                                    </ul>
+
+                                    </ul></-->
+
                                     <div class="socials-a">
                                         <ul class="list-inline">
                                             <li class="list-inline-item">

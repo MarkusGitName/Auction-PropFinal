@@ -4,29 +4,37 @@
 @using AutoMapper;
 @model RegisteredBuyer
 
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Auction-Prop.com | User Profile</title>
+<!DOCTYPE html>
+<html lang="en">
 
-<!-- Favicons -->
-<link href="~/assets/img/fat.png" rel="icon">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-<script src="https://kit.fontawesome.com/ef4e2c1ac6.js" crossorigin="anonymous"></script>
+    <title>Auction-Prop | Properties</title>
 
-<!-- Vendor CSS Files -->
-<link rel="stylesheet" href="~/Content2/bootstrap1.min.css" type="text/css">
-<link rel="stylesheet" href="~/Content2/ionicons.min.css" type="text/css">
-<link rel="stylesheet" href="~/Content2/animate.min.css" type="text/css">
-<link rel="stylesheet" href="~/Content2/owl.carousel.min.css" type="text/css">
-<link rel="stylesheet" href="~/Content/font-awesome.min.css" type="text/css">
-<link rel="stylesheet" href="~/Content/font-awesome.css" type="text/css">
+    <!-- Favicons -->
+    <link href="~/assets/img/fat.png" rel="icon">
 
-<!-- Template Main CSS File -->
-<link href="~/assets/css/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ef4e2c1ac6.js" crossorigin="anonymous"></script>
 
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="~/Content2/bootstrap1.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content2/ionicons.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content2/animate.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content2/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/font-awesome.css" type="text/css">
+
+    <!-- Template Main CSS File -->
+    <link href="~/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
 <!-- ======= Property Search Section Start ======= -->
 <div class="click-closed"></div>
 
@@ -145,7 +153,6 @@
 
 @if (Request.IsAuthenticated)
 {
-    <h1>Profile</h1>
     RegisteredBuyer mod = new RegisteredBuyer();
 
 
@@ -165,7 +172,6 @@
 
     if (mod == null)
     {
-        <h2>Step 1: Buyer Registration</h2>
         <h3>
             You Are Not Registered As A Buyer
         </h3>
@@ -173,9 +179,6 @@
     }
     else if (mod.BuyerAddresses.Count == 0)
     {
-        <h2>
-            Step 2: Address
-        </h2>
         <h3>
             In Order To Complete Your Registration You Need To Submit Atleast One Address
         </h3>
@@ -190,104 +193,121 @@
             bool guarintees = false;
             foreach (AuctionRegistration reg in mod.AuctionRegistrations)
             {
-                if (reg.PropertyID == Model.PropertyID)
-                {
-                    if (reg.Bonded)
-                    {
-                        try
-                        {
-                            if (reg.BankApproval == null)
-                            {
-                                throw new Exception();
+
+                <div class="col-md-4">
+                    <div>
+                        <div class="img-box-a" style="max-width:100%; height:350px">
+                            <img src=@reg.Property.PropertyPhotos.First().PropertyPhotoPath alt="" class="img-a img-fluid" style="max-width:100%; height:350px">
+                        </div>
+                        <div class="card-box-a card-shadow" href='@Url.Action("Detailss", "home", new { id = reg.PropertyID })'>
+                            @{
+                                if (reg.Bonded)
+                                {
+                                    try
+                                    {
+                                        if (reg.BankApproval == null)
+                                        {
+                                            throw new Exception();
+                                        }
+                                        else
+                                        {
+                                            bankG = true;
+                                        }
+                                    }
+                                    catch
+                                    {
+
+                                        <h3>
+                                            Please Submit Your Bank Guarintees
+                                        </h3>
+                                        <p>
+
+                                            For Any Assistance Please Contact One Of Our Bond Originators:  admin@infinitymortgagefinance.co.za
+                                        </p>
+                                        @Html.ActionLink("Click here to Submit Bank Pre Approvals", "AdPreApproval", "Buyers", new { id = reg.id }, null)
+                                    }
+                                }
+                                else
+                                {
+                                    try
+                                    {
+                                        if (reg.Guarintee == null)
+                                        {
+                                            throw new Exception();
+                                        }
+                                        else
+                                        {
+                                            guarintees = true;
+                                        }
+                                    }
+                                    catch
+                                    {
+
+                                        <h3>
+                                            Please Submit Your Pre Approval Documents
+                                        </h3>
+                                        <p>
+
+                                            For Any Assistance Please Contact One Of Our Bond Originators:  admin@infinitymortgagefinance.co.za
+                                        </p>
+                                        @Html.ActionLink("Click here to Submit Bank Guarintees", "AdPreApproval", "Buyers", new { id = reg.id }, null)
+                                    }
+                                }
+                                registered = true;
+                                if (guarintees || bankG)
+                                {
+                                    try
+                                    {
+                                        <h3>Congratulations</h3>
+                                        <p>You Are Now Registered To Bid On This Auction</p>
+                                        if (reg.Property.Auction.StartTime >= DateTime.Now)
+                                        {
+                                            <p>This Auction Starts At @reg.Property.Auction.StartTime</p>
+                                        }
+                                        else if (reg.Property.Auction.StartTime <= DateTime.Now && DateTime.Now <= reg.Property.Auction.EndTime)
+                                        {
+                                            @Html.ActionLink("Click Here to go to Auction", "Index", "AuctionRoom", new { id = reg.Property.Auction.StartTime }, null)
+                                        }
+                                        else
+                                        {
+
+                                            <p>This auction ended at @reg.Property.Auction.EndTime</p>
+                                        }
+
+
+
+                                    }
+                                    catch
+                                    {
+
+
+                                        <p>This Property Is Not Yet Scheduled For Auction</p>
+                                    }
+                                }
                             }
-                        }
-                        catch
-                        {
 
-                            <h2>
-                                Step 3: Address
-                            </h2>
-                            <h3>
-                                Please Submit Your Pre Approval Documents
-                                For Any Assistance Please Contact One Of Our Bond Originators:  admin@infinitymortgagefinance.co.za
-                            </h3>
-                            @Html.ActionLink("Click here to Submit Bank Pre Approvals", "AdPreApproval", "Buyers", new { id = reg.id }, null)
-                        }
-                    }
-                    else
-                    {
-                        try
-                        {
-                            if (reg.Guarintee == null)
-                            {
-                                throw new Exception();
-                            }
-                        }
-                        catch
-                        {
-
-                            <h2>
-                                Step 3: Address
-                            </h2>
-                            <h3>
-                                Please Submit Your Pre Approval Documents
-                                For Any Assistance Please Contact One Of Our Bond Originators:  admin@infinitymortgagefinance.co.za
-                            </h3>
-                            @Html.ActionLink("Click here to Submit Bank Guarintees", "AdPreApproval", "Buyers", new { id = reg.id }, null)
-                        }
-                    }
-                    registered = true;
-                    if (guarintees || bankG)
-                    {
-                        try
-                        {
-                            <h3>Congratulations</h3>
-                            <p>You Are Now Registered To Bid On This Auction</p>
-                            if (Model.Auction.StartTime >= DateTime.Now)
-                            {
-                                <p>This Auction Starts At @Model.Auction.StartTime</p>
-                            }
-                            else if (Model.Auction.StartTime <= DateTime.Now && DateTime.Now <= Model.Auction.EndTime)
-                            {
-                                @Html.ActionLink("Click Here to go to Auction", "Index", "AuctionRoom", new { id = Model.Auction.PropertyID }, null)
-                            }
+                        </div>
+                    </div>
+                </div>
 
 
 
-                        }
-                        catch
-                        {
-
-
-                            <p>This Property Is Not Yet Scheduled For Auction</p>
-                        }
-                    }
-
-                }
             }
             if (registered == false)
             {
-                <h2>
-                    Step 3: Auction Registration
-                </h2>
                 <h3>
                     You Need To Register For Each Property You Want To Bid On
                 </h3>
 
-                @Html.ActionLink("Click Here to Register for this Auction.", "RegisterForAuction", "Buyers", new { id = Model.PropertyID }, Model)
             }
 
         }
         else
         {
-            <h2>
-                Step 3: Auction Registration
-            </h2>
             <h3>
                 You Need To Register For Each Property You Want To Bid On
             </h3>
 
-            @Html.ActionLink("Click Here to Register for this Auction.", "RegisterForAuction", "Buyers", new { id = Model.PropertyID }, Model)
         }
 
     }
@@ -295,11 +315,12 @@
 
 else
 {
-    <h1>Profile</h1>
     <h5>You Have To Sign Up Or Login With Auction-Prop Before You Can Register For Any Auction</h5>
     <button onclick="@Html.ActionLink("Sign up | Log in","Register","Account")" />
 }
 
+
+@Html.ActionLink("Go to Properties", "Properties", "Home", new { area = "" }, new { @class = "btn btn-b" })
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 <div id="preloader"></div>
 
@@ -313,3 +334,5 @@ else
 
 <!-- ====== Template Main JS File ====== -->
 <script src="~/Scripts/main.js"></script>
+</body>
+</html>

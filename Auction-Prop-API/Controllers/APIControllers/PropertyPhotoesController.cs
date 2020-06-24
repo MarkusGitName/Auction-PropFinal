@@ -20,7 +20,9 @@ namespace Auction_Prop_API.Controllers.APIControllers
         // GET: api/PropertyPhotoes
         public IQueryable<PropertyPhoto> GetPropertyPhotos()
         {
-            return db.PropertyPhotos;
+
+            var propertyPhotos = db.PropertyPhotos.Include(p => p.Property.PropertyID);
+            return propertyPhotos;
         }
 
         // GET: api/PropertyPhotoes/5

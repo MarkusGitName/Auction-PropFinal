@@ -216,10 +216,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AuctionRoomController.cs" />
     <Compile Include="Controllers\BuyersController.cs" />
-    <Compile Include="Controllers\ErrorView.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\PaymentGateController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1142,6 +1142,9 @@
     <Content Include="Views\file\Detailss.cshtml" />
     <Content Include="Views\Home\HowItWorks.cshtml" />
     <Content Include="Views\Buyers\Index.cshtml" />
+    <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\Payment\Return.cshtml" />
+    <Content Include="Views\Payment\Cancel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

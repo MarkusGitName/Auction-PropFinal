@@ -1,19 +1,16 @@
-﻿
-
-@{
-    ViewBag.Title = "FAQ";
+﻿@{
+    ViewBag.Title = "Contact";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
+<html lang="en">
 
-<html lang="en-US">
 <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Auction-Prop.com | FAQ's</title>
+    <title>Auction-Prop | Contact Us</title>
 
     <!-- Favicons -->
     <link href="~/assets/img/fat.png" rel="icon">
@@ -37,14 +34,14 @@
 
 <body>
 
-    <!-- ======= Property Search Section Start ======= -->
+    <!-- ======= Property Search Section ======= -->
     <div class="click-closed"></div>
-
+    <!--/ Form Search Star /-->
     <div class="box-collapse">
         <div class="title-box-d">
             <h3 class="title-d">Search Property</h3>
         </div>
-        <span class="close-box-collapse right-boxed ion-ios-close"></span>
+        <span class="close-box-collapse right-boxed fa fa-close"></span>
         <div class="box-collapse-wrap form">
             <form class="form-a">
                 <div class="row">
@@ -124,174 +121,167 @@
                 </div>
             </form>
         </div>
-    </div>
-    <!-- ======= Property Search Section End ======= -->
-    <!-- ======= Intro and Breadcrumb Section Start ======= -->
-    <section class="intro-single">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-lg-8">
-                    <div class="title-single-box">
-                        <h1 class="title-single">Frequently Asked Questions</h1>
+    </div><!-- End Property Search Section -->>
+
+    <main id="main">
+
+        <!-- ======= Intro Single ======= -->
+        <section class="intro-single">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-8">
+                        <div class="title-single-box">
+                            <h1 class="title-single">Contact Us</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4">
+                        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="https://auction-prop.com/">Home</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Contact Us
+                                </li>
+                            </ol>
+                        </nav>
                     </div>
                 </div>
-                <div class="col-md-12 col-lg-4">
-                    <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a href="#">Home</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">
-                                FAQ's
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
             </div>
-        </div>
-    </section>
-    <!-- ======= Intro and Breadcrumb Section End ======= -->
+        </section><!-- End Intro Single-->
+        <!-- ======= Contact Single ======= -->
+        <section class="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="contact-map box">
+                            <div id="map" class="contact-map">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3593.14048976933!2d28.309615615646383!3d-25.76592275255688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e955e3b24c1505d%3A0xb99ff673e5dab6b!2sFintech%20Campus!5e0!3m2!1sen!2sza!4v1591342136068!5m2!1sen!2sza" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 section-t8">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <input type="text" name="name" class="form-control form-control-lg form-control-a" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                                                <div class="validate"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-group">
+                                                <input name="email" type="email" class="form-control form-control-lg form-control-a" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+                                                <div class="validate"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-3">
+                                            <div class="form-group">
+                                                <input type="text" name="subject" class="form-control form-control-lg form-control-a" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+                                                <div class="validate"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <textarea name="message" class="form-control" name="message" cols="45" rows="8" data-rule="required" data-msg="Your message to us" placeholder="Message"></textarea>
+                                                <div class="validate"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-3">
+                                            <div class="mb-3">
+                                                <div class="loading">Loading</div>
+                                                <div class="error-message"></div>
+                                                <div class="sent-message">Your message has been sent. Thank you!</div>
+                                            </div>
+                                        </div>
 
-        <div class="container">
-            <div class="row">
-                <!-- FAQ -->
-                <div class="col-md-9 col-sm-9">
-                    <section id="faq">
-                        <article class="faq">
-                            <figure class="icon">Q</figure>
-                            <div class="wrapper">
-                                <header>How do i stay informed on upcoming auctions?</header>
-                                <p>
-                                    Go to our website and navigate to our Auction notification page.
-                                    Just fill out the form, and you will be notified of all upcoming auction dates.
-                                    Alternatively, follow us on our Facebook page, to stay updated and informed on all things Auction.
-                                    You can also email us at info@auction-prop.com.
-                                </p>
-                                <aside>Was this answer helpful?<a href="#">Yes</a><a href="#">No</a></aside>
+                                        <div class="col-md-12 text-center">
+                                            <button type="submit" class="btn btn-a">Send Message</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                        </article>
-                        <article class="faq">
-                            <figure class="icon">Q</figure>
-                            <div class="wrapper">
-                                <header>Can i buy a property before the Auction?</header>
-                                <p>
-                                    This should be discussed with the Auctioneer as that is permissible on rare occasions.
-                                </p>
-                                <aside>Was this answer helpful?<a href="#">Yes</a><a href="#">No</a></aside>
+                            <div class="col-md-5 section-md-t3">
+                                <div class="icon-box section-b2">
+                                    <div class="icon-box-icon">
+                                        <span class="fa fa-send-o"></span>
+                                    </div>
+                                    <div class="icon-box-content table-cell">
+                                        <div class="icon-box-title">
+                                            <h4 class="icon-title">Say Hello</h4>
+                                        </div>
+                                        <div class="icon-box-content">
+                                            <p class="mb-1">
+                                                <strong>Email:</strong>
+                                                <span style="color:#1d293d;"> info@auction-prop.com</span>
+                                            </p>
+                                            <p class="mb-1">
+                                                <strong>Phone:</strong>
+                                                <span style="color:#1d293d;"> +2782 316 3702</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="icon-box section-b2">
+                                    <div class="icon-box-icon">
+                                        <span class="fa fa-map-marker"></span>
+                                    </div>
+                                    <div class="icon-box-content table-cell">
+                                        <div class="icon-box-title">
+                                            <h4 class="icon-title">Find us in</h4>
+                                        </div>
+                                        <div class="icon-box-content">
+                                            <p class="mb-1">
+                                                Fintech Campus, 81 Botterklapper Str. 0081,
+                                                <br> The Willows, Pretoria East
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="icon-box">
+                                    <div class="icon-box-icon">
+                                        <span class="fa fa-comments-o"></span>
+                                    </div>
+                                    <div class="icon-box-content table-cell">
+                                        <div class="icon-box-title">
+                                            <h4 class="icon-title">Social networks</h4>
+                                        </div>
+                                        <div class="icon-box-content">
+                                            <div class="socials-footer">
+                                                <ul class="list-inline">
+                                                    <li class="list-inline-item">
+                                                        <a href="#" class="link-one">
+                                                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a href="#" class="link-one">
+                                                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a href="#" class="link-one">
+                                                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </article>
-                        <article class="faq">
-                            <figure class="icon">Q</figure>
-                            <div class="wrapper">
-                                <header>What does an "AUCTION WITH RESERVE" mean?</header>
-                                <p>
-                                    Lots at auctions are sold with undisclosed reserves set by the Seller, which means offers are subject to confirmation by the Seller
-                                    within a certain time period. When a lot is sold subject to confirmation, this is not a reserve, but merely a formality to protect
-                                    sellers and creditors from having secured assets being sold well below their market value, giving Sellers the opportunity to decide
-                                    whether they are willing to accept the offers achieved on auction.
-                                </p>
-                                <aside>Was this answer helpful?<a href="#">Yes</a><a href="#">No</a></aside>
-                            </div>
-                        </article>
-                        <article class="faq">
-                            <figure class="icon">Q</figure>
-                            <div class="wrapper">
-                                <header>Can i get a Bond for Real Estate purchased on Auction?</header>
-                                <p>
-                                    Yes. However, auctions are non-suspensive transactions and as such your offer at an auction sale is NOT subject to you obtaining a bond.
-                                    Should you wish to obtain a bond, this is acceptable. If, for any reason you are not granted a bond, or do not qualify for the amount to
-                                    which you have bid, you will still be held liable and responsible to fulfill al your obligations in terms of the agreement signed at the auction.
-                                </p>
-                                <aside>Was this answer helpful?<a href="#">Yes</a><a href="#">No</a></aside>
-                            </div>
-                        </article>
-                        <article class="faq">
-                            <figure class="icon">Q</figure>
-                            <div class="wrapper">
-                                <header>When must i pay the Deposit and Auctioneer's Commission?</header>
-                                <p>
-                                    The Deposit and Auctionee’s Commission are payable immediately on the fall of the hammer, regardless of whether the sale is subject to confirmation.
-                                    These monies are payable upfront and immediately, and cannot form part of any financing that you may have applied for.
-                                </p>
-                                <aside>Was this answer helpful?<a href="#">Yes</a><a href="#">No</a></aside>
-                            </div>
-                        </article>
-                        <article class="faq">
-                            <figure class="icon">Q</figure>
-                            <div class="wrapper">
-                                <header>When is the balance of the purchase price due?</header>
-                                <p>
-                                    The balance of the bid price is due on registration of transfer in the case of a Real Estate purchase.
-                                </p>
-                                <aside>Was this answer helpful?<a href="#">Yes</a><a href="#">No</a></aside>
-                            </div>
-                        </article>
-                        <article class="faq">
-                            <figure class="icon">Q</figure>
-                            <div class="wrapper">
-                                <header>Do i need to register in order to bid on an Auction, or can i just bid?</header>
-                                <p>
-                                    Yes. You do need to register in order to bid. You will be required to fill out a registration form, and you will be allocated an exclusive Bidder’s number.
-                                    You will be able to pre-register for auction events on our website.
-                                </p>
-                                <aside>Was this answer helpful?<a href="#">Yes</a><a href="#">No</a></aside>
-                            </div>
-                        </article>
-                        <article class="faq">
-                            <figure class="icon">Q</figure>
-                            <div class="wrapper">
-                                <header>Do i need to pay a deposit in order to register to bid?</header>
-                                <p>
-                                    No. You are required to indicate whether your purchase will be cash and/or bonded. And then supply the necessary documentation in order to participate in an auction.
-                                </p>
-                                <aside>Was this answer helpful?<a href="#">Yes</a><a href="#">No</a></aside>
-                            </div>
-                        </article>
-                        <article class="faq">
-                            <figure class="icon">Q</figure>
-                            <div class="wrapper">
-                                <header>What happens if i default on the sale?</header>
-                                <p>
-                                    The Seller will reserve his/her right to take the necessary legal action agains you, should you be in breach of contract or fail to fulfill any of your obligations
-                                    in terms of the Conditions of Sale/ They can exercise their various options, which will be stipulated in the Conditions of Sale. Ultimately you will be held liable
-                                    and responsible to fulfill your obligations. Should you still remain in breach of contract, all monies already paid by you to the auctioneer and/or Seller will be
-                                    forfeited as “rouwkoop” (pre-estimated damages). It is very serious to go into breach after an auction and legal action will be taken. Therfore, if you harbour any
-                                    uncertainty, it is better not to bid.
-                                </p>
-                                <aside>Was this answer helpful?<a href="#">Yes</a><a href="#">No</a></aside>
-                            </div>
-                        </article>
-                        <article class="faq">
-                            <figure class="icon">Q</figure>
-                            <div class="wrapper">
-                                <header>What happens if an item is sold to me "STC" (Subject To Confirmation)?</header>
-                                <p>
-                                    Items sold STC are usually encumbered to a secured creditor and confirmation will be obtained within the time frame specified at the auction. During this period, you
-                                    are held bound by your offer. Payments is required immediately after the auction sale nonetheless. Should the sale for any reason not be confirmed, you will be immediately refunded.
-                                </p>
-                                <aside>Was this answer helpful?<a href="#">Yes</a><a href="#">No</a></aside>
-                            </div>
-                        </article>
-                        <article class="faq">
-                            <figure class="icon">Q</figure>
-                            <div class="wrapper">
-                                <header>What recourse do i have if my purchase is not to my satisfaction after the auction?</header>
-                                <p>
-                                    Purchasers bidding on lots at an auction acknowledge that they have familiarized themselves with the items for which they are bidding. All items sold “voetstoots” and the bids are transparent.
-                                    Therefore, there is no recourse if you have made a mistake and bid for the wrong items or discover later that you are not happy with your purchase. Once you have bid, you are bound and you will
-                                    subsequently be required to pay in full for these assets.
-                                </p>
-                                <aside>Was this answer helpful?<a href="#">Yes</a><a href="#">No</a></aside>
-                            </div>
-                        </article>
-                    </section><!-- /#faq -->
-                </div><!-- /.col-md-9 -->
-                <!-- end FAQ -->
-            </div><!-- /.row -->
-        </div><!-- /.container -->
-    </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <br />
+            </div>
+        </section><!-- End Contact Single-->
 
-    <!-- end Page Content -->
+    </main><!-- End #main -->
 
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
     <div id="preloader"></div>
@@ -305,9 +295,14 @@
     <script src="~/Scripts/scrollreveal.min.js"></script>
 
     <!-- Template Main JS File -->
-    <script src="~/Scripts/main.js"></script>
+    <script src="~/assets/js/main.js"></script>
 
 </body>
+
 </html>
+
+
+
+
 
 

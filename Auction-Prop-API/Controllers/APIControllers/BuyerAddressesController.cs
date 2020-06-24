@@ -20,7 +20,9 @@ namespace Auction_Prop_API.Controllers.APIControllers
         // GET: api/BuyerAddresses
         public IQueryable<BuyerAddress> GetBuyerAddresses()
         {
-            return db.BuyerAddresses;
+
+            var buyerAddresses = db.BuyerAddresses.Include(b => b.Address).Include(b => b.RegisteredBuyer.UserId);
+            return buyerAddresses;
         }
 
         // GET: api/BuyerAddresses/5

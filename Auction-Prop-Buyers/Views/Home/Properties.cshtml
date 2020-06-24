@@ -174,16 +174,16 @@
                         foreach (Property prop in propertiesList)
                         {
                             <div class="col-md-4" href='@Url.Action("Detailss", "home", new { id = prop.PropertyID })'>
-                                                    <div class="card-box-a card-shadow" style="height:400px" href='@Url.Action("Detailss", "home", new { id = prop.PropertyID })'>
+                                                    <div class="card-box-a card-shadow" style="height:350px" href='@Url.Action("Detailss", "home", new { id = prop.PropertyID })'>
                                                         @try
                                                         {
-                                                            <div class="img-box-a">
-                                                                <img src=@prop.PropertyPhotos.First().PropertyPhotoPath alt="" class="img-a img-fluid">
+                                                            <div class="img-box-a" style="max-width:100%; height:350px">
+                                                                <img src=@prop.PropertyPhotos.First().PropertyPhotoPath alt="" class="img-a img-fluid" style="max-width:100%; height:350px">
                                                             </div>
                                                         }
                                                         catch
                                                         { <div class="img-box-a">
-                                                                <img src="~/assets/img/property-1.jpg" class="img-a img-fluid">
+                                                                <img src="~/assets/img/property-1.jpg" class="img-a">
                                                             </div>
                                                             }
 
@@ -202,11 +202,11 @@
                                                                         @try
                                                                         {
                                                                             DateTime date = prop.Auction.StartTime;
-                                                                            <a href='@Url.Action("Detailss", "home", new { id = prop.PropertyID })'><span class="price-a">Auction Date | @date</span></a>
+                                                                            <a href='@Url.Action("Detailss", "home", new { id = prop.PropertyID })'><span class="price-a">Date | @date</span></a>
                                                                         }
                                                                         catch
                                                                         {
-                                                                            <a href='@Url.Action("Detailss", "home", new { id = prop.PropertyID })'><span class="price-a">Auction Not Scheduled</span></a>
+                                                                            <a href='@Url.Action("Detailss", "home", new { id = prop.PropertyID })'><span class="price-a">Not Scheduled</span></a>
                                                                         }
                                                                     </div>
                                                                     <a href='@Url.Action("Detailss", "home", new { id = prop.PropertyID })' class="link-a">

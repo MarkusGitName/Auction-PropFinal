@@ -232,7 +232,7 @@
                     </div>
                 </div>
             </div>
-            <div id="property-carousel" class="owl-carousel owl-theme">
+            <div id="property-carousel" class="owl-carousel owl-theme" style="height:400px">
                 @{
 
                     ICollection<Property> propertiesList = APILibrary.APIMethods.APIGetALL<ICollection<Property>>("Properties");
@@ -242,12 +242,12 @@
                         if (prop.Auction != null)
                         {
                             <div class="carousel-item-b">
-                                                <div class="card-box-a card-shadow">
+                                                <div class="card-box-a card-shadow" style="height:350px">
 
                                                     @try
                                                     {
-                                                        <div class="img-box-a">
-                                                            <img src=@prop.PropertyPhotos.First().PropertyPhotoPath alt="" class="img-a img-fluid">
+                                                        <div class="img-box-a" style="max-width:100%; height:350px">
+                                                            <img src=@prop.PropertyPhotos.First().PropertyPhotoPath alt="" class="img-a" style="max-width:100%; height:350px">
                                                         </div>
                                                     }
                                                     catch

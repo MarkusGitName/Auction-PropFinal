@@ -1,12 +1,5 @@
-﻿@model Auction
-
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-@using Auction_Prop_Buyers.Models.DisplayMadels
-
+﻿
+@using APILibrary
 @using Microsoft.AspNet.Identity
 @using System.Data
 
@@ -17,8 +10,12 @@
 }
 
 @using Auction_Prop_Buyers.Models.DisplayMadels
+@model Auction
 
 
+<!DOCTYPE html>
+
+<html lang="en-US">
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -297,7 +294,7 @@
                     <div class="col">
                         <div class="title-single-box" style="border-right: 3px solid #fa7f15">
                             <h1 class="title-single; text-center"><strong>Opening Bid:</strong></h1>
-                            <h1 class="title-single; text-center">R @Model.Property.OpeningBid </h1>
+                            <h1 class="title-single; text-center">R @Model.Property.OpeningBid.ToString("C0").Substring(1) </h1>
                         </div>
                     </div>
                 </div>
@@ -325,13 +322,13 @@
             <!-- ============================================= Current Bid & Timer ======================================================== -->
 
             <div class="container" style="border-right: solid #fa7f15; border-left: solid #fa7f15; padding-bottom:30px">
-                <h1 class="title-single; text-center"><strong>AUCTION ENDS</strong></h1>
+                <h1 class="title-single; text-center"><strong>AUCTION ENDS IN</strong></h1>
                 <div class="title-single-box">
                     <div id="CountDown">
                         @Html.DisplayFor(model => model.EndTime)
                     </div>
                 </div>
-               
+
             </div>
         </section>
         <br />
@@ -341,47 +338,71 @@
         <div class="container">
             <div class="row">
                 <div class="col-5">
-                    <div class="bid" style="padding-top:20px; text-align:center;  margin:auto; border-top: solid #07033c;; border-bottom: solid #07033c; width:100%; height:90%">
-                        <h4 class="title-single; text-center">Current Bid</h4>
-                        <h4 id="cur" class="title-single; text-center">R @Model.Property.OpeningBid</h4>
-                        Your Bid:
+                    @if (DateTime.Now > Model.EndTime)
+                    {
 
-                        <div class="Yourbid" style=" width:240px;float:inherit;margin:auto;">
-                            <input type="button" id="Decriment5k" value="-" style="float:left; width:25px; border: solid #07033c  " />
-                            <input type="button" id="Increment5k" value="+" style="float:right; width:25px; border: solid #07033c" />
+                        <div class="bid" style="padding-top:20px; text-align:center;  margin:auto; border-top: solid #07033c;; border-bottom: solid #07033c; width:100%; height:90%">
+                            @try
+                            {
+                                if (Model.Property.ConcludedAuction != null)
+                                {
 
-                            <div id="Biddd" style="        margin: auto;       width: 150px;       border: 3px solid #fa7f15;        border-radius: 3px;        float: none; border: solid #fa7f15">@Model.Property.OpeningBid</div>
+                                    <h4 class="title-single; text-center">Winning Bid</h4>
+                                    <h4 id="Cur" class="title-single; text-center">R @Model.Property.ConcludedAuction.Bid.AmuntOfBid</h4>
+
+
+                                    <h4 class="title-single; text-center">Winning Bidder</h4>
+                                    <h4 id="Cur" class="title-single; text-center"> @Model.Property.ConcludedAuction.RegisteredBuyer.FirstName</h4>
+                                }
+                            }
+                            catch
+                            {
+
+                            }
                         </div>
-                        <div class="Increments" style="padding-top:30px; margin:auto">
-                            <div>Add increment of:</div>
-                            <input type="button" id="10KIncreas" value="R10 000" style="float:left; border: solid #fa7f15" />
-                            <input type="button" id="50KIncreas" value="R50 000" style="border: solid #fa7f15" />
-                            <input type="button" id="100KIncreas" value="R100 000" style="float:right; border: solid #fa7f15 " />
+                    }
+                    else if (Model.StartTime > DateTime.Now && DateTime.Now < Model.EndTime)
+                    {
 
-                            <div class="Placebid" style="padding-top:30px ;padding-bottom:20px">
-                                <input type="button" id="placeBid" value="Plase youre bid" style="border: solid #07033c" />
+
+                        <div class="bid" style="padding-top:20px; text-align:center;  margin:auto; border-top: solid #07033c;; border-bottom: solid #07033c; width:100%; height:90%">
+                            <h4 class="title-single; text-center">Current Bid</h4>
+                            <h4 id="Cur" class="title-single; text-center">R @Model.Property.OpeningBid.ToString("C0").Substring(1)</h4>
+                            Your Bid:
+
+                            <div class="Yourbid" style=" width:240px;float:inherit;margin:auto;">
+                                <input type="button" id="Decriment5k" value="-" style="float:left; width:25px; border: solid #07033c  " />
+                                <input type="button" id="Increment5k" value="+" style="float:right; width:25px; border: solid #07033c" />
+
+                                <div id="Biddd" style="        margin: auto;       width: 150px;       border: 3px solid #fa7f15;        border-radius: 3px;        float: none; border: solid #fa7f15">@Model.Property.OpeningBid</div>
                             </div>
-                            <div class="Maximumbid" style="padding-top: 40px ;padding-bottom:20px">
-                                <input type="button" id="PlaceMaximumBid" value="Place Maximum Bid" style="border: solid #07033c" />
+                            <div class="Increments" style="padding-top:30px; margin:auto">
+                                <div>Add increment of:</div>
+                                <input type="button" id="10KIncreas" value="R10 000" style="float:left; border: solid #fa7f15" />
+                                <input type="button" id="50KIncreas" value="R50 000" style="border: solid #fa7f15" />
+                                <input type="button" id="100KIncreas" value="R100 000" style="float:right; border: solid #fa7f15 " />
+
+                                <div class="Placebid" style="padding-top:30px ;padding-bottom:20px">
+                                    <input type="button" id="placeBid" value="Plase youre bid" style="border: solid #07033c" />
+                                </div>
+                               
+                            </div>
+                 
+                           
+                        </div>
+
+                    }
+                    else
+                    { <div class="container" title="Auction History " style="border: solid #07033c;width: 100%">
+
+
+                            <div class="row" style="text-align:center; padding:20px; border-bottom:ridge">
+                                <div class="col-lg-6" style="text-align:left">
+                                    Auction Will Start at @Model.StartTime
+                                </div>
                             </div>
                         </div>
-                        <div style=" width:240px;float:inherit;margin:auto">
-
-                            <input type="button" id="Decriment5k" value="-" style="float:left; width:8px " />
-                            <input type="button" id="Increment5k" value="+" style="float:right; width:8px" />
-                            <div id="Biddd" style=" margin:auto;width:150px;border:solid; border-radius:3px;float:none">@Model.Property.OpeningBid</div>
-
-                        </div>
-                        <div style="padding-top:30px; margin:auto">
-                            <div>Add increment of:</div>
-
-
-                            <input type="button" id="10KIncreas" value="R10 000" style="float:left " />
-                            <input type="button" id="50KIncreas" value="R50 000" />
-                            <input type="button" id="100KIncreas" value="R100 000" style="float:right " />
-
-                        </div>
-                    </div>
+                    }
                 </div>
                 <div class="col-7">
                     <div class="embed-responsive embed-responsive-16by9 hoverable">
@@ -418,60 +439,33 @@
             <div class="title-single-box text-left">
                 <h2><strong>Bidding Window</strong></h2>
             </div>
-            @if (Model.StartTime > DateTime.Now && DateTime.Now < Model.EndTime)
-            {
 
-                <div class="container" title="Auction History " style="border: solid #07033c;width: 100%">
+            <div class="container" title="Auction History " style="border: solid #07033c;width: 100%">
 
 
-                    <div class="row" style="text-align:center; padding:20px; border-bottom:ridge">
-                        <div class="col-lg-6" style="text-align:left">
-                            Bitter
-                        </div>
-                        <div class="col-lg-3">
-                            Time of bid
-                        </div><div class="col-lg-3">
-                            Bid
-                        </div>
+                <div class="row" style="text-align:center; padding:20px; border-bottom:ridge">
+                    <div class="col-lg-6" style="text-align:left">
+                        Bitter
                     </div>
-                    <div type="hidden" id="displayname" style="visibility:hidden">Username</div>
-                    <div id="CurentBid" style="text-align:left">
-                    </div>
-                    <div class="col-lg-6" id="bidUser" style="text-align:left">
-                    </div>
-                    <div class="col-lg-3" id="bidTime" style="text-align:left">
-                    </div>
-                    <div class="col-lg-3" id="bidAmount" style="text-align:left">
-                    </div>
-
-
-
-                </div>
-            }
-            else if (Model.StartTime < DateTime.Now && DateTime.Now < Model.EndTime)
-            {
-                <div class="container" title="Auction History " style="border: solid #07033c;width: 100%">
-
-
-                    <div class="row" style="text-align:center; padding:20px; border-bottom:ridge">
-                        <div class="col-lg-6" style="text-align:left">
-                            Auction Will Start at @Model.StartTime
-                        </div>
+                    <div class="col-lg-3">
+                        Time of bid
+                    </div><div class="col-lg-3">
+                        Bid
                     </div>
                 </div>
-            }
-            else
-            {
-                <div class="container" title="Auction History " style="border: solid #07033c;width: 100%">
-
-
-                    <div class="row" style="text-align:center; padding:20px; border-bottom:ridge">
-                        <div class="col-lg-6" style="text-align:left">
-                            Auction is over
-                        </div>
-                    </div>
+                <div type="hidden" id="displayname" style="visibility:hidden">Username</div>
+                <div id="CurentBid" style="text-align:left">
                 </div>
-            }
+                <div class="col-lg-6" id="bidUser" style="text-align:left">
+                </div>
+                <div class="col-lg-3" id="bidTime" style="text-align:left">
+                </div>
+                <div class="col-lg-3" id="bidAmount" style="text-align:left">
+                </div>
+
+
+
+            </div>
 
 
             <div id="USER" type="hidden"></div>
@@ -508,88 +502,11 @@
     <script src="~/Scripts/owl.carousel.min.js"></script>
     <script src="~/Scripts/scrollreveal.min.js"></script>
 
-    <script>
-        var Clock = (function () {
-
-            var exports = function (element) {
-                this._element = element;
-                var html = '';
-                for (var i = 0; i < 6; i++) {
-                    html += '<span>&nbsp;</span>';
-                }
-                this._element.innerHTML = html;
-                this._slots = this._element.getElementsByTagName('span');
-                this._tick();
-            };
-
-            exports.prototype = {
-
-                _tick: function () {
-                    var time = new Date();
-                    this._update(this._pad(time.getHours()) + this._pad(time.getMinutes()) + this._pad(time.getSeconds()));
-                    var self = this;
-                    setTimeout(function () {
-                        self._tick();
-                    }, 1000);
-                },
-
-                _pad: function (value) {
-                    return ('0' + value).slice(-2);
-                },
-
-                _update: function (timeString) {
-
-                    var i = 0, l = this._slots.length, value, slot, now;
-                    for (; i < l; i++) {
-
-                        value = timeString.charAt(i);
-                        slot = this._slots[i];
-                        now = slot.dataset.now;
-
-                        if (!now) {
-                            slot.dataset.now = value;
-                            slot.dataset.old = value;
-                            continue;
-                        }
-
-                        if (now !== value) {
-                            this._flip(slot, value);
-                        }
-                    }
-                },
-
-                _flip: function (slot, value) {
-
-                    // setup new state
-                    slot.classList.remove('flip');
-                    slot.dataset.old = slot.dataset.now;
-                    slot.dataset.now = value;
-
-                    // force dom reflow
-                    slot.offsetLeft;
-
-                    // start flippin
-                    slot.classList.add('flip');
-
-                }
-
-            };
-
-            return exports;
-        }());
-
-        var i = 0, clocks = document.querySelectorAll('.clock'), l = clocks.length;
-        for (; i < l; i++) {
-            new Clock(clocks[i]);
-        }
-
-
-    </script>
+  
 
     <!-- Template Main JS File -->
     <script src="~/Scripts/main.js"></script>
 
-</body>
 
 
 
@@ -600,17 +517,15 @@
 
 
 
+    @section JavaScript{
+        <script src="~/Scripts/jquery-3.4.1.js"></script>
+        <!--Reference the SignalR library. -->
+        <script src="~/Scripts/jquery.signalR-2.4.1.js"></script>
+        <!--Reference the autogenerated SignalR hub script. -->
+        <script src="~/signalr/hubs"></script>
 
 
-@section JavaScript{
-    <script src="~/Scripts/jquery-3.4.1.js"></script>
-    <!--Reference the SignalR library. -->
-    <script src="~/Scripts/jquery.signalR-2.4.1.js"></script>
-    <!--Reference the autogenerated SignalR hub script. -->
-    <script src="~/signalr/hubs"></script>
-
-
-    <script type="text/javascript">
+        <script type="text/javascript">
 
 
         $(function () {
@@ -698,8 +613,8 @@
 
 
         });
-    </script>
-    <script>
+        </script>
+        <script>
         // Set the date we're counting down to
         //var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
         var countDownDate = new Date(document.getElementById("CountDown").innerHTML).getTime();
@@ -735,7 +650,6 @@
                 clearInterval(x);
 
                 document.getElementById("CountDown").innerHTML = "EXPIRED";
-               // location.reload();
             }
             if ($('#CountDown').text() == "EXPIRED")
             {
@@ -777,15 +691,15 @@
 
 
         }, 1000);
-    </script>
+        </script>
 
-}
-
-
+    }
 
 
 
+</body>
 
+</html>
 
 <!--
 
@@ -887,16 +801,7 @@
 
             </div>
             <div id="reserve" type="hidden" class="hidden">
-                @if (Model.Property.Reserve != null)
-                {
-                    @Html.DisplayFor(model => model.Property.Reserve)
-
-                }
-                else
-                {
-                    <p>No Reseerve</p>
-                }
-
+         
             </div>
 
         </div>
@@ -991,24 +896,7 @@ else if (Model.StartTime > DateTime.Now && DateTime.Now < Model.EndTime)
         <div style="padding:10px ; text-align:center; margin:auto">
             On Auction By
             <div style="padding:20px; width:20% ; text-align:center; margin:auto">
-                @if (Model.Property.Seller.PrivateSeller.ProfilePhotoPath != null)
-                {
 
-                    string Paths = Model.Property.Seller.PrivateSeller.ProfilePhotoPath;
-                    <img src=@Paths style="width:99%" />
-
-
-                }
-                else if(Model.Property.Seller.Retailer.CompaynLogoPath != null)
-                {
-                    string Paths = Model.Property.Seller.Retailer.CompaynLogoPath;
-                    <img src=@Url.Content(Paths) style="width:99%" />
-                }
-                else
-                {
-                string Paths = Model.Property.Seller.Auctioneer.CompanyLogo;
-                <img src=@Url.Content(Paths) style="width:99%" />
-                }
             </div>
         </div>
         <div>

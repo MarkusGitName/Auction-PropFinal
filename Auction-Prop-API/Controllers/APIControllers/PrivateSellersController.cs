@@ -20,7 +20,9 @@ namespace Auction_Prop_API.Controllers.APIControllers
         // GET: api/PrivateSellers
         public IQueryable<PrivateSeller> GetPrivateSellers()
         {
-            return db.PrivateSellers;
+
+            var privateSellers = db.PrivateSellers.Include(p => p.Seller);
+            return privateSellers;
         }
 
         // GET: api/PrivateSellers/5

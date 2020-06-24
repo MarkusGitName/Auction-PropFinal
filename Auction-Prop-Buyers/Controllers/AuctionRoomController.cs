@@ -33,7 +33,7 @@ namespace Auction_Prop_Buyers.Controllers
             return View();
 
         }
-        public ActionResult ErrorView(ErrorView error)
+        public ActionResult ErrorView(ErrorViewModel error)
         {
             return View();
          

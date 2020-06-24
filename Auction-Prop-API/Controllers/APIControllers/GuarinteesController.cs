@@ -20,7 +20,9 @@ namespace Auction_Prop_API.Controllers.APIControllers
         // GET: api/Guarintees
         public IQueryable<Guarintee> GetGuarintees()
         {
-            return db.Guarintees;
+
+            var guarintees = db.Guarintees.Include(g => g.AuctionRegistration.id);
+            return guarintees;
         }
 
         // GET: api/Guarintees/5

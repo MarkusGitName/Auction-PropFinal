@@ -231,7 +231,6 @@
     <Compile Include="Controllers\APIControllers\ConcludedAuctionsController.cs" />
     <Compile Include="Controllers\APIControllers\GuarinteesController.cs" />
     <Compile Include="Controllers\APIControllers\MessagesController.cs" />
-    <Compile Include="Controllers\APIControllers\PropertyPhotoes1Controller.cs" />
     <Compile Include="Controllers\MVCController\AddressesController.cs" />
     <Compile Include="Controllers\MVCController\AdminFeesController.cs" />
     <Compile Include="Controllers\MVCController\AuctioneersController.cs" />
@@ -389,11 +388,6 @@
     <Content Include="Views\Sellers\Details.cshtml" />
     <Content Include="Views\Sellers\Edit.cshtml" />
     <Content Include="Views\Sellers\Index.cshtml" />
-    <Content Include="Views\RegisteredBuyers\Create.cshtml" />
-    <Content Include="Views\RegisteredBuyers\Delete.cshtml" />
-    <Content Include="Views\RegisteredBuyers\Details.cshtml" />
-    <Content Include="Views\RegisteredBuyers\Edit.cshtml" />
-    <Content Include="Views\RegisteredBuyers\Index.cshtml" />
     <Content Include="Views\Guarintees\Create.cshtml" />
     <Content Include="Views\Guarintees\Delete.cshtml" />
     <Content Include="Views\Guarintees\Details.cshtml" />
@@ -494,6 +488,11 @@
     <Content Include="Views\Retailers\Details.cshtml" />
     <Content Include="Views\Retailers\Edit.cshtml" />
     <Content Include="Views\Retailers\Index.cshtml" />
+    <Content Include="Views\RegisteredBuyers\Create.cshtml" />
+    <Content Include="Views\RegisteredBuyers\Delete.cshtml" />
+    <Content Include="Views\RegisteredBuyers\Details.cshtml" />
+    <Content Include="Views\RegisteredBuyers\Edit.cshtml" />
+    <Content Include="Views\RegisteredBuyers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

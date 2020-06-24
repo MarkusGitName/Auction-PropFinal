@@ -20,7 +20,9 @@ namespace Auction_Prop_API.Controllers.APIControllers
         // GET: api/PromoVideos
         public IQueryable<PromoVideo> GetPromoVideos()
         {
-            return db.PromoVideos;
+
+            var promoVideos = db.PromoVideos.Include(p => p.Property.PropertyID);
+            return promoVideos;
         }
 
         // GET: api/PromoVideos/5

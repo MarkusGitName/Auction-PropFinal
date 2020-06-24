@@ -20,7 +20,9 @@ namespace Auction_Prop_API.Controllers.APIControllers
         // GET: api/ConcludedAuctions
         public IQueryable<ConcludedAuction> GetConcludedAuctions()
         {
-            return db.ConcludedAuctions;
+
+            var concludedAuctions = db.ConcludedAuctions.Include(c => c.Bid.BuyerID).Include(c => c.Bid.AmuntOfBid).Include(c => c.Property.PropertyID).Include(c => c.RegisteredBuyer.UserId);
+            return concludedAuctions;
         }
 
         // GET: api/ConcludedAuctions/5

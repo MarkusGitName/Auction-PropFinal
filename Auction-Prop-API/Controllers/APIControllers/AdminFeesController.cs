@@ -20,7 +20,9 @@ namespace Auction_Prop_API.Controllers.APIControllers
         // GET: api/AdminFees
         public IQueryable<AdminFee> GetAdminFees()
         {
-            return db.AdminFees;
+
+            var adminFees = db.AdminFees.Include(a => a.AuctionRegistration.id);
+            return adminFees;
         }
 
         // GET: api/AdminFees/5

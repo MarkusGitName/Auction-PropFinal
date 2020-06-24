@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -15,20 +16,20 @@ namespace Auction_Prop_API.Controllers.MVCController
         private DataBaseModels db = new DataBaseModels();
 
         // GET: RegisteredBuyers
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             var registeredBuyers = db.RegisteredBuyers.Include(r => r.Deposit);
-            return View(registeredBuyers.ToList());
+            return View(await registeredBuyers.ToListAsync());
         }
 
         // GET: RegisteredBuyers/Details/5
-        public ActionResult Details(string id)
+        public async Task<ActionResult> Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RegisteredBuyer registeredBuyer = db.RegisteredBuyers.Find(id);
+            RegisteredBuyer registeredBuyer = await db.RegisteredBuyers.FindAsync(id);
             if (registeredBuyer == null)
             {
                 return HttpNotFound();
@@ -48,12 +49,12 @@ namespace Auction_Prop_API.Controllers.MVCController
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserId,FirstName,LastName,IDNumber,DateOfBirth,ProfilePhotoPath,ProofOfResidencePath,CopyOfIDPath,ProofOfBankAccount,IDBuyerVerifyPhoto,ApprovalStatus,RegistrationDate,Signiture")] RegisteredBuyer registeredBuyer)
+        public async Task<ActionResult> Create([Bind(Include = "UserId,FirstName,LastName,IDNumber,DateOfBirth,ProfilePhotoPath,ProofOfResidencePath,CopyOfIDPath,ProofOfBankAccount,IDBuyerVerifyPhoto,ApprovalStatus,RegistrationDate,Signiture")] RegisteredBuyer registeredBuyer)
         {
             if (ModelState.IsValid)
             {
                 db.RegisteredBuyers.Add(registeredBuyer);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
@@ -62,13 +63,13 @@ namespace Auction_Prop_API.Controllers.MVCController
         }
 
         // GET: RegisteredBuyers/Edit/5
-        public ActionResult Edit(string id)
+        public async Task<ActionResult> Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RegisteredBuyer registeredBuyer = db.RegisteredBuyers.Find(id);
+            RegisteredBuyer registeredBuyer = await db.RegisteredBuyers.FindAsync(id);
             if (registeredBuyer == null)
             {
                 return HttpNotFound();
@@ -82,12 +83,12 @@ namespace Auction_Prop_API.Controllers.MVCController
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserId,FirstName,LastName,IDNumber,DateOfBirth,ProfilePhotoPath,ProofOfResidencePath,CopyOfIDPath,ProofOfBankAccount,IDBuyerVerifyPhoto,ApprovalStatus,RegistrationDate,Signiture")] RegisteredBuyer registeredBuyer)
+        public async Task<ActionResult> Edit([Bind(Include = "UserId,FirstName,LastName,IDNumber,DateOfBirth,ProfilePhotoPath,ProofOfResidencePath,CopyOfIDPath,ProofOfBankAccount,IDBuyerVerifyPhoto,ApprovalStatus,RegistrationDate,Signiture")] RegisteredBuyer registeredBuyer)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(registeredBuyer).State = EntityState.Modified;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             ViewBag.UserId = new SelectList(db.Deposits, "BuyerID", "ProofOfPaymentPath", registeredBuyer.UserId);
@@ -95,13 +96,13 @@ namespace Auction_Prop_API.Controllers.MVCController
         }
 
         // GET: RegisteredBuyers/Delete/5
-        public ActionResult Delete(string id)
+        public async Task<ActionResult> Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RegisteredBuyer registeredBuyer = db.RegisteredBuyers.Find(id);
+            RegisteredBuyer registeredBuyer = await db.RegisteredBuyers.FindAsync(id);
             if (registeredBuyer == null)
             {
                 return HttpNotFound();
@@ -112,11 +113,11 @@ namespace Auction_Prop_API.Controllers.MVCController
         // POST: RegisteredBuyers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public async Task<ActionResult> DeleteConfirmed(string id)
         {
-            RegisteredBuyer registeredBuyer = db.RegisteredBuyers.Find(id);
+            RegisteredBuyer registeredBuyer = await db.RegisteredBuyers.FindAsync(id);
             db.RegisteredBuyers.Remove(registeredBuyer);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 

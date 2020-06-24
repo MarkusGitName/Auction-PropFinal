@@ -19,6 +19,42 @@ namespace AuctionPortal.Hubs
         }
 
 
+        public void concludeAuction(int auctionID, string userID)
+        {
+            ICollection<Bid> bids = APILibrary.APIMethods.APIGetALL<ICollection<Bid>>("Bids");
+            Bid maxBid = new Bid();
+            bool first = true;
+            foreach (Bid b in bids)
+            {
+                if (b.PropertyID == auctionID)
+                {
+                    if (first)
+                    {
+                        maxBid = b;
+                        first = false;
+                    }
+                    else
+                    {
+                        if (b.AmuntOfBid > maxBid.AmuntOfBid)
+                        {
+                            maxBid = b;
+                        }
+                    }
+                }
+            }
+
+            ConcludedAuction Conclution = new ConcludedAuction()
+            {
+                HiegestBid = Convert.ToInt32(maxBid.AmuntOfBid),
+                    PropertyID = auctionID,
+                TimeOfConclution = DateTime.Now,
+                ExceededReserve = true,
+                WinningBidder = userID
+                };
+                APILibrary.APIMethods.APIPost<Bid>(Conclution, "ConcludedAuctions");
+            
+          
+        }
         public void Bid2(string name, decimal bid, int auctionID, string userID)
         {
             // Call the broadcastMessage method to update clients.

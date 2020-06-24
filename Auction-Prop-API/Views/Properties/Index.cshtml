@@ -13,7 +13,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Auction.PropertyID)
+            @Html.DisplayNameFor(model => model.PropertyID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ConcludedAuction.WinningBidder)
@@ -144,7 +144,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Auction.PropertyID)
+            @Html.DisplayFor(modelItem => item.PropertyID)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ConcludedAuction.WinningBidder)
@@ -270,6 +270,7 @@
             @Html.DisplayFor(modelItem => item.MandateExpireDate)
         </td>
         <td>
+            @Html.ActionLink("Schedule for auction", "Create","Auctions", new { id=item.PropertyID },null) |
             @Html.ActionLink("Edit", "Edit", new { id=item.PropertyID }) |
             @Html.ActionLink("Details", "Details", new { id=item.PropertyID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.PropertyID })
