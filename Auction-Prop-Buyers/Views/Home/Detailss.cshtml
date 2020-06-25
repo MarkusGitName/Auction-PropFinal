@@ -149,40 +149,37 @@
                     </div>
                     <div class="col-md-3">
                         <div class="title-single-box">
-                            @try
-                            {
+                            @{
+                                            int i = 0;
+                                            try
+                                            {
 
-                                <img src=@Model.Seller.Auctioneer.CompanyLogo alt="..." class="img-thumbnail">
+                                                <img src=@Model.Seller.Auctioneer.CompanyLogo alt="..." class="img-thumbnail">
+                                                i++;
+                                            }
+                                            catch
+                                            {
+
+                                            }
+                                            try
+                                            {
+
+                                                <img src=@Model.Seller.Retailer.CompaynLogoPath alt="..." class="img-thumbnail">
+                                                i++;
+                                            }
+                                            catch
+                                            {
+
+
+
+                                            }
+                                            if (i == 0)
+                                            {
+
+                                                <img src="~/Logo/Asset 1.png" alt="..." class="img-thumbnail">
+                                            }
                             }
-                            catch
-                            {
-                                try
-                                {
 
-                                    <img src=@Model.Seller.ProfilePhoto alt="..." class="img-thumbnail">
-                                }
-                                catch
-                                {
-
-                                }
-                            }
-                            @try
-                            {
-
-                                <img src=@Model.Seller.Retailer.CompaynLogoPath alt="..." class="img-thumbnail">
-                            }
-                            catch
-                            {
-                                try
-                                {
-
-                                    <img src=@Model.Seller.ProfilePhoto alt="..." class="img-thumbnail">
-                                }
-                                catch
-                                {
-
-                                }
-                            }
 
 
 
