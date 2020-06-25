@@ -18,24 +18,73 @@ namespace Auction_Prop_API.Controllers.APIControllers
         private DataBaseModels db = new DataBaseModels();
 
         // GET: api/BuyerAddresses
-        public IQueryable<BuyerAddress> GetBuyerAddresses()
+        public ICollection<BuyerAddressNoR> GetBuyerAddresses()
         {
 
-            var buyerAddresses = db.BuyerAddresses.Include(b => b.Address).Include(b => b.RegisteredBuyer.UserId);
-            return buyerAddresses;
+         
+
+
+            List<BuyerAddressNoR> Lys = new List<BuyerAddressNoR>();
+            foreach (BuyerAddress objct in db.BuyerAddresses.Include(b => b.Address).Include(b => b.RegisteredBuyer))
+            {
+
+
+                BuyerAddressNoR newObject = new BuyerAddressNoR()
+                {
+                    // Bids= objct.Bids,
+                    //  BankApproval = objct.BankApproval,
+                    AddressID = objct.AddressID,
+                    id= objct.id,
+                    //  Guarintee = objct.Guarintee,
+                    //  Auction = objct.Auction,
+                    //  Property = objct.Property,
+                   // RegisteredBuyer = objct.RegisteredBuyer,
+                    UserID = objct.UserID,
+                    //  ConcludedAuctions = objct.ConcludedAuctions,
+                 //   PropertyID = objct.PropertyID,
+                    // RegisteredBuyer = objct.RegisteredBuyer,
+                   // TimeOfbid = objct.TimeOfbid
+                    //Seller = objct.Seller
+                    // AuctionRegistration = fee.AuctionRegistration
+                };
+
+
+                Lys.Add(newObject);
+            }
+
+            return Lys;
         }
 
         // GET: api/BuyerAddresses/5
         [ResponseType(typeof(BuyerAddress))]
         public async Task<IHttpActionResult> GetBuyerAddress(int id)
         {
-            BuyerAddress buyerAddress = await db.BuyerAddresses.FindAsync(id);
-            if (buyerAddress == null)
+            BuyerAddress objct = await db.BuyerAddresses.FindAsync(id);
+            if (objct == null)
             {
                 return NotFound();
             }
 
-            return Ok(buyerAddress);
+            BuyerAddressNoR newObject = new BuyerAddressNoR()
+            {
+                // Bids= objct.Bids,
+                //  BankApproval = objct.BankApproval,
+                AddressID = objct.AddressID,
+                id = objct.id,
+                //  Guarintee = objct.Guarintee,
+                //  Auction = objct.Auction,
+                //  Property = objct.Property,
+                // RegisteredBuyer = objct.RegisteredBuyer,
+                UserID = objct.UserID,
+                //  ConcludedAuctions = objct.ConcludedAuctions,
+                //   PropertyID = objct.PropertyID,
+                // RegisteredBuyer = objct.RegisteredBuyer,
+                // TimeOfbid = objct.TimeOfbid
+                //Seller = objct.Seller
+                // AuctionRegistration = fee.AuctionRegistration
+            };
+
+            return Ok(newObject);
         }
 
         // PUT: api/BuyerAddresses/5

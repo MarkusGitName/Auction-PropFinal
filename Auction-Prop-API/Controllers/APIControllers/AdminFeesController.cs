@@ -18,11 +18,31 @@ namespace Auction_Prop_API.Controllers.APIControllers
         private DataBaseModels db = new DataBaseModels();
 
         // GET: api/AdminFees
-        public IQueryable<AdminFee> GetAdminFees()
+        public ICollection<AdminFeeNoR> GetAdminFees()
         {
 
-            var adminFees = db.AdminFees.Include(a => a.AuctionRegistration.id);
-            return adminFees;
+          
+
+            List<AdminFeeNoR> Lys = new List<AdminFeeNoR>();
+            foreach (AdminFee fee in db.AdminFees.Include(a => a.AuctionRegistration))
+            {
+
+
+                AdminFeeNoR newAdd = new AdminFeeNoR()
+                {
+
+                    Amount = fee.Amount,
+                    DateOfPayment = fee.DateOfPayment,
+                    PaymentID = fee.PaymentID,
+                    ProofOfPaymentPath = fee.ProofOfPaymentPath,
+                   // AuctionRegistration = fee.AuctionRegistration
+                };
+
+
+                Lys.Add(newAdd);
+            }
+
+            return Lys;
         }
 
         // GET: api/AdminFees/5
@@ -34,6 +54,16 @@ namespace Auction_Prop_API.Controllers.APIControllers
             {
                 return NotFound();
             }
+
+            AdminFeeNoR newAdd = new AdminFeeNoR()
+            {
+
+                Amount = adminFee.Amount,
+                DateOfPayment = adminFee.DateOfPayment,
+                PaymentID = adminFee.PaymentID,
+                ProofOfPaymentPath = adminFee.ProofOfPaymentPath,
+                // AuctionRegistration = fee.AuctionRegistration
+            };
 
             return Ok(adminFee);
         }

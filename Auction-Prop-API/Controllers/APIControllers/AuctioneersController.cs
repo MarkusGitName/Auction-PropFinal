@@ -18,24 +18,63 @@ namespace Auction_Prop_API.Controllers.APIControllers
         private DataBaseModels db = new DataBaseModels();
 
         // GET: api/Auctioneers
-        public IQueryable<Auctioneer> GetAuctioneers()
+        public ICollection<AuctioneerNoR> GetAuctioneers()
         {
 
-            var auctioneers = db.Auctioneers.Include(a => a.Seller);
-            return auctioneers;
+           
+
+
+            List<AuctioneerNoR> Lys = new List<AuctioneerNoR>();
+            foreach (Auctioneer objct in db.Auctioneers.Include(a => a.Seller))
+            {
+
+
+                AuctioneerNoR newObject = new AuctioneerNoR()
+                {
+                    Branch= objct.Branch,
+                    CompanyContactNumber = objct.CompanyContactNumber,
+                    CompanyDescriprion = objct.CompanyDescriprion,
+                    CompanyEmail = objct.CompanyEmail,
+                    CompanyName = objct.CompanyName,
+                    CompanyLogo = objct.CompanyLogo,
+                    Signature = objct.Signature,
+                    UserID = objct.UserID
+                    //Seller = objct.Seller
+                    // AuctionRegistration = fee.AuctionRegistration
+                };
+
+
+                Lys.Add(newObject);
+            }
+
+            return Lys;
         }
 
         // GET: api/Auctioneers/5
         [ResponseType(typeof(Auctioneer))]
         public async Task<IHttpActionResult> GetAuctioneer(string id)
         {
-            Auctioneer auctioneer = await db.Auctioneers.FindAsync(id);
-            if (auctioneer == null)
+            Auctioneer objct = await db.Auctioneers.FindAsync(id);
+            if (objct == null)
             {
                 return NotFound();
             }
 
-            return Ok(auctioneer);
+            AuctioneerNoR newObject = new AuctioneerNoR()
+            {
+                Branch = objct.Branch,
+                CompanyContactNumber = objct.CompanyContactNumber,
+                CompanyDescriprion = objct.CompanyDescriprion,
+                CompanyEmail = objct.CompanyEmail,
+                CompanyName = objct.CompanyName,
+                CompanyLogo = objct.CompanyLogo,
+                Signature = objct.Signature,
+                UserID = objct.UserID
+                //Seller = objct.Seller
+                // AuctionRegistration = fee.AuctionRegistration
+            };
+
+            return Ok(newObject);
         }
 
         // PUT: api/Auctioneers/5

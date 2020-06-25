@@ -21,4 +21,20 @@ namespace Auction_Prop_API.Models.DataBaseModels
 
         public virtual Property Property { get; set; }
     }
+    [Table("PromoVideo")]
+    public partial class PromoVideoNoR
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int VideoID { get; set; }
+
+        public int PropertyID { get; set; }
+
+        [Required]
+        [StringLength(500)]
+        public string VideoPath { get; set; }
+
+
+        public virtual PropertyNoR Property { get; set; }
+    }
 }

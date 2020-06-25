@@ -18,24 +18,58 @@ namespace Auction_Prop_API.Controllers.APIControllers
         private DataBaseModels db = new DataBaseModels();
 
         // GET: api/Retailers
-        public IQueryable<Retailer> GetRetailers()
+        public ICollection<RetailerNoR> GetRetailers()
         {
 
-            var retailers = db.Retailers.Include(r => r.Seller.UserID);
-            return retailers;
+            List<RetailerNoR> Lys = new List<RetailerNoR>();
+            foreach (Retailer objct in db.Retailers.Include(r => r.Seller))
+            {
+
+
+                RetailerNoR newObject = new RetailerNoR()
+                {
+                     Branch = objct.Branch,
+                      CompanyContactNumber = objct.CompanyContactNumber,
+                     CompanyDescription = objct.CompanyDescription,
+                     CompanyEmail = objct.CompanyEmail,
+                     CompaynLogoPath = objct.CompaynLogoPath,
+                    RetailerName  =  objct.RetailerName,
+                    // Seller = objct.Seller,
+                     Signature = objct.Signature,
+                     UserID = objct.UserID,
+                     };
+
+
+                Lys.Add(newObject);
+            }
+
+            return Lys;
         }
 
         // GET: api/Retailers/5
         [ResponseType(typeof(Retailer))]
         public async Task<IHttpActionResult> GetRetailer(string id)
         {
-            Retailer retailer = await db.Retailers.FindAsync(id);
-            if (retailer == null)
+            Retailer objct = await db.Retailers.FindAsync(id);
+            if (objct == null)
             {
                 return NotFound();
             }
 
-            return Ok(retailer);
+            RetailerNoR newObject = new RetailerNoR()
+            {
+                Branch = objct.Branch,
+                CompanyContactNumber = objct.CompanyContactNumber,
+                CompanyDescription = objct.CompanyDescription,
+                CompanyEmail = objct.CompanyEmail,
+                CompaynLogoPath = objct.CompaynLogoPath,
+                RetailerName = objct.RetailerName,
+                // Seller = objct.Seller,
+                Signature = objct.Signature,
+                UserID = objct.UserID,
+            };
+
+            return Ok(newObject);
         }
 
         // PUT: api/Retailers/5

@@ -18,24 +18,72 @@ namespace Auction_Prop_API.Controllers.APIControllers
         private DataBaseModels db = new DataBaseModels();
 
         // GET: api/Guarintees
-        public IQueryable<Guarintee> GetGuarintees()
+        public ICollection<GuarinteeNoR> GetGuarintees()
         {
 
-            var guarintees = db.Guarintees.Include(g => g.AuctionRegistration.id);
-            return guarintees;
+            
+
+            List<GuarinteeNoR> Lys = new List<GuarinteeNoR>();
+            foreach (Guarintee objct in db.Guarintees.Include(g => g.AuctionRegistration))
+            {
+
+
+                GuarinteeNoR newObject = new GuarinteeNoR()
+                {
+                    // Bids= objct.Bids,
+                    //  BankApproval = objct.BankApproval,
+                    // Bid = objct.Bid,
+                  //  AuctionRegistration = objct.AuctionRegistration,
+                    DateOfSubmition = objct.DateOfSubmition,
+                    // Property = objct.Property,
+                    //  Property = objct.Property,
+                    // RegisteredBuyer = objct.RegisteredBuyer,
+                    AuctionRegistrationID = objct.AuctionRegistrationID,
+                    // RegisteredBuyer = objct.RegisteredBuyer,
+                    GuarinteeApproval = objct.GuarinteeApproval,
+                    GuarinteePath = objct.GuarinteePath,
+                    // = objct.ProofOfPaymentPath,
+                   // ProofOfReturnPayment = objct.ProofOfReturnPayment
+                    // AuctionRegistration = fee.AuctionRegistration
+                };
+
+
+                Lys.Add(newObject);
+            }
+
+            return Lys;
         }
 
         // GET: api/Guarintees/5
         [ResponseType(typeof(Guarintee))]
         public async Task<IHttpActionResult> GetGuarintee(int id)
         {
-            Guarintee guarintee = await db.Guarintees.FindAsync(id);
-            if (guarintee == null)
+            Guarintee objct = await db.Guarintees.FindAsync(id);
+            if (objct == null)
             {
                 return NotFound();
             }
 
-            return Ok(guarintee);
+            GuarinteeNoR newObject = new GuarinteeNoR()
+            {
+                // Bids= objct.Bids,
+                //  BankApproval = objct.BankApproval,
+                // Bid = objct.Bid,
+                //  AuctionRegistration = objct.AuctionRegistration,
+                DateOfSubmition = objct.DateOfSubmition,
+                // Property = objct.Property,
+                //  Property = objct.Property,
+                // RegisteredBuyer = objct.RegisteredBuyer,
+                AuctionRegistrationID = objct.AuctionRegistrationID,
+                // RegisteredBuyer = objct.RegisteredBuyer,
+                GuarinteeApproval = objct.GuarinteeApproval,
+                GuarinteePath = objct.GuarinteePath,
+                // = objct.ProofOfPaymentPath,
+                // ProofOfReturnPayment = objct.ProofOfReturnPayment
+                // AuctionRegistration = fee.AuctionRegistration
+            };
+
+            return Ok(newObject);
         }
 
         // PUT: api/Guarintees/5

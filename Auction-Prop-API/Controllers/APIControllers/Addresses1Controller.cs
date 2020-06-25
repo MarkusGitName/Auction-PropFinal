@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Auction_Prop_API.Models.DataBaseModels;
+using AutoMapper;
 
 namespace Auction_Prop_API.Controllers.APIControllers
 {
@@ -18,22 +19,71 @@ namespace Auction_Prop_API.Controllers.APIControllers
         private DataBaseModels db = new DataBaseModels();
 
         // GET: api/Addresses1
-        public IQueryable<Address> GetAddresses()
+        public ICollection<AddressNoR> GetAddresses()
         {
-            return db.Addresses;
+            // ICollection<AddressNoR> adresses = db.Addresses;
+            // db.Addresses;
+
+           List<AddressNoR> addresLys = new List<AddressNoR>();
+           foreach (Address add in db.Addresses)
+            {
+                
+
+                   AddressNoR newAdd = new AddressNoR()
+                {
+
+                    AddressID= add.AddressID,
+                    Country= add.Country,
+                    City= add.City,
+                    Supburb= add.Supburb,
+                    Area= add.Area,
+                    Street=add.Street,
+                    Number= add.Number,
+                   // BuyerAddresses = add.BuyerAddresses,
+                    //"SellerAddresses": []
+                };
+
+
+                addresLys.Add(newAdd);
+               /* var config = new MapperConfiguration(cfg => {
+                cfg.CreateMap<Address, AddressNoR>();
+                });
+
+           
+
+            IMapper mapper = config.CreateMapper();
+                AddressNoR addnew = mapper.Map<Address, AddressNoR>(add);
+                */
+            }
+
+
+            return addresLys;
         }
 
         // GET: api/Addresses1/5
         [ResponseType(typeof(Address))]
         public async Task<IHttpActionResult> GetAddress(int id)
         {
-            Address address = await db.Addresses.FindAsync(id);
-            if (address == null)
+            Address add = await db.Addresses.FindAsync(id);
+            if (add == null)
             {
                 return NotFound();
             }
+            AddressNoR newAdd = new AddressNoR()
+            {
 
-            return Ok(address);
+                AddressID = add.AddressID,
+                Country = add.Country,
+                City = add.City,
+                Supburb = add.Supburb,
+                Area = add.Area,
+                Street = add.Street,
+                Number = add.Number,
+                // BuyerAddresses = add.BuyerAddresses,
+                //"SellerAddresses": []
+            };
+
+            return Ok(newAdd);
         }
 
         // PUT: api/Addresses1/5

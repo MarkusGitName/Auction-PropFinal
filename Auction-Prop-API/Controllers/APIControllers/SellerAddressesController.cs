@@ -18,24 +18,49 @@ namespace Auction_Prop_API.Controllers.APIControllers
         private DataBaseModels db = new DataBaseModels();
 
         // GET: api/SellerAddresses
-        public IQueryable<SellerAddress> GetSellerAddresses()
+        public ICollection<SellerAddressNoR> GetSellerAddresses()
         {
 
-            var sellerAddresses = db.SellerAddresses.Include(s => s.Address).Include(s => s.Seller.UserID);
-            return sellerAddresses;
+         
+            List<SellerAddressNoR> Lys = new List<SellerAddressNoR>();
+            foreach (SellerAddress objct in db.SellerAddresses.Include(s => s.Address).Include(s => s.Seller))
+            {
+
+
+                SellerAddressNoR newObject = new SellerAddressNoR()
+                {
+                   //  Seller = objct.Seller,
+                  //  Address = objct.Address,
+                    AddressID = objct.AddressID,
+                    id = objct.id,
+                };
+
+
+                Lys.Add(newObject);
+            }
+
+            return Lys;
         }
 
         // GET: api/SellerAddresses/5
         [ResponseType(typeof(SellerAddress))]
         public async Task<IHttpActionResult> GetSellerAddress(int id)
         {
-            SellerAddress sellerAddress = await db.SellerAddresses.FindAsync(id);
-            if (sellerAddress == null)
+            SellerAddress objct = await db.SellerAddresses.FindAsync(id);
+            if (objct == null)
             {
                 return NotFound();
             }
 
-            return Ok(sellerAddress);
+            SellerAddressNoR newObject = new SellerAddressNoR()
+            {
+                //  Seller = objct.Seller,
+                //  Address = objct.Address,
+                AddressID = objct.AddressID,
+                id = objct.id,
+            };
+
+            return Ok(newObject);
         }
 
         // PUT: api/SellerAddresses/5

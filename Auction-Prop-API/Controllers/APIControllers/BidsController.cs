@@ -18,24 +18,72 @@ namespace Auction_Prop_API.Controllers.APIControllers
         private DataBaseModels db = new DataBaseModels();
 
         // GET: api/Bids
-        public IQueryable<Bid> GetBids()
+        public ICollection<BidNoR> GetBids()
         {
 
-            var bids = db.Bids.Include(b => b.Auction).Include(b => b.RegisteredBuyer);
-            return bids;
+
+
+            List<BidNoR> Lys = new List<BidNoR>();
+            foreach (Bid objct in db.Bids.Include(b => b.Auction).Include(b => b.RegisteredBuyer))
+            {
+
+
+                BidNoR newObject = new BidNoR()
+                {
+                    // Bids= objct.Bids,
+                    //  BankApproval = objct.BankApproval,
+                    AmuntOfBid = objct.AmuntOfBid,
+                    // AuctionRegistration = objct.AuctionRegistration,
+                    //  Guarintee = objct.Guarintee,
+                  //  Auction = objct.Auction,
+                    //  Property = objct.Property,
+                    BidID = objct.BidID,
+                    BuyerID = objct.BuyerID,
+                  //  ConcludedAuctions = objct.ConcludedAuctions,
+                    PropertyID = objct.PropertyID,
+                   // RegisteredBuyer = objct.RegisteredBuyer,
+                    TimeOfbid = objct.TimeOfbid
+                    //Seller = objct.Seller
+                    // AuctionRegistration = fee.AuctionRegistration
+                };
+
+
+                Lys.Add(newObject);
+            }
+
+            return Lys;
         }
 
         // GET: api/Bids/5
         [ResponseType(typeof(Bid))]
         public async Task<IHttpActionResult> GetBid(int id)
         {
-            Bid bid = await db.Bids.FindAsync(id);
-            if (bid == null)
+            Bid objct = await db.Bids.FindAsync(id);
+            if (objct == null)
             {
                 return NotFound();
             }
 
-            return Ok(bid);
+            BidNoR newObject = new BidNoR()
+            {
+                // Bids= objct.Bids,
+                //  BankApproval = objct.BankApproval,
+                AmuntOfBid = objct.AmuntOfBid,
+                // AuctionRegistration = objct.AuctionRegistration,
+                //  Guarintee = objct.Guarintee,
+                //  Auction = objct.Auction,
+                //  Property = objct.Property,
+                BidID = objct.BidID,
+                BuyerID = objct.BuyerID,
+                //  ConcludedAuctions = objct.ConcludedAuctions,
+                PropertyID = objct.PropertyID,
+                // RegisteredBuyer = objct.RegisteredBuyer,
+                TimeOfbid = objct.TimeOfbid
+                //Seller = objct.Seller
+                // AuctionRegistration = fee.AuctionRegistration
+            };
+
+            return Ok(newObject);
         }
 
         // PUT: api/Bids/5

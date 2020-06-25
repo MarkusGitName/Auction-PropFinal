@@ -26,6 +26,8 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
         [StringLength(500)]
         public string ProofOfReturnPayment { get; set; }
 
+        public decimal? Amount { get; set; }
+
         public virtual RegisteredBuyer RegisteredBuyer { get; set; }
     }
 }

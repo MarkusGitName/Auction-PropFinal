@@ -21,4 +21,20 @@ namespace Auction_Prop_API.Models.DataBaseModels
 
         public virtual Seller Seller { get; set; }
     }
+    [Table("SellerAddress")]
+    public partial class SellerAddressNoR
+    {
+        public int id { get; set; }
+
+        public int AddressID { get; set; }
+
+        [Required]
+        [StringLength(128)]
+        public string UserID { get; set; }
+
+
+        public virtual AddressNoR Address { get; set; }
+
+        public virtual SellerNoR Seller { get; set; }
+    }
 }

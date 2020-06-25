@@ -82,7 +82,7 @@ namespace Auction_Prop_Buyers.Controllers
 
             // Transaction Details
             onceOffRequest.m_payment_id = idd.ToString();
-            onceOffRequest.amount = 50;
+            onceOffRequest.amount = amount;
             onceOffRequest.item_name = "Once off option";
             onceOffRequest.item_description = "Some details about the once off payment";
 
@@ -95,7 +95,7 @@ namespace Auction_Prop_Buyers.Controllers
 
             var redirectUrl = $"{this.payFastSettings.ProcessUrl}{onceOffRequest.ToString()}";
 
-            if (idd != 0)
+            if (idd !=0)
             { 
             
                 AdminFee fees = new AdminFee
@@ -106,10 +106,10 @@ namespace Auction_Prop_Buyers.Controllers
                     Amount = 150
 
                 };
-                APILibrary.APIMethods.APIPost<Deposit>(fees, "AdminFees");
+                APILibrary.APIMethods.APIPost<AdminFee>(fees, "AdminFees");
                 
             }
-            if(amount>=500)
+            if(amount>=5000)
             {
                 Deposit dep = new Deposit
                 {
@@ -118,7 +118,9 @@ namespace Auction_Prop_Buyers.Controllers
                     Paid = true,
                     DepositReturned = false,
                     ProofOfPaymentPath = "none",
-                    ProofOfReturnPayment = "none"
+                    ProofOfReturnPayment = "none",
+                    Amount = 5000
+
                 };
                 APILibrary.APIMethods.APIPost<Deposit>(dep, "Deposits");
                

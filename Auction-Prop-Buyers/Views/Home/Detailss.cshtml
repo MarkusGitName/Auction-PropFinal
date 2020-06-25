@@ -425,18 +425,20 @@
                                     {
                                         admin = true;
                                     }
-                                }
-                                try
-                                {
-                                    if (reg.RegisteredBuyer.Deposit.Paid)
+                                    try
                                     {
-                                        deposit = true;
+                                       RegisteredBuyer buyer = APILibrary.APIMethods.APIGet<RegisteredBuyer>(User.Identity.GetUserId(),"RegisteredBuyers");
+                                        if (buyer.Deposit!=null)
+                                        {
+                                            deposit = true;
+                                        }
+                                    }
+                                    catch
+                                    {
+
                                     }
                                 }
-                                catch
-                                {
-
-                                }
+                            
                             }
 
                             if (registered && admin && deposit)
@@ -464,7 +466,7 @@
                                                 <p>The Deposit wil be refunded.</p>
                                             </div>
                                             <div class="text-right">
-                                                @Html.ActionLink("Pay Now", "Deposit", "Payment", new { area = "", id = 5000 }, new { @class = "btn btn-block btn-success" })
+                                                @Html.ActionLink("Pay Now", "Deposit", "Payment", new { area = "" }, new { @class = "btn btn-block btn-success" })
 
                                             </div>
                                         </div>
@@ -523,85 +525,90 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6 col-lg-4">
-                                @if (Model.Seller.Retailer != null)
-                                {
-                                    <img src=@Model.Seller.Retailer.CompaynLogoPath alt="" class="img-fluid">
-                                }
-                                else if (Model.Seller.Auctioneer != null)
-                                {
-                                    <img src=@Model.Seller.Auctioneer.CompanyLogo alt="" class="img-fluid">
-                                }
-                                else
-                                {
-                                    <img src=@Model.Seller.ProfilePhoto alt="" class="img-fluid">
-                                }
+                               
+                                    @if (Model.Seller.Retailer != null)
+                                    {
+                                        <img src=@Model.Seller.Retailer.CompaynLogoPath alt="" class="img-fluid">
+                                    }
+                                    else if (Model.Seller.Auctioneer != null)
+                                    {
+                                        <img src=@Model.Seller.Auctioneer.CompanyLogo alt="" class="img-fluid">
+                                    }
+                                    else
+                                    {
+                                        <img src=@Model.Seller.ProfilePhoto alt="" class="img-fluid">
+                                    }
+                            
+
                             </div>
                             <div class="col-md-6 col-lg-4">
                                 <div class="property-agent">
                                     <h4 class="title-agent">@Model.Seller.FirtstName @Model.Seller.LastName</h4>
+                                   
+                                        @if (Model.Seller.Retailer != null)
+                                        {
+                                            <h5>
+                                                Company: @Model.Seller.Retailer.RetailerName;
+                                            </h5>
+                                            <p class="color-text-a">
+                                                @Model.Seller.Retailer.CompanyDescription
+                                            </p>
+                                            <ul>
+                                                <li class="d-flex justify-content-between">
+                                                    <strong>Phone:</strong>
+                                                    <span class="color-text-a">@Model.Seller.Retailer.CompanyContactNumber</span>
+                                                </li>
+                                                <li class="d-flex justify-content-between">
+                                                    <strong>Email:</strong>
+                                                    <span class="color-text-a">@Model.Seller.Retailer.CompanyEmail</span>
+                                                </li>
+                                            </ul>
 
-                                    @if (Model.Seller.Retailer != null)
-                                    {
-                                        <h5>
-                                            Company: @Model.Seller.Retailer.RetailerName;
-                                        </h5>
-                                        <p class="color-text-a">
-                                            @Model.Seller.Retailer.CompanyDescription
-                                        </p>
-                                        <ul>
-                                            <li class="d-flex justify-content-between">
-                                                <strong>Phone:</strong>
-                                                <span class="color-text-a">@Model.Seller.Retailer.CompanyContactNumber</span>
-                                            </li>
-                                            <li class="d-flex justify-content-between">
-                                                <strong>Email:</strong>
-                                                <span class="color-text-a">@Model.Seller.Retailer.CompanyEmail</span>
-                                            </li>
-                                        </ul>
+                                        }
+                                        else if (Model.Seller.Auctioneer != null)
+                                        {
+                                            <h5>
+                                                Company: @Model.Seller.Auctioneer.CompanyName
+                                            </h5>
+                                            <p class="color-text-a">
+                                                @Model.Seller.Auctioneer.CompanyDescriprion
+                                            </p>
+                                            <ul>
+                                                <li class="d-flex justify-content-between">
+                                                    <strong>Phone:</strong>
+                                                    <span class="color-text-a">@Model.Seller.Auctioneer.CompanyContactNumber</span>
+                                                </li>
+                                                <li class="d-flex justify-content-between">
+                                                    <strong>Email:</strong>
+                                                    <span class="color-text-a">@Model.Seller.Auctioneer.CompanyEmail</span>
+                                                </li>
+                                            </ul>
+                                        }
+                                        else
+                                        {
+                                            <h5>
+                                                Company: Private
+                                            </h5>
 
-                                    }
-                                    else if (Model.Seller.Auctioneer != null)
-                                    {
-                                        <h5>
-                                            Company: @Model.Seller.Auctioneer.CompanyName
-                                        </h5>
-                                        <p class="color-text-a">
-                                            @Model.Seller.Auctioneer.CompanyDescriprion
-                                        </p>
-                                        <ul>
-                                            <li class="d-flex justify-content-between">
-                                                <strong>Phone:</strong>
-                                                <span class="color-text-a">@Model.Seller.Auctioneer.CompanyContactNumber</span>
-                                            </li>
-                                            <li class="d-flex justify-content-between">
-                                                <strong>Email:</strong>
-                                                <span class="color-text-a">@Model.Seller.Auctioneer.CompanyEmail</span>
-                                            </li>
-                                        </ul>
-                                    }
-                                    else
-                                    {
-                                        <h5>
-                                            Company: Private
-                                        </h5>
-
-                                    }
+                                        }
+                                   
 
 
 
 
-                                  <!--  <ul class="list-unstyled">
-                                        <li class="d-flex justify-content-between">
-                                            <strong>Agent Phone:</strong>
-                                            <span class="color-text-a">@Model.Seller.SellerNumber</span>
-                                        </li>
 
-                                        <li class="d-flex justify-content-between">
-                                            <strong>Agent Email:</strong>
-                                            <span class="color-text-a">@Model.Seller.SellerEmail</span>
-                                        </li>
+                                    <!--  <ul class="list-unstyled">
+          <li class="d-flex justify-content-between">
+              <strong>Agent Phone:</strong>
+              <span class="color-text-a">@Model.Seller.SellerNumber</span>
+          </li>
 
-                                    </ul></-->
+          <li class="d-flex justify-content-between">
+              <strong>Agent Email:</strong>
+              <span class="color-text-a">@Model.Seller.SellerEmail</span>
+          </li>
+
+      </ul></-->
 
                                     <div class="socials-a">
                                         <ul class="list-inline">

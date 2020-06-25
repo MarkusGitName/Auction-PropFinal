@@ -18,24 +18,145 @@ namespace Auction_Prop_API.Controllers.APIControllers
         private DataBaseModels db = new DataBaseModels();
 
         // GET: api/Sellers
-        public IQueryable<Seller> GetSellers()
+        public ICollection<SellerNoR> GetSellers()
         {
 
-            var sellers = db.Sellers.Include(s => s.Auctioneer).Include(s => s.PrivateSeller).Include(s => s.Retailer);
-            return sellers;
+            List<SellerNoR> Lys = new List<SellerNoR>();
+            foreach (Seller objct in db.Sellers.Include(s => s.Auctioneer).Include(s => s.PrivateSeller).Include(s => s.Retailer))
+            {
+
+
+                SellerNoR newObject = new SellerNoR()
+                {
+                     UserID= objct.UserID,
+                     Signature = objct.Signature,
+                    ApprovalStatus = objct.ApprovalStatus,
+                 //   Auctioneer = objct.Auctioneer,
+                     FirtstName = objct.FirtstName,
+                     LastName = objct.LastName,
+                  //   PrivateSeller= objct.PrivateSeller,
+                     SellerNumber = objct.SellerNumber,
+                     ProfilePhoto = objct.ProfilePhoto,
+                  //   Properties = objct.Properties,
+                  //   Retailer = objct.Retailer,
+                   //  SellerAddresses = objct.SellerAddresses,
+                     SellerEmail = objct.SellerEmail,
+                     SellerType = objct.SellerType
+
+
+                };
+                try
+                {
+
+                    newObject.Retailer = new RetailerNoR();
+                    newObject.Retailer.Branch = objct.Retailer.Branch;
+                    newObject.Retailer.CompanyContactNumber = objct.Retailer.CompanyContactNumber;
+                    newObject.Retailer.CompanyEmail = objct.Retailer.CompanyEmail;
+                    newObject.Retailer.CompaynLogoPath = objct.Retailer.CompaynLogoPath;
+                    newObject.Retailer.RetailerName = objct.Retailer.RetailerName;
+                    newObject.Retailer.UserID = objct.Retailer.UserID;
+                    newObject.Retailer.CompanyDescription = objct.Retailer.CompanyDescription;
+                }
+                catch { }
+                try
+                {
+
+                    newObject.Auctioneer = new AuctioneerNoR();
+                    newObject.Auctioneer.Branch = objct.Auctioneer.Branch;
+                    newObject.Auctioneer.CompanyContactNumber = objct.Auctioneer.CompanyContactNumber;
+                    newObject.Auctioneer.CompanyEmail = objct.Auctioneer.CompanyEmail;
+                    newObject.Auctioneer.CompanyLogo = objct.Auctioneer.CompanyLogo;
+                    newObject.Auctioneer.CompanyName = objct.Auctioneer.CompanyName;
+                    newObject.Auctioneer.UserID = objct.Auctioneer.UserID;
+                    newObject.Auctioneer.CompanyDescriprion = objct.Auctioneer.CompanyDescriprion;
+                }
+                catch { }
+                try
+                {
+
+                    newObject.PrivateSeller = new PrivateSellerNoR();
+                    newObject.PrivateSeller.UserID = objct.PrivateSeller.UserID;
+                    newObject.PrivateSeller.Signiture = objct.Auctioneer.Signature;
+                    newObject.PrivateSeller.IDNumber = objct.PrivateSeller.IDNumber;
+                    newObject.PrivateSeller.ProofOfResedence = objct.PrivateSeller.ProofOfResedence;
+                }
+                catch { }
+
+
+                Lys.Add(newObject);
+            }
+
+            return Lys;
         }
 
         // GET: api/Sellers/5
         [ResponseType(typeof(Seller))]
         public async Task<IHttpActionResult> GetSeller(string id)
         {
-            Seller seller = await db.Sellers.FindAsync(id);
-            if (seller == null)
+            Seller objct = await db.Sellers.FindAsync(id);
+            if (objct == null)
             {
                 return NotFound();
             }
 
-            return Ok(seller);
+            
+                SellerNoR newObject = new SellerNoR()
+                {
+                     UserID= objct.UserID,
+                     Signature = objct.Signature,
+                    ApprovalStatus = objct.ApprovalStatus,
+                 //   Auctioneer = objct.Auctioneer,
+                     FirtstName = objct.FirtstName,
+                     LastName = objct.LastName,
+                  //   PrivateSeller= objct.PrivateSeller,
+                     SellerNumber = objct.SellerNumber,
+                     ProfilePhoto = objct.ProfilePhoto,
+                  //   Properties = objct.Properties,
+                  //   Retailer = objct.Retailer,
+                   //  SellerAddresses = objct.SellerAddresses,
+                     SellerEmail = objct.SellerEmail,
+                     SellerType = objct.SellerType
+
+
+                };
+            try
+            {
+
+                newObject.Retailer = new RetailerNoR();
+                newObject.Retailer.Branch = objct.Retailer.Branch;
+                newObject.Retailer.CompanyContactNumber = objct.Retailer.CompanyContactNumber;
+                newObject.Retailer.CompanyEmail = objct.Retailer.CompanyEmail;
+                newObject.Retailer.CompaynLogoPath = objct.Retailer.CompaynLogoPath;
+                newObject.Retailer.RetailerName = objct.Retailer.RetailerName;
+                newObject.Retailer.UserID = objct.Retailer.UserID;
+                newObject.Retailer.CompanyDescription = objct.Retailer.CompanyDescription;
+            }
+            catch { }
+            try
+            {
+
+                newObject.Auctioneer = new AuctioneerNoR();
+                newObject.Auctioneer.Branch = objct.Auctioneer.Branch;
+                newObject.Auctioneer.CompanyContactNumber = objct.Auctioneer.CompanyContactNumber;
+                newObject.Auctioneer.CompanyEmail = objct.Auctioneer.CompanyEmail;
+                newObject.Auctioneer.CompanyLogo = objct.Auctioneer.CompanyLogo;
+                newObject.Auctioneer.CompanyName = objct.Auctioneer.CompanyName;
+                newObject.Auctioneer.UserID = objct.Auctioneer.UserID;
+                newObject.Auctioneer.CompanyDescriprion = objct.Auctioneer.CompanyDescriprion;
+            }
+            catch { }
+            try
+            {
+
+                newObject.PrivateSeller = new PrivateSellerNoR();
+                newObject.PrivateSeller.UserID = objct.PrivateSeller.UserID;
+                newObject.PrivateSeller.Signiture = objct.Auctioneer.Signature;
+                newObject.PrivateSeller.IDNumber = objct.PrivateSeller.IDNumber;
+                newObject.PrivateSeller.ProofOfResedence = objct.PrivateSeller.ProofOfResedence;
+            }
+            catch { }
+
+            return Ok(newObject);
         }
 
         // PUT: api/Sellers/5

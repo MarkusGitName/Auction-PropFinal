@@ -18,24 +18,55 @@ namespace Auction_Prop_API.Controllers.APIControllers
         private DataBaseModels db = new DataBaseModels();
 
         // GET: api/PropertyPhotoes
-        public IQueryable<PropertyPhoto> GetPropertyPhotos()
+        public ICollection<PropertyPhotoNoR> GetPropertyPhotos()
         {
 
-            var propertyPhotos = db.PropertyPhotos.Include(p => p.Property.PropertyID);
-            return propertyPhotos;
+           
+
+
+            List<PropertyPhotoNoR> Lys = new List<PropertyPhotoNoR>();
+            foreach (PropertyPhoto objct in db.PropertyPhotos.Include(p => p.Property))
+            {
+
+
+                PropertyPhotoNoR newObject = new PropertyPhotoNoR()
+                {
+                    Description = objct.Description,
+                    ImageID = objct.ImageID,
+                    PropertyId = objct.PropertyId,
+                    PropertyPhotoPath = objct.PropertyPhotoPath,
+                //   PropertyNoR = objct.PropertyNoR,
+                    Title = objct.Title
+                };
+
+
+                Lys.Add(newObject);
+            }
+
+            return Lys;
         }
 
         // GET: api/PropertyPhotoes/5
         [ResponseType(typeof(PropertyPhoto))]
         public async Task<IHttpActionResult> GetPropertyPhoto(int id)
         {
-            PropertyPhoto propertyPhoto = await db.PropertyPhotos.FindAsync(id);
-            if (propertyPhoto == null)
+            PropertyPhoto objct = await db.PropertyPhotos.FindAsync(id);
+            if (objct == null)
             {
                 return NotFound();
             }
 
-            return Ok(propertyPhoto);
+            PropertyPhotoNoR newObject = new PropertyPhotoNoR()
+            {
+                Description = objct.Description,
+                ImageID = objct.ImageID,
+                PropertyId = objct.PropertyId,
+                PropertyPhotoPath = objct.PropertyPhotoPath,
+                //   PropertyNoR = objct.PropertyNoR,
+                Title = objct.Title
+            };
+
+            return Ok(newObject);
         }
 
         // PUT: api/PropertyPhotoes/5

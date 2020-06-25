@@ -29,4 +29,29 @@ namespace Auction_Prop_API.Models.DataBaseModels
 
         public virtual RegisteredBuyer RegisteredBuyer { get; set; }
     }
+    public partial class ConcludedAuctionNoR
+    {
+      
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int PropertyID { get; set; }
+
+        public int HiegestBid { get; set; }
+
+        [Required]
+        [StringLength(128)]
+        public string WinningBidder { get; set; }
+
+        public DateTime TimeOfConclution { get; set; }
+
+        public bool ExceededReserve { get; set; }
+
+
+
+        public virtual BidNoR Bid { get; set; }
+
+        public virtual PropertyNoR Property { get; set; }
+
+        public virtual RegisteredBuyerNoR RegisteredBuyer { get; set; }
+    }
 }

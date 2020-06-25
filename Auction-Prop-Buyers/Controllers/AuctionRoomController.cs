@@ -15,7 +15,7 @@ namespace Auction_Prop_Buyers.Controllers
         {
             try
             {
-                Auction model = APILibrary.APIMethods.APIGet<Auction>(id.ToString(), "Auctions");
+                Property model = APILibrary.APIMethods.APIGet<Property>(id.ToString(), "Properties");
                 return View(model);
             }
             catch (Exception E)

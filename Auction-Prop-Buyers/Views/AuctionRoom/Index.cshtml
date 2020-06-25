@@ -10,7 +10,7 @@
 }
 
 @using Auction_Prop_Buyers.Models.DisplayMadels
-@model Auction
+@model Property
 
 
 <!DOCTYPE html>
@@ -287,14 +287,14 @@
                 <div class="row">
                     <div class="col">
                         <div class="title-single-box">
-                            <h1 class="title-single; text-center"><strong>@Model.Property.Address</strong></h1>
-                            <h1 class="title-single; text-center">@Model.Property.City , @Model.Property.Province</h1>
+                            <h1 class="title-single; text-center"><strong>@Model.Address</strong></h1>
+                            <h1 class="title-single; text-center">@Model.City , @Model.Province</h1>
                         </div>
                     </div>
                     <div class="col">
                         <div class="title-single-box" style="border-right: 3px solid #fa7f15">
                             <h1 class="title-single; text-center"><strong>Opening Bid:</strong></h1>
-                            <h1 class="title-single; text-center">R @Model.Property.OpeningBid.ToString("C0").Substring(1) </h1>
+                            <h1 class="title-single; text-center">R @Model.OpeningBid </h1>
                         </div>
                     </div>
                 </div>
@@ -307,7 +307,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
-                            @foreach (PropertyPhoto pp in Model.Property.PropertyPhotos)
+                            @foreach (PropertyPhoto pp in Model.PropertyPhotos)
                             {
                                 <div class="carousel-item-b">
                                     <img src=@pp.PropertyPhotoPath alt="">
@@ -325,7 +325,7 @@
                 <h1 class="title-single; text-center"><strong>AUCTION ENDS IN</strong></h1>
                 <div class="title-single-box">
                     <div id="CountDown">
-                        @Html.DisplayFor(model => model.EndTime)
+                        @Html.DisplayFor(model => model.Auction.EndTime)
                     </div>
                 </div>
 
@@ -338,21 +338,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-5">
-                    @if (DateTime.Now > Model.EndTime)
+                    @if (DateTime.Now > Model.Auction.EndTime)
                     {
 
                         <div class="bid" style="padding-top:20px; text-align:center;  margin:auto; border-top: solid #07033c;; border-bottom: solid #07033c; width:100%; height:90%">
                             @try
                             {
-                                if (Model.Property.ConcludedAuction != null)
+                                if (Model.ConcludedAuction != null)
                                 {
 
                                     <h4 class="title-single; text-center">Winning Bid</h4>
-                                    <h4 id="Cur" class="title-single; text-center">R @Model.Property.ConcludedAuction.Bid.AmuntOfBid</h4>
+                                    <h4 id="Cur" class="title-single; text-center">R @Model.ConcludedAuction.Bid.AmuntOfBid</h4>
 
 
                                     <h4 class="title-single; text-center">Winning Bidder</h4>
-                                    <h4 id="Cur" class="title-single; text-center"> @Model.Property.ConcludedAuction.RegisteredBuyer.FirstName</h4>
+                                    <h4 id="Cur" class="title-single; text-center"> @Model.ConcludedAuction.RegisteredBuyer.FirstName</h4>
                                 }
                             }
                             catch
@@ -361,20 +361,33 @@
                             }
                         </div>
                     }
-                    else if (Model.StartTime > DateTime.Now && DateTime.Now < Model.EndTime)
+                    else if (Model.Auction.StartTime > DateTime.Now)
                     {
 
 
-                        <div class="bid" style="padding-top:20px; text-align:center;  margin:auto; border-top: solid #07033c;; border-bottom: solid #07033c; width:100%; height:90%">
+
+                        <div class="container" title="Auction History " style="border: solid #07033c;width: 100%">
+
+
+                            <div class="row" style="text-align:center; padding:20px; border-bottom:ridge">
+                                <div class="col-lg-6" style="text-align:left">
+                                    Auction Will Start at @Model.Auction.StartTime
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                    else
+                    { <div class="bid" style="padding-top:20px; text-align:center;  margin:auto; border-top: solid #07033c;; border-bottom: solid #07033c; width:100%; height:90%">
                             <h4 class="title-single; text-center">Current Bid</h4>
-                            <h4 id="Cur" class="title-single; text-center">R @Model.Property.OpeningBid.ToString("C0").Substring(1)</h4>
+                            <h4 id="Cur" class="title-single; text-center">R @Model.OpeningBid.ToString("C0").Substring(1)</h4>
                             Your Bid:
 
                             <div class="Yourbid" style=" width:240px;float:inherit;margin:auto;">
                                 <input type="button" id="Decriment5k" value="-" style="float:left; width:25px; border: solid #07033c  " />
                                 <input type="button" id="Increment5k" value="+" style="float:right; width:25px; border: solid #07033c" />
 
-                                <div id="Biddd" style="        margin: auto;       width: 150px;       border: 3px solid #fa7f15;        border-radius: 3px;        float: none; border: solid #fa7f15">@Model.Property.OpeningBid</div>
+                                <div id="Biddd" style="        margin: auto;       width: 150px;       border: 3px solid #fa7f15;        border-radius: 3px;        float: none; border: solid #fa7f15">@Model.OpeningBid</div>
                             </div>
                             <div class="Increments" style="padding-top:30px; margin:auto">
                                 <div>Add increment of:</div>
@@ -385,31 +398,20 @@
                                 <div class="Placebid" style="padding-top:30px ;padding-bottom:20px">
                                     <input type="button" id="placeBid" value="Plase youre bid" style="border: solid #07033c" />
                                 </div>
-                               
+
                             </div>
-                 
-                           
+
+
                         </div>
 
-                    }
-                    else
-                    { <div class="container" title="Auction History " style="border: solid #07033c;width: 100%">
-
-
-                            <div class="row" style="text-align:center; padding:20px; border-bottom:ridge">
-                                <div class="col-lg-6" style="text-align:left">
-                                    Auction Will Start at @Model.StartTime
-                                </div>
-                            </div>
-                        </div>
                     }
                 </div>
                 <div class="col-7">
                     <div class="embed-responsive embed-responsive-16by9 hoverable">
                         @try
                         {
-                            @Model.Property.PromoVideos
-                            <iframe class="embed-responsive-item" src=@Model.Property.PromoVideos style="height: 100%"
+                            @Model.PromoVideos
+                            <iframe class="embed-responsive-item" src=@Model.PromoVideos style="height: 100%"
                                     allowfullscreen></iframe>
                         }
                         catch
@@ -456,11 +458,11 @@
                 <div type="hidden" id="displayname" style="visibility:hidden">Username</div>
                 <div id="CurentBid" style="text-align:left">
                 </div>
-                <div class="col-lg-6" id="bidUser" style="text-align:left">
+                <div class="col-lg-5" id="bidUser" style="text-align:left">
                 </div>
-                <div class="col-lg-3" id="bidTime" style="text-align:left">
+                <div class="col-lg-2" id="bidTime" style="text-align:left">
                 </div>
-                <div class="col-lg-3" id="bidAmount" style="text-align:left">
+                <div class="col-lg-2" id="bidAmount" style="text-align:left">
                 </div>
 
 
@@ -575,7 +577,7 @@
                 });
                  $('#placeBid').click(function () {
                      // Call the Send method on the hub.
-                     auction.server.bid2($('#displayname').val(), $('#Biddd').text(),'@Model.Property.PropertyID','@User.Identity.GetUserId()');
+                     auction.server.bid2($('#displayname').val(), $('#Biddd').text(),'@Model.PropertyID','@User.Identity.GetUserId()');
                     // Clear text box and reset focus for next comment.
                  });
                  var $bid = $('#Biddd');
@@ -705,12 +707,12 @@
 
 @{ Bid HighestB = new Bid(); }
 
-@if (Model.StartTime < DateTime.Now && DateTime.Now < Model.EndTime)
+@if (Model.Auction.StartTime < DateTime.Now && DateTime.Now < Model.Auction.EndTime)
 {
-    if (Model.Bids != null)
+    if (Model.Auction.Bids != null)
     {
         bool first = true;
-        foreach (Bid b in Model.Bids)
+        foreach (Bid b in Model.Auction.Bids)
         {
             if (first)
             {
@@ -729,11 +731,11 @@
     }
     else
     {
-        HighestB.AmuntOfBid = Model.Property.OpeningBid;
+        HighestB.AmuntOfBid = Model.Auction.Property.OpeningBid;
     }
 
-    decimal userBid = Convert.ToDecimal(Html.DisplayTextFor(model => model.Property.OpeningBid).ToString());
-    decimal hieghestBid = Convert.ToDecimal(Html.DisplayTextFor(model => model.Property.OpeningBid).ToString());
+    //decimal userBid = Convert.ToDecimal(Html.DisplayTextFor(model => model.Auction.Property.OpeningBid).ToString());
+    //decimal hieghestBid = Convert.ToDecimal(Html.DisplayTextFor(model => model.Auction.Property.OpeningBid).ToString());
     <div class="jumbotron" style="text-align:center">
 
         <h1>Current Bid</h1>
@@ -747,45 +749,14 @@
         <div height="40px" style="background-color:coral; padding:10px">
             Auction Ends in:
             <div id="CountDown">
-                @Html.DisplayFor(model => model.EndTime)
+                @Html.DisplayFor(model => model.Auction.EndTime)
             </div>
 
         </div>
         <div style="padding:10px; text-align:center ; margin:auto">
             Auction By
             <div style="width:20% ; text-align:center ; margin:auto">
-                @if (Model.Property.Seller.PrivateSeller != null)
-                {
-                    try
-                    {
-                        string Paths = Model.Property.Seller.PrivateSeller.ProfilePhotoPath;
-                        <img src=@Paths style="width:99%" />
-
-                    }
-                    catch
-                    {
-                        <img src="~/assets/img/member-01.jpg" style="width:99%" />
-                    }
-
-
-
-
-                }
-                else
-                {
-                    try
-                    {
-                        string Paths = Model.Property.Seller.Retailer.CompaynLogoPath;
-                        <img src=@Url.Content(Paths) style="width:99%" />
-                    }
-                    catch
-                    {
-
-                        <img src="~/assets/img/member-01.jpg" style="width:99%" />
-                    }
-
-
-                }
+              
             </div>
         </div>
         <div style="padding:10px">
@@ -813,7 +784,7 @@
 
                 <input type="button" id="Decriment5k" value="-" style="float:left; width:8px " />
                 <input type="button" id="Increment5k" value="+" style="float:right; width:8px" />
-                <div id="Biddd" style=" margin:auto;width:150px;border:solid; border-radius:3px;float:none">@userBid</div>
+                <div id="Biddd" style=" margin:auto;width:150px;border:solid; border-radius:3px;float:none"></div>
 
             </div>
             <div style="padding-top:30px; margin:auto">
@@ -877,11 +848,11 @@
     </div>
 
 }
-else if (Model.StartTime > DateTime.Now && DateTime.Now < Model.EndTime)
+else if (Model.Auction.StartTime > DateTime.Now && DateTime.Now < Model.Auction.EndTime)
 {<div class="jumbotron" style="text-align: center ">
         <h1>Opening Bid</h1>
         <p class="lead">
-            R<label id="cur">@Html.DisplayFor(model => model.Property.OpeningBid)</label>
+            R<label id="cur">@Html.DisplayFor(model => model.Auction.Property.OpeningBid)</label>
 
         </p>
     </div>
@@ -889,7 +860,7 @@ else if (Model.StartTime > DateTime.Now && DateTime.Now < Model.EndTime)
         <div height="40px" style="background-color:coral; padding:10px">
             Auction Ends in:
             <div id="CountDown">
-                @Html.DisplayFor(model => model.EndTime)
+                @Html.DisplayFor(model => model.Auction.EndTime)
             </div>
 
         </div>
@@ -901,17 +872,17 @@ else if (Model.StartTime > DateTime.Now && DateTime.Now < Model.EndTime)
         </div>
         <div>
             <div>Opening Bid.</div>
-            <div id="cur" style="padding:10px">R @Html.DisplayFor(model => model.Property.OpeningBid)</div>
+            <div id="cur" style="padding:10px">R @Html.DisplayFor(model => model.Auction.Property.OpeningBid)</div>
         </div>
 
 
         <div style="padding:20px">
             Auction Start on:
-            <div id="StartTime">@Html.DisplayFor(model => model.StartTime)</div>
+            <div id="StartTime">@Html.DisplayFor(model => model.Auction.StartTime)</div>
         </div>
         <div style="padding:20px">
             Auction Ends on
-            <div id="EndTime">@Html.DisplayFor(model => model.EndTime)</div>
+            <div id="EndTime">@Html.DisplayFor(model => model.Auction.EndTime)</div>
         </div>
 
 
@@ -932,8 +903,8 @@ else
 
     <div height="40px" style="background-color:royalblue; padding:10px">
         <div>Property Info</div>
-        <div>@Html.DisplayFor(model => model.Property.Province) , @Html.DisplayFor(model => model.Property.City)</div>
-        <div>@Html.DisplayFor(model => model.Property.Address)</div>
+        <div>@Html.DisplayFor(model => model.Province) , @Html.DisplayFor(model => model.City)</div>
+        <div>@Html.DisplayFor(model => model.Address)</div>
 
     </div>
     <div style="padding:1%">
@@ -941,7 +912,7 @@ else
         {
 
             int count = 0;
-            foreach (PropertyPhoto P in Model.Property.PropertyPhotos)
+            foreach (PropertyPhoto P in Model.PropertyPhotos)
             {
                 if (count == 0)
                 {

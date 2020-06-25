@@ -35,4 +35,34 @@ namespace Auction_Prop_API.Models.DataBaseModels
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ConcludedAuction> ConcludedAuctions { get; set; }
     }
+    [Table("Bid")]
+    public partial class BidNoR
+    {
+
+        public BidNoR()
+        {
+            ConcludedAuctions = new HashSet<ConcludedAuctionNoR>();
+        }
+
+        public int BidID { get; set; }
+
+        [Required]
+        [StringLength(128)]
+        public string BuyerID { get; set; }
+
+        public int PropertyID { get; set; }
+
+        [Column(TypeName = "money")]
+        public decimal AmuntOfBid { get; set; }
+
+        public DateTime TimeOfbid { get; set; }
+
+        public virtual ICollection<ConcludedAuctionNoR> ConcludedAuctions { get; set; }
+
+        public virtual AuctionNoR Auction { get; set; }
+
+        public virtual RegisteredBuyerNoR RegisteredBuyer { get; set; }
+
+
+    }
 }
