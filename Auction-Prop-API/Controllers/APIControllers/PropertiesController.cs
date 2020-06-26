@@ -229,7 +229,20 @@ namespace Auction_Prop_API.Controllers.APIControllers
                     }
                 }
                 catch { }
+                try
+                {
 
+                    if (objct.ConcludedAuction != null)
+                    {
+
+                        newObject.ConcludedAuction = new ConcludedAuctionNoR();
+                        newObject.ConcludedAuction.WinningBidder = objct.ConcludedAuction.WinningBidder;
+                        newObject.ConcludedAuction.TimeOfConclution = objct.ConcludedAuction.TimeOfConclution;
+                        newObject.ConcludedAuction.PropertyID = objct.ConcludedAuction.PropertyID;
+                        newObject.ConcludedAuction.ExceededReserve = objct.ConcludedAuction.ExceededReserve;
+                    }
+                }
+                catch { }
 
                 Lys.Add(newObject);
             }
@@ -442,6 +455,20 @@ namespace Auction_Prop_API.Controllers.APIControllers
                     newObject.Seller.PrivateSeller.Signiture = objct.Seller.Auctioneer.Signature;
                     newObject.Seller.PrivateSeller.IDNumber = objct.Seller.PrivateSeller.IDNumber;
                     newObject.Seller.PrivateSeller.ProofOfResedence = objct.Seller.PrivateSeller.ProofOfResedence;
+                }
+            }
+            catch { }
+            try
+            {
+
+                if (objct.ConcludedAuction != null)
+                {
+
+                    newObject.ConcludedAuction = new ConcludedAuctionNoR();
+                    newObject.ConcludedAuction.WinningBidder = objct.ConcludedAuction.WinningBidder;
+                    newObject.ConcludedAuction.TimeOfConclution = objct.ConcludedAuction.TimeOfConclution;
+                    newObject.ConcludedAuction.PropertyID = objct.ConcludedAuction.PropertyID;
+                    newObject.ConcludedAuction.ExceededReserve = objct.ConcludedAuction.ExceededReserve;
                 }
             }
             catch { }

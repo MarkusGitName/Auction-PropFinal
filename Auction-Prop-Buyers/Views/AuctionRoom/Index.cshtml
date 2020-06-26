@@ -294,7 +294,7 @@
                     <div class="col">
                         <div class="title-single-box" style="border-right: 3px solid #fa7f15">
                             <h1 class="title-single; text-center"><strong>Opening Bid:</strong></h1>
-                            <h1 class="title-single; text-center">R @Model.OpeningBid </h1>
+                            <h1 id="#Cur" class="title-single; text-center">R @Model.OpeningBid </h1>
                         </div>
                     </div>
                 </div>
@@ -322,12 +322,26 @@
             <!-- ============================================= Current Bid & Timer ======================================================== -->
 
             <div class="container" style="border-right: solid #fa7f15; border-left: solid #fa7f15; padding-bottom:30px">
-                <h1 class="title-single; text-center"><strong>AUCTION ENDS IN</strong></h1>
-                <div class="title-single-box">
-                    <div id="CountDown">
-                        @Html.DisplayFor(model => model.Auction.EndTime)
+                @if (Model.Auction.StartTime < DateTime.Now)
+                {
+                    <h1 class="title-single; text-center"><strong>AUCTION ENDS IN</strong></h1>
+                    <div class="title-single-box">
+                        <div id="CountDown">
+                            @Html.DisplayFor(model => model.Auction.EndTime)
+                        </div>
                     </div>
-                </div>
+
+                }
+                else
+                {
+                    <h1 class="title-single; text-center"><strong>AUCTION STARTS IN</strong></h1>
+                    <div class="title-single-box">
+                        <div id="CountDown">
+                            @Html.DisplayFor(model => model.Auction.StartTime)
+                        </div>
+                    </div>
+                }
+
 
             </div>
         </section>
@@ -348,11 +362,11 @@
                                 {
 
                                     <h4 class="title-single; text-center">Winning Bid</h4>
-                                    <h4 id="Cur" class="title-single; text-center">R @Model.ConcludedAuction.Bid.AmuntOfBid</h4>
+                                    <h4  class="title-single; text-center">R @Model.ConcludedAuction.Bid.AmuntOfBid</h4>
 
 
                                     <h4 class="title-single; text-center">Winning Bidder</h4>
-                                    <h4 id="Cur" class="title-single; text-center"> @Model.ConcludedAuction.RegisteredBuyer.FirstName</h4>
+                                    <h4  class="title-single; text-center"> @Model.ConcludedAuction.RegisteredBuyer.FirstName</h4>
                                 }
                             }
                             catch
@@ -361,7 +375,7 @@
                             }
                         </div>
                     }
-                    else if (Model.Auction.StartTime > DateTime.Now)
+                    else if (Model.Auction.StartTime < DateTime.Now)
                     {
 
 
@@ -380,7 +394,7 @@
                     else
                     { <div class="bid" style="padding-top:20px; text-align:center;  margin:auto; border-top: solid #07033c;; border-bottom: solid #07033c; width:100%; height:90%">
                             <h4 class="title-single; text-center">Current Bid</h4>
-                            <h4 id="Cur" class="title-single; text-center">R @Model.OpeningBid.ToString("C0").Substring(1)</h4>
+                            <h4 id="cur" class="title-single; text-center">R @Model.OpeningBid.ToString("C0").Substring(1)</h4>
                             Your Bid:
 
                             <div class="Yourbid" style=" width:240px;float:inherit;margin:auto;">
@@ -652,6 +666,8 @@
                 clearInterval(x);
 
                 document.getElementById("CountDown").innerHTML = "EXPIRED";
+
+                location.reload();
             }
             if ($('#CountDown').text() == "EXPIRED")
             {
