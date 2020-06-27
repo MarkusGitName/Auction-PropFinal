@@ -1,7 +1,8 @@
 ﻿@model Auction_Prop_Sellers.Models.DataViewModels.PromoVideoData
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 <!DOCTYPE html>
@@ -18,7 +19,7 @@
 
 
     <form action="" method="post" enctype="multipart/form-data">
-        {
+        
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
@@ -28,7 +29,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.PropertyID, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.PropertyID, new {  @class = "form-control"  })
+                    @Html.TextBoxFor(model => model.PropertyID, new {  @class = "form-control"  })
                     @Html.ValidationMessageFor(model => model.PropertyID, "", new { @class = "text-danger" })
                 </div>
             </div>

@@ -35,7 +35,7 @@ namespace Auction_Prop_Buyers.Controllers
                     if(User.Identity.IsAuthenticated)
                     {
                     
-                        return RedirectToAction("Create");
+                        return RedirectToAction("Create", "Buyers", new { id = 0});
 
                     }
                     else
@@ -64,7 +64,7 @@ namespace Auction_Prop_Buyers.Controllers
 
         // GET: Buyers/Create
 
-        public ActionResult Create(BuyerViewModel model)
+        public ActionResult Create(int id, BuyerViewModel model)
         {
             model.UserId = User.Identity.GetUserId();
             if (ModelState.IsValid)
@@ -93,7 +93,7 @@ namespace Auction_Prop_Buyers.Controllers
 
                     //Call Post Method
                     RegisteredBuyer ob = APIMethods.APIPost<RegisteredBuyer>(newData, "RegisteredBuyers");
-                    return RedirectToAction("CreateAddress");
+                    return RedirectToAction("CreateAddress","Buyers", new { id = id });
                 }
                 catch (Exception E)
                 {
@@ -109,7 +109,7 @@ namespace Auction_Prop_Buyers.Controllers
 
         // GET: Buyers/Create
 
-        public ActionResult CreateAddress(Address model)
+        public ActionResult CreateAddress(int id ,Address model)
         {
             if (ModelState.IsValid)
             {
@@ -122,6 +122,11 @@ namespace Auction_Prop_Buyers.Controllers
                     bAdd.AddressID = objec.AddressID;
                     bAdd.UserID = User.Identity.GetUserId();
                     APIMethods.APIPost<BuyerAddress>(bAdd, "BuyerAddresses");
+
+                    if(id !=0)
+                    {
+
+                    }
                     return RedirectToAction("Index");
                 }
                 catch (Exception E)
@@ -197,13 +202,17 @@ namespace Auction_Prop_Buyers.Controllers
                      {
                         AuctionRegistrationID = id,
                         DateOfSubmition = DateTime.Now
+                        
+
                       };
                      newModel.GuarinteePath = FileController.PostFile(model.GuarinteePath, "Guarintees", "guarintees");
 
                      //Call Post Method
-                      Guarintee returnedG =APIMethods.APIPost<Guarintee>(newModel, "Guarintees");
-                    
-                    return RedirectToAction("Detailss", "home", new {id=returnedG.AuctionRegistration.PropertyID });
+                      APIMethods.APIPost<Guarintee>(newModel, "Guarintees");
+
+                    int propID =  APIMethods.APIGet<AuctionRegistration>(id.ToString(), "AuctionRegistrations").PropertyID;
+
+                    return RedirectToAction("Detailss", "home", new {id= propID });
                 }
                 catch (Exception E)
                 {
@@ -231,9 +240,12 @@ namespace Auction_Prop_Buyers.Controllers
                      newModel.ApprovalPath = FileController.PostFile(model.ApprovalPath, "bankapprovals", "bankapprovals");
 
                      //Call Post Method
-                      BankApproval returnedA = APIMethods.APIPost<BankApproval>(newModel, "BankApprovals");
+                      APIMethods.APIPost<BankApproval>(newModel, "BankApprovals");
 
-                    return RedirectToAction("Detailss", "home", new {  id = returnedA.AuctionRegistration.PropertyID });
+                    int propID = APIMethods.APIGet<AuctionRegistration>(id.ToString(), "AuctionRegistrations").PropertyID;
+
+
+                    return RedirectToAction("Detailss", "home", new {  id = propID });
 
 
              

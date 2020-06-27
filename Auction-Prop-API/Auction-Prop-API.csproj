@@ -245,6 +245,7 @@
     <Compile Include="Controllers\MVCController\GuarinteesController.cs" />
     <Compile Include="Controllers\MVCController\MessagesController.cs" />
     <Compile Include="Controllers\MVCController\PrivateSellersController.cs" />
+    <Compile Include="Controllers\MVCController\PromoVideos1Controller.cs" />
     <Compile Include="Controllers\MVCController\PromoVideosController.cs" />
     <Compile Include="Controllers\APIControllers\PrivateSellersController.cs" />
     <Compile Include="Controllers\APIControllers\PromoVideosController.cs" />
@@ -493,6 +494,11 @@
     <Content Include="Views\RegisteredBuyers\Details.cshtml" />
     <Content Include="Views\RegisteredBuyers\Edit.cshtml" />
     <Content Include="Views\RegisteredBuyers\Index.cshtml" />
+    <Content Include="Views\PromoVideos1\Create.cshtml" />
+    <Content Include="Views\PromoVideos1\Delete.cshtml" />
+    <Content Include="Views\PromoVideos1\Details.cshtml" />
+    <Content Include="Views\PromoVideos1\Edit.cshtml" />
+    <Content Include="Views\PromoVideos1\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

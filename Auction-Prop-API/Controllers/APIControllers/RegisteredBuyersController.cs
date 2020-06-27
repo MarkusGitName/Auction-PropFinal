@@ -63,6 +63,29 @@ namespace Auction_Prop_API.Controllers.APIControllers
                 }
                 catch { }
 
+                try
+                {
+                    List<BuyerAddressNoR> lys = new List<BuyerAddressNoR>();
+
+                    foreach (BuyerAddress bAdd in objct.BuyerAddresses)
+                    {
+
+                        BuyerAddressNoR newAdd = new BuyerAddressNoR();
+                        newAdd.AddressID = bAdd.Address.AddressID;
+                        newAdd.id = bAdd.id;
+                        newAdd.UserID = bAdd.UserID;
+
+                        lys.Add(newAdd);
+
+                    }
+                    newObject.BuyerAddresses = lys;
+
+                }
+                catch
+                {
+
+                }
+
 
                 Lys.Add(newObject);
             }

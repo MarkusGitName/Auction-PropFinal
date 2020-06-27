@@ -49,10 +49,10 @@ namespace Auction_Prop_Sellers.Controllers
         }
 
 
-        public async  Task<ActionResult> CreateProperty(PropertyView model)
+        public async Task<ActionResult> CreateProperty(PropertyView model)
         {
             
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && model.SellerSigniture)
             {
                
                
@@ -65,11 +65,15 @@ namespace Auction_Prop_Sellers.Controllers
                     IMapper mapper = config.CreateMapper();
                     Property NewProp = mapper.Map<PropertyView, Property>(model);
                     NewProp.SellerID = User.Identity.GetUserId();
+                    if(NewProp.TitleDeedPath == "")
+                    {
+                        NewProp.TitleDeedPath = "N/A";
+                    }
                     NewProp.MandateSingedDate = DateTime.Now;
                     NewProp.MandateExpireDate = DateTime.Now.AddDays(90);
                     NewProp.TaxesAndRates = FileController.PostFile(model.TaxesAndRates, "TaxesAndRates", "TaxesAndRates");
                     NewProp.PlansPath = FileController.PostFile(model.PlansPath, "Plans", "Plans");
-                    NewProp.TitleDeedPath = FileController.PostFile(model.TitleDeedPath, "Titledeeds", "Titledeeds");
+                  //  NewProp.TitleDeedPath = FileController.PostFile(model.TitleDeedPath, "Titledeeds", "Titledeeds");
                     NewProp.HOARules = FileController.PostFile(model.HOARules, "HOARules", "HOARules");
 
                     //Call Post Method
@@ -187,15 +191,11 @@ namespace Auction_Prop_Sellers.Controllers
             {
                 try
                 {
-                    PromoVideo model = new PromoVideo();
-                    if (file != null)
+                   if (file != null)
                     {
-                        model.PropertyID = id;
-                        model.VideoPath = FileController.PostFile(file.VideoPath, "Propertyphotos", "Propertyphotos");
-                       
                         //Call Post Method
-                       APIMethods.APIPost<PropertyPhoto>(model, "PropertyPhotoes");
-                     return  View();
+                       APIMethods.APIPost<PropertyPhoto>(file, "PropertyPhotoes");
+                     return RedirectToAction("Index");
                     
                     }
                 }

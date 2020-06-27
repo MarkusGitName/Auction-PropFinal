@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -83,7 +84,7 @@
         [StringLength(500)]
         public string HOARules { get; set; }
 
-        public DbGeography Location { get; set; }
+       // public DbGeography Location { get; set; }
 
         public bool ApprovalStatus { get; set; }
 
@@ -184,38 +185,47 @@
         public string PropertyType { get; set; }
 
 
+        [DefaultValue(0)]
         [Display(Name = "How Many Bedrooms.")]
         public int? BedRooms { get; set; }
 
 
+        [DefaultValue(0)]
         [Display(Name = "How Many Bathrooms.")]
         public int? BathRooms { get; set; }
 
 
+        [DefaultValue(0)]
         [Display(Name = "Floor Size.")]
         public int? FloorSize { get; set; }
 
 
+        [DefaultValue(0)]
         [Display(Name = "Yard Size.")]
         public int? YardSize { get; set; }
 
 
+        [DefaultValue(0)]
         [Display(Name = "How Many Gerages.")]
         public int? Garages { get; set; }
 
 
+        [DefaultValue(0)]
         [Display(Name = "Opening bid. The auction wil start on this amount.")]
         public decimal? OpeningBid { get; set; }
 
 
+        [DefaultValue(0)]
         [Display(Name = "Reserve, the auction is succesfull if it surpasses the Resurve.")]
         public decimal? Reserve { get; set; }
 
 
+        [DefaultValue("N/A")]
         [Display(Name = "Upload Property plans if you have.")]
         public HttpPostedFileBase PlansPath { get; set; }
 
 
+        [DefaultValue(0)]
         [Display(Name = "Montly Taxes.")]
         public decimal? TaxesAndRate { get; set; }
 
@@ -224,18 +234,20 @@
         public decimal? levies { get; set; }
 
 
+        [DefaultValue("N/A")]
         [Display(Name = "Upload Taxes and rates documents if possible.")]
         public HttpPostedFileBase TaxesAndRates { get; set; }
 
 
-        [Display(Name = "Upload Title Deed if possible.")]
-        public HttpPostedFileBase TitleDeedPath { get; set; }
+        [DefaultValue("")]
+        [Display(Name = "Title Deed:")]
+        public string TitleDeedPath { get; set; }
 
 
         [Display(Name = "Upload HOA Rules if possible.")]
         public HttpPostedFileBase HOARules { get; set; }
 
-        public DbGeography Location { get; set; }
+       // public DbGeography Location { get; set; }
 
         public bool ApprovalStatus { get; set; }
 

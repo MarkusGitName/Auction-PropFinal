@@ -1,10 +1,4 @@
-﻿<head>
-
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
-</head>
-
-
-@model Auction_Prop_Sellers.Models.DataViewModels.PropertyView
+﻿@model Auction_Prop_Sellers.Models.DataViewModels.PropertyView
 
 @{
     ViewBag.Title = "CreateProperty";
@@ -13,75 +7,75 @@
 
 <h2>CreateProperty</h2>
 
-<form action="" method="post" enctype="multipart/form-data">
 
+<form action="" method="post" enctype="multipart/form-data">
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
         <h4>Property</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
+    
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-5">
-                @Html.EditorFor(model => model.Title, new { @class = "form-control" })
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-5">
-                @Html.EditorFor(model => model.Country, new { @class = "form-control" })
+            @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Province, htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-5">
-                @Html.EditorFor(model => model.Province, new { @class = "form-control" })
+            @Html.LabelFor(model => model.Province, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Province, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Province, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-5">
-                @Html.EditorFor(model => model.City, new { @class = "form-control" })
+            @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-5">
-                @Html.EditorFor(model => model.Address, new { @class = "form-control" })
+            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-5">
-                @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.RegistrationType, htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-5">
+            @Html.LabelFor(model => model.RegistrationType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
                 @Html.DropDownListFor(model => model.RegistrationType, new SelectList(new String[] { "Full Title", "Sectional Title" }), new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.RegistrationType, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PropertyType, htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-5">
+            @Html.LabelFor(model => model.PropertyType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
                 @Html.DropDownListFor(model => model.PropertyType, new SelectList(new String[] { "House", "Townhouse", "Appartment", "Vacant Land", "Industrial", "Farmland", "Commercial" }), new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.PropertyType, "", new { @class = "text-danger" })
             </div>
@@ -110,41 +104,11 @@
                 @Html.ValidationMessageFor(model => model.FloorSize, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="form-group">
-
-            @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="container">
-                <div class="form-group">
-                    <label class="control-label">Location:</label>
-                    <input type="text" class="form-control" id="us3-address" />
-                </div>
-
-                <div class="form-group row">
-                    <div class="col-sm-6">
-                        <label class="control-label">Lat.:</label>
-                        <input type="text" class="form-control" id="us3-lat" />
-                    </div>
-                    <div class="col-sm-6">
-                        <label>Long.:</label>
-                        <input type="text" class="form-control" id="us3-lon" />
-                    </div>
-                </div>
-
-                <!-- map -->
-                <div id="us3" style="height: 400px;"></div>
-            </div>
-            <div class="col-md-10">
-
-                <input id="searchTextField" type="text" size="50">
-                @Html.TextBoxFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.YardSize, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.YardSize, new { @class = "form-control" })
+                @Html.EditorFor(model => model.YardSize, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.YardSize, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -184,13 +148,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TaxesAndRate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.TaxesAndRate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.TaxesAndRate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TaxesAndRate, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.levies, htmlAttributes: new { @class = "control-label col-md-3" })
+            @Html.LabelFor(model => model.levies, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.levies, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.levies, "", new { @class = "text-danger" })
@@ -206,20 +170,32 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TitleDeedPath, htmlAttributes: new { @class = "control-label col-md-3" })
+            @Html.LabelFor(model => model.TitleDeedPath, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.TitleDeedPath, new { @class = "form-control", Type = "file" })
+                @Html.TextBoxFor(model => model.TitleDeedPath, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TitleDeedPath, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HOARules, htmlAttributes: new { @class = "control-label col-md-3" })
+            @Html.LabelFor(model => model.HOARules, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextBoxFor(model => model.HOARules, new { @class = "form-control", Type = "file" })
                 @Html.ValidationMessageFor(model => model.HOARules, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ApprovalStatus, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.ApprovalStatus)
+                    @Html.ValidationMessageFor(model => model.ApprovalStatus, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+       
 
         <div class="form-group">
             @Html.LabelFor(model => model.Garden, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -358,6 +334,7 @@
                 @Html.ValidationMessageFor(model => model.MandateType, "", new { @class = "text-danger" })
             </div>
         </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.SellerSigniture, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -367,39 +344,18 @@
                 </div>
             </div>
         </div>
-
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
-</form>
+ </form>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-<script>
-  $('#us3').locationpicker({
-  location: {
-    latitude: -8.681013,
-    longitude: 115.23506410000005
-  },
-  radius: 0,
-  inputBinding: {
-    latitudeInput: $('#us3-lat'),
-    longitudeInput: $('#us3-lon'),
-    radiusInput: $('#us3-radius'),
-    locationNameInput: $('#us3-address')
-  },
-  enableAutocomplete: true,
-  onchanged: function (currentLocation, radius, isMarkerDropped) {
-    // Uncomment line below to show alert on each Location Changed event
-    //alert("Location changed. New location (" + currentLocation.latitude + ", " + currentLocation.longitude + ")");
-  }
-});
-</script>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
 
-
-
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

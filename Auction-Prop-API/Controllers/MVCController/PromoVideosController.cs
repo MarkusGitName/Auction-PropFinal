@@ -40,7 +40,7 @@ namespace Auction_Prop_API.Controllers.APIControllers.MVCController
         // GET: PromoVideos/Create
         public ActionResult Create()
         {
-            ViewBag.PropertyID = new SelectList(db.Properties, "PropertyID", "SellerID");
+            ViewBag.PropertyID = new SelectList(db.Properties, "PropertyID", "PropertyID");
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace Auction_Prop_API.Controllers.APIControllers.MVCController
                 return RedirectToAction("Index");
             }
 
-            ViewBag.PropertyID = new SelectList(db.Properties, "PropertyID", "SellerID", promoVideo.PropertyID);
+            ViewBag.PropertyID = new SelectList(db.Properties, "PropertyID", "PropertyID", promoVideo.PropertyID);
             return View(promoVideo);
         }
 
@@ -74,7 +74,7 @@ namespace Auction_Prop_API.Controllers.APIControllers.MVCController
             {
                 return HttpNotFound();
             }
-            ViewBag.PropertyID = new SelectList(db.Properties, "PropertyID", "SellerID", promoVideo.PropertyID);
+            ViewBag.PropertyID = new SelectList(db.Properties, "PropertyID", "PropertyID", promoVideo.PropertyID);
             return View(promoVideo);
         }
 
@@ -91,7 +91,7 @@ namespace Auction_Prop_API.Controllers.APIControllers.MVCController
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.PropertyID = new SelectList(db.Properties, "PropertyID", "SellerID", promoVideo.PropertyID);
+            ViewBag.PropertyID = new SelectList(db.Properties, "PropertyID", "PropertyID", promoVideo.PropertyID);
             return View(promoVideo);
         }
 

@@ -46,6 +46,24 @@ namespace Auction_Prop_API.Controllers.APIControllers
                     // AuctionRegistration = fee.AuctionRegistration
                 };
 
+                try
+                {
+                    newObject.AuctionRegistration = new AuctionRegistrationNoR();
+                    newObject.AuctionRegistration.id = objct.AuctionRegistration.id;
+                    newObject.AuctionRegistration.PropertyID = objct.AuctionRegistration.id;
+                    newObject.AuctionRegistration.RegesterDate= objct.AuctionRegistration.RegesterDate;
+                    newObject.AuctionRegistration.RegistrationFees = objct.AuctionRegistration.RegistrationFees;
+                    newObject.AuctionRegistration.Signiture = objct.AuctionRegistration.Signiture;
+                    newObject.AuctionRegistration.RegistrationStatus = objct.AuctionRegistration.RegistrationStatus;
+                    newObject.AuctionRegistration.BuyerId = objct.AuctionRegistration.BuyerId;
+                    newObject.AuctionRegistration.Bonded = objct.AuctionRegistration.Bonded;
+                    
+                }
+                catch { }
+
+
+
+
 
                 Lys.Add(newObject);
             }
@@ -82,6 +100,20 @@ namespace Auction_Prop_API.Controllers.APIControllers
                 //Seller = objct.Seller
                 // AuctionRegistration = fee.AuctionRegistration
             };
+            try
+            {
+                newObject.AuctionRegistration = new AuctionRegistrationNoR();
+                newObject.AuctionRegistration.id = objct.AuctionRegistration.id;
+                newObject.AuctionRegistration.PropertyID = objct.AuctionRegistration.id;
+                newObject.AuctionRegistration.RegesterDate = objct.AuctionRegistration.RegesterDate;
+                newObject.AuctionRegistration.RegistrationFees = objct.AuctionRegistration.RegistrationFees;
+                newObject.AuctionRegistration.Signiture = objct.AuctionRegistration.Signiture;
+                newObject.AuctionRegistration.RegistrationStatus = objct.AuctionRegistration.RegistrationStatus;
+                newObject.AuctionRegistration.BuyerId = objct.AuctionRegistration.BuyerId;
+                newObject.AuctionRegistration.Bonded = objct.AuctionRegistration.Bonded;
+
+            }
+            catch { }
 
             return Ok(newObject);
         }

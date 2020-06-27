@@ -741,6 +741,7 @@
     <Content Include="assets\vendor\scrollreveal\scrollreveal.es.js" />
     <Content Include="assets\vendor\scrollreveal\scrollreveal.js" />
     <Content Include="assets\vendor\scrollreveal\scrollreveal.min.js" />
+    <Content Include="assets\videos\apvideo.mp4" />
     <Content Include="assets\videos\WIN_20200324_16_07_18_Pro.mp4" />
     <Content Include="Content2\animate.min.css" />
     <Content Include="Content2\bootstrap-rtl.min.css" />

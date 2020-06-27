@@ -35,9 +35,9 @@ namespace Auction_Prop_Buyers.Controllers
             this.payFastSettings.PassPhrase = ConfigurationManager.AppSettings["PassPhrase"];
             this.payFastSettings.ProcessUrl = ConfigurationManager.AppSettings["ProcessUrl"];
             this.payFastSettings.ValidateUrl = ConfigurationManager.AppSettings["ValidateUrl"];
-            this.payFastSettings.ReturnUrl = ConfigurationManager.AppSettings["Auction-prop.com"];
-            this.payFastSettings.CancelUrl = ConfigurationManager.AppSettings["Auction-prop.com"];
-            this.payFastSettings.NotifyUrl = ConfigurationManager.AppSettings["Auction-prop.com"];
+            this.payFastSettings.ReturnUrl = ConfigurationManager.AppSettings["ReturnUrl"];
+            this.payFastSettings.CancelUrl = ConfigurationManager.AppSettings["CancelUrl"];
+            this.payFastSettings.NotifyUrl = ConfigurationManager.AppSettings["NotifyUrl"];
         }
 
         #endregion Constructor

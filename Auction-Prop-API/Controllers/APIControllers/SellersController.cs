@@ -82,6 +82,94 @@ namespace Auction_Prop_API.Controllers.APIControllers
                 }
                 catch { }
 
+                List<PropertyNoR> lys = new List<PropertyNoR>();
+
+                foreach(Property pop in objct.Properties)
+                {
+                    try
+                    {
+                        PropertyNoR newprop = new PropertyNoR()
+                        {
+                            BathRooms = pop.BathRooms,
+                            //  AuctionRegistrations = objct.AuctionRegistrations,
+                            Auction = new AuctionNoR(),
+                            ApprovalStatus = pop.ApprovalStatus,
+                            Description = pop.Description,
+                            Jacquizzi = pop.Jacquizzi,
+                            PropertyID = pop.PropertyID,
+                            Address = pop.Address,
+                            levies = pop.levies,
+                            BedRooms = pop.BedRooms,
+                            Borehole = pop.Borehole,
+                            HOARules = pop.HOARules,
+                            OutdoorKitchen = pop.OutdoorKitchen,
+                            Braai = pop.Braai,
+                            City = pop.City,
+                            OpeningBid = pop.OpeningBid,
+                            //  Seller=objct.Seller,
+                            Clubhouse = pop.Clubhouse,
+                            MandateExpireDate = pop.MandateExpireDate,
+                            SellerID = pop.SellerID,
+                            //  ConcludedAuction = objct.ConcludedAuction,
+                            SellerSigniture = pop.SellerSigniture,
+                            SwimmingPool = pop.SwimmingPool,
+                            FloorSize = pop.FloorSize,
+                            MandateSingedDate = pop.MandateSingedDate,
+                            Country = pop.Country,
+                            YardSize = pop.YardSize,
+                            Fibre = pop.Fibre,
+                            TitleDeedPath = pop.TitleDeedPath,
+                            FireplacePit = pop.FireplacePit,
+                            Garages = pop.Garages,
+                            Garden = pop.Garden,
+                            Gerages = pop.Gerages,
+                            MandateType = pop.MandateType,
+                            Parking = pop.Parking,
+                            PlansPath = pop.PlansPath,
+                            PropertyType = pop.PropertyType,
+                            Province = pop.Province,
+                            RegistrationType = pop.RegistrationType,
+                            Reserve = pop.Reserve,
+                            TaxesAndRate = pop.TaxesAndRate,
+                            TaxesAndRates = pop.TaxesAndRates,
+                            TennisCourts = pop.TennisCourts,
+                            Terrace = pop.Terrace,
+                            Title = pop.Title
+                        };
+
+                        if (pop.PropertyPhotos.Count != 0)
+                            foreach (PropertyPhoto pp in pop.PropertyPhotos)
+                            {
+                                PropertyPhotoNoR ppnr = new PropertyPhotoNoR();
+                                ppnr.Description = pp.Description;
+                                ppnr.ImageID = pp.ImageID;
+                                ppnr.PropertyPhotoPath = pp.PropertyPhotoPath;
+                                ppnr.PropertyId = pp.ImageID;
+                                ppnr.Title = pp.Title;
+                                newprop.PropertyPhotos.Add(ppnr);
+                            }
+                        if (pop.PromoVideos.Count != 0)
+                            foreach (PromoVideo pp in pop.PromoVideos)
+                            {
+                                PromoVideoNoR ppnr = new PromoVideoNoR();
+                                ppnr.PropertyID = pp.PropertyID;
+                                ppnr.VideoPath = pp.VideoPath;
+                                ppnr.VideoID = pp.VideoID;
+                                newprop.PromoVideos.Add(ppnr);
+                            }
+                        lys.Add(newprop);
+                     
+                }    catch
+                    {
+
+                    }
+
+                    newObject.Properties = lys;
+
+                }
+               
+
+
 
                 Lys.Add(newObject);
             }
@@ -155,6 +243,117 @@ namespace Auction_Prop_API.Controllers.APIControllers
                 newObject.PrivateSeller.ProofOfResedence = objct.PrivateSeller.ProofOfResedence;
             }
             catch { }
+
+
+            List<PropertyNoR> lys = new List<PropertyNoR>();
+
+            foreach (Property pop in objct.Properties)
+            {
+                try
+                {
+                    PropertyNoR newprop = new PropertyNoR()
+                    {
+                        BathRooms = pop.BathRooms,
+                        //  AuctionRegistrations = objct.AuctionRegistrations,
+                        Auction = new AuctionNoR(),
+                        ApprovalStatus = pop.ApprovalStatus,
+                        Description = pop.Description,
+                        Jacquizzi = pop.Jacquizzi,
+                        PropertyID = pop.PropertyID,
+                        Address = pop.Address,
+                        levies = pop.levies,
+                        BedRooms = pop.BedRooms,
+                        Borehole = pop.Borehole,
+                        HOARules = pop.HOARules,
+                        OutdoorKitchen = pop.OutdoorKitchen,
+                        Braai = pop.Braai,
+                        City = pop.City,
+                        OpeningBid = pop.OpeningBid,
+                        //  Seller=objct.Seller,
+                        Clubhouse = pop.Clubhouse,
+                        MandateExpireDate = pop.MandateExpireDate,
+                        SellerID = pop.SellerID,
+                        //  ConcludedAuction = objct.ConcludedAuction,
+                        SellerSigniture = pop.SellerSigniture,
+                        SwimmingPool = pop.SwimmingPool,
+                        FloorSize = pop.FloorSize,
+                        MandateSingedDate = pop.MandateSingedDate,
+                        Country = pop.Country,
+                        YardSize = pop.YardSize,
+                        Fibre = pop.Fibre,
+                        TitleDeedPath = pop.TitleDeedPath,
+                        FireplacePit = pop.FireplacePit,
+                        Garages = pop.Garages,
+                        Garden = pop.Garden,
+                        Gerages = pop.Gerages,
+                        MandateType = pop.MandateType,
+                        Parking = pop.Parking,
+                        PlansPath = pop.PlansPath,
+                        PropertyType = pop.PropertyType,
+                        Province = pop.Province,
+                        RegistrationType = pop.RegistrationType,
+                        Reserve = pop.Reserve,
+                        TaxesAndRate = pop.TaxesAndRate,
+                        TaxesAndRates = pop.TaxesAndRates,
+                        TennisCourts = pop.TennisCourts,
+                        Terrace = pop.Terrace,
+                        Title = pop.Title
+                    };
+
+                    if (pop.PropertyPhotos.Count != 0)
+                        foreach (PropertyPhoto pp in pop.PropertyPhotos)
+                        {
+                            PropertyPhotoNoR ppnr = new PropertyPhotoNoR();
+                            ppnr.Description = pp.Description;
+                            ppnr.ImageID = pp.ImageID;
+                            ppnr.PropertyPhotoPath = pp.PropertyPhotoPath;
+                            ppnr.PropertyId = pp.ImageID;
+                            ppnr.Title = pp.Title;
+                            newprop.PropertyPhotos.Add(ppnr);
+                        }
+                    if (pop.PromoVideos.Count != 0)
+                        foreach (PromoVideo pp in pop.PromoVideos)
+                        {
+                            PromoVideoNoR ppnr = new PromoVideoNoR();
+                            ppnr.PropertyID = pp.PropertyID;
+                            ppnr.VideoPath = pp.VideoPath;
+                            ppnr.VideoID = pp.VideoID;
+                            newprop.PromoVideos.Add(ppnr);
+                        }
+                    lys.Add(newprop);
+
+                }
+                catch
+                {
+
+                }
+
+                newObject.Properties = lys;
+
+                try
+                {
+                    List<SellerAddressNoR> lysAdd = new List<SellerAddressNoR>();
+
+                    foreach (SellerAddress bAdd in objct.SellerAddresses)
+                    {
+
+                        SellerAddressNoR newAdd = new SellerAddressNoR();
+                        newAdd.AddressID = bAdd.Address.AddressID;
+                        newAdd.id = bAdd.id;
+                        newAdd.UserID = bAdd.UserID;
+
+                        lysAdd.Add(newAdd);
+
+                    }
+                    newObject.SellerAddresses = lysAdd;
+
+                }
+                catch
+                {
+
+                }
+
+            }
 
             return Ok(newObject);
         }

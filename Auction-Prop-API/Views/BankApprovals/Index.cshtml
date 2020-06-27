@@ -14,6 +14,8 @@
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.AuctionRegistration.BuyerId)
+        </th> <th>
+            @Html.DisplayNameFor(model => model.AuctionRegistration.RegisteredBuyer.FirstName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ApprovalPath)
@@ -31,6 +33,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.AuctionRegistration.BuyerId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuctionRegistration.RegisteredBuyer.FirstName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ApprovalPath)
