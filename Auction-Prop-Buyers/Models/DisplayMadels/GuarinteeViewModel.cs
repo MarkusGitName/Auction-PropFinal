@@ -12,7 +12,6 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
         [Key]
         public int AuctionRegistrationID { get; set; }
 
-        [Required]
         [Display(Name = "Upload youre bank Guarintees document.")]
         public HttpPostedFileBase GuarinteePath { get; set; }
 
@@ -29,7 +28,6 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
         [Key]
         public int AuctionRegistrationID { get; set; }
 
-        [Required]
         public string GuarinteePath { get; set; }
 
         public bool GuarinteeApproval { get; set; }

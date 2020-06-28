@@ -12,7 +12,6 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
         [Key]
         public int AuctionRegistrationID { get; set; }
 
-        [Required]
         [Display(Name = "Ubload youre banks Approvals.")]
         public HttpPostedFileBase ApprovalPath { get; set; }
 
@@ -30,7 +29,6 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
             [Key]
             public int AuctionRegistrationID { get; set; }
 
-            [Required]
             public string ApprovalPath { get; set; }
 
             public bool BankApprovalApprovalstatus { get; set; }

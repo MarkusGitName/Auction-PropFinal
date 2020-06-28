@@ -294,7 +294,7 @@
                     <div class="col">
                         <div class="title-single-box" style="border-right: 3px solid #fa7f15">
                             <h1 class="title-single; text-center"><strong>Opening Bid:</strong></h1>
-                            <h1 id="#Cur" class="title-single; text-center">R @Model.OpeningBid </h1>
+                            <h1 id="#Cur" class="title-single; text-center">R @Model.OpeningBid.ToString("C2").Substring(1) </h1>
                         </div>
                     </div>
                 </div>
@@ -322,19 +322,19 @@
             <!-- ============================================= Current Bid & Timer ======================================================== -->
 
             <div class="container" style="border-right: solid #fa7f15; border-left: solid #fa7f15; padding-bottom:30px">
-                @if (Model.Auction.StartTime < DateTime.Now.AddHours(9))
+                @if (Model.Auction.StartTime < DateTime.Now.AddHours(9) && Model.Auction.EndTime > DateTime.Now.AddHours(9))
                 {
                     <h1 class="title-single; text-center"><strong>AUCTION ENDS IN</strong></h1>
                     <div class="title-single-box">
                         <div id="CountDown">
                             @Html.DisplayFor(model => model.Auction.EndTime)
 
-                            <div id="auctionStarted"   style="visibility:hidden">true</div>
                         </div>
-                    </div>
+
+                     </div>
 
                 }
-                else
+                else if (Model.Auction.StartTime > DateTime.Now.AddHours(9))
                 {
                     <h1 class="title-single; text-center"><strong>AUCTION STARTS IN</strong></h1>
                     <div class="title-single-box">
@@ -343,6 +343,15 @@
                         </div>
                         <div id="auctionStarted" style="visibility:hidden">false</div>
                     </div>
+                }
+                else
+                {
+                    <h1 class="title-single; text-center"><strong>AUCTION IS OVER</strong></h1>
+                    <div class="title-single-box">
+                        <div id="CountDown">
+                            EXPIRED
+                        </div>
+                     </div>
                 }
 
 
@@ -355,47 +364,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-5">
-                    @if (DateTime.Now.AddHours(9) > Model.Auction.EndTime)
+                    @if (Model.Auction.StartTime < DateTime.Now.AddHours(9) && Model.Auction.EndTime > DateTime.Now.AddHours(9))
                     {
-
-                        <div class="bid" style="padding-top:20px; text-align:center;  margin:auto; border-top: solid #07033c;; border-bottom: solid #07033c; width:100%; height:90%">
-                            @try
-                            {
-                                if (Model.ConcludedAuction != null)
-                                {
-
-                                    <h4 class="title-single; text-center">Winning Bid</h4>
-                                    <h4  class="title-single; text-center">R @Model.ConcludedAuction.Bid.AmuntOfBid</h4>
-
-
-                                    <h4 class="title-single; text-center">Winning Bidder</h4>
-                                    <h4  class="title-single; text-center"> @Model.ConcludedAuction.RegisteredBuyer.FirstName</h4>
-                                }
-                            }
-                            catch
-                            {
-
-                            }
-                        </div>
-                    }
-                    else if (Model.Auction.StartTime < DateTime.Now.AddHours(9))
-                    {
-
-
-
-                        <div class="container" title="Auction History " style="border: solid #07033c;width: 100%">
-
-
-                            <div class="row" style="text-align:center; padding:20px; border-bottom:ridge">
-                                <div class="col-lg-6" style="text-align:left">
-                                    Auction Will Start at @Model.Auction.StartTime
-                                </div>
-                            </div>
-                        </div>
-
-                    }
-                    else
-                    { 
                         <div class="bid" style="padding-top:20px; text-align:center;  margin:auto; border-top: solid #07033c;; border-bottom: solid #07033c; width:100%; height:90%">
                             <h4 class="title-single; text-center">Current Bid</h4>
                             <h4 id="cur" class="title-single; text-center">R @Model.OpeningBid.ToString("C2").Substring(1)</h4>
@@ -423,13 +393,54 @@
                         </div>
 
                     }
+                    else if (Model.Auction.StartTime > DateTime.Now.AddHours(9))
+                    {
+
+                        <div class="container" title="Auction History " style="border: solid #07033c;width: 100%">
+
+
+                            <div class="row" style="text-align:center; padding:20px; border-bottom:ridge">
+                                <div class="col-lg-6" style="text-align:left">
+                                    Auction Will Start at @Model.Auction.StartTime
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="bid" style="padding-top:20px; text-align:center;  margin:auto; border-top: solid #07033c;; border-bottom: solid #07033c; width:100%; height:90%">
+                            @try
+                            {
+                                if (Model.ConcludedAuction != null)
+                                {
+
+                                    <h4 class="title-single; text-center">Winning Bid</h4>
+                                    <h4 class="title-single; text-center">R @Model.ConcludedAuction.Bid.AmuntOfBid</h4>
+
+
+                                    <h4 class="title-single; text-center">Winning Bidder</h4>
+                                    <h4 class="title-single; text-center"> @Model.ConcludedAuction.RegisteredBuyer.FirstName</h4>
+                                }
+                            }
+                            catch
+                            {
+
+                            }
+                        </div>
+                    }
+
+
+
+
+
+
                 </div>
                 <div class="col-7">
                     <div class="embed-responsive embed-responsive-16by9 hoverable">
                         @try
                         {
                             @Model.PromoVideos
-                            <iframe class="embed-responsive-item" src=@Model.PromoVideos style="height: 100%"
+                            <iframe class="embed-responsive-item" src=@Model.PromoVideos.First().VideoPath style="height: 100%"
                                     allowfullscreen></iframe>
                         }
                         catch
@@ -463,25 +474,23 @@
             <div class="container" title="Auction History " style="border: solid #07033c;width: 100%">
 
 
-                <div class="row" style="text-align:center; padding:20px; border-bottom:ridge">
-                    <div class="col-lg-6" style="text-align:left">
-                        Bitter
-                    </div>
-                    <div class="col-lg-3">
-                        Time of bid
-                    </div><div class="col-lg-3">
-                        Bid
-                    </div>
+                <div class="row" style="padding:20px; border-bottom:ridge; margin:auto">
+                    <div class="column" style=" width:33%">Bidder</div>
+                    <div class="column"  style=" width:33%">Time of bid</div>
+                    <div class="column"  style=" width:33%">Bid</div>
                 </div>
+
                 <div type="hidden" id="displayname" style="visibility:hidden">Username</div>
-                <div id="CurentBid" style="text-align:left">
+                <div class="row" id="CurentBid">
+
+                    <div id="bidUser" class="column"  style=" width:33%">
+                    </div>
+                    <div id="bidTime" class="column"  style=" width:33%">
+                    </div>
+                    <div id="bidAmount" class="column"  style=" width:33%">
+                    </div>
                 </div>
-                <div class="col-lg-5" id="bidUser" style="text-align:left">
-                </div>
-                <div class="col-lg-2" id="bidTime" style="text-align:left">
-                </div>
-                <div class="col-lg-2" id="bidAmount" style="text-align:left">
-                </div>
+               
 
 
 
@@ -522,7 +531,7 @@
     <script src="~/Scripts/owl.carousel.min.js"></script>
     <script src="~/Scripts/scrollreveal.min.js"></script>
 
-  
+
 
     <!-- Template Main JS File -->
     <script src="~/Scripts/main.js"></script>
@@ -640,7 +649,7 @@
         var countDownDate = new Date(document.getElementById("CountDown").innerHTML).getTime();
         // var countDownDate = new Date(document.getElementById("EndTime").innerHTML).getTime();
 
-           
+
 
         // Update the count down every 1 second
         var x = setInterval(function () {
@@ -650,7 +659,7 @@
 
             // Find the distance between now and the count down date
             var distance = countDownDate - now;
-
+            
 
 
             // Time calculations for days, hours, minutes and seconds
@@ -659,30 +668,30 @@
             var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Display the result in the element with id="demo"
-            document.getElementById("CountDown").innerHTML = days + " Days, " + hours + " Hours, "
-                + minutes + " Minutes, " + seconds + " Seconds. ";
+            if ($('#CountDown').text() == "EXPIRED") {
 
-            //document.getElementById("CountDown").innerHTML = document.getElementById("StartTime").innerHTML;
+            }
+            else {
+                // Display the result in the element with id="demo"
+                document.getElementById("CountDown").innerHTML = days + " Days, " + hours + " Hours, "
+                    + minutes + " Minutes, " + seconds + " Seconds. ";
 
+                //document.getElementById("CountDown").innerHTML = document.getElementById("StartTime").innerHTML;
+
+
+            }
+
+         
             // If the count down is finished, write some text
-            if (distance < 0 && ) {
+            if (distance < 0) {
                 clearInterval(x);
 
-                if ($('#auctionStarted').text() == "false") {
-                    location.reload();
-                }
-                else {
-
                 document.getElementById("CountDown").innerHTML = "EXPIRED";
-                }
-
-               // 
+                location.reload();
             }
             if ($('#CountDown').text() == "EXPIRED")
             {
-                
-               //location.reload();
+
             }
 
 
