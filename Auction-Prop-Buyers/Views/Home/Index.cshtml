@@ -1,4 +1,5 @@
 ﻿@using Auction_Prop_Buyers.Models.DisplayMadels
+@model Message
 @{
     ViewBag.Title = "Home Page";
 }
@@ -23,6 +24,51 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <style>
+
+        .home-newsletter {
+            padding: 80px 0;
+            background: #1d293d;
+            text-align: center;
+        }
+
+            .home-newsletter .single {
+                max-width: 650px;
+                margin: 0 auto;
+                text-align: center;
+                position: relative;
+                z-index: 2;
+            }
+
+                .home-newsletter .single h2 {
+                    font-size: 22px;
+                    color: white;
+                    text-transform: uppercase;
+                    margin-bottom: 40px;
+                }
+
+                .home-newsletter .single .form-control {
+                    height: 50px;
+                    background: rgba(255, 255, 255, 0.6);
+                    border-color: #143967;
+                    border-radius: 20px 0 0 20px;
+                }
+
+                    .home-newsletter .single .form-control:focus {
+                        box-shadow: none;
+                        border-color: #fa7f15;
+                    }
+
+                .home-newsletter .single .btn {
+                    min-height: 50px;
+                    border-radius: 0 20px 20px 0;
+                    background: #fa7f15;
+                    color: #fff;
+                }
+    </style>
 
     <!-- Vendor CSS Files -->
     <link rel="stylesheet" href="~/Content2/bootstrap1.min.css" type="text/css">
@@ -46,7 +92,7 @@
         <div class="title-box-d">
             <h3 class="title-d">Search Property</h3>
         </div>
-        <span class="close-box-collapse right-boxed ion-ios-close"></span>
+        <span class="close-box-collapse right-boxed ion-ios-arrow-dropright"></span>
         <div class="box-collapse-wrap form">
             <form class="form-a">
                 <div class="row">
@@ -129,90 +175,122 @@
     </div>
     <!-- ======= Property Search Section End ======= -->
     <!-- ======= Intro Section Start ======= -->
-    <div class="intro intro-carousel">
-        <div id="carousel" class="owl-carousel owl-theme">
-            <div class="carousel-item-a intro-item bg-image" style="background-image: url()">
-                <div class="overlay overlay-a"></div>
-                <div class="intro-content display-table">
-                    <div class="table-cell">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="intro-body text-lg-center">
+    <section class="section-property section-t8">
+        <div class="intro intro-carousel">
+            <div id="carousel" class="owl-carousel owl-theme">
+                <div class="carousel-item-a intro-item bg-image" style="background-image: url()">
+                    <div class="overlay overlay-a"></div>
+                    <div class="intro-content display-table">
+                        <div class="table-cell">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="intro-body text-lg-center">
 
-                                        <h1 class="intro-title text-center">
-                                            SA's HOME FOR ONLINE PROPERTY AUCTIONS
-                                            <br />
-                                        </h1>
-                                        <p class="intro-subtitle intro-price">
-                                            <a href="#"><span><strong>@Html.ActionLink("Upcomming Auctions", "Properties", "Home", new { @class = "price-a" })</strong></span></a>
-                                        </p>
+                                            <h1 class="intro-title text-center">
+                                                SA's HOME FOR ONLINE PROPERTY AUCTIONS
+                                                <br />
+                                            </h1>
+                                            <p class="intro-subtitle intro-price">
+                                                <a href="#"><span><strong>@Html.ActionLink("Upcomming Auctions", "Properties", "Home", new { @class = "price-a" })</strong></span></a>
+                                            </p>
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <img src="~/assets/img/door.jpeg" />
                 </div>
-                <img src="~/assets/img/door.jpeg" />
-            </div>
-            <div class="carousel-item-a intro-item bg-image" style="background-image: url()">
-                <div class="overlay overlay-a"></div>
-                <div class="intro-content display-table">
-                    <div class="table-cell">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="intro-body text-lg-center">
+                <div class="carousel-item-a intro-item bg-image" style="background-image: url()">
+                    <div class="overlay overlay-a"></div>
+                    <div class="intro-content display-table">
+                        <div class="table-cell">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="intro-body text-lg-center">
 
-                                        <h1 class="intro-title text-center">
+                                            <h1 class="intro-title text-center">
 
-                                            BUYING A PROPERTY ON<span class="color-b"> AUCTION </span> MADE EASY
-                                            <br />
+                                                BUYING A PROPERTY ON<span class="color-b"> AUCTION </span> MADE EASY
+                                                <br />
 
-                                        </h1>
-                                        <p class="intro-subtitle intro-price">
-                                            <a href="#"><span><strong>@Html.ActionLink("Buyers Guide", "Buyers", "Home", new { @class = "price-a" })</strong></span></a>
-                                        </p>
+                                            </h1>
+                                            <p class="intro-subtitle intro-price">
+                                                <a href="#"><span><strong>@Html.ActionLink("Buyers Guide", "Buyers", "Home", new { @class = "price-a" })</strong></span></a>
+                                            </p>
 
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <img src="~/assets/img/white.jpg" />
                 </div>
-                <img src="~/assets/img/white.jpg" />
-            </div>
-            <div class="carousel-item-a intro-item bg-image" style="background-image: url(~/assets/img/slide-3.jpg)">
-                <div class="overlay overlay-a"></div>
-                <div class="intro-content display-table">
-                    <div class="table-cell">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="intro-body text-lg-center">
+                <div class="carousel-item-a intro-item bg-image" style="background-image: url(~/assets/img/slide-3.jpg)">
+                    <div class="overlay overlay-a"></div>
+                    <div class="intro-content display-table">
+                        <div class="table-cell">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="intro-body text-lg-center">
 
-                                        <h1 class="intro-title text-center">
-                                            DO YOU WANT TO    <span class="color-b"> SELL </span> YOUR PROPERTY?
-                                            <br />
+                                            <h1 class="intro-title text-center">
+                                                DO YOU WANT TO    <span class="color-b"> SELL </span> YOUR PROPERTY?
+                                                <br />
 
-                                        </h1>
-                                        <p class="intro-subtitle intro-price">
-                                            <a href="#"><span><strong>@Html.ActionLink("Sellers Guide", "Sellers", "Home", new { @class = "price-a" })</strong></span></a>
-                                        </p>
+                                            </h1>
+                                            <p class="intro-subtitle intro-price">
+                                                <a href="#"><span><strong>@Html.ActionLink("Sellers Guide", "Sellers", "Home", new { @class = "price-a" })</strong></span></a>
+                                            </p>
 
+                                        </div>
                                     </div>
-                                </div>
 
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <img src="~/assets/img/night.jpg" />
                 </div>
-                <img src="~/assets/img/night.jpg" />
             </div>
         </div>
-    </div>
+    </section>
+    <br />
+    <br />
+
+   
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken() <section class="home-newsletter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="single">
+                            <h2>Subscribe to our Newsletter</h2>
+                            <div class="input-group">
+
+                                @Html.EditorFor(model => model.Message1, new { htmlAttributes = new { @class = "form-control" } })
+                                <span class="input-group-btn">
+                                    <input type="submit" value="Create" class="btn btn-theme" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+
+
+
 
     <!-- ======= Latest Properties Section Start ======= -->
     <section class="section-property section-t8">
@@ -220,95 +298,87 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="title-wrap d-flex justify-content-between">
-                        <div class="title-box">
+                        <div class="title-box" style="border-bottom: solid #fa7f15">
                             <h2 class="title-a">Upcoming Auctions</h2>
-                        </div>
-                        <div class="title-link">
-                            <a>
-                                @Html.ActionLink("All Properties", "Properties", "home", new { @class = "nav-link" }, null)
-                                <span class="ion-ios-arrow-forward"></span>
-                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="property-carousel" class="owl-carousel owl-theme" style="height:400px">
-                @{
 
-                    ICollection<Property> propertiesList = APILibrary.APIMethods.APIGetALL<ICollection<Property>>("Properties");
+            <div id="property-carousel" class="owl-carousel owl-theme" style="height:400px">
+                @{ ICollection<Property> propertiesList = APILibrary.APIMethods.APIGetALL<ICollection<Property>>("Properties");
 
                     foreach (Property prop in propertiesList)
                     {
                         if (prop.Auction != null)
                         {
                             <div class="carousel-item-b">
-                                                <div class="card-box-a card-shadow" style="height:350px">
+                                <div class="card-box-a card-shadow" style="height:350px">
 
-                                                    @try
-                                                    {
-                                                        <div class="img-box-a" style="max-width:100%; height:350px">
-                                                            <img src=@prop.PropertyPhotos.First().PropertyPhotoPath alt="" class="img-a" style="max-width:100%; height:350px">
-                                                        </div>
-                                                    }
-                                                    catch
-                                                    { <div class="img-box-a">
-                                                            <img src="~/assets/img/property-1.jpg" class="img-a img-fluid">
-                                                        </div>
-                                                    }
+                                    @try
+                                    {
+                                        <div class="img-box-a" style="max-width:100%; height:350px">
+                                            <img src=@prop.PropertyPhotos.First().PropertyPhotoPath alt="" class="img-a" style="max-width:100%; height:350px">
+                                        </div>
+                                    }
+                                    catch
+                                    { <div class="img-box-a">
+                                            <img src="~/assets/img/property-1.jpg" class="img-a img-fluid">
+                                        </div>
 
-                                                  
-                                                    <div class="card-overlay">
-                                                        <div class="card-overlay-a-content">
-                                                            <div class="card-header-a">
-                                                                <h2 class="card-title-a">
-                                                                    <a href='@Url.Action("Detailss", "home", new { id = prop.PropertyID })'>
-                                                                        @prop.Address
-                                                                        <br /> @prop.City, @prop.Province
-                                                                    </a>
-                                                                </h2>
-                                                            </div>
-                                                            <div class="card-body-a">
-                                                                <div class="price-box d-flex">
-                                                                    <span class="price-a">Auction Date | @prop.Auction.StartTime</span>
-                                                                </div>
-                                                                <a href='@Url.Action("Detailss", "home", new { id = prop.PropertyID })' class="link-a">
-                                                                    Learn More
-                                                                    <span class="ion-ios-arrow-forward"></span>
-                                                                </a>
-                                                            </div>
-                                                            <div class="card-footer-a">
-                                                                <ul class="card-info d-flex justify-content-around">
-                                                                    <li>
-                                                                        <h4 class="card-info-title">Building</h4>
-                                                                        <span>
-                                                                            @prop.FloorSize
-                                                                            <sup>2</sup>
-                                                                        </span>
-                                                                    </li>
-                                                                    <li>
-                                                                        <h4 class="card-info-title">Beds</h4>
-                                                                        <span>@prop.BedRooms</span>
-                                                                    </li>
-                                                                    <li>
-                                                                        <h4 class="card-info-title">Baths</h4>
-                                                                        <span>@prop.BathRooms</span>
-                                                                    </li>
-                                                                    <li>
-                                                                        <h4 class="card-info-title">Garages</h4>
-                                                                        <span>@prop.Garages</span>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+
+                                    }
+
+
+                                    <div class="card-overlay">
+                                        <div class="card-overlay-a-content">
+                                            <div class="card-header-a">
+                                                <h2 class="card-title-a">
+                                                    <a href='@Url.Action("Detailss", "home", new { id = prop.PropertyID })'>
+                                                        @prop.Province
+                                                        <br /> @prop.City
+                                                    </a>
+                                                </h2>
+                                            </div>
+                                            <div class="card-body-a">
+                                                <div class="price-box d-flex">
+                                                    <span class="price-a">Date | @prop.Auction.StartTime.ToString("dddd, dd MMMM HH:mm:ss")</span>
                                                 </div>
-                            </div>
-                        }
+                                                <a href='@Url.Action("Detailss", "home", new { id = prop.PropertyID })' class="link-a">
+                                                    Learn More
+                                                    <span class="ion-ios-arrow-forward"></span>
+                                                </a>
+                                            </div>
+                                            <div class="card-footer-a">
+                                                <ul class="card-info d-flex justify-content-around">
+                                                    <li>
+                                                        <h4 class="card-info-title">Building</h4>
+                                                        <span>
+                                                            @prop.FloorSize
+                                                            <sup>2</sup>
+                                                        </span>
+                                                    </li>
+                                                    <li>
+                                                        <h4 class="card-info-title">Beds</h4>
+                                                        <span>@prop.BedRooms</span>
+                                                    </li>
+                                                    <li>
+                                                        <h4 class="card-info-title">Baths</h4>
+                                                        <span>@prop.BathRooms</span>
+                                                    </li>
+                                                    <li>
+                                                        <h4 class="card-info-title">Garages</h4>
+                                                        <span>@prop.Garages</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> }
 
 
-                    }
-
-                }
+                    } }
 
 
             </div>
@@ -316,331 +386,284 @@
     </section>
     <!-- ======= Latest Properties Section End ======= -->
     <!-- ======= Services Section Start ======= -->
+
+
     <section class="section-property section-t8">
-        <div class="container" style="padding: 40px; border-top: solid #1d293d; border-bottom: solid #1d293d">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="agent-avatar-box">
+                                <img src="~/assets/img/bn.jpg" alt="" class="agent-avatar img-fluid">
+                            </div>
+                        </div>
+                        <div class="col-md-4 section-md-t3">
+                            <div class="agent-info-box">
+                                <div class="agent-title">
+                                    <div class="title-box-d">
+                                        <h3 class="title-d">
+                                            WE ARE THE NUMBER 1
+                                            <br> INVESTOR PLATFORM
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="agent-content mb-3">
+                                    <p class="content-d color-text-a">
+                                        We do bank instructed Auctions daily!
+                                    </p>
+                                    <p class="content-d color-text-a">
+                                        Sign Up to our newsletter to get a list of all the recent Investment Opportunities.
+                                    </p>
+                                    <p class="content-d color-text-a">
+                                        Bank Instructed
+                                    </p>
+                                    <p class="content-d color-text-a">
+                                        Sherriff Auctions
+                                    </p>
+                                    <p class="content-d color-text-a">
+                                        Estate Late Properties
+                                    <p class="content-d color-text-a">
+                                        Insolvency Practitioner Instructions
+                                    </p>
+
+                                    </p>
+                                    <div class="info-agents color-a">
+
+
+                                    </div>
+                                </div>
+                                <div class="socials-footer">
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <a href="#" class="link-one">
+                                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="#" class="link-one">
+                                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="#" class="link-one">
+                                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="#" class="link-one">
+                                                <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="#" class="link-one">
+                                                <i class="fa fa-dribbble" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- ======= Services Section End ======= -->
+    <!-- ======= Latest News Section ======= -->
+    <section class="section-property section-t8">
+        <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="title-wrap d-flex justify-content-between">
                         <div class="title-box" style="border-bottom: solid #fa7f15">
-                            <h2 class="title-a">@Html.ActionLink("How It Works", "HowItWorks", "home")</h2>
+                            <h2 class="title-a">Recently Sold Properties</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="new-carousel" class="owl-carousel owl-theme">
+                <div class="carousel-item-c">
+                    <div class="card-box-b card-shadow news-box">
+                        <div class="img-box-b">
+                            <img src="~/assets/img/post-2.jpg" alt="" class="img-b img-fluid">
+                        </div>
+                        <div class="card-overlay">
+                            <div class="card-header-b">
+                                <div class="card-category-b">
+                                    <a href="#" class="category-b">SOLD</a>
+                                </div>
+                                <div class="card-title-b">
+                                    <h2 class="title-2">
+                                        <a href="blog-single.html">
+                                            R 1,860,000
+                                            <br>
+                                        </a>
+                                    </h2>
+                                </div>
+                                <div class="card-date">
+                                    <span class="date-b">Centurion, Pretoria</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item-c">
+                    <div class="card-box-b card-shadow news-box">
+                        <div class="img-box-b">
+                            <img src="~/assets/img/post-5.jpg" alt="" class="img-b img-fluid">
+                        </div>
+                        <div class="card-overlay">
+                            <div class="card-header-b">
+                                <div class="card-category-b">
+                                    <a href="#" class="category-b">SOLD</a>
+                                </div>
+                                <div class="card-title-b">
+                                    <h2 class="title-2">
+                                        <a href="blog-single.html">
+                                            R 2,500,000
+                                            <br>
+                                        </a>
+                                    </h2>
+                                </div>
+                                <div class="card-date">
+                                    <span class="date-b">Olympus, Pretoria</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item-c">
+                    <div class="card-box-b card-shadow news-box">
+                        <div class="img-box-b">
+                            <img src="~/assets/img/post-7.jpg" alt="" class="img-b img-fluid">
+                        </div>
+                        <div class="card-overlay">
+                            <div class="card-header-b">
+                                <div class="card-category-b">
+                                    <a href="#" class="category-b">SOLD</a>
+                                </div>
+                                <div class="card-title-b">
+                                    <h2 class="title-2">
+                                        <a href="blog-single.html">
+                                            R 3,200,000
+                                            <br>
+                                        </a>
+                                    </h2>
+                                </div>
+                                <div class="card-date">
+                                    <span class="date-b">Lombardy Estate, Pretoria</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item-c">
+                    <div class="card-box-b card-shadow news-box">
+                        <div class="img-box-b">
+                            <img src="~/assets/img/post-3.jpg" alt="" class="img-b img-fluid">
+                        </div>
+                        <div class="card-overlay">
+                            <div class="card-header-b">
+                                <div class="card-category-b">
+                                    <a href="#" class="category-b">SOLD</a>
+                                </div>
+                                <div class="card-title-b">
+                                    <h2 class="title-2">
+                                        <a href="#">
+                                            R 2,550,000
+                                            <br>
+                                        </a>
+                                    </h2>
+                                </div>
+                                <div class="card-date">
+                                    <span class="date-b">Tenkwa Park, Kempton Park</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Latest News Section -->
+    <!-- end Page Content -->
+    <!-- ======= Counter ======= -->
+    <section class="section-property section-t8">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title-wrap d-flex justify-content-between">
+                        <div class="title-box" style="border-bottom: solid #fa7f15">
+                            <h2 class="title-a">Fun Facts</h2>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="card-box-c foo">
-                        <div class="card-header-c d-flex">
-                            <div class="card-box-ico">
-                                <span class="fa fa-pencil"></span>
-                            </div>
-                            <div class="card-title-c align-self-center">
-                                <h2 class="title-c" style="padding-left: 60px">Register</h2>
-                            </div>
-                        </div>
-                        <div class="card-body-c">
-                            <p class="content-c text-justify">
-                                Create your user profile by registering as a buyer with us.
-                                Upload the all the necessary documents. Wait for your welcoming email to arrive and just like that,
-                                you are just a few clicks away to start bidding in your first online auction.
-                            </p>
-                        </div>
-
+                <div class="four col-md-3">
+                    <div class="counter-box colored">
+                        <i class="fa fa-thumbs-o-up"></i> <span class="counter">147</span>
+                        <p>Properties Listed</p>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card-box-c foo">
-                        <div class="card-header-c d-flex">
-                            <div class="card-box-ico">
-                                <span class="fa fa-home"></span>
-                            </div>
-                            <div class="card-title-c align-self-center">
-                                <h2 class="title-c" style="padding-left: 60px">View</h2>
-                            </div>
-                        </div>
-                        <div class="card-body-c">
-                            <p class="content-c text-justify">
-                                Whilst you wait for your welcoming email. Why don't you visit our Properties page,
-                                and browse through our wide variety of properties on offer. And find your next dream home,
-                                company head quarters, or investment property.
-                            </p>
-                        </div>
-                        <br />
-
+                <div class="four col-md-3">
+                    <div class="counter-box">
+                        <i class="fa fa-group"></i> <span class="counter">140</span>
+                        <p>Satisfied Clients</p>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card-box-c foo">
-                        <div class="card-header-c d-flex">
-                            <div class="card-box-ico">
-                                <span class="fa fa-gavel"></span>
-                            </div>
-                            <div class="card-title-c align-self-center">
-                                <h2 class="title-c" style="padding-left: 60px">Bid</h2>
-                            </div>
-                        </div>
-                        <div class="card-body-c">
-                            <p class="content-c text-justify">
-                                Found the perfect property. Contact one of our viewing agents for a viewing. Register for the specific property,
-                                pay your bidders Registration fee that is refundable as well as your Admin fee and start bidding.
-                            </p>
-                        </div>
-                        <a href="https://auction-prop.com/Home/HowItWorks" class="btn btn-b">Learn More</a>
-
-
+                <div class="four col-md-3">
+                    <div class="counter-box">
+                        <i class="fa fa-shopping-cart"></i> <span class="counter">101</span>
+                        <p>Properties Sold</p>
+                    </div>
+                </div>
+                <div class="four col-md-3">
+                    <div class="counter-box">
+                        <i class="fa fa-user"></i> <span class="counter">1963</span>
+                        <p>Days of our Lives</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="conatiner text-center">
+        <br />
+        <br />
+    </section>
+    <!-- ======= Counter  End ======= -->
 
-        </div>
-        <section class="property-single nav-arrow-b">
-            <div class="container" style="padding:60px">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
-                            <div class="carousel-item-b">
-                                <h1 class="intro-title">
-                                    <strong>THE PERFECT PLATFORM FOR INVESTORS</strong>
-                                </h1>
-                                <img src="~/assets/img/bus.jpg">
-                            </div>
-                            <div class="carousel-item-b">
-                                <h1 class="intro-title">
-                                    <strong>BANK INSTRUCTED PROPERTIES</strong>
-                                </h1>
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
-                                <img src="~/assets/img/bank.jpg" alt="">
+    <!-- Vendor JS Files -->
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/jquery.easing.min.js"></script>
+    <script src="~/Scripts/validate.js"></script>
+    <script src="~/Scripts/owl.carousel.min.js"></script>
+    <script src="~/Scripts/scrollreveal.min.js"></script>
+    <script>
+        $(document).ready(function () {
 
-                            </div>
-
-                            <div class="carousel-item-b">
-                                <h1 class="intro-title">
-                                    <strong>SELL YOUR PROPERTY IN TWO WEEKS</strong>
-                                </h1>
-                                <img src="~/assets/img/sellp.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-
-        <!-- ======= Services Section End ======= -->
-        <!-- ======= Latest News Section ======= -->
-        <section>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="title-wrap d-flex justify-content-between">
-                            <div class="title-box" style="border-bottom: solid #fa7f15">
-                                <h2 class="title-a">Recently Sold Properties</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="new-carousel" class="owl-carousel owl-theme">
-                    <div class="carousel-item-c">
-                        <div class="card-box-b card-shadow news-box">
-                            <div class="img-box-b">
-                                <img src="~/assets/img/post-2.jpg" alt="" class="img-b img-fluid">
-                            </div>
-                            <div class="card-overlay">
-                                <div class="card-header-b">
-                                    <div class="card-category-b">
-                                        <a href="#" class="category-b">SOLD</a>
-                                    </div>
-                                    <div class="card-title-b">
-                                        <h2 class="title-2">
-                                            <a href="blog-single.html">
-                                                R 1,860,000
-                                                <br>
-                                            </a>
-                                        </h2>
-                                    </div>
-                                    <div class="card-date">
-                                        <span class="date-b">Centurion, Pretoria</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item-c">
-                        <div class="card-box-b card-shadow news-box">
-                            <div class="img-box-b">
-                                <img src="~/assets/img/post-5.jpg" alt="" class="img-b img-fluid">
-                            </div>
-                            <div class="card-overlay">
-                                <div class="card-header-b">
-                                    <div class="card-category-b">
-                                        <a href="#" class="category-b">SOLD</a>
-                                    </div>
-                                    <div class="card-title-b">
-                                        <h2 class="title-2">
-                                            <a href="blog-single.html">
-                                                R 2,500,000
-                                                <br>
-                                            </a>
-                                        </h2>
-                                    </div>
-                                    <div class="card-date">
-                                        <span class="date-b">Olympus, Pretoria</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item-c">
-                        <div class="card-box-b card-shadow news-box">
-                            <div class="img-box-b">
-                                <img src="~/assets/img/post-7.jpg" alt="" class="img-b img-fluid">
-                            </div>
-                            <div class="card-overlay">
-                                <div class="card-header-b">
-                                    <div class="card-category-b">
-                                        <a href="#" class="category-b">SOLD</a>
-                                    </div>
-                                    <div class="card-title-b">
-                                        <h2 class="title-2">
-                                            <a href="blog-single.html">
-                                                R 3,200,000
-                                                <br>
-                                            </a>
-                                        </h2>
-                                    </div>
-                                    <div class="card-date">
-                                        <span class="date-b">Lombardy Estate, Pretoria</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item-c">
-                        <div class="card-box-b card-shadow news-box">
-                            <div class="img-box-b">
-                                <img src="~/assets/img/post-3.jpg" alt="" class="img-b img-fluid">
-                            </div>
-                            <div class="card-overlay">
-                                <div class="card-header-b">
-                                    <div class="card-category-b">
-                                        <a href="#" class="category-b">SOLD</a>
-                                    </div>
-                                    <div class="card-title-b">
-                                        <h2 class="title-2">
-                                            <a href="#">
-                                                R 2,550,000
-                                                <br>
-                                            </a>
-                                        </h2>
-                                    </div>
-                                    <div class="card-date">
-                                        <span class="date-b">Tenkwa Park, Kempton Park</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Latest News Section -->
-        <!-- end Page Content -->
-        <!-- ======= Counter ======= -->
-        <section class="section-property section-t8">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="title-wrap d-flex justify-content-between">
-                            <div class="title-box" style="border-bottom: solid #fa7f15">
-                                <h2 class="title-a">Fun Facts</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="four col-md-3">
-                        <div class="counter-box colored">
-                            <i class="fa fa-thumbs-o-up"></i> <span class="counter">147</span>
-                            <p>Properties Listed</p>
-                        </div>
-                    </div>
-                    <div class="four col-md-3">
-                        <div class="counter-box">
-                            <i class="fa fa-group"></i> <span class="counter">140</span>
-                            <p>Satisfied Clients</p>
-                        </div>
-                    </div>
-                    <div class="four col-md-3">
-                        <div class="counter-box">
-                            <i class="fa fa-shopping-cart"></i> <span class="counter">101</span>
-                            <p>Properties Sold</p>
-                        </div>
-                    </div>
-                    <div class="four col-md-3">
-                        <div class="counter-box">
-                            <i class="fa fa-user"></i> <span class="counter">1963</span>
-                            <p>Days of our Lives</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br />
-            <br />
-        </section>
-        <!-- ======= Counter  End ======= -->
-
-        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-
-        <!-- Vendor JS Files -->
-        <script src="~/Scripts/jquery.min.js"></script>
-        <script src="~/Scripts/bootstrap.bundle.min.js"></script>
-        <script src="~/Scripts/jquery.easing.min.js"></script>
-        <script src="~/Scripts/validate.js"></script>
-        <script src="~/Scripts/owl.carousel.min.js"></script>
-        <script src="~/Scripts/scrollreveal.min.js"></script>
-        <script>
-            $(document).ready(function () {
-
-                $('.counter').each(function () {
-                    $(this).prop('Counter', 0).animate({
-                        Counter: $(this).text()
-                    }, {
-                        duration: 4000,
-                        easing: 'swing',
-                        step: function (now) {
-                            $(this).text(Math.ceil(now));
-                        }
-                    });
+            $('.counter').each(function () {
+                $(this).prop('Counter', 0).animate({
+                    Counter: $(this).text()
+                }, {
+                    duration: 40000,
+                    easing: 'swing',
+                    step: function (now) {
+                        $(this).text(Math.ceil(now));
+                    }
                 });
-
             });
-        </script>
 
-        <!-- Template Main JS File -->
-        <script src="~/Scripts/main.js"></script>
+        });
+    </script>
+
+    <!-- Template Main JS File -->
+    <script src="~/Scripts/main.js"></script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

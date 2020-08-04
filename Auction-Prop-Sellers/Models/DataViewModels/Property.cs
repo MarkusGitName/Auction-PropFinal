@@ -185,65 +185,65 @@
         public string PropertyType { get; set; }
 
 
-        [DefaultValue(0)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [Display(Name = "How Many Bedrooms.")]
         public int? BedRooms { get; set; }
 
 
-        [DefaultValue(0)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [Display(Name = "How Many Bathrooms.")]
         public int? BathRooms { get; set; }
 
 
-        [DefaultValue(0)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [Display(Name = "Floor Size.")]
         public int? FloorSize { get; set; }
 
 
-        [DefaultValue(0)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [Display(Name = "Yard Size.")]
         public int? YardSize { get; set; }
 
 
-        [DefaultValue(0)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [Display(Name = "How Many Gerages.")]
         public int? Garages { get; set; }
 
 
-        [DefaultValue(0)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [Display(Name = "Opening bid. The auction wil start on this amount.")]
         public decimal? OpeningBid { get; set; }
 
 
-        [DefaultValue(0)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [Display(Name = "Reserve, the auction is succesfull if it surpasses the Resurve.")]
         public decimal? Reserve { get; set; }
 
 
-        [DefaultValue("N/A")]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [Display(Name = "Upload Property plans if you have.")]
         public HttpPostedFileBase PlansPath { get; set; }
 
-
-        [DefaultValue(0)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [Display(Name = "Montly Taxes.")]
         public decimal? TaxesAndRate { get; set; }
 
 
-        [Display(Name = "Monthly Levies.")]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         public decimal? levies { get; set; }
 
 
-        [DefaultValue("N/A")]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [Display(Name = "Upload Taxes and rates documents if possible.")]
         public HttpPostedFileBase TaxesAndRates { get; set; }
 
 
-        [DefaultValue("")]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [Display(Name = "Title Deed:")]
         public string TitleDeedPath { get; set; }
 
 
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [Display(Name = "Upload HOA Rules if possible.")]
         public HttpPostedFileBase HOARules { get; set; }
 

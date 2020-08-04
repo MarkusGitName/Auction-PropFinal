@@ -88,6 +88,7 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
 
         public bool ApprovalStatus { get; set; }
 
+
         public bool SellerSigniture { get; set; }
 
         public bool Garden { get; set; }

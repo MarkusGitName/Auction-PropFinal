@@ -187,7 +187,8 @@ namespace Auction_Prop_Sellers.Controllers
                         CompanyContactNumber = model.CompanyContactNumber,
                         CompanyEmail = model.CompanyEmail,
                         Signature = model.Signature,
-                        CompanyDescriprion = model.CompanyDescriprion
+                        CompanyDescriprion = model.CompanyDescriprion,
+                        
 
                     };
 

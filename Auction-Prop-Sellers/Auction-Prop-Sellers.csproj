@@ -671,9 +671,13 @@
     <Folder Include="App_Data\uploads\PropertyPhotos\" />
     <Folder Include="App_Data\uploads\TaxesAndRates\" />
     <Folder Include="App_Data\uploads\TitleDeeds\" />
+    <Folder Include="uploads\CompanyLogo\" />
+    <Folder Include="uploads\CompaynLogoPath\" />
     <Folder Include="uploads\HOARules\" />
     <Folder Include="uploads\Plans\" />
-    <Folder Include="uploads\Propertyphotos\" />
+    <Folder Include="uploads\ProfilePhoto\" />
+    <Folder Include="uploads\ProofOfResedence\" />
+    <Folder Include="uploads\propertyphotos\" />
     <Folder Include="uploads\TaxesAndRates\" />
     <Folder Include="uploads\Titledeeds\" />
   </ItemGroup>

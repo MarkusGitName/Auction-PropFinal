@@ -41,7 +41,7 @@ namespace Auction_Prop_Buyers.Controllers
                     else
                     {
 
-                        return RedirectToAction("Login", "Account");
+                        return RedirectToAction("Login", "Account" );
                     }
                 }
 
@@ -64,7 +64,7 @@ namespace Auction_Prop_Buyers.Controllers
 
         // GET: Buyers/Create
 
-        public ActionResult Create(int id, BuyerViewModel model)
+        public ActionResult Create(int? id, BuyerViewModel model)
         {
             model.UserId = User.Identity.GetUserId();
             if (ModelState.IsValid)
@@ -109,7 +109,7 @@ namespace Auction_Prop_Buyers.Controllers
 
         // GET: Buyers/Create
 
-        public ActionResult CreateAddress(int id ,Address model)
+        public ActionResult CreateAddress(int? id ,Address model)
         {
             if (ModelState.IsValid)
             {
@@ -125,7 +125,7 @@ namespace Auction_Prop_Buyers.Controllers
 
                     if(id !=0)
                     {
-
+                        return RedirectToAction("Detailss", "home", new { id = id });
                     }
                     return RedirectToAction("Index");
                 }

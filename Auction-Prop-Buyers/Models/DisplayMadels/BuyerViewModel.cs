@@ -68,7 +68,7 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
         public DateTime RegistrationDate { get; set; }
 
         [Required]
-        [Display(Name = "Click the checkbox if you accept our Terms And Conditions")]
+        [Display(Name = "Terms And Conitions")]
         public bool Signiture { get; set; }
 
         public virtual ICollection<AuctionRegistration> AuctionRegistrations { get; set; }

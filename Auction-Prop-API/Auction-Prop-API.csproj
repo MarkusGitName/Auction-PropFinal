@@ -219,6 +219,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AccountMVC\AspNetUsersController.cs" />
     <Compile Include="Controllers\APIControllers\Addresses1Controller.cs" />
     <Compile Include="Controllers\APIControllers\AddressesController.cs" />
     <Compile Include="Controllers\APIControllers\AdminFeesController.cs" />
@@ -269,6 +270,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
+    <Compile Include="Models\AccountModels\AccountModel.cs" />
+    <Compile Include="Models\AccountModels\AspNetRole.cs" />
+    <Compile Include="Models\AccountModels\AspNetUser.cs" />
+    <Compile Include="Models\AccountModels\AspNetUserClaim.cs" />
+    <Compile Include="Models\AccountModels\AspNetUserLogin.cs" />
+    <Compile Include="Models\AccountModels\C__MigrationHistory.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DataBaseModels\Address.cs" />
     <Compile Include="Models\DataBaseModels\AdminFee.cs" />
@@ -474,11 +481,6 @@
     <Content Include="Views\SellerAddresses\Details.cshtml" />
     <Content Include="Views\SellerAddresses\Edit.cshtml" />
     <Content Include="Views\SellerAddresses\Index.cshtml" />
-    <Content Include="Views\Auctioneers\Create.cshtml" />
-    <Content Include="Views\Auctioneers\Delete.cshtml" />
-    <Content Include="Views\Auctioneers\Details.cshtml" />
-    <Content Include="Views\Auctioneers\Edit.cshtml" />
-    <Content Include="Views\Auctioneers\Index.cshtml" />
     <Content Include="Views\Auctions1\Create.cshtml" />
     <Content Include="Views\Auctions1\Delete.cshtml" />
     <Content Include="Views\Auctions1\Details.cshtml" />
@@ -499,6 +501,21 @@
     <Content Include="Views\PromoVideos1\Details.cshtml" />
     <Content Include="Views\PromoVideos1\Edit.cshtml" />
     <Content Include="Views\PromoVideos1\Index.cshtml" />
+    <Content Include="Views\Auctioneers\Create.cshtml" />
+    <Content Include="Views\Auctioneers\Delete.cshtml" />
+    <Content Include="Views\Auctioneers\Details.cshtml" />
+    <Content Include="Views\Auctioneers\Edit.cshtml" />
+    <Content Include="Views\Auctioneers\Index.cshtml" />
+    <Content Include="Views\UserInfoViewModels\Create.cshtml" />
+    <Content Include="Views\UserInfoViewModels\Delete.cshtml" />
+    <Content Include="Views\UserInfoViewModels\Details.cshtml" />
+    <Content Include="Views\UserInfoViewModels\Edit.cshtml" />
+    <Content Include="Views\UserInfoViewModels\Index.cshtml" />
+    <Content Include="Views\AspNetUsers\Create.cshtml" />
+    <Content Include="Views\AspNetUsers\Delete.cshtml" />
+    <Content Include="Views\AspNetUsers\Details.cshtml" />
+    <Content Include="Views\AspNetUsers\Edit.cshtml" />
+    <Content Include="Views\AspNetUsers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

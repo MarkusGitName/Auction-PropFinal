@@ -229,7 +229,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
-    <Compile Include="Controllers\PaymentGateController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -247,6 +246,7 @@
     <Compile Include="Models\DisplayMadels\ConcludedAuctionView.cs" />
     <Compile Include="Models\DisplayMadels\DepesitsViewModel.cs" />
     <Compile Include="Models\DisplayMadels\GuarinteeViewModel.cs" />
+    <Compile Include="Models\DisplayMadels\Message.cs" />
     <Compile Include="Models\DisplayMadels\PrivateSellerViewModel.cs" />
     <Compile Include="Models\DisplayMadels\PromoVideo.cs" />
     <Compile Include="Models\DisplayMadels\PropertyPhotoViewModel.cs" />
@@ -290,6 +290,7 @@
     <Content Include="assets\css\gsdk-bootstrap-wizard.css" />
     <Content Include="assets\css\style.css" />
     <Content Include="assets\css\wizard.css" />
+    <Content Include="assets\img\13.png" />
     <Content Include="assets\img\about-1.jpg" />
     <Content Include="assets\img\about-2.jpg" />
     <Content Include="assets\img\about-us-bg.jpg" />
@@ -1048,17 +1049,10 @@
     <Content Include="Views\Buyers\CreateAddress.cshtml" />
     <Content Include="Views\Buyers\RegisterForAuction.cshtml" />
     <Content Include="Views\Buyers\AddBankGuarintee.cshtml" />
-    <Content Include="Views\PaymentGate\_DeposiAndAdminFees.cshtml" />
-    <Content Include="Views\PaymentGate\Index.cshtml" />
-    <Content Include="Views\PaymentGate\Notify.cshtml" />
-    <Content Include="Views\PaymentGate\_PayDeposiAndAdminFees.cshtml" />
-    <Content Include="Views\PaymentGate\PayAdmin.cshtml" />
-    <Content Include="Views\PaymentGate\PayDeposit.cshtml" />
     <Content Include="Views\AuctionRoom\Index.cshtml" />
     <Content Include="Views\AuctionRoom\ErrorView.cshtml" />
     <Content Include="Views\Home\ErrorView.cshtml" />
     <Content Include="Views\Buyers\ErrorView.cshtml" />
-    <Content Include="Views\PaymentGate\InvitedBiderView.cshtml" />
     <Content Include="Views\Buyers\AdPreApproval.cshtml" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
@@ -1155,6 +1149,7 @@
     <Content Include="Views\Payment\Index.cshtml" />
     <Content Include="Views\Payment\Return.cshtml" />
     <Content Include="Views\Payment\Cancel.cshtml" />
+    <Content Include="Views\Home\Message.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1170,16 +1165,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\APILibrary\APILibrary.csproj">
-      <Project>{9dd2a452-ff37-444e-b7a8-d888f2025daa}</Project>
-      <Name>APILibrary</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\APILibrary\APILibrary.csproj">
+      <Project>{9dd2a452-ff37-444e-b7a8-d888f2025daa}</Project>
+      <Name>APILibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -2,6 +2,7 @@ namespace Auction_Prop_API.Models.DataBaseModels
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -54,38 +55,55 @@ namespace Auction_Prop_API.Models.DataBaseModels
         [StringLength(50)]
         public string PropertyType { get; set; }
 
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        [DefaultValue(0)]
         public int? BedRooms { get; set; }
 
+
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        [DefaultValue(0)]
         public int? BathRooms { get; set; }
 
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        [DefaultValue(0)]
         public int? FloorSize { get; set; }
 
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        [DefaultValue(0)]
         public int? YardSize { get; set; }
 
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        [DefaultValue(0)]
         public int? Garages { get; set; }
 
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [Column(TypeName = "money")]
+        [DefaultValue(0)]
         public decimal? OpeningBid { get; set; }
 
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [Column(TypeName = "money")]
         public decimal? Reserve { get; set; }
 
-        [StringLength(500)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string PlansPath { get; set; }
 
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [Column(TypeName = "money")]
+        [DefaultValue(0)]
         public decimal? TaxesAndRate { get; set; }
 
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [Column(TypeName = "money")]
+        [DefaultValue(0)]
         public decimal? levies { get; set; }
 
-        [StringLength(500)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string TaxesAndRates { get; set; }
 
-        [StringLength(500)]
         public string TitleDeedPath { get; set; }
 
-        [StringLength(500)]
+        [DisplayFormat(ConvertEmptyStringToNull=false)]
         public string HOARules { get; set; }
 
        // public DbGeography Location = DbGeography.FromText("POINT(53.095124 -0.864716)", 4326);

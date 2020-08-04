@@ -17,7 +17,6 @@ namespace Auction_Prop_API.Models.DataBaseModels
         public string SellerID { get; set; }
 
         [Column("Message")]
-        [StringLength(1000)]
         public string Message1 { get; set; }
     }
 }
