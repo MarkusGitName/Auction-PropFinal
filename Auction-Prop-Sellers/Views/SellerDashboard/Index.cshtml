@@ -13,112 +13,111 @@
     <p></p>
 </div>
 
-<h2>propertylist</h2>
+<h2>Here is youre Listed Properties.</h2>
 
-<p>
-    @Html.ActionLink("Create New", "AddPropertyStyled")
-    @Html.ActionLink("Create New", "CreateProperty")
-</p>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+@Html.ActionLink("New Property","CreateProperty")
+
 @while (Model != null)
 {
-    IEnumerable<Property> p = Model.Properties;
-    <table class="table">
-        <tr>
+    <div class="container">
+        <div class="row" style="height:300px">
 
-            <th>
-                Address
-            </th>
-            <th>
-                Description
-            </th>
-            <th>
-                Type
-            </th>
-            <th>
-                Value
-            </th>
-            <th>
-                Minimum bid
-            </th>
-            <th>
-                Reserve
-            </th>
-            <th>
-                Plans
-            </th>
-            <th>
-                Taxes and rates
-            </th>
-            <th>
-                Title deed
-            </th>
-            <th>
-                Approval
-            </th>
-            <th>
-                Signiture
-            </th>
-            <th>
-                Pictures
-            </th>
-            <th></th>
-        </tr>
+            @foreach (Property prop in Model.Properties)
+            {
+                <div class="col-md-3 col-sm-6" style=" padding:15px">
+                    <div class="product-grid">
+                        <div class="product-image" style="min-height:200px">
+                            <a href="#">
+                                @{
+                                    int i = 1;
 
-        @foreach (var item in p)
-        {
-            <tr>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Address)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Type)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PrpertyValue)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MinimubBid)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Reserve)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PlansPath)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TaxesAndRates)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TitleDeedPath)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ApprovalStatus)
-                </td>
-                <td>
-                    <div>
-                        <p>Photos:</p>
-                        @foreach (PropertyPhoto photo in item.PropertyPhotos)
-                        {
-                            <p>@photo.PropertyPhotoPath</p>
-                            <img src=@photo.PropertyPhotoPath alt="" style="height:100px; width:100px"/>
-                        }
 
+                                    foreach (PropertyPhoto pp in prop.PropertyPhotos)
+                                    {
+
+                                    string pic = "pic-";
+                                        if (i <= 2)
+                                        {
+                                            pic += i.ToString();
+                                            <img class=@pic src=@pp.PropertyPhotoPath>
+                                            i++;
+                                        }
+                                    }
+
+
+
+
+
+                                }
+
+                            </a>
+                            <ul class="social">
+                                <li><a href="" data-tip="Go To Photo Gallary"><i class="fa fa-shopping-bag"></i></a></li>
+
+                                <li><a href="" data-tip="Add Photo"><i class="fa fa-shopping-bag"></i></a></li>
+                            </ul>
+                            <span class="product-new-label" style="background-color:darkorange">@prop.Title</span>
+                            @if (prop.ApprovalStatus)
+                            {
+
+                                <span class="product-discount-label" style="background-color:green">Approved</span>
+                            }
+                            else
+                            {
+
+                                <span class="product-discount-label" style="background-color:red">Not Approved</span>
+                            }
+                        </div>
+                       
+                        <div class="product-content">
+                            <h3 class="title"><a href="#">City: @prop.City</a></h3>
+                            <h4 class="title"><a href="#">Address: @prop.Address</a></h4>
+                            <h4 class="title"><a href="#">Property Type: @prop.PropertyType</a></h4>
+                            <div class="price">
+                                Opening Bid: R @prop.OpeningBid
+                            </div>
+
+
+                            <div class="universal-button">
+                                @Html.ActionLink("Add a Promo Video", "AddPromoVideo", new { id = prop.PropertyID }) 
+
+                            </div>
+
+                            <div class="universal-button">
+                                @Html.ActionLink("Add a Photo", "AddPhoto", new { id = prop.PropertyID })
+
+                            </div> 
+
+                            @Html.ActionLink("Edit", "Edit", new { id = prop.PropertyID }) |
+                            @Html.ActionLink("Details", "Details", new { id = prop.PropertyID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = prop.PropertyID })
+                        </div>
                     </div>
-                    @Html.ActionLink("Add a Photo", "AddPhoto", new { id = item.PropertyID })
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.PropertyID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.PropertyID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.PropertyID })
-                </td>
-            </tr>
-        }
+                </div>
+            }
 
+           
+        </div>
+    </div>
 
-    </table>
+    
     break;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

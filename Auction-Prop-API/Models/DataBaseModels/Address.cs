@@ -43,4 +43,42 @@ namespace Auction_Prop_API.Models.DataBaseModels
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SellerAddress> SellerAddresses { get; set; }
     }
+    public partial class AddressNoR
+    {
+        public AddressNoR()
+        {
+            BuyerAddresses = new HashSet<BuyerAddressNoR>();
+            SellerAddresses = new HashSet<SellerAddressNoR>();
+        }
+
+        public int AddressID { get; set; }
+
+        [Required]
+        [StringLength(128)]
+        public string Country { get; set; }
+
+        [Required]
+        [StringLength(128)]
+        public string City { get; set; }
+
+        [StringLength(128)]
+        public string Supburb { get; set; }
+
+        [StringLength(128)]
+        public string Area { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string Street { get; set; }
+
+        public int Number { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BuyerAddressNoR> BuyerAddresses { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SellerAddressNoR> SellerAddresses { get; set; }
+
+
+    }
 }

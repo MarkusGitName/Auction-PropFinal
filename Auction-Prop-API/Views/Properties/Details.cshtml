@@ -20,6 +20,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.ConcludedAuction.WinningBidder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConcludedAuction.WinningBidder)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Seller.FirtstName)
         </dt>
 
@@ -76,19 +84,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Type)
+            @Html.DisplayNameFor(model => model.RegistrationType)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Type)
+            @Html.DisplayFor(model => model.RegistrationType)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Status)
+            @Html.DisplayNameFor(model => model.PropertyType)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Status)
+            @Html.DisplayFor(model => model.PropertyType)
         </dd>
 
         <dt>
@@ -108,19 +116,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.BuildingArea)
+            @Html.DisplayNameFor(model => model.FloorSize)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.BuildingArea)
+            @Html.DisplayFor(model => model.FloorSize)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TerraceArea)
+            @Html.DisplayNameFor(model => model.YardSize)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TerraceArea)
+            @Html.DisplayFor(model => model.YardSize)
         </dd>
 
         <dt>
@@ -132,19 +140,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PrpertyValue)
+            @Html.DisplayNameFor(model => model.OpeningBid)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PrpertyValue)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MinimubBid)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MinimubBid)
+            @Html.DisplayFor(model => model.OpeningBid)
         </dd>
 
         <dt>
@@ -164,6 +164,22 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.TaxesAndRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaxesAndRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.levies)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.levies)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.TaxesAndRates)
         </dt>
 
@@ -180,11 +196,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Location)
+            @Html.DisplayNameFor(model => model.HOARules)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Location)
+            @Html.DisplayFor(model => model.HOARules)
         </dd>
 
         <dt>
@@ -204,35 +220,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.A_C)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.A_C)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PetsAllowed)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PetsAllowed)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Garden)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Garden)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CableTV)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CableTV)
         </dd>
 
         <dt>
@@ -244,11 +236,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.wi_fi)
+            @Html.DisplayNameFor(model => model.Gerages)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.wi_fi)
+            @Html.DisplayFor(model => model.Gerages)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SwimmingPool)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SwimmingPool)
         </dd>
 
         <dt>
@@ -260,59 +260,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Pool)
+            @Html.DisplayNameFor(model => model.Clubhouse)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Pool)
+            @Html.DisplayFor(model => model.Clubhouse)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Balcony)
+            @Html.DisplayNameFor(model => model.Braai)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Balcony)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Parquet)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Parquet)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Beach)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Beach)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Gerage)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Gerage)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RoofTarrace)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RoofTarrace)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Sauna)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Sauna)
+            @Html.DisplayFor(model => model.Braai)
         </dd>
 
         <dt>
@@ -332,35 +292,59 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SunRoom)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SunRoom)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ConcreteFlooring)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ConcreteFlooring)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.WoodFloring)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.WoodFloring)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.TennisCourts)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.TennisCourts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Jacquizzi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Jacquizzi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Parking)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Parking)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Borehole)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Borehole)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MandateType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MandateType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MandateSingedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MandateSingedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MandateExpireDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MandateExpireDate)
         </dd>
 
     </dl>

@@ -43,26 +43,51 @@ namespace Auction_Prop_Sellers.Controllers
 
         // POST: SellersAccount/Create     
 
-        public ActionResult CreateSeller(Seller model)
+        public ActionResult CreateSeller(SellersView model)
         {
             model.UserID = User.Identity.GetUserId();
-
             if (ModelState.IsValid)
             {
-                
-                   
                 try
-                { //Call Post Method
-                    Seller ob = APIMethods.APIPost<Seller>(model, "Sellers");
-                    return Index(ob);
+                {
+                    var newData = new Seller
+                    {
+                        UserID = model.UserID,
+                        FirtstName = model.FirtstName,
+                        Signature = model.Signature,
+                        SellerNumber = model.SellerNumber,
+                        SellerEmail = model.SellerEmail,
+                        LastName = model.LastName,
+                        SellerType = model.SellerType
+                    };
+
+                    newData.ProfilePhoto = FileController.PostFile(model.ProfilePhoto, "ProfilePhoto", "ProfilePhoto");
+
+
+
+                    //Call Post Method
+                    Seller ob = APIMethods.APIPost<Seller>(newData, "Sellers");
+
+
+                    if (ob.SellerType == "Retailer")
+                    {
+
+                        return RedirectToAction("CreateRetialer");
+                    }
+                    else if (ob.SellerType == "Auctioneer") 
+                    {
+
+                        return RedirectToAction("CreateAuctioneer");
+                    }
+                    else
+                    {
+
+                         return RedirectToAction("CreatePrivate");
+                    }
                 }
                 catch (Exception E)
                 {
-                    ErrorViewModel error = new ErrorViewModel()
-                    {
-                        Msge = E.ToString(),
-                    };
-                    return RedirectToAction("ErrorView", "SellerRegistration", error);
+                    throw new Exception(E.ToString());
                 }
             }
             else
@@ -70,6 +95,7 @@ namespace Auction_Prop_Sellers.Controllers
                 return View();
             }
         }
+    
 
 
 
@@ -87,25 +113,22 @@ namespace Auction_Prop_Sellers.Controllers
                         RetailerName = model.RetailerName,
                         Signature = model.Signature,
                         CompanyContactNumber = model.CompanyContactNumber,
-                        CompanyEmail = model.CompanyEmail
+                        CompanyEmail = model.CompanyEmail,
+                        CompanyDescription = model.CompanyDescription,
+                        Branch = model.Branch
                     };
 
-                    newData.ProfilePhotoPath = FileController.PostFile(model.ProfilePhotoPath, Server.MapPath("~/App_Data/uploads/ProfilePhotos"), "profilephotos");
-                    newData.ProofOfResedence = FileController.PostFile(model.ProofOfResedence, Server.MapPath("~/App_Data/uploads/ProofOfResedence"), "proofofresedence");
+                    newData.CompaynLogoPath = FileController.PostFile(model.CompaynLogoPath, "CompaynLogoPath", "CompaynLogoPath");
 
 
 
                     //Call Post Method
-                    Retailer ob = APIMethods.APIPost<Retailer>(newData, "Retailelers");
-                    return RedirectToAction("Index");
+                    Retailer ob = APIMethods.APIPost<Retailer>(newData, "Retailers");
+                    return RedirectToAction("AddAddress");
                 }
                 catch (Exception E)
                 {
-                    ErrorViewModel error = new ErrorViewModel()
-                    {
-                        Msge = E.ToString(),
-                    };
-                    return RedirectToAction("ErrorView", "SellerRegistration", error);
+                    throw new Exception(E.ToString());
                 }
             }
             else
@@ -124,7 +147,6 @@ namespace Auction_Prop_Sellers.Controllers
                 try
                 {
 
-
                     var newData = new PrivateSeller
                     {
                         UserID = model.UserID,
@@ -132,21 +154,16 @@ namespace Auction_Prop_Sellers.Controllers
                         Signiture = model.Signiture,
                     };
 
-                    newData.ProfilePhotoPath = FileController.PostFile(model.ProfilePhotoPath, Server.MapPath("~/App_Data/uploads/ProfilePhotos"), "profilephotos");
-                    newData.ProofOfResedence = FileController.PostFile(model.ProofOfResedence, Server.MapPath("~/App_Data/uploads/ProofOfResedence"), "proofofresedence");
+                    newData.ProofOfResedence = FileController.PostFile(model.ProofOfResedence, "ProofOfResedence", "ProofOfResedence");
 
                     //Call Post Method
                     PrivateSeller ob = APIMethods.APIPost<PrivateSeller>(newData, "PrivateSellers");
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("AddAddress");
                 }
                 catch (Exception E)
                 {
-                    ErrorViewModel error = new ErrorViewModel()
-                    {
-                        Msge = E.ToString(),
-                    };
-                    return RedirectToAction("ErrorView", "SellerRegistration", error);
+                    throw new Exception(E.ToString());
                 }
             }
             else
@@ -154,6 +171,47 @@ namespace Auction_Prop_Sellers.Controllers
                 return View();
             }
         }
+
+        public ActionResult CreateAuctioneer(AuctioneerView model)
+        {
+            model.UserID = User.Identity.GetUserId();
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var newData = new Auctioneer
+                    {
+                        UserID = model.UserID,
+                        CompanyName = model.CompanyName,
+                        Branch = model.Branch,
+                        CompanyContactNumber = model.CompanyContactNumber,
+                        CompanyEmail = model.CompanyEmail,
+                        Signature = model.Signature,
+                        CompanyDescriprion = model.CompanyDescriprion,
+                        
+
+                    };
+
+                    newData.CompanyLogo = FileController.PostFile(model.CompanyLogo, "CompanyLogo", "CompanyLogo");
+
+                    //Call Post Method
+                    Auctioneer ob = APIMethods.APIPost<Auctioneer>(newData, "Auctioneers");
+
+                    return RedirectToAction("AddAddress");
+                }
+                catch (Exception E)
+                {
+                    throw new Exception(E.ToString());
+                }
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+
+
 
 
 
@@ -175,11 +233,7 @@ namespace Auction_Prop_Sellers.Controllers
                 }
                 catch (Exception E)
                 {
-                    ErrorViewModel error = new ErrorViewModel()
-                    {
-                        Msge = E.ToString(),
-                    };
-                    return RedirectToAction("ErrorView", "SellerRegistration", error);
+                    throw new Exception(E.ToString());
                 }
 
             }

@@ -9,27 +9,17 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
 {
     public class GuarinteeViewModel
     {
-        public GuarinteeViewModel()
-        {
-            AuctionRegistrations = new HashSet<AuctionRegistration>();
-        }
+        [Key]
+        public int AuctionRegistrationID { get; set; }
 
-        public int GuarinteeID { get; set; }
-
-
-        public string BuyerID { get; set; }
-
-        [Required]
+        [Display(Name = "Upload youre bank Guarintees document.")]
         public HttpPostedFileBase GuarinteePath { get; set; }
 
         public bool GuarinteeApproval { get; set; }
 
-        [Column(TypeName = "date")]
         public DateTime DateOfSubmition { get; set; }
 
-        public virtual ICollection<AuctionRegistration> AuctionRegistrations { get; set; }
-
-        public virtual RegisteredBuyer RegisteredBuyer { get; set; }
+        public virtual AuctionRegistration AuctionRegistration { get; set; }
     }
 
     public partial class Guarintee
@@ -38,7 +28,6 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
         [Key]
         public int AuctionRegistrationID { get; set; }
 
-        [Required]
         public string GuarinteePath { get; set; }
 
         public bool GuarinteeApproval { get; set; }

@@ -18,22 +18,71 @@ namespace Auction_Prop_API.Controllers.APIControllers
         private DataBaseModels db = new DataBaseModels();
 
         // GET: api/PrivateSellers
-        public IQueryable<PrivateSeller> GetPrivateSellers()
+        public ICollection<PrivateSellerNoR> GetPrivateSellers()
         {
-            return db.PrivateSellers;
+
+       
+            List<PrivateSellerNoR> Lys = new List<PrivateSellerNoR>();
+            foreach (PrivateSeller objct in db.PrivateSellers.Include(p => p.Seller))
+            {
+
+
+                PrivateSellerNoR newObject = new PrivateSellerNoR()
+                {
+                   IDNumber= objct.IDNumber,
+                    //  BankApproval = objct.BankApproval,
+                    // Bid = objct.Bid,
+                    //  AuctionRegistration = objct.AuctionRegistration,
+                    ProofOfResedence= objct.ProofOfResedence,
+                    // Property = objct.Property,
+                    //  Property = objct.Property,
+                    // RegisteredBuyer = objct.RegisteredBuyer,
+                  //  Seller = objct.Seller,
+                    // RegisteredBuyer = objct.RegisteredBuyer,
+                    Signiture = objct.Signiture,
+                    UserID = objct.UserID,
+                    // = objct.ProofOfPaymentPath,
+                    // ProofOfReturnPayment = objct.ProofOfReturnPayment
+                    // AuctionRegistration = fee.AuctionRegistration
+                };
+
+
+                Lys.Add(newObject);
+            }
+
+            return Lys;
         }
 
         // GET: api/PrivateSellers/5
         [ResponseType(typeof(PrivateSeller))]
         public async Task<IHttpActionResult> GetPrivateSeller(string id)
         {
-            PrivateSeller privateSeller = await db.PrivateSellers.FindAsync(id);
-            if (privateSeller == null)
+            PrivateSeller objct = await db.PrivateSellers.FindAsync(id);
+            if (objct == null)
             {
                 return NotFound();
             }
 
-            return Ok(privateSeller);
+            PrivateSellerNoR newObject = new PrivateSellerNoR()
+            {
+                IDNumber = objct.IDNumber,
+                //  BankApproval = objct.BankApproval,
+                // Bid = objct.Bid,
+                //  AuctionRegistration = objct.AuctionRegistration,
+                ProofOfResedence = objct.ProofOfResedence,
+                // Property = objct.Property,
+                //  Property = objct.Property,
+                // RegisteredBuyer = objct.RegisteredBuyer,
+                //  Seller = objct.Seller,
+                // RegisteredBuyer = objct.RegisteredBuyer,
+                Signiture = objct.Signiture,
+                UserID = objct.UserID,
+                // = objct.ProofOfPaymentPath,
+                // ProofOfReturnPayment = objct.ProofOfReturnPayment
+                // AuctionRegistration = fee.AuctionRegistration
+            };
+
+            return Ok(newObject);
         }
 
         // PUT: api/PrivateSellers/5

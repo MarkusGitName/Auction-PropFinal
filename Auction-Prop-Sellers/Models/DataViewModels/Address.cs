@@ -6,37 +6,37 @@ using System.Web;
 
 namespace Auction_Prop_Sellers.Models.DataViewModels
 {
-    public class Address
-    {
-        public Address()
+    
+        public partial class Address
         {
-           // BuyerAddresses = new HashSet<BuyerAddress>();
-            SellerAddresses = new HashSet<SellerAddress>();
-        }
+            public Address()
+            {
+                SellerAddresses = new HashSet<SellerAddress>();
+            }
+        
+            public int AddressID { get; set; }
 
-        public int AddressID { get; set; }
+            [Required]
 
-        [Required]
-        [StringLength(128)]
+        [Display(Name = "Country")]
         public string Country { get; set; }
 
-        [Required]
-        [StringLength(128)]
-        public string City { get; set; }
+            [Required]
+            public string City { get; set; }
 
-        [StringLength(128)]
-        public string Supburb { get; set; }
+            [StringLength(128)]
+            public string Supburb { get; set; }
 
-        [StringLength(128)]
-        public string Area { get; set; }
+            [StringLength(128)]
+            public string Area { get; set; }
 
-        [Required]
-        [StringLength(100)]
-        public string Street { get; set; }
+            [Required]
+            [StringLength(100)]
+            public string Street { get; set; }
 
-        public int Number { get; set; }
+            public int Number { get; set; }
 
-         public virtual ICollection<SellerAddress> SellerAddresses { get; set; }
-    }
+            public virtual ICollection<SellerAddress> SellerAddresses { get; set; }
+        }
 
 }

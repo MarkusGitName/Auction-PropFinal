@@ -21,4 +21,18 @@ namespace Auction_Prop_API.Models.DataBaseModels
 
         public virtual RegisteredBuyer RegisteredBuyer { get; set; }
     }
+    [Table("BuyerAddress")]
+    public partial class BuyerAddressNoR
+    {
+        public int id { get; set; }
+
+        public int AddressID { get; set; }
+
+        [Required]
+        [StringLength(128)]
+        public string UserID { get; set; }
+
+        public virtual RegisteredBuyerNoR RegisteredBuyer { get; set; }
+
+    }
 }

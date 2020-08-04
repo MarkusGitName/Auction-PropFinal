@@ -13,7 +13,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.RegisteredBuyer.FirstName)
+            @Html.DisplayNameFor(model => model.AuctionRegistration.BuyerId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.GuarinteePath)
@@ -30,7 +30,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.RegisteredBuyer.FirstName)
+            @Html.DisplayFor(modelItem => item.AuctionRegistration.BuyerId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.GuarinteePath)
@@ -42,9 +42,9 @@
             @Html.DisplayFor(modelItem => item.DateOfSubmition)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.GuarinteeID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.GuarinteeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.GuarinteeID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.AuctionRegistrationID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AuctionRegistrationID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AuctionRegistrationID })
         </td>
     </tr>
 }

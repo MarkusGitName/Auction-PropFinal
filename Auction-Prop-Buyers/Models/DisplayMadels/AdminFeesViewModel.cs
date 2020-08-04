@@ -19,6 +19,9 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
 
         public DateTime? DateOfPayment { get; set; }
 
+        public decimal? Amount { get; set; }
+
+
         public virtual AuctionRegistration AuctionRegistration { get; set; }
     }
 }

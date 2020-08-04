@@ -18,22 +18,70 @@ namespace Auction_Prop_API.Controllers.APIControllers
         private DataBaseModels db = new DataBaseModels();
 
         // GET: api/ConcludedAuctions
-        public IQueryable<ConcludedAuction> GetConcludedAuctions()
+        public ICollection<ConcludedAuctionNoR> GetConcludedAuctions()
         {
-            return db.ConcludedAuctions;
+
+            List<ConcludedAuctionNoR> Lys = new List<ConcludedAuctionNoR>();
+            foreach (ConcludedAuction objct in db.ConcludedAuctions.Include(c => c.Bid).Include(c => c.Property).Include(c => c.RegisteredBuyer))
+            {
+
+
+                ConcludedAuctionNoR newObject = new ConcludedAuctionNoR()
+                {
+                    // Bids= objct.Bids,
+                    //  BankApproval = objct.BankApproval,
+                   // Bid = objct.Bid,
+                    ExceededReserve = objct.ExceededReserve,
+                    HiegestBid = objct.HiegestBid,
+                   // Property = objct.Property,
+                    //  Property = objct.Property,
+                    // RegisteredBuyer = objct.RegisteredBuyer,
+                    PropertyID = objct.PropertyID,
+                   // RegisteredBuyer = objct.RegisteredBuyer,
+                    TimeOfConclution = objct.TimeOfConclution,
+                    WinningBidder = objct.WinningBidder,
+                    // TimeOfbid = objct.TimeOfbid
+                    //Seller = objct.Seller
+                    // AuctionRegistration = fee.AuctionRegistration
+                };
+
+
+                Lys.Add(newObject);
+            }
+
+            return Lys;
         }
 
         // GET: api/ConcludedAuctions/5
         [ResponseType(typeof(ConcludedAuction))]
         public async Task<IHttpActionResult> GetConcludedAuction(int id)
         {
-            ConcludedAuction concludedAuction = await db.ConcludedAuctions.FindAsync(id);
-            if (concludedAuction == null)
+            ConcludedAuction objct = await db.ConcludedAuctions.FindAsync(id);
+            if (objct == null)
             {
                 return NotFound();
             }
 
-            return Ok(concludedAuction);
+            ConcludedAuctionNoR newObject = new ConcludedAuctionNoR()
+            {
+                // Bids= objct.Bids,
+                //  BankApproval = objct.BankApproval,
+                // Bid = objct.Bid,
+                ExceededReserve = objct.ExceededReserve,
+                HiegestBid = objct.HiegestBid,
+                // Property = objct.Property,
+                //  Property = objct.Property,
+                // RegisteredBuyer = objct.RegisteredBuyer,
+                PropertyID = objct.PropertyID,
+                // RegisteredBuyer = objct.RegisteredBuyer,
+                TimeOfConclution = objct.TimeOfConclution,
+                WinningBidder = objct.WinningBidder,
+                // TimeOfbid = objct.TimeOfbid
+                //Seller = objct.Seller
+                // AuctionRegistration = fee.AuctionRegistration
+            };
+
+            return Ok(newObject);
         }
 
         // PUT: api/ConcludedAuctions/5

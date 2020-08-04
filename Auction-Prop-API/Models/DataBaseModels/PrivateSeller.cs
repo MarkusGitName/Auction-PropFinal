@@ -15,9 +15,6 @@ namespace Auction_Prop_API.Models.DataBaseModels
         [StringLength(13)]
         public string IDNumber { get; set; }
 
-        [StringLength(500)]
-        public string ProfilePhotoPath { get; set; }
-
         [Required]
         [StringLength(500)]
         public string ProofOfResedence { get; set; }
@@ -25,5 +22,23 @@ namespace Auction_Prop_API.Models.DataBaseModels
         public bool Signiture { get; set; }
 
         public virtual Seller Seller { get; set; }
+    }
+    public partial class PrivateSellerNoR
+    {
+        [Key]
+        public string UserID { get; set; }
+
+        [Required]
+        [StringLength(13)]
+        public string IDNumber { get; set; }
+
+        [Required]
+        [StringLength(500)]
+        public string ProofOfResedence { get; set; }
+
+        public bool Signiture { get; set; }
+
+        public virtual SellerNoR Seller { get; set; }
+
     }
 }

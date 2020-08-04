@@ -13,6 +13,12 @@ namespace Auction_Prop_Sellers.Models.DataViewModels
 
     public partial class Bid
     {
+        public Bid()
+        {
+            ConcludedAuctions = new HashSet<ConcludedAuction>();
+        }
+
+        public int BidID { get; set; }
 
         [Required]
         [StringLength(128)]
@@ -20,7 +26,6 @@ namespace Auction_Prop_Sellers.Models.DataViewModels
 
         public int PropertyID { get; set; }
 
-        [Column(TypeName = "money")]
         public decimal AmuntOfBid { get; set; }
 
         public DateTime TimeOfbid { get; set; }
@@ -28,5 +33,7 @@ namespace Auction_Prop_Sellers.Models.DataViewModels
         public virtual Auction Auction { get; set; }
 
         public virtual RegisteredBuyer RegisteredBuyer { get; set; }
+
+        public virtual ICollection<ConcludedAuction> ConcludedAuctions { get; set; }
     }
 }

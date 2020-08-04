@@ -22,35 +22,45 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
         public string UserId { get; set; }
 
         [Required]
-        [StringLength(100)]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [Required]
-        [StringLength(100)]
+        [Display(Name = "Last Name.")]
         public string LastName { get; set; }
 
         [Required]
-        [StringLength(10)]
+        [Display(Name = "Enter youre ID number.")]
         public string IDNumber { get; set; }
 
-         public DateTime DateOfBirth { get; set; }
+        [Display(Name = "Date of birth")]
+        public DateTime DateOfBirth { get; set; }
 
+
+        [Display(Name = "Click the checkbox if you are a bonded buyer.")]
         public bool BondedOrCash { get; set; }
 
         [Required]
+        [Display(Name = "Upload youre profile photo to be displayed to other bidders.")]
         public HttpPostedFileBase ProfilePhotoPath { get; set; }
 
         [Required]
+        [Display(Name = "Upload proof of residence.")]
         public HttpPostedFileBase ProofOfResidencePath { get; set; }
 
         [Required]
+        [Display(Name = "Upload a copy of youre id document.")]
         public HttpPostedFileBase CopyOfIDPath { get; set; }
 
         [Required]
-         public HttpPostedFileBase ProofOfBankAccount { get; set; }
+        [Display(Name = "Upload a proof of your bank account.")]
+        public HttpPostedFileBase ProofOfBankAccount { get; set; }
 
         [Required]
+
+        [Display(Name = "Upload a photo of you holding youre ID document.")]
         public HttpPostedFileBase IDBuyerVerifyPhoto { get; set; }
+
 
         public bool ApprovalStatus { get; set; }
 
@@ -58,6 +68,7 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
         public DateTime RegistrationDate { get; set; }
 
         [Required]
+        [Display(Name = "Terms And Conitions")]
         public bool Signiture { get; set; }
 
         public virtual ICollection<AuctionRegistration> AuctionRegistrations { get; set; }

@@ -21,6 +21,9 @@
         <th>
             @Html.DisplayNameFor(model => model.DateOfPayment)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
         <th></th>
     </tr>
 
@@ -30,10 +33,19 @@
             @Html.DisplayFor(modelItem => item.AuctionRegistration.BuyerId)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.AuctionRegistration.RegisteredBuyer.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuctionRegistration.PropertyID)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.ProofOfPaymentPath)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DateOfPayment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.PaymentID }) |

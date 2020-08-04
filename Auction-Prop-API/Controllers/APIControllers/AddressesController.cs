@@ -11,7 +11,6 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Auction_Prop_API.Models.DataBaseModels;
 
-
 namespace Auction_Prop_API.Controllers.APIControllers
 {
     public class AddressesController : ApiController
@@ -19,22 +18,61 @@ namespace Auction_Prop_API.Controllers.APIControllers
         private DataBaseModels db = new DataBaseModels();
 
         // GET: api/Addresses
-        public IQueryable<Address> GetAddresses()
+        public ICollection<AddressNoR> GetAddresses()
         {
-            return db.Addresses;
+
+            List<AddressNoR> addresLys = new List<AddressNoR>();
+            foreach (Address add in db.Addresses)
+            {
+
+
+                AddressNoR newAdd = new AddressNoR()
+                {
+
+                    AddressID = add.AddressID,
+                    Country = add.Country,
+                    City = add.City,
+                    Supburb = add.Supburb,
+                    Area = add.Area,
+                    Street = add.Street,
+                    Number = add.Number,
+                    // BuyerAddresses = add.BuyerAddresses,
+                    //"SellerAddresses": []
+                };
+
+
+                addresLys.Add(newAdd);
+            }
+
+            return addresLys;
         }
 
         // GET: api/Addresses/5
         [ResponseType(typeof(Address))]
         public async Task<IHttpActionResult> GetAddress(int id)
         {
-            Address address = await db.Addresses.FindAsync(id);
-            if (address == null)
+            Address add = await db.Addresses.FindAsync(id);
+            if (add == null)
             {
                 return NotFound();
             }
 
-            return Ok(address);
+
+            AddressNoR newAdd = new AddressNoR()
+            {
+
+                AddressID = add.AddressID,
+                Country = add.Country,
+                City = add.City,
+                Supburb = add.Supburb,
+                Area = add.Area,
+                Street = add.Street,
+                Number = add.Number,
+                // BuyerAddresses = add.BuyerAddresses,
+                //"SellerAddresses": []
+            };
+
+            return Ok(newAdd);
         }
 
         // PUT: api/Addresses/5

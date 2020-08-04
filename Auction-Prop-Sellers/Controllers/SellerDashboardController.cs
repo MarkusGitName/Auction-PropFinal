@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
@@ -48,38 +49,91 @@ namespace Auction_Prop_Sellers.Controllers
         }
 
 
-        public ActionResult CreateProperty(PropertyView model)
+        public async Task<ActionResult> CreateProperty(PropertyView model)
         {
             
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && model.SellerSigniture)
             {
                
-                var config = new MapperConfiguration(cfg => {
-                    cfg.CreateMap<PropertyView, Property>();
-                });
-
-                IMapper mapper = config.CreateMapper();
-                Property NewProp = mapper.Map<PropertyView, Property>(model);
-                NewProp.SellerID = User.Identity.GetUserId();
-                NewProp.TaxesAndRates = FileController.PostFile(model.TaxesAndRates, Server.MapPath("~/App_Data/uploads/TaxesAndRates"), "taxesandrates");
-                NewProp.PlansPath = FileController.PostFile(model.PlansPath, Server.MapPath("~/App_Data/uploads/Plans"), "plans");
-                NewProp.TitleDeedPath = FileController.PostFile(model.TitleDeedPath, Server.MapPath("~/App_Data/uploads/TitleDeeds"), "titledeeds");
-
-
+               
                 try
                 {
+                    var config = new MapperConfiguration(cfg => {
+                    cfg.CreateMap<PropertyView, Property>();
+                     });
+
+                    IMapper mapper = config.CreateMapper();
+                    Property NewProp = mapper.Map<PropertyView, Property>(model);
+                    NewProp.SellerID = User.Identity.GetUserId();
+                    if(NewProp.TitleDeedPath == "")
+                    {
+                        NewProp.TitleDeedPath = "N/A";
+                    }   
+                    if(NewProp.BedRooms == null)
+                    {
+                        NewProp.BedRooms = 0;
+                    }  
+                    if(NewProp.FloorSize == null)
+                    {
+                        NewProp.FloorSize = 0;
+                    }  
+                    if(NewProp.YardSize == null)
+                    {
+                        NewProp.YardSize = 0;
+                    }   
+                    if(NewProp.Reserve == null)
+                    {
+                        NewProp.Reserve = 0;
+                    }
+                    if (NewProp.Garages == null)
+                    {
+                        NewProp.Garages = 0;
+                    }  
+                    if(NewProp.OpeningBid == null)
+                    {
+                        NewProp.OpeningBid = 0;
+                    }   
+                    if(NewProp.TaxesAndRate == null)
+                    {
+                        NewProp.TaxesAndRate = 0;
+                    } 
+                    if(NewProp.levies == null)
+                    {
+                        NewProp.levies = 0;
+                    } 
+              
+                    NewProp.MandateSingedDate = DateTime.Now;
+                    NewProp.MandateExpireDate = DateTime.Now.AddDays(90);
+                    NewProp.TaxesAndRates = FileController.PostFile(model.TaxesAndRates, "TaxesAndRates", "TaxesAndRates");
+                    NewProp.PlansPath = FileController.PostFile(model.PlansPath, "Plans", "Plans");
+                  //  NewProp.TitleDeedPath = FileController.PostFile(model.TitleDeedPath, "Titledeeds", "Titledeeds");
+                    NewProp.HOARules = FileController.PostFile(model.HOARules, "HOARules", "HOARules");
+
                     //Call Post Method
                     Property ob = APIMethods.APIPost<Property>(NewProp, "Properties");
 
-                    return RedirectToAction("Index");
+                    SendGridService ser = new SendGridService();
+                    /*EmailMessageInfo msg = new EmailMessageInfo() { 
+                        FromEmailAddress = "cmmadeleyn@gmail.com",
+                        ToEmailAddress = model.Seller.SellerEmail,
+                        EmailSubject ="New Property listing.",
+                        EmailBody = "Property: Title-"+model.Title+"/n Address- "+model.Address+"/n Youre listing will be reviewed and you will be notified Accordingly."
+                    };
+          //          await ser.Send(msg);
+
+                    EmailMessageInfo msgAdmin = new EmailMessageInfo() { 
+                        FromEmailAddress = "cmmadeleyn@gmail.com",
+                        ToEmailAddress = model.Seller.SellerEmail,
+                        EmailSubject ="New Property listing.",
+                        EmailBody = "Property: Title-"+model.Title+"/n Address- "+model.Address+"./n Property listed by "+model.Seller.FirtstName+" "+model.Seller.LastName
+                    };
+                    await ser.Send(msgAdmin);*/
+
+                    return RedirectToAction("AddPhoto",new { id = ob.PropertyID});
                 }
                 catch (Exception E)
                 {
-                    ErrorViewModel error = new ErrorViewModel()
-                    {
-                        Msge = E.ToString(),
-                    };
-                    return RedirectToAction("ErrorView", "SellerDashboard", error);
+                    throw new Exception(E.Message);
                 }
             }
             else
@@ -107,11 +161,7 @@ namespace Auction_Prop_Sellers.Controllers
                 }
                 catch (Exception E)
                 {
-                    ErrorViewModel error = new ErrorViewModel()
-                    {
-                        Msge = E.ToString(),
-                    };
-                    return RedirectToAction("ErrorView", "SellerDashboard", error);
+                    throw new Exception(E.ToString());
                 }
             }
             else
@@ -126,26 +176,72 @@ namespace Auction_Prop_Sellers.Controllers
         public ActionResult AddPhoto(int id, PropertyPhotoView file)
         {
 
+          
             if (ModelState.IsValid)
             {
-
-                
+                try
+                {
                     PropertyPhoto model = new PropertyPhoto();
                     if (file != null)
                     {
                         model.PropertyId = id;
                         model.Description = file.Description;
                         model.Title = file.Title;
-                        model.PropertyId = id;
-                        model.PropertyPhotoPath = FileController.PostFile(file.PropertyPhotoPath, Server.MapPath("~/App_Data/uploads/PropertyPhotos"), "propertyphotos");
-
+                        model.PropertyPhotoPath = FileController.PostFile(file.PropertyPhotoPath, "propertyphotos", "propertyphotos");
+                       
                         //Call Post Method
                        APIMethods.APIPost<PropertyPhoto>(model, "PropertyPhotoes");
+                     return  View();
+                    
                     }
+                }
+                catch (Exception E)
+                {
+                    throw new Exception(E.ToString());
+                }
 
 
 
-                    return RedirectToAction("Index");
+
+
+                return RedirectToAction("Index");
+                
+            
+            }
+            else
+            {
+                return View();
+            }
+
+
+        }
+        
+        public ActionResult AddPromoVideo(int id, PromoVideoData file)
+        {
+
+          
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                   if (file != null)
+                    {
+                        //Call Post Method
+                       APIMethods.APIPost<PropertyPhoto>(file, "PropertyPhotoes");
+                     return RedirectToAction("Index");
+                    
+                    }
+                }
+                catch (Exception E)
+                {
+                    throw new Exception(E.ToString());
+                }
+
+
+
+
+
+                return RedirectToAction("Index");
                 
             
             }
@@ -163,18 +259,14 @@ namespace Auction_Prop_Sellers.Controllers
         {
             if (ModelState.IsValid)
             {
-                 try
+                try
                 {
-               APIMethods.APIPut<Property>(model, id.ToString(), "Properties");
-                return RedirectToAction("Index");
+                   APIMethods.APIPut<Property>(model, id.ToString(), "Properties");
+                    return RedirectToAction("Index");
                 }
                 catch (Exception E)
                 {
-                    ErrorViewModel error = new ErrorViewModel()
-                    {
-                        Msge = E.ToString(),
-                    };
-                    return RedirectToAction("ErrorView", "SellerDashboard", error);
+                    throw new Exception(E.ToString());
                 }
 
             }
@@ -197,11 +289,7 @@ namespace Auction_Prop_Sellers.Controllers
                 }
                 catch (Exception E)
                 {
-                    ErrorViewModel error = new ErrorViewModel()
-                    {
-                        Msge = E.ToString(),
-                    };
-                    return RedirectToAction("ErrorView", "SellerDashboard", error);
+                    throw new Exception(E.ToString());
                 }
 
             }

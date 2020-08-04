@@ -1,4 +1,4 @@
-/**
+carousel-item-b/**
 * Template Name: EstateAgency - v2.0.0
 * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
 * Author: BootstrapMade.com
@@ -11,6 +11,7 @@
 body {
   font-family: 'Poppins', sans-serif;
   color: #555555;
+
 }
 
 h1,
@@ -1527,7 +1528,7 @@ a:hover {
 
 .card-header-b .category-b {
   font-size: .9rem;
-  background-color: #ce181e;
+  background-color: #fa7f15;
   padding: .3rem .7rem;
   color: #ffffff;
   letter-spacing: 0.030em;
@@ -2290,3 +2291,7 @@ a:hover {
       .faq aside a {
           margin-left: 10px;
       }
+
+  /*--------------------------------------------------------------
+# Registration Form Section
+--------------------------------------------------------------*/

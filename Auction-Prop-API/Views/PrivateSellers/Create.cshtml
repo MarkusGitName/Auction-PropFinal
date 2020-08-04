@@ -33,14 +33,6 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ProfilePhotoPath, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ProfilePhotoPath, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ProfilePhotoPath, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.ProofOfResedence, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ProofOfResedence, new { htmlAttributes = new { @class = "form-control" } })

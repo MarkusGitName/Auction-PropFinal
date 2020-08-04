@@ -76,4 +76,70 @@ namespace Auction_Prop_API.Models.DataBaseModels
 
         public virtual Deposit Deposit { get; set; }
     }
+    public partial class RegisteredBuyerNoR
+    {
+        public RegisteredBuyerNoR()
+        {
+            AuctionRegistrations = new HashSet<AuctionRegistrationNoR>();
+            Bids = new HashSet<BidNoR>();
+            BuyerAddresses = new HashSet<BuyerAddressNoR>();
+            ConcludedAuctions = new HashSet<ConcludedAuctionNoR>();
+        }
+
+        [Key]
+        public string UserId { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string FirstName { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string LastName { get; set; }
+
+        [Required]
+        [StringLength(13)]
+        public string IDNumber { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime DateOfBirth { get; set; }
+
+        [Required]
+        [StringLength(500)]
+        public string ProfilePhotoPath { get; set; }
+
+        [Required]
+        [StringLength(500)]
+        public string ProofOfResidencePath { get; set; }
+
+        [Required]
+        [StringLength(500)]
+        public string CopyOfIDPath { get; set; }
+
+        [Required]
+        [StringLength(500)]
+        public string ProofOfBankAccount { get; set; }
+
+        [Required]
+        [StringLength(500)]
+        public string IDBuyerVerifyPhoto { get; set; }
+
+        public bool ApprovalStatus { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime RegistrationDate { get; set; }
+
+        public bool Signiture { get; set; }
+
+        public virtual ICollection<AuctionRegistrationNoR> AuctionRegistrations { get; set; }
+
+        public virtual ICollection<BidNoR> Bids { get; set; }
+
+        public virtual ICollection<BuyerAddressNoR> BuyerAddresses { get; set; }
+
+        public virtual ICollection<ConcludedAuctionNoR> ConcludedAuctions { get; set; }
+
+        public virtual DepositNoR Deposit { get; set; }
+
+    }
 }

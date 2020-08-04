@@ -23,4 +23,18 @@ namespace Auction_Prop_Sellers.Models.DataViewModels
 
         public virtual Property Property { get; set; }
     }
+
+
+    public partial class PromoVideoData
+    {
+        [Key]
+        public int VideoID { get; set; }
+
+        public int PropertyID { get; set; }
+
+        [Required]
+        public HttpPostedFileBase VideoPath { get; set; }
+
+        public virtual Property Property { get; set; }
+    }
 }

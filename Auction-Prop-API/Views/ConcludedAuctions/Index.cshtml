@@ -16,6 +16,9 @@
             @Html.DisplayNameFor(model => model.Bid.BuyerID)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Property.SellerID)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.RegisteredBuyer.FirstName)
         </th>
         <th>
@@ -31,6 +34,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Bid.BuyerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Property.SellerID)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.RegisteredBuyer.FirstName)

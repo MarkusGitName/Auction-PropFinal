@@ -18,22 +18,104 @@ namespace Auction_Prop_API.Controllers.APIControllers
         private DataBaseModels db = new DataBaseModels();
 
         // GET: api/BankApprovals
-        public IQueryable<BankApproval> GetBankApprovals()
+        public ICollection<BankApprovalNoR> GetBankApprovals()
         {
-            return db.BankApprovals;
+
+           
+            List<BankApprovalNoR> Lys = new List<BankApprovalNoR>();
+            foreach (BankApproval objct in db.BankApprovals.Include(b => b.AuctionRegistration))
+            {
+
+
+                BankApprovalNoR newObject = new BankApprovalNoR()
+                {
+                    // Bids= objct.Bids,
+                    //  BankApproval = objct.BankApproval,
+                    ApprovalPath = objct.ApprovalPath,
+                   // AuctionRegistration = objct.AuctionRegistration,
+                    //  Guarintee = objct.Guarintee,
+                    DateOfSubmision = objct.DateOfSubmision,
+                    //  Property = objct.Property,
+                    BankApprovalApprovalstatus = objct.BankApprovalApprovalstatus,
+                    AuctionRegistrationID = objct.AuctionRegistrationID,
+                    //RegisteredBuyer = objct.RegisteredBuyer,
+                    //  RegistrationFees = objct.RegistrationFees,
+                    //  Signiture = objct.Signiture,
+                    //  RegistrationStatus = objct.RegistrationStatus
+                    //Seller = objct.Seller
+                    // AuctionRegistration = fee.AuctionRegistration
+                };
+
+                try
+                {
+                    newObject.AuctionRegistration = new AuctionRegistrationNoR();
+                    newObject.AuctionRegistration.id = objct.AuctionRegistration.id;
+                    newObject.AuctionRegistration.PropertyID = objct.AuctionRegistration.id;
+                    newObject.AuctionRegistration.RegesterDate= objct.AuctionRegistration.RegesterDate;
+                    newObject.AuctionRegistration.RegistrationFees = objct.AuctionRegistration.RegistrationFees;
+                    newObject.AuctionRegistration.Signiture = objct.AuctionRegistration.Signiture;
+                    newObject.AuctionRegistration.RegistrationStatus = objct.AuctionRegistration.RegistrationStatus;
+                    newObject.AuctionRegistration.BuyerId = objct.AuctionRegistration.BuyerId;
+                    newObject.AuctionRegistration.Bonded = objct.AuctionRegistration.Bonded;
+                    
+                }
+                catch { }
+
+
+
+
+
+                Lys.Add(newObject);
+            }
+
+            return Lys;
         }
 
         // GET: api/BankApprovals/5
         [ResponseType(typeof(BankApproval))]
         public async Task<IHttpActionResult> GetBankApproval(int id)
         {
-            BankApproval bankApproval = await db.BankApprovals.FindAsync(id);
-            if (bankApproval == null)
+            BankApproval objct = await db.BankApprovals.FindAsync(id);
+            if (objct == null)
             {
                 return NotFound();
             }
 
-            return Ok(bankApproval);
+
+            BankApprovalNoR newObject = new BankApprovalNoR()
+            {
+                // Bids= objct.Bids,
+                //  BankApproval = objct.BankApproval,
+                ApprovalPath = objct.ApprovalPath,
+                // AuctionRegistration = objct.AuctionRegistration,
+                //  Guarintee = objct.Guarintee,
+                DateOfSubmision = objct.DateOfSubmision,
+                //  Property = objct.Property,
+                BankApprovalApprovalstatus = objct.BankApprovalApprovalstatus,
+                AuctionRegistrationID = objct.AuctionRegistrationID,
+                //RegisteredBuyer = objct.RegisteredBuyer,
+                //  RegistrationFees = objct.RegistrationFees,
+                //  Signiture = objct.Signiture,
+                //  RegistrationStatus = objct.RegistrationStatus
+                //Seller = objct.Seller
+                // AuctionRegistration = fee.AuctionRegistration
+            };
+            try
+            {
+                newObject.AuctionRegistration = new AuctionRegistrationNoR();
+                newObject.AuctionRegistration.id = objct.AuctionRegistration.id;
+                newObject.AuctionRegistration.PropertyID = objct.AuctionRegistration.id;
+                newObject.AuctionRegistration.RegesterDate = objct.AuctionRegistration.RegesterDate;
+                newObject.AuctionRegistration.RegistrationFees = objct.AuctionRegistration.RegistrationFees;
+                newObject.AuctionRegistration.Signiture = objct.AuctionRegistration.Signiture;
+                newObject.AuctionRegistration.RegistrationStatus = objct.AuctionRegistration.RegistrationStatus;
+                newObject.AuctionRegistration.BuyerId = objct.AuctionRegistration.BuyerId;
+                newObject.AuctionRegistration.Bonded = objct.AuctionRegistration.Bonded;
+
+            }
+            catch { }
+
+            return Ok(newObject);
         }
 
         // PUT: api/BankApprovals/5

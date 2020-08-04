@@ -12,21 +12,50 @@ namespace Auction_Prop_Sellers.Controllers
 {
     public class FileController : Controller
     {
-        public static string uri = "https://auctionpropfiles.blob.core.windows.net/";
+    
+        //public static string uri = "https://auctionpropfiles.blob.core.windows.net/";
+        public static string uri = "http://sellers.auction-prop.com/";
+
         [HttpPost]
         public static string PostFile(HttpPostedFileBase file, string filePath, string uriExtension)
         {
+            /*
             if (file != null && file.ContentLength > 0)
             {
                 string path = Path.Combine(filePath, Path.GetFileName(file.FileName));
-               string Patth = uri + uriExtension + "/"+ Path.GetFileName(file.FileName);
+                file.SaveAs(path);
+                string Patth = uri + uriExtension + "/" + Path.GetFileName(file.FileName);
 
 
-                SaveToStorage(file.InputStream, Path.GetFileName(file.FileName), uriExtension);
+                //SaveToStorage(file.InputStream, Path.GetFileName(file.FileName), uriExtension);
                 return Patth;
             }
-            return "error";
-        }
+            return "error";*/
+
+
+
+            if (file != null && file.ContentLength > 0)
+                try
+                {
+                    string path = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/uploads/" + uriExtension),
+                    Path.GetFileName(file.FileName));
+                    file.SaveAs(path);
+                    string Patth = uri + "/uploads/" + uriExtension + "/" + file.FileName;
+
+                    return Patth;
+                }
+                catch (Exception ex)
+                {
+                    return "ERROR:" + ex.Message.ToString();
+                }
+            else
+            {
+                return "You have not specified a file.";
+            }
+
+
+        
+    }
 
         private static CloudBlobContainer GetContainer(string uriExtension)
         {

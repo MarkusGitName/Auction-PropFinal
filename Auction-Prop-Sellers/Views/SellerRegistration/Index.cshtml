@@ -67,10 +67,10 @@
             @Html.DisplayFor(model => model.PrivateSeller.Signiture)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Retaileler.Signature)
+            @Html.DisplayNameFor(model => model.Retailer.Signature)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Retaileler.Signature)
+            @Html.DisplayFor(model => model.Retailer.Signature)
         </dd>
 
 
@@ -155,7 +155,7 @@
                 }
                 else
                 {
-                    if (Model.SellerType == "Private                                                                                                                         ")
+                    if (Model.SellerType == "Private")
                     {
 
                         if (Model.PrivateSeller == null)
@@ -170,11 +170,26 @@
                             </p>
                         }
                     }
-                    else if (Model.SellerType == "Retailer                                                                                                                        ")
+                    else if (Model.SellerType == "Retailer")
                     {
-                        if (Model.Retaileler == null)
+                        if (Model.Retailer == null)
                         {
-                            @Html.ActionLink("Click here to compete youre profile.", "CreateRetialer")
+                            @Html.ActionLink("Click here to complete youre profile.", "CreateRetialer")
+
+                        }
+                        else
+                        {
+                            <p>
+                                Step 3 is completed.
+                            </p>
+                        }
+
+                    }
+                    else if (Model.SellerType == "Auctioneer")
+                    {
+                        if (Model.Retailer == null)
+                        {
+                            @Html.ActionLink("Click here to complete youre profile.", "CreateAuctioneer")
 
                         }
                         else

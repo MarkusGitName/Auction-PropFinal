@@ -18,22 +18,72 @@ namespace Auction_Prop_API.Controllers.APIControllers
         private DataBaseModels db = new DataBaseModels();
 
         // GET: api/PromoVideos
-        public IQueryable<PromoVideo> GetPromoVideos()
+        public ICollection<PromoVideoNoR> GetPromoVideos()
         {
-            return db.PromoVideos;
+
+          
+
+            List<PromoVideoNoR> Lys = new List<PromoVideoNoR>();
+            foreach (PromoVideo objct in db.PromoVideos.Include(p => p.Property))
+            {
+
+
+                PromoVideoNoR newObject = new PromoVideoNoR()
+                {
+                   // Property = objct.Property,
+                    //  BankApproval = objct.BankApproval,
+                    // Bid = objct.Bid,
+                    //  AuctionRegistration = objct.AuctionRegistration,
+                    PropertyID = objct.PropertyID,
+                    // Property = objct.Property,
+                    //  Property = objct.Property,
+                    // RegisteredBuyer = objct.RegisteredBuyer,
+                    //  Seller = objct.Seller,
+                    // RegisteredBuyer = objct.RegisteredBuyer,
+                    VideoID = objct.VideoID,
+                    VideoPath = objct.VideoPath,
+                    // = objct.ProofOfPaymentPath,
+                    // ProofOfReturnPayment = objct.ProofOfReturnPayment
+                    // AuctionRegistration = fee.AuctionRegistration
+                };
+
+
+                Lys.Add(newObject);
+            }
+
+            return Lys;
         }
 
         // GET: api/PromoVideos/5
         [ResponseType(typeof(PromoVideo))]
         public async Task<IHttpActionResult> GetPromoVideo(int id)
         {
-            PromoVideo promoVideo = await db.PromoVideos.FindAsync(id);
-            if (promoVideo == null)
+            PromoVideo objct = await db.PromoVideos.FindAsync(id);
+            if (objct == null)
             {
                 return NotFound();
             }
 
-            return Ok(promoVideo);
+            PromoVideoNoR newObject = new PromoVideoNoR()
+            {
+                // Property = objct.Property,
+                //  BankApproval = objct.BankApproval,
+                // Bid = objct.Bid,
+                //  AuctionRegistration = objct.AuctionRegistration,
+                PropertyID = objct.PropertyID,
+                // Property = objct.Property,
+                //  Property = objct.Property,
+                // RegisteredBuyer = objct.RegisteredBuyer,
+                //  Seller = objct.Seller,
+                // RegisteredBuyer = objct.RegisteredBuyer,
+                VideoID = objct.VideoID,
+                VideoPath = objct.VideoPath,
+                // = objct.ProofOfPaymentPath,
+                // ProofOfReturnPayment = objct.ProofOfReturnPayment
+                // AuctionRegistration = fee.AuctionRegistration
+            };
+
+            return Ok(newObject);
         }
 
         // PUT: api/PromoVideos/5

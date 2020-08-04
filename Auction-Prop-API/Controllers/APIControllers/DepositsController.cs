@@ -11,29 +11,78 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Auction_Prop_API.Models.DataBaseModels;
 
-namespace Auction_Prop_API.Controllers.APIControllers
+namespace Auction_Prop_API.Controllers
 {
     public class DepositsController : ApiController
     {
         private DataBaseModels db = new DataBaseModels();
 
         // GET: api/Deposits
-        public IQueryable<Deposit> GetDeposits()
+        public ICollection<DepositNoR> GetDeposits()
         {
-            return db.Deposits;
+
+         
+            List<DepositNoR> Lys = new List<DepositNoR>();
+            foreach (Deposit objct in db.Deposits.Include(d => d.RegisteredBuyer))
+            {
+
+
+                DepositNoR newObject = new DepositNoR()
+                {
+                    // Bids= objct.Bids,
+                    //  BankApproval = objct.BankApproval,
+                    // Bid = objct.Bid,
+                    Amount = objct.Amount,
+                    BuyerID = objct.BuyerID,
+                    // Property = objct.Property,
+                    //  Property = objct.Property,
+                    // RegisteredBuyer = objct.RegisteredBuyer,
+                    DateOfPayment = objct.DateOfPayment,
+                    // RegisteredBuyer = objct.RegisteredBuyer,
+                    DepositReturned = objct.DepositReturned,
+                    Paid = objct.Paid,
+                    ProofOfPaymentPath = objct.ProofOfPaymentPath,
+                    ProofOfReturnPayment = objct.ProofOfReturnPayment
+                    // AuctionRegistration = fee.AuctionRegistration
+                };
+
+
+                Lys.Add(newObject);
+            }
+
+            return Lys;
         }
 
         // GET: api/Deposits/5
         [ResponseType(typeof(Deposit))]
         public async Task<IHttpActionResult> GetDeposit(string id)
         {
-            Deposit deposit = await db.Deposits.FindAsync(id);
-            if (deposit == null)
+            Deposit objct = await db.Deposits.FindAsync(id);
+            if (objct == null)
             {
                 return NotFound();
             }
 
-            return Ok(deposit);
+            DepositNoR newObject = new DepositNoR()
+            {
+                // Bids= objct.Bids,
+                //  BankApproval = objct.BankApproval,
+                // Bid = objct.Bid,
+                Amount = objct.Amount,
+                BuyerID = objct.BuyerID,
+                // Property = objct.Property,
+                //  Property = objct.Property,
+                // RegisteredBuyer = objct.RegisteredBuyer,
+                DateOfPayment = objct.DateOfPayment,
+                // RegisteredBuyer = objct.RegisteredBuyer,
+                DepositReturned = objct.DepositReturned,
+                Paid = objct.Paid,
+                ProofOfPaymentPath = objct.ProofOfPaymentPath,
+                ProofOfReturnPayment = objct.ProofOfReturnPayment
+                // AuctionRegistration = fee.AuctionRegistration
+            };
+
+            return Ok(newObject);
         }
 
         // PUT: api/Deposits/5

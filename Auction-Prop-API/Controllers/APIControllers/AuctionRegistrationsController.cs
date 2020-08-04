@@ -18,22 +18,72 @@ namespace Auction_Prop_API.Controllers.APIControllers
         private DataBaseModels db = new DataBaseModels();
 
         // GET: api/AuctionRegistrations
-        public IQueryable<AuctionRegistration> GetAuctionRegistrations()
+        public ICollection<AuctionRegistrationNoR> GetAuctionRegistrations()
         {
-            return db.AuctionRegistrations;
+           
+
+
+            List<AuctionRegistrationNoR> Lys = new List<AuctionRegistrationNoR>();
+            foreach (AuctionRegistration objct in db.AuctionRegistrations.Include(a => a.AdminFee).Include(a => a.BankApproval).Include(a => a.Guarintee).Include(a => a.Property).Include(a => a.RegisteredBuyer))
+            {
+
+
+                AuctionRegistrationNoR newObject = new AuctionRegistrationNoR()
+                {
+                  //  AdminFee = objct.AdminFee,
+                  //  BankApproval = objct.BankApproval,
+                    Bonded = objct.Bonded,
+                    BuyerId = objct.BuyerId,
+                  //  Guarintee = objct.Guarintee,
+                    id = objct.id,
+                  //  Property = objct.Property,
+                    PropertyID = objct.PropertyID,
+                    RegesterDate = objct.RegesterDate,
+                    //RegisteredBuyer = objct.RegisteredBuyer,
+                    RegistrationFees =objct.RegistrationFees,
+                    Signiture=objct.Signiture,
+                    RegistrationStatus= objct.RegistrationStatus
+                    //Seller = objct.Seller
+                    // AuctionRegistration = fee.AuctionRegistration
+                };
+
+
+                Lys.Add(newObject);
+            }
+
+            return Lys;
         }
+    
 
         // GET: api/AuctionRegistrations/5
         [ResponseType(typeof(AuctionRegistration))]
         public async Task<IHttpActionResult> GetAuctionRegistration(int id)
         {
-            AuctionRegistration auctionRegistration = await db.AuctionRegistrations.FindAsync(id);
-            if (auctionRegistration == null)
+            AuctionRegistration objct = await db.AuctionRegistrations.FindAsync(id);
+            if (objct == null)
             {
                 return NotFound();
             }
+            AuctionRegistrationNoR newObject = new AuctionRegistrationNoR()
+            {
+                //  AdminFee = objct.AdminFee,
+                //  BankApproval = objct.BankApproval,
+                Bonded = objct.Bonded,
+                BuyerId = objct.BuyerId,
+                //  Guarintee = objct.Guarintee,
+                id = objct.id,
+                //  Property = objct.Property,
+                PropertyID = objct.PropertyID,
+                RegesterDate = objct.RegesterDate,
+                //RegisteredBuyer = objct.RegisteredBuyer,
+                RegistrationFees = objct.RegistrationFees,
+                Signiture = objct.Signiture,
+                RegistrationStatus = objct.RegistrationStatus
+                //Seller = objct.Seller
+                // AuctionRegistration = fee.AuctionRegistration
+            };
 
-            return Ok(auctionRegistration);
+            return Ok(newObject);
         }
 
         // PUT: api/AuctionRegistrations/5

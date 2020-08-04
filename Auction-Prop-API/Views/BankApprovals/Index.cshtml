@@ -13,7 +13,9 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.RegisteredBuyer.FirstName)
+            @Html.DisplayNameFor(model => model.AuctionRegistration.BuyerId)
+        </th> <th>
+            @Html.DisplayNameFor(model => model.AuctionRegistration.RegisteredBuyer.FirstName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ApprovalPath)
@@ -30,7 +32,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.RegisteredBuyer.FirstName)
+            @Html.DisplayFor(modelItem => item.AuctionRegistration.BuyerId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuctionRegistration.RegisteredBuyer.FirstName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ApprovalPath)
@@ -42,9 +47,9 @@
             @Html.DisplayFor(modelItem => item.DateOfSubmision)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ApprovalID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ApprovalID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ApprovalID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.AuctionRegistrationID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AuctionRegistrationID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AuctionRegistrationID })
         </td>
     </tr>
 }

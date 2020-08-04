@@ -1,4 +1,5 @@
 ﻿@using Auction_Prop_Buyers.Models.DisplayMadels
+@model Message
 @{
     ViewBag.Title = "Home Page";
 }
@@ -19,6 +20,55 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <script src="https://kit.fontawesome.com/ef4e2c1ac6.js" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <style>
+
+        .home-newsletter {
+            padding: 80px 0;
+            background: #1d293d;
+            text-align: center;
+        }
+
+            .home-newsletter .single {
+                max-width: 650px;
+                margin: 0 auto;
+                text-align: center;
+                position: relative;
+                z-index: 2;
+            }
+
+                .home-newsletter .single h2 {
+                    font-size: 22px;
+                    color: white;
+                    text-transform: uppercase;
+                    margin-bottom: 40px;
+                }
+
+                .home-newsletter .single .form-control {
+                    height: 50px;
+                    background: rgba(255, 255, 255, 0.6);
+                    border-color: #143967;
+                    border-radius: 20px 0 0 20px;
+                }
+
+                    .home-newsletter .single .form-control:focus {
+                        box-shadow: none;
+                        border-color: #fa7f15;
+                    }
+
+                .home-newsletter .single .btn {
+                    min-height: 50px;
+                    border-radius: 0 20px 20px 0;
+                    background: #fa7f15;
+                    color: #fff;
+                }
+    </style>
 
     <!-- Vendor CSS Files -->
     <link rel="stylesheet" href="~/Content2/bootstrap1.min.css" type="text/css">
@@ -27,6 +77,7 @@
     <link rel="stylesheet" href="~/Content2/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="~/Content/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="~/Content/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="~/assets/css/counter.css" type="text/css">
 
     <!-- Template Main CSS File -->
     <link href="~/assets/css/style.css" rel="stylesheet">
@@ -41,7 +92,7 @@
         <div class="title-box-d">
             <h3 class="title-d">Search Property</h3>
         </div>
-        <span class="close-box-collapse right-boxed ion-ios-close"></span>
+        <span class="close-box-collapse right-boxed ion-ios-arrow-dropright"></span>
         <div class="box-collapse-wrap form">
             <form class="form-a">
                 <div class="row">
@@ -124,419 +175,311 @@
     </div>
     <!-- ======= Property Search Section End ======= -->
     <!-- ======= Intro Section Start ======= -->
-    <div class="intro intro-carousel">
-        <div id="carousel" class="owl-carousel owl-theme">
-            <div class="carousel-item-a intro-item bg-image" style="background-image: url()">
-                <div class="overlay overlay-a"></div>
-                <div class="intro-content display-table">
-                    <div class="table-cell">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <div class="intro-body">
-                                        <p class="intro-title-top">
-                                            Doral, Florida
-                                            <br> 78345
-                                        </p>
-                                        <h1 class="intro-title mb-4">
-                                            <span class="color-b">204 </span> Mount
-                                            <br> Olive Road Two
-                                        </h1>
-                                        <p class="intro-subtitle intro-price">
-                                            <a href="#"><span class="price-a">Auction Date | 10 June 2020</span></a>
-                                        </p>
+    <section class="section-property section-t8">
+        <div class="intro intro-carousel">
+            <div id="carousel" class="owl-carousel owl-theme">
+                <div class="carousel-item-a intro-item bg-image" style="background-image: url()">
+                    <div class="overlay overlay-a"></div>
+                    <div class="intro-content display-table">
+                        <div class="table-cell">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="intro-body text-lg-center">
+
+                                            <h1 class="intro-title text-center">
+                                                SA's HOME FOR ONLINE PROPERTY AUCTIONS
+                                                <br />
+                                            </h1>
+                                            <p class="intro-subtitle intro-price">
+                                                <a href="#"><span><strong>@Html.ActionLink("Upcomming Auctions", "Properties", "Home", new { @class = "price-a" })</strong></span></a>
+                                            </p>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <img src="~/assets/img/door.jpeg" />
                 </div>
-                <img src="~/assets/img/glass.jpg" />
-            </div>
-            <div class="carousel-item-a intro-item bg-image" style="background-image: url()">
-                <div class="overlay overlay-a"></div>
-                <div class="intro-content display-table">
-                    <div class="table-cell">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <div class="intro-body">
-                                        <p class="intro-title-top">
-                                            Doral, Florida
-                                            <br> 78345
-                                        </p>
-                                        <h1 class="intro-title mb-4">
-                                            <span class="color-b">204 </span> Rino
-                                            <br> Venda Road Five
-                                        </h1>
-                                        <p class="intro-subtitle intro-price">
-                                            <a href="#"><span class="price-a">Auction Date | 12 June 2020</span></a>
-                                        </p>
+                <div class="carousel-item-a intro-item bg-image" style="background-image: url()">
+                    <div class="overlay overlay-a"></div>
+                    <div class="intro-content display-table">
+                        <div class="table-cell">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="intro-body text-lg-center">
+
+                                            <h1 class="intro-title text-center">
+
+                                                BUYING A PROPERTY ON<span class="color-b"> AUCTION </span> MADE EASY
+                                                <br />
+
+                                            </h1>
+                                            <p class="intro-subtitle intro-price">
+                                                <a href="#"><span><strong>@Html.ActionLink("Buyers Guide", "Buyers", "Home", new { @class = "price-a" })</strong></span></a>
+                                            </p>
+
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <img src="~/assets/img/white.jpg" />
                 </div>
-                <img src="~/assets/img/white.jpg" />
-            </div>
-            <div class="carousel-item-a intro-item bg-image" style="background-image: url(~/assets/img/slide-3.jpg)">
-                <div class="overlay overlay-a"></div>
-                <div class="intro-content display-table">
-                    <div class="table-cell">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <div class="intro-body">
-                                        <p class="intro-title-top">
-                                            Doral, Florida
-                                            <br> 78345
-                                        </p>
-                                        <h1 class="intro-title mb-4">
-                                            <span class="color-b">204 </span> Alira
-                                            <br> Roan Road One
-                                        </h1>
-                                        <p class="intro-subtitle intro-price">
-                                            <a href="#"><span class="price-a">Auction Date | 20 June 2020</span></a>
-                                        </p>
+                <div class="carousel-item-a intro-item bg-image" style="background-image: url(~/assets/img/slide-3.jpg)">
+                    <div class="overlay overlay-a"></div>
+                    <div class="intro-content display-table">
+                        <div class="table-cell">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="intro-body text-lg-center">
+
+                                            <h1 class="intro-title text-center">
+                                                DO YOU WANT TO    <span class="color-b"> SELL </span> YOUR PROPERTY?
+                                                <br />
+
+                                            </h1>
+                                            <p class="intro-subtitle intro-price">
+                                                <a href="#"><span><strong>@Html.ActionLink("Sellers Guide", "Sellers", "Home", new { @class = "price-a" })</strong></span></a>
+                                            </p>
+
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <img src="~/assets/img/night.jpg" />
                 </div>
-                <img src="~/assets/img/night.jpg" />
             </div>
         </div>
-    </div>
-    <!-- ======= Intro Section End ======= -->
+    </section>
+    <br />
+    <br />
+
+   
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken() <section class="home-newsletter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="single">
+                            <h2>Subscribe to our Newsletter</h2>
+                            <div class="input-group">
+
+                                @Html.EditorFor(model => model.Message1, new { htmlAttributes = new { @class = "form-control" } })
+                                <span class="input-group-btn">
+                                    <input type="submit" value="Create" class="btn btn-theme" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+
+
+
+
     <!-- ======= Latest Properties Section Start ======= -->
     <section class="section-property section-t8">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="title-wrap d-flex justify-content-between">
-                        <div class="title-box">
+                        <div class="title-box" style="border-bottom: solid #fa7f15">
                             <h2 class="title-a">Upcoming Auctions</h2>
-                        </div>
-                        <div class="title-link">
-                            <a href="property-grid.html">
-                                All Properties
-                                <span class="ion-ios-arrow-forward"></span>
-                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="property-carousel" class="owl-carousel owl-theme">
-                <div class="carousel-item-b">
-                    <div class="card-box-a card-shadow">
-                        <div class="img-box-a">
-                            <img src="~/assets/img/property-6.jpg" alt="" class="img-a img-fluid">
-                        </div>
-                        <div class="card-overlay">
-                            <div class="card-overlay-a-content">
-                                <div class="card-header-a">
-                                    <h2 class="card-title-a">
-                                        <a href="property-single.html">
-                                            204 Mount
-                                            <br /> Olive Road Two
-                                        </a>
-                                    </h2>
-                                </div>
-                                <div class="card-body-a">
-                                    <div class="price-box d-flex">
-                                        <span class="price-a">Auction Date | 10 June 2020</span>
+
+            <div id="property-carousel" class="owl-carousel owl-theme" style="height:400px">
+                @{ ICollection<Property> propertiesList = APILibrary.APIMethods.APIGetALL<ICollection<Property>>("Properties");
+
+                    foreach (Property prop in propertiesList)
+                    {
+                        if (prop.Auction != null)
+                        {
+                            <div class="carousel-item-b">
+                                <div class="card-box-a card-shadow" style="height:350px">
+
+                                    @try
+                                    {
+                                        <div class="img-box-a" style="max-width:100%; height:350px">
+                                            <img src=@prop.PropertyPhotos.First().PropertyPhotoPath alt="" class="img-a" style="max-width:100%; height:350px">
+                                        </div>
+                                    }
+                                    catch
+                                    { <div class="img-box-a">
+                                            <img src="~/assets/img/property-1.jpg" class="img-a img-fluid">
+                                        </div>
+
+
+                                    }
+
+
+                                    <div class="card-overlay">
+                                        <div class="card-overlay-a-content">
+                                            <div class="card-header-a">
+                                                <h2 class="card-title-a">
+                                                    <a href='@Url.Action("Detailss", "home", new { id = prop.PropertyID })'>
+                                                        @prop.Province
+                                                        <br /> @prop.City
+                                                    </a>
+                                                </h2>
+                                            </div>
+                                            <div class="card-body-a">
+                                                <div class="price-box d-flex">
+                                                    <span class="price-a">Date | @prop.Auction.StartTime.ToString("dddd, dd MMMM HH:mm:ss")</span>
+                                                </div>
+                                                <a href='@Url.Action("Detailss", "home", new { id = prop.PropertyID })' class="link-a">
+                                                    Learn More
+                                                    <span class="ion-ios-arrow-forward"></span>
+                                                </a>
+                                            </div>
+                                            <div class="card-footer-a">
+                                                <ul class="card-info d-flex justify-content-around">
+                                                    <li>
+                                                        <h4 class="card-info-title">Building</h4>
+                                                        <span>
+                                                            @prop.FloorSize
+                                                            <sup>2</sup>
+                                                        </span>
+                                                    </li>
+                                                    <li>
+                                                        <h4 class="card-info-title">Beds</h4>
+                                                        <span>@prop.BedRooms</span>
+                                                    </li>
+                                                    <li>
+                                                        <h4 class="card-info-title">Baths</h4>
+                                                        <span>@prop.BathRooms</span>
+                                                    </li>
+                                                    <li>
+                                                        <h4 class="card-info-title">Garages</h4>
+                                                        <span>@prop.Garages</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <a href="#" class="link-a">
-                                        Learn More
-                                        <span class="ion-ios-arrow-forward"></span>
-                                    </a>
                                 </div>
-                                <div class="card-footer-a">
-                                    <ul class="card-info d-flex justify-content-around">
-                                        <li>
-                                            <h4 class="card-info-title">Building</h4>
-                                            <span>
-                                                340m
-                                                <sup>2</sup>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Beds</h4>
-                                            <span>2</span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Baths</h4>
-                                            <span>4</span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Garages</h4>
-                                            <span>1</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item-b">
-                    <div class="card-box-a card-shadow">
-                        <div class="img-box-a">
-                            <img src="~/assets/img/property-3.jpg" alt="" class="img-a img-fluid">
-                        </div>
-                        <div class="card-overlay">
-                            <div class="card-overlay-a-content">
-                                <div class="card-header-a">
-                                    <h2 class="card-title-a">
-                                        <a href="property-single.html">
-                                            204 Rino
-                                            <br /> Venda Road Five
-                                        </a>
-                                    </h2>
-                                </div>
-                                <div class="card-body-a">
-                                    <div class="price-box d-flex">
-                                        <span class="price-a">Auction Date | 12 June 2020</span>
-                                    </div>
-                                    <a href="property-single.html" class="link-a">
-                                        Learn More
-                                        <span class="ion-ios-arrow-forward"></span>
-                                    </a>
-                                </div>
-                                <div class="card-footer-a">
-                                    <ul class="card-info d-flex justify-content-around">
-                                        <li>
-                                            <h4 class="card-info-title">Building</h4>
-                                            <span>
-                                                340m
-                                                <sup>2</sup>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Beds</h4>
-                                            <span>2</span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Baths</h4>
-                                            <span>4</span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Garages</h4>
-                                            <span>1</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item-b">
-                    <div class="card-box-a card-shadow">
-                        <div class="img-box-a">
-                            <img src="~/assets/img/property-7.jpg" alt="" class="img-a img-fluid">
-                        </div>
-                        <div class="card-overlay">
-                            <div class="card-overlay-a-content">
-                                <div class="card-header-a">
-                                    <h2 class="card-title-a">
-                                        <a href="property-single.html">
-                                            04 Alira
-                                            <br /> Roan Road One
-                                        </a>
-                                    </h2>
-                                </div>
-                                <div class="card-body-a">
-                                    <div class="price-box d-flex">
-                                        <span class="price-a">Auction Date | 20 June 2020</span>
-                                    </div>
-                                    <a href="property-single.html" class="link-a">
-                                        Learn More
-                                        <span class="ion-ios-arrow-forward"></span>
-                                    </a>
-                                </div>
-                                <div class="card-footer-a">
-                                    <ul class="card-info d-flex justify-content-around">
-                                        <li>
-                                            <h4 class="card-info-title">Building</h4>
-                                            <span>
-                                                340m
-                                                <sup>2</sup>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Beds</h4>
-                                            <span>2</span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Baths</h4>
-                                            <span>4</span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Garages</h4>
-                                            <span>1</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item-b">
-                    <div class="card-box-a card-shadow">
-                        <div class="img-box-a">
-                            <img src="~/assets/img/property-10.jpg" alt="" class="img-a img-fluid">
-                        </div>
-                        <div class="card-overlay">
-                            <div class="card-overlay-a-content">
-                                <div class="card-header-a">
-                                    <h2 class="card-title-a">
-                                        <a href="property-single.html">
-                                            204 Montal
-                                            <br /> South Bela Two
-                                        </a>
-                                    </h2>
-                                </div>
-                                <div class="card-body-a">
-                                    <div class="price-box d-flex">
-                                        <span class="price-a">rent | $ 12.000</span>
-                                    </div>
-                                    <a href="property-single.html" class="link-a">
-                                        Learn More
-                                        <span class="ion-ios-arrow-forward"></span>
-                                    </a>
-                                </div>
-                                <div class="card-footer-a">
-                                    <ul class="card-info d-flex justify-content-around">
-                                        <li>
-                                            <h4 class="card-info-title">Area</h4>
-                                            <span>
-                                                340m
-                                                <sup>2</sup>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Beds</h4>
-                                            <span>2</span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Baths</h4>
-                                            <span>4</span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Garages</h4>
-                                            <span>1</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            </div> }
+
+
+                    } }
+
+
             </div>
         </div>
     </section>
     <!-- ======= Latest Properties Section End ======= -->
     <!-- ======= Services Section Start ======= -->
-    <section class="section-services section-t8">
+
+
+    <section class="section-property section-t8">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="title-wrap d-flex justify-content-between">
-                        <div class="title-box">
-                            <h2 class="title-a">Our Services</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card-box-c foo">
-                        <div class="card-header-c d-flex">
-                            <div class="card-box-ico">
-                                <span class="fa fa-gamepad"></span>
-                            </div>
-                            <div class="card-title-c align-self-center">
-                                <h2 class="title-c">Lifestyle</h2>
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="agent-avatar-box">
+                                <img src="~/assets/img/bn.jpg" alt="" class="agent-avatar img-fluid">
                             </div>
                         </div>
-                        <div class="card-body-c">
-                            <p class="content-c">
-                                Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
-                                convallis a pellentesque
-                                nec, egestas non nisi.
-                            </p>
-                        </div>
-                        <div class="card-footer-c">
-                            <a href="#" class="link-c link-icon">
-                                Read more
-                                <span class="ion-ios-arrow-forward"></span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card-box-c foo">
-                        <div class="card-header-c d-flex">
-                            <div class="card-box-ico">
-                                <span class="fa fa-usd"></span>
+                        <div class="col-md-4 section-md-t3">
+                            <div class="agent-info-box">
+                                <div class="agent-title">
+                                    <div class="title-box-d">
+                                        <h3 class="title-d">
+                                            WE ARE THE NUMBER 1
+                                            <br> INVESTOR PLATFORM
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="agent-content mb-3">
+                                    <p class="content-d color-text-a">
+                                        We do bank instructed Auctions daily!
+                                    </p>
+                                    <p class="content-d color-text-a">
+                                        Sign Up to our newsletter to get a list of all the recent Investment Opportunities.
+                                    </p>
+                                    <p class="content-d color-text-a">
+                                        Bank Instructed
+                                    </p>
+                                    <p class="content-d color-text-a">
+                                        Sherriff Auctions
+                                    </p>
+                                    <p class="content-d color-text-a">
+                                        Estate Late Properties
+                                    <p class="content-d color-text-a">
+                                        Insolvency Practitioner Instructions
+                                    </p>
+
+                                    </p>
+                                    <div class="info-agents color-a">
+
+
+                                    </div>
+                                </div>
+                                <div class="socials-footer">
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <a href="#" class="link-one">
+                                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="#" class="link-one">
+                                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="#" class="link-one">
+                                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="#" class="link-one">
+                                                <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="#" class="link-one">
+                                                <i class="fa fa-dribbble" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="card-title-c align-self-center">
-                                <h2 class="title-c">Loans</h2>
-                            </div>
-                        </div>
-                        <div class="card-body-c">
-                            <p class="content-c">
-                                Nulla porttitor accumsan tincidunt. Curabitur aliquet quam id dui posuere blandit. Mauris blandit
-                                aliquet elit, eget tincidunt
-                                nibh pulvinar a.
-                            </p>
-                        </div>
-                        <div class="card-footer-c">
-                            <a href="#" class="link-c link-icon">
-                                Read more
-                                <span class="ion-ios-arrow-forward"></span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card-box-c foo">
-                        <div class="card-header-c d-flex">
-                            <div class="card-box-ico">
-                                <span class="fa fa-home"></span>
-                            </div>
-                            <div class="card-title-c align-self-center">
-                                <h2 class="title-c">Sell</h2>
-                            </div>
-                        </div>
-                        <div class="card-body-c">
-                            <p class="content-c">
-                                Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
-                                convallis a pellentesque
-                                nec, egestas non nisi.
-                            </p>
-                        </div>
-                        <div class="card-footer-c">
-                            <a href="#" class="link-c link-icon">
-                                Read more
-                                <span class="ion-ios-arrow-forward"></span>
-                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- ======= Services Section End ======= -->
 
+
+    </section>
+
+    <!-- ======= Services Section End ======= -->
     <!-- ======= Latest News Section ======= -->
-    <section class="section-news section-t8">
+    <section class="section-property section-t8">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="title-wrap d-flex justify-content-between">
-                        <div class="title-box">
+                        <div class="title-box" style="border-bottom: solid #fa7f15">
                             <h2 class="title-a">Recently Sold Properties</h2>
                         </div>
                     </div>
@@ -645,11 +588,54 @@
                 </div>
             </div>
         </div>
-    </section><!-- End Latest News Section -->
+    </section>
+    <!-- End Latest News Section -->
     <!-- end Page Content -->
+    <!-- ======= Counter ======= -->
+    <section class="section-property section-t8">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title-wrap d-flex justify-content-between">
+                        <div class="title-box" style="border-bottom: solid #fa7f15">
+                            <h2 class="title-a">Fun Facts</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="four col-md-3">
+                    <div class="counter-box colored">
+                        <i class="fa fa-thumbs-o-up"></i> <span class="counter">147</span>
+                        <p>Properties Listed</p>
+                    </div>
+                </div>
+                <div class="four col-md-3">
+                    <div class="counter-box">
+                        <i class="fa fa-group"></i> <span class="counter">140</span>
+                        <p>Satisfied Clients</p>
+                    </div>
+                </div>
+                <div class="four col-md-3">
+                    <div class="counter-box">
+                        <i class="fa fa-shopping-cart"></i> <span class="counter">101</span>
+                        <p>Properties Sold</p>
+                    </div>
+                </div>
+                <div class="four col-md-3">
+                    <div class="counter-box">
+                        <i class="fa fa-user"></i> <span class="counter">1963</span>
+                        <p>Days of our Lives</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+    </section>
+    <!-- ======= Counter  End ======= -->
 
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-    <div id="preloader"></div>
 
     <!-- Vendor JS Files -->
     <script src="~/Scripts/jquery.min.js"></script>
@@ -658,6 +644,23 @@
     <script src="~/Scripts/validate.js"></script>
     <script src="~/Scripts/owl.carousel.min.js"></script>
     <script src="~/Scripts/scrollreveal.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('.counter').each(function () {
+                $(this).prop('Counter', 0).animate({
+                    Counter: $(this).text()
+                }, {
+                    duration: 40000,
+                    easing: 'swing',
+                    step: function (now) {
+                        $(this).text(Math.ceil(now));
+                    }
+                });
+            });
+
+        });
+    </script>
 
     <!-- Template Main JS File -->
     <script src="~/Scripts/main.js"></script>

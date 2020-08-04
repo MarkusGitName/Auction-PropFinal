@@ -15,10 +15,13 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
 
         public int PropertyID { get; set; }
 
+
         public bool RegistrationFees { get; set; }
 
         public DateTime RegesterDate { get; set; }
+
         [Required]
+        [Display(Name = "Terms And Contitions")]
         public bool Signiture { get; set; }
 
         public bool RegistrationStatus { get; set; }
@@ -42,7 +45,10 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
 
         public DateTime RegesterDate { get; set; }
 
+        [Required]
+        [Display(Name = "Terms And Contitions")]
         public bool Signiture { get; set; }
+
 
         public bool RegistrationStatus { get; set; }
 

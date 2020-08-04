@@ -15,19 +15,104 @@ namespace Auction_Prop_Buyers.Controllers
         {
             return View();
         }
-
-
-        public ActionResult Properties()
+        [HttpPost]
+        public ActionResult Index(Message msg)
+        {
+            msg.SellerID = "";
+            msg.UserID = "";
+            APIMethods.APIPost<Message>(msg, "Messages");
+            return View(msg);
+        }
+         public ActionResult HowItWorks()
         {
             return View();
+        }
+
+
+        public ActionResult Properties(List<Property> model, int? id)
+        {
+            ICollection<Property> propertiesList = APILibrary.APIMethods.APIGetALL<ICollection<Property>>("Properties");
+            List<Property> propLys = new List<Property>();
+            List<Property> propLysSorted = new List<Property>();
+            List<Property> propLysUnS = new List<Property>();
+
+
+
+            foreach (Property prop in propertiesList)
+            {
+                try
+                {
+
+                    if (prop.Auction != null)
+                    {
+                        propLysSorted.Add(prop);
+
+                    }
+                    else
+                    {
+                        propLysUnS.Add(prop);
+                    }
+
+
+
+                }
+                catch
+                {
+
+                }
+
+            }
+
+            var sortedReadings = propLysSorted.OrderBy(x => x.Auction.StartTime.Year)
+    .ThenBy(x => x.Auction.StartTime.Date)
+    .ThenBy(x => x.Auction.StartTime.TimeOfDay);
+
+
+            propLysSorted = sortedReadings.ToList<Property>();
+            propLysSorted.AddRange(propLysUnS);
+
+            try
+            {
+                if(id == null)
+                {
+                    id = 0;
+                }
+                int? i = id;
+                foreach (Property p in propLysSorted)
+                {
+                    if (i > id && i < id + 20)
+                    {
+                        propLys.Add(p);
+                    }
+                    i++;
+                }
+            }
+            catch
+            {
+                int? i = id;
+                foreach (Property p in propLysSorted)
+                {
+                    if (i > id && i < id + 20)
+                    {
+                        propLys.Add(p);
+                    }
+                    i++;
+                }
+            }
+
+       
+            
+
+            return View(propLys);
         }
 
         public ActionResult Buyers()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Buyers";
 
             return View();
-        }
+        }   
+       
 
         public ActionResult Sellers()
         {
@@ -123,12 +208,12 @@ namespace Auction_Prop_Buyers.Controllers
         {
             try
             {
-                 Property prop = APIMethods.APIGet<Property>(id.ToString(), "Properties");
-                 return View(prop);
+                Property prop = APIMethods.APIGet<Property>(id.ToString(), "Properties");
+                return View(prop);
             }
             catch (Exception E)
             {
-                ErrorViewModel error = new ErrorViewModel()
+                 ErrorViewModel error = new ErrorViewModel()
                 {
                     msge = E.ToString(),
                 };
@@ -169,9 +254,9 @@ namespace Auction_Prop_Buyers.Controllers
             }
 
         }
-        public ActionResult ErrorView(ErrorView error)
+        public ActionResult ErrorView(ErrorViewModel error)
         {
-            return View();
+            return View(error);
         }
     }
 }
