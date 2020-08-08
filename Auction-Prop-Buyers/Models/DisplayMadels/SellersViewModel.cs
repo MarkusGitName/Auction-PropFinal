@@ -38,6 +38,9 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
         [StringLength(128)]
         public string SellerEmail { get; set; }
 
+
+        [Required]
+        [Display(Name = "Terms And Conitions")]
         public bool Signature { get; set; }
 
         public bool ApprovalStatus { get; set; }

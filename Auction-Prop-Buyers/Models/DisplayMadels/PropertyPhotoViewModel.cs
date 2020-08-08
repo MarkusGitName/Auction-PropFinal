@@ -16,11 +16,11 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
         public int PropertyId { get; set; }
 
 
-        [Display(Name = "Enter a title for the photo. this is not required.")]
+        [Display(Name = "Enter a title for the photo. this is not required")]
         public string Title { get; set; }
 
 
-        [Display(Name = "Enter a Description to acompany the photo. this is not required.")]
+        [Display(Name = "Enter a Description to acompany the photo. this is not required")]
         public string Description { get; set; }
 
         public string PropertyPhotoPath { get; set; }

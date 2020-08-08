@@ -74,17 +74,18 @@ namespace Auction_Prop_Buyers.Controllers
             // Merchant Details
             onceOffRequest.merchant_id = this.payFastSettings.MerchantId;
             onceOffRequest.merchant_key = this.payFastSettings.MerchantKey;
-            onceOffRequest.return_url = this.payFastSettings.ReturnUrl;
+         
             onceOffRequest.cancel_url = this.payFastSettings.CancelUrl;
             onceOffRequest.notify_url = this.payFastSettings.NotifyUrl;
 
-            onceOffRequest.email_address = "sbtu01@payfast.co.za";
+            onceOffRequest.email_address = "admin@auction-prop.com";
 
             // Transaction Details
             onceOffRequest.m_payment_id = idd.ToString();
             onceOffRequest.amount = amount;
+           // onceOffRequest.amount = 10;
             onceOffRequest.item_name = "Once off option";
-            onceOffRequest.item_description = "Some details about the once off payment";
+            onceOffRequest.item_description = "Auction-prop Regestrasion fees.";
 
             // Transaction Options
             onceOffRequest.email_confirmation = true;
@@ -92,50 +93,83 @@ namespace Auction_Prop_Buyers.Controllers
             // Transaction Options
             onceOffRequest.email_confirmation = true;
             onceOffRequest.confirmation_address = "";
-
-            var redirectUrl = $"{this.payFastSettings.ProcessUrl}{onceOffRequest.ToString()}";
-
+              string rI = "";
             if (idd !=0)
-            { 
-            
-                AdminFee fees = new AdminFee
-                {
-                    PaymentID = idd,
-                    ProofOfPaymentPath = "none",
-                    DateOfPayment = DateTime.Now,
-                    Amount = 150
+            {
 
-                };
-                APILibrary.APIMethods.APIPost<AdminFee>(fees, "AdminFees");
-                
+
+                rI = idd.ToString();
+
             }
             if(amount>=5000)
             {
-                Deposit dep = new Deposit
+                try
                 {
-                    BuyerID = User.Identity.GetUserId(),
-                    DateOfPayment = DateTime.Now,
-                    Paid = true,
-                    DepositReturned = false,
-                    ProofOfPaymentPath = "none",
-                    ProofOfReturnPayment = "none",
-                    Amount = 5000
-
-                };
-                APILibrary.APIMethods.APIPost<Deposit>(dep, "Deposits");
+                    rI += "-5000";
+                }
+                catch { }
                
             }
 
 
+            onceOffRequest.return_url = this.payFastSettings.ReturnUrl+rI;
+            var redirectUrl = $"{this.payFastSettings.ProcessUrl}{onceOffRequest.ToString()}";
+
+     
             return Redirect(redirectUrl);
         }
 
        
 
-        public ActionResult Return()
+        public ActionResult Return(string id )
         {
+            string[] s = id.Split('-');
+            int i = 0;
+            if(id.Contains("-5000"))
+            {
+                try
+                {
+                    Deposit dep = new Deposit
+                    {
+                        BuyerID = User.Identity.GetUserId(),
+                        DateOfPayment = DateTime.Now,
+                        Paid = true,
+                        DepositReturned = false,
+                        ProofOfPaymentPath = "none",
+                        ProofOfReturnPayment = "none",
+                        Amount = 5000
 
+                    };
+                    APILibrary.APIMethods.APIPost<Deposit>(dep, "Deposits");
+                }
+                catch { }
+
+
+            }
+            
+            if(s[0] !="" )
+            {
+                i = Convert.ToInt32(s[0]);
+
+                try
+                {
+                    AdminFee fees = new AdminFee
+                    {
+                        PaymentID = i,
+                        ProofOfPaymentPath = "none",
+                        DateOfPayment = DateTime.Now,
+                        Amount = 150
+
+                    };
+                    APILibrary.APIMethods.APIPost<AdminFee>(fees, "AdminFees");
+                    AuctionRegistration AR = APILibrary.APIMethods.APIGet<AuctionRegistration>(i.ToString(), "AuctionRegistrations");
+                    return View(AR);
+                }
+                catch { }
+
+            }
             return View();
+
         }
 
         [HttpPost]

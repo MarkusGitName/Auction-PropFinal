@@ -30,6 +30,8 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
         [StringLength(228)]
         public string CompanyEmail { get; set; }
 
+        [Required]
+        [Display(Name ="Terms And Conitions")]
         public bool Signature { get; set; }
 
         [StringLength(500)]

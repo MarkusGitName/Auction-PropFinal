@@ -26,39 +26,39 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
         public string FirstName { get; set; }
 
         [Required]
-        [Display(Name = "Last Name.")]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
         [Required]
-        [Display(Name = "Enter youre ID number.")]
+        [Display(Name = "Enter youre ID number")]
         public string IDNumber { get; set; }
 
         [Display(Name = "Date of birth")]
         public DateTime DateOfBirth { get; set; }
 
 
-        [Display(Name = "Click the checkbox if you are a bonded buyer.")]
+        [Display(Name = "Click the checkbox if you are a bonded buyer")]
         public bool BondedOrCash { get; set; }
 
         [Required]
-        [Display(Name = "Upload youre profile photo to be displayed to other bidders.")]
+        [Display(Name = "Upload youre profile photo to be displayed to other bidders")]
         public HttpPostedFileBase ProfilePhotoPath { get; set; }
 
         [Required]
-        [Display(Name = "Upload proof of residence.")]
+        [Display(Name = "Upload proof of residence")]
         public HttpPostedFileBase ProofOfResidencePath { get; set; }
 
         [Required]
-        [Display(Name = "Upload a copy of youre id document.")]
+        [Display(Name = "Upload a copy of youre id document")]
         public HttpPostedFileBase CopyOfIDPath { get; set; }
 
-        [Required]
-        [Display(Name = "Upload a proof of your bank account.")]
+       // [Required]
+        [Display(Name = "Upload a proof of your bank account")]
         public HttpPostedFileBase ProofOfBankAccount { get; set; }
 
-        [Required]
+       // [Required]
 
-        [Display(Name = "Upload a photo of you holding youre ID document.")]
+        [Display(Name = "Upload a photo of you holding youre ID document")]
         public HttpPostedFileBase IDBuyerVerifyPhoto { get; set; }
 
 
@@ -68,7 +68,7 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
         public DateTime RegistrationDate { get; set; }
 
         [Required]
-        [Display(Name = "Click the checkbox if you accept our Terms And Conditions")]
+        [Display(Name = "Terms And Conitions")]
         public bool Signiture { get; set; }
 
         public virtual ICollection<AuctionRegistration> AuctionRegistrations { get; set; }

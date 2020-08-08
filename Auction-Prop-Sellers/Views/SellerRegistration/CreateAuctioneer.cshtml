@@ -1,7 +1,7 @@
-﻿@model Auction_Prop_Sellers.Models.DataViewModels.Auctioneer
+﻿@model Auction_Prop_Sellers.Models.DataViewModels.AuctioneerView
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -87,10 +87,10 @@
                 </div>
             </div>
         </div>
-        </form>
+    </form>
 
-        <div>
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
 </body>
 </html>

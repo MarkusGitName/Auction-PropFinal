@@ -15,15 +15,95 @@ namespace Auction_Prop_Buyers.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Index(Message msg)
+        {
+            msg.SellerID = "";
+            msg.UserID = "";
+            APIMethods.APIPost<Message>(msg, "Messages");
+            return View(msg);
+        }
          public ActionResult HowItWorks()
         {
             return View();
         }
 
 
-        public ActionResult Properties()
+        public ActionResult Properties(List<Property> model, int? id)
         {
-            return View();
+            ICollection<Property> propertiesList = APILibrary.APIMethods.APIGetALL<ICollection<Property>>("Properties");
+            List<Property> propLys = new List<Property>();
+            List<Property> propLysSorted = new List<Property>();
+            List<Property> propLysUnS = new List<Property>();
+
+
+
+            foreach (Property prop in propertiesList)
+            {
+                try
+                {
+
+                    if (prop.Auction != null)
+                    {
+                        propLysSorted.Add(prop);
+
+                    }
+                    else
+                    {
+                        propLysUnS.Add(prop);
+                    }
+
+
+
+                }
+                catch
+                {
+
+                }
+
+            }
+
+            var sortedReadings = propLysSorted.OrderBy(x => x.Auction.StartTime.Year)
+    .ThenBy(x => x.Auction.StartTime.Date)
+    .ThenBy(x => x.Auction.StartTime.TimeOfDay);
+
+
+            propLysSorted = sortedReadings.ToList<Property>();
+            propLysSorted.AddRange(propLysUnS);
+
+            try
+            {
+                if(id == null)
+                {
+                    id = 0;
+                }
+                int? i = 0;
+                foreach (Property p in propLysSorted)
+                {
+                    if (i >= id && i <= id + 15)
+                    {
+                        propLys.Add(p);
+                    }
+                    i++;
+                }
+            }
+            catch
+            {
+                int? i = 0;
+                foreach (Property p in propLysSorted)
+                {
+                    if (i >= id && i <= id + 15)
+                    {
+                        propLys.Add(p);
+                    }
+                    i++;
+                }
+            }
+
+       
+            
+
+            return View(propLys);
         }
 
         public ActionResult Buyers()
@@ -31,7 +111,8 @@ namespace Auction_Prop_Buyers.Controllers
             ViewBag.Message = "Buyers";
 
             return View();
-        }
+        }   
+       
 
         public ActionResult Sellers()
         {

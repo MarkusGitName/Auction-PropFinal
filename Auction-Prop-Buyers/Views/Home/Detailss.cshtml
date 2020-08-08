@@ -16,13 +16,13 @@
 
     <title>Auction-Prop.com | Property Details</title>
 
-    <!-- Favicons -->
+    <!-- ====== Favicons ====== -->
     <link href="~/assets/img/fat.png" rel="icon">
 
-    <!-- Google Fonts -->
+    <!-- ====== Google Fonts ====== -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
+    <!-- ====== Vendor CSS Files ====== -->
     <link rel="stylesheet" href="~/Content2/bootstrap1.min.css" type="text/css">
     <link rel="stylesheet" href="~/Content2/ionicons.min.css" type="text/css">
     <link rel="stylesheet" href="~/Content2/animate.min.css" type="text/css">
@@ -30,21 +30,21 @@
     <link rel="stylesheet" href="~/Content/font-awesome.css" type="text/css">
     <link rel="stylesheet" href="~/Content/font-awesome.min.css" type="text/css">
 
-    <!-- Template Main CSS File -->
+    <!-- ====== Template Main CSS File ====== -->
     <link href="~/assets/css/style.css" rel="stylesheet">
 
 </head>
 
 <body>
 
-    <!-- ======= Property Search Section ======= -->
+    <!-- ======= Property Search Section Start ======= -->
     <div class="click-closed"></div>
     <!--/ Form Search Star /-->
     <div class="box-collapse">
         <div class="title-box-d">
-            <h3 class="title-d">Search Property</h3>
+            <h3 class="title-d">Property Search</h3>
         </div>
-        <span class="close-box-collapse right-boxed ion-ios-close"></span>
+        <span class="close-box-collapse right-boxed fa fa-chevron-circle-right"></span>
         <div class="box-collapse-wrap form">
             <form class="form-a">
                 <div class="row">
@@ -124,11 +124,12 @@
                 </div>
             </form>
         </div>
-    </div><!-- End Property Search Section -->
+    </div>
+    <!-- ====== Property Search Section End ====== -->
 
     <main id="main">
 
-        <!-- ======= Intro Single ======= -->
+        <!-- ======= Intro Single Start ======= -->
         <section class="intro-single">
             <div class="container">
                 <div class="row">
@@ -138,7 +139,7 @@
                             @try
                             {
 
-                                <h1 class="title-single"> @Model.Auction.StartTime</h1>
+                                <h1 class="title-single"> @Model.Auction.StartTime.ToString("dddd, dd MMMM HH:mm:ss")</h1>
                             }
                             catch
                             {
@@ -149,20 +150,59 @@
                     </div>
                 </div>
             </div>
-
-
         </section>
-        <!-- End Intro Single-->
-        <!-- ======= Property Single ======= -->
+        <!-- ====== Intro Single End ====== -->
+        <!--
+             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    @{
+                        int i = 0;
+
+                        foreach (PropertyPhoto PP in Model.PropertyPhotos)
+                        {
+                            if (i == 0)
+                            {
+                                <div class="carousel-item active">
+                                    <img src=@PP.PropertyPhotoPath class="d-block w-100" alt="...">
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="carousel-item ">
+                                    <img src=@PP.PropertyPhotoPath class="d-block w-100" alt="...">
+                                </div>
+                            }
+
+
+
+                        }
+
+                    }
+
+
+
+
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        -->
+        <!-- ======= Property Single Start ======= -->
         <section class="property-single nav-arrow-b">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
+                        <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property h-auto">
                             @foreach (PropertyPhoto PP in Model.PropertyPhotos)
                             {
                                 <div class="carousel-item-b">
-                                    <img src=@PP.PropertyPhotoPath alt="" style="height:700px">
+                                    <img src=@PP.PropertyPhotoPath class="d-block w-100" alt="..." style="min-height:550px; max-height:650px">
                                 </div>
 
                             }
@@ -197,7 +237,7 @@
                                             {
                                                 registered = true;
                                                 registratinID = reg.id;
-                                                if (reg.AdminFee != null)
+                                                if (reg.AdminFee.Amount != null)
                                                 {
                                                     admin = true;
                                                 }
@@ -226,84 +266,57 @@
 
                                             }
 
-                                            else if (registered && admin && !deposit)
-                                            {
-                                                <div class="col-sm-6">
-                                                    <div class="panel panel-info">
-                                                        <div class="panel-heading">
-                                                            <h3 class="panel-title">Deposit</h3>
-                                                        </div>
-
-                                                        <div class="panel-body">
-                                                            <p><h5>Pay R5,000 as Deosit</h5></p>
-                                                            <p>The Deposit wil be refunded.</p>
-                                                        </div>
-                                                        <div class="text-right">
-                                                            @Html.ActionLink("Pay Now", "Deposit", "Payment", new { area = "" }, new { @class = "btn btn-block btn-success" })
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            }
-
-                                            else if (registered && !admin && deposit)
-                                            {
-
-                                                <div class="col">
-
-                                                    <div class="panel panel-info">
-
-                                                        <div class="panel-heading">
-
-                                                            <h3 class="panel-title">Administration fees</h3>
-
-                                                        </div>
-
-                                                        <div class="panel-body">
-                                                            <p><h5>Pay R150 for Administration fees</h5></p>
-                                                            <p></p>
-                                                        </div>
-                                                        <div class="text-right">
-                                                            @Html.ActionLink("Pay Now", "AdminFees", "Payment", new { area = "", id = registratinID }, new { @class = "btn btn-block btn-success" })
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            }
-
-                                            else if (registered && !admin && !deposit)
+                                            else if (!admin && !deposit)
 
                                             {
 
-                                                <div class="col">
 
-                                                    <div class="panel panel-info">
-
-                                                        <div class="panel-heading">
-
-                                                            <h3 class="panel-title">Registration and Deposit</h3>
-
-                                                        </div>
+                                                <h3 class="panel-title" style="color:aliceblue">Registration Fee</h3>
 
 
 
-                                                        <div class="panel-body">
 
-                                                            <p><h5>Pay R5,150 for registartion fees and Deposit</h5></p>
+                                                <p style="color:aliceblue">Pay R5,150 </p>
 
-                                                            <p>Youre Deposit of R5,000 will be refunded after the auction is concluded.</p>
+                                                <p style="color:aliceblue">Should your bid not be successful. Or you don’t win the auction, your registration fee will be refunded to you within 48-72 hours</p>
 
-                                                        </div>
 
-                                                        <div class="text-right">
+                                                @Html.ActionLink("Pay Now", "AdminAndDeposit", "Payment", new { area = "", id = registratinID }, new { @class = "btn btn-b center" })
 
-                                                            @Html.ActionLink("Pay Now", "AdminAndDeposit", "Payment", new { area = "", id = registratinID }, new { @class = "btn btn-block btn-success" })
 
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
                                             }
+                                            else if (!deposit)
+                                            {
+
+
+                                                <h3 class="panel-title" style="color:aliceblue">Registration Fee</h3>
+
+
+                                                <p style="color:aliceblue">Pay R5,000 </p>
+                                                <p style="color:aliceblue">Should your bid not be successful. Or you don’t win the auction, your registration fee will be refunded to you within 48-72 hours</p>
+
+
+                                                @Html.ActionLink("Pay Now", "Deposit", "Payment", new { area = "" }, new { @class = "btn btn-b center" })
+
+
+                                            }
+
+                                            else if (!admin)
+                                            {
+
+
+                                                <h3 class="panel-title" style="color:aliceblue">Registration Fee</h3>
+
+
+
+                                                <p style="color:aliceblue">Pay R150 </p>
+                                                <p></p>
+
+                                                @Html.ActionLink("Pay Now", "AdminFees", "Payment", new { area = "", id = registratinID }, new { @class = "btn btn-b center" })
+
+
+                                            }
+
 
                                         }
 
@@ -320,7 +333,7 @@
                                         }
                                         else
                                         {
-                                            @Html.ActionLink("Bid Now", "index", "Buyers", new { area = "" }, new { @class = "btn btn-b center" })
+                                            @Html.ActionLink("Bid Now", "index", "Buyers", new { area = "", id = Model.PropertyID }, new { @class = "btn btn-b center" })
 
                                         }
 
@@ -348,7 +361,7 @@
                                     </div>
                                     <div class="card-title-c align-self-center">
                                         <h2 class="title-c" style="padding-left: 60px">
-                                            @Model.OpeningBid.ToString("C0").Substring(1)
+                                            @Model.OpeningBid.ToString("C2").Substring(1)
                                         </h2>
                                     </div>
 
@@ -447,34 +460,30 @@
                                 <div class="col-lg-12">
                                     <ul class="nav nav-pills-a nav-pills mb-3 section-t3 navbar-expand-md" id="pills-tab" role="tablist">
                                         <li class="nav-item pull-left">
-                                            <a class="nav-link active" id="pills-video-tab" data-toggle="pill" href="#pills-video" role="tab" aria-controls="pills-video" aria-selected="true" style="position:center">Video</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="pills-plans-tab" data-toggle="pill" href="#pills-plans" role="tab" aria-controls="pills-plans" aria-selected="false" style="position:center">Floor Plans</a>
-                                        </li>
-                                        <li class="nav-item pull-right">
-                                            <a class="nav-link" id="pills-map-tab" data-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map" aria-selected="false" style="position:center">Location</a>
+                                            <a class="nav-link active" id="pills-video-tab" data-toggle="pill" href="#pills-video" role="tab" aria-controls="pills-video" aria-selected="true" style="position:center">Virtual Tour</a>
                                         </li>
                                     </ul>
                                     <div class="tab-content" id="pills-tabContent">
                                         <div class="tab-pane fade show active" id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
                                             @try
                                             {
-                                                @*@Model.PromoVideos
-            https://www.theasys.io/viewer/nmxvUeePtLwolLrOwqIe2WLHk7JRCh/"*@
-                                                <iframe src=@Model.PromoVideos.First().VideoPath width="100%" height="460" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                                @*@Model.PromoVideos https://www.theasys.io/viewer/nmxvUeePtLwolLrOwqIe2WLHk7JRCh/"*@
+                                                if (@Model.PromoVideos.Count == 0)
+                                                {
+                                                    <iframe src="~/assets/img/13.png" width="100%" height="750px" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                                }
+                                                else
+                                                {
+                                                    <iframe src=@Model.PromoVideos.First().VideoPath width="100%" height="750px" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+                                                }
+
                                             }
                                             catch
                                             {
-                                                <h1>No Video Available</h1>
                                             }
                                         </div>
-                                        <div class="tab-pane fade" id="pills-plans" role="tabpanel" aria-labelledby="pills-plans-tab">
-                                            <img src=@Model.PlansPath alt="" class="img-fluid">
-                                        </div>
-                                        <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
-                                            <iframe src="~/assets/videos/video1" width="100%" height="460" frameborder="0" style="border:0" allowfullscreen></iframe>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -559,9 +568,9 @@
                     <div class="row">
                         <div class="col-md-6 col-lg-4">
 
-                          
-                                <img src=@Model.Seller.ProfilePhoto alt="" class="img-fluid">
-                            
+
+                            <img src=@Model.Seller.ProfilePhoto alt="" class="img-fluid">
+
 
 
                         </div>
@@ -636,31 +645,6 @@
 
                                 <div class="socials-a">
                                     <ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <i class="fa fa-facebook" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <i class="fa fa-twitter" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <i class="fa fa-instagram" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <i class="fa fa-dribbble" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -696,14 +680,14 @@
                 </div>
             </div>
         </div>
-            <!-- End Property Single-->
+        <!-- ====== Property Single End ====== -->
 
-    </main><!-- End #main -->
+    </main>
 
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
     <div id="preloader"></div>
 
-    <!-- Vendor JS Files -->
+    <!-- ====== Vendor JS Files ====== -->
     <script src="~/Scripts/jquery.min.js"></script>
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
     <script src="~/Scripts/jquery.easing.min.js"></script>
@@ -711,7 +695,7 @@
     <script src="~/Scripts/owl.carousel.min.js"></script>
     <script src="~/Scripts/scrollreveal.min.js"></script>
 
-    <!-- Template Main JS File -->
+    <!-- ====== Template Main JS File ====== -->
     <script src="~/Scripts/main.js"></script>
 
 </body>

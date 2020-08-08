@@ -30,6 +30,9 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
         [StringLength(500)]
         public string CompaynLogoPath { get; set; }
 
+
+        [Required]
+        [Display(Name = "Terms And Conitions")]
         public bool Signature { get; set; }
 
         [StringLength(500)]

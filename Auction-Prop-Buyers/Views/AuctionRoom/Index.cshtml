@@ -1,5 +1,4 @@
-﻿
-@using APILibrary
+﻿@using APILibrary
 @using Microsoft.AspNet.Identity
 @using System.Data
 
@@ -22,14 +21,14 @@
 
     <title>Auction-Prop.com | Property Details</title>
 
-    <!-- Favicons -->
+    <!-- ====== Favicons ====== -->
     <link href="assets/img/favicon.png" rel="icon">
 
-    <!-- Google Fonts -->
+    <!-- ====== Google Fonts ====== -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <script src="https://kit.fontawesome.com/ef4e2c1ac6.js" crossorigin="anonymous"></script>
 
-    <!-- Vendor CSS Files -->
+    <!-- ====== Vendor CSS Files ====== -->
     <link rel="stylesheet" href="~/Content2/bootstrap1.min.css" type="text/css">
     <link rel="stylesheet" href="~/Content2/ionicons.min.css" type="text/css">
     <link rel="stylesheet" href="~/Content2/animate.min.css" type="text/css">
@@ -37,7 +36,7 @@
     <link rel="stylesheet" href="~/Content/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="~/Content/font-awesome.css" type="text/css">
 
-    <!-- Template Main CSS File -->
+    <!-- ====== Template Main CSS File ====== -->
     <link href="~/assets/css/style.css" rel="stylesheet">
 
     <style>
@@ -190,14 +189,14 @@
 </head>
 <body>
 
-    <!-- ======= Property Search Section ======= -->
+    <!-- ======= Property Search Section Start ======= -->
     <div class="click-closed"></div>
     <!--/ Form Search Star /-->
     <div class="box-collapse">
         <div class="title-box-d">
-            <h3 class="title-d">Search Property</h3>
+            <h3 class="title-d">Property Search</h3>
         </div>
-        <span class="close-box-collapse right-boxed ion-ios-close"></span>
+        <span class="close-box-collapse right-boxed fa fa-chevron-circle-right"></span>
         <div class="box-collapse-wrap form">
             <form class="form-a">
                 <div class="row">
@@ -277,7 +276,8 @@
                 </div>
             </form>
         </div>
-    </div><!-- End Property Search Section -->
+    </div>
+    <!-- ====== Property Search Section End ====== -->
 
     <main id="main">
 
@@ -299,8 +299,7 @@
                     </div>
                 </div>
             </div>
-
-        </section><!-- End Intro Single-->
+        </section>
         <!-- ============================================= Property Images ======================================================== -->
         <section class="property-single nav-arrow-b">
             <div class="container">
@@ -309,8 +308,9 @@
                         <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
                             @foreach (PropertyPhoto pp in Model.PropertyPhotos)
                             {
-                                <div class="carousel-item-b">
-                                    <img src=@pp.PropertyPhotoPath alt="">
+                                <div class="carousel-item-b" style="height:auto">
+
+                                    <img src=@pp.PropertyPhotoPath class="d-block w-100" alt="..." style="min-height:550px; max-height:650px">
                                 </div>
                             }
 
@@ -321,24 +321,25 @@
             <br />
             <!-- ============================================= Current Bid & Timer ======================================================== -->
 
-            <div class="container" style="border-right: solid #fa7f15; border-left: solid #fa7f15; padding-bottom:30px">
+            <div class="container" style="border-right: solid #fa7f15; border-left: solid #fa7f15; padding-bottom:10px">
                 @if (Model.Auction.StartTime < DateTime.Now.AddHours(9) && Model.Auction.EndTime > DateTime.Now.AddHours(9))
                 {
-                    <h1 class="title-single; text-center"><strong>AUCTION ENDS IN</strong></h1>
+                    <h1 class="title-single; text-center"><strong> THIS AUCTION ENDS IN</strong></h1>
                     <div class="title-single-box">
-                        <div id="CountDown">
+                        <div id="CountDown" style="font-size:medium">
                             @Html.DisplayFor(model => model.Auction.EndTime)
 
                         </div>
 
-                     </div>
+                    </div>
 
                 }
                 else if (Model.Auction.StartTime > DateTime.Now.AddHours(9))
                 {
-                    <h1 class="title-single; text-center"><strong>AUCTION STARTS IN</strong></h1>
+                    <h1 class="title-single; text-center"><strong>THIS AUCTION STARTS IN</strong></h1>
                     <div class="title-single-box">
-                        <div id="CountDown">
+                        <div id="CountDown" style="font-size:medium">
+
                             @Html.DisplayFor(model => model.Auction.StartTime)
                         </div>
                         <div id="auctionStarted" style="visibility:hidden">false</div>
@@ -346,12 +347,12 @@
                 }
                 else
                 {
-                    <h1 class="title-single; text-center"><strong>AUCTION IS OVER</strong></h1>
+                    <h1 class="title-single; text-center"><strong>THIS AUCTION ENDED</strong></h1>
                     <div class="title-single-box">
-                        <div id="CountDown">
+                        <div id="CountDown" style="font-size:medium">
                             EXPIRED
                         </div>
-                     </div>
+                    </div>
                 }
 
 
@@ -364,70 +365,150 @@
         <div class="container">
             <div class="row">
                 <div class="col-5">
-                    @if (Model.Auction.StartTime < DateTime.Now.AddHours(9) && Model.Auction.EndTime > DateTime.Now.AddHours(9))
-                    {
-                        <div class="bid" style="padding-top:20px; text-align:center;  margin:auto; border-top: solid #07033c;; border-bottom: solid #07033c; width:100%; height:90%">
-                            <h4 class="title-single; text-center">Current Bid</h4>
-                            <h4 id="cur" class="title-single; text-center">R @Model.OpeningBid.ToString("C2").Substring(1)</h4>
-                            Your Bid:
+                    @{
+                        decimal winnngBid = Model.OpeningBid;
+                        if (Model.Auction.StartTime < DateTime.Now.AddHours(9) && Model.Auction.EndTime > DateTime.Now.AddHours(9))
+                        {
+                                        <div class="bid" style="padding-top:20px; text-align:center;  margin:auto; border-top: solid #07033c;; border-bottom: solid #07033c; width:100%; height:90%">
+                                            <h4 class="title-single; text-center">Current Bid</h4>
 
-                            <div class="Yourbid" style=" width:240px;float:inherit;margin:auto;">
-                                <input type="button" id="Decriment5k" value="-" style="float:left; width:25px; border: solid #07033c  " />
-                                <input type="button" id="Increment5k" value="+" style="float:right; width:25px; border: solid #07033c" />
+                                            @try
+                                            {
+                                                 List<Bid> bidLys = APIMethods.APIGetALL<List<Bid>>("Bids");
 
-                                <div id="Biddd" style="        margin: auto;       width: 150px;       border: 3px solid #fa7f15;        border-radius: 3px;        float: none; border: solid #fa7f15">@Model.OpeningBid</div>
-                            </div>
-                            <div class="Increments" style="padding-top:30px; margin:auto">
-                                <div>Add increment of:</div>
-                                <input type="button" id="10KIncreas" value="R10 000" style="float:left; border: solid #fa7f15" />
-                                <input type="button" id="50KIncreas" value="R50 000" style="border: solid #fa7f15" />
-                                <input type="button" id="100KIncreas" value="R100 000" style="float:right; border: solid #fa7f15 " />
+                                                    Bid highestB = null;
+                                                    foreach (Bid bid in bidLys)
+                                                    {
+                                                        if (bid.PropertyID == Model.PropertyID)
+                                                        {
+                                                            if (highestB == null)
+                                                            {
+                                                                highestB = bid;
+                                                            }
+                                                            else
+                                                            {
+                                                                if (bid.AmuntOfBid > highestB.AmuntOfBid)
+                                                                {
+                                                                    highestB = bid;
+                                                                }
+                                                            }
 
-                                <div class="Placebid" style="padding-top:30px ;padding-bottom:20px">
-                                    <input type="button" id="placeBid" value="Plase youre bid" style="border: solid #07033c" />
+                                                        }
+
+                                                    }
+                                                <h4 id="curShow" class="title-single; text-center">R @highestB.AmuntOfBid.ToString("C2").Substring(1)</h4>
+                                                <div id="cur" class="title-single; text-center" style=" visibility:hidden;">@highestB</div>
+                                            }
+                                            catch
+                                            {
+
+                                                <h4 id="curShow" class="title-single; text-center">R @Model.OpeningBid.ToString("C2").Substring(1)</h4>
+                                                <div id="cur" class="title-single; text-center" style=" visibility:hidden;">@Model.OpeningBid</div>
+                                            }
+                                            Your Bid:
+
+                                            <div class="Yourbid" style=" width:240px;float:inherit;margin:auto;">
+                                                <input type="button" id="Decriment5k" value="-" style="float:left; width:25px; border: solid #07033c  " />
+                                                <input type="button" id="Increment5k" value="+" style="float:right; width:25px; border: solid #07033c" />
+
+                                                <div id="BidddShow" style="        margin: auto;       width: 150px;       border: 3px solid #fa7f15;        border-radius: 3px;        float: none; border: solid #fa7f15">R @Model.OpeningBid.ToString("C2").Substring(1)</div>
+                                                <div id="Biddd" style=" visibility:hidden;       margin: auto;       width: 150px;       border: 3px solid #fa7f15;        border-radius: 3px;        float: none; border: solid #fa7f15">@Model.OpeningBid</div>
+                                            </div>
+                                            <div class="Increments" style="padding-top:30px; margin:auto">
+                                                <div>Add increment of:</div>
+                                                <input type="button" id="10KIncreas" value="R10 000" style="float:left; border: solid #fa7f15" />
+                                                <input type="button" id="50KIncreas" value="R50 000" style="border: solid #fa7f15" />
+                                                <input type="button" id="100KIncreas" value="R100 000" style="float:right; border: solid #fa7f15 " />
+
+                                                <div class="Placebid" style="padding-top:30px ;padding-bottom:20px">
+                                                    <input type="button" id="placeBid" value="Plase youre bid" style="border: solid #07033c" />
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+
+                        }
+                        else if (Model.Auction.StartTime > DateTime.Now.AddHours(9))
+                        {
+
+                            <div class="container" title="Auction History " style="border: solid #07033c;width: 100%">
+
+
+                                <div class="row" style="text-align:center; padding:20px; border-bottom:ridge">
+                                    <div class="col-lg-6" style="text-align:left">
+                                        Auction Will Start at @Model.Auction.StartTime
+                                    </div>
                                 </div>
-
                             </div>
-
-
-                        </div>
-
-                    }
-                    else if (Model.Auction.StartTime > DateTime.Now.AddHours(9))
-                    {
-
-                        <div class="container" title="Auction History " style="border: solid #07033c;width: 100%">
-
-
-                            <div class="row" style="text-align:center; padding:20px; border-bottom:ridge">
-                                <div class="col-lg-6" style="text-align:left">
-                                    Auction Will Start at @Model.Auction.StartTime
-                                </div>
-                            </div>
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="bid" style="padding-top:20px; text-align:center;  margin:auto; border-top: solid #07033c;; border-bottom: solid #07033c; width:100%; height:90%">
-                            @try
-                            {
-                                if (Model.ConcludedAuction != null)
+                        }
+                        else
+                        {
+                            <div class="bid" style="padding-top:20px; text-align:center;  margin:auto; border-top: solid #07033c; border-bottom: solid #07033c; width:100%; height:100%">
+                                @try
                                 {
 
+                                    List<Bid> bidLys = APIMethods.APIGetALL<List<Bid>>("Bids");
+
+                                    Bid highestB = null;
+                                    foreach (Bid bid in bidLys)
+                                    {
+                                        if (bid.PropertyID == Model.PropertyID)
+                                        {
+                                            if (highestB == null)
+                                            {
+                                                highestB = bid;
+                                            }
+                                            else
+                                            {
+                                                if (bid.AmuntOfBid > highestB.AmuntOfBid)
+                                                {
+                                                    highestB = bid;
+                                                }
+                                            }
+
+                                        }
+
+                                    }
+                                    RegisteredBuyer buyer = APIMethods.APIGet<RegisteredBuyer>(highestB.BuyerID, "RegisteredBuyers");
+
+
+
                                     <h4 class="title-single; text-center">Winning Bid</h4>
-                                    <h4 class="title-single; text-center">R @Model.ConcludedAuction.Bid.AmuntOfBid</h4>
+                                    <h3 class="title-single; text-center">R @highestB.AmuntOfBid.ToString("C2").Substring(1)</h3>
 
 
                                     <h4 class="title-single; text-center">Winning Bidder</h4>
-                                    <h4 class="title-single; text-center"> @Model.ConcludedAuction.RegisteredBuyer.FirstName</h4>
-                                }
-                            }
-                            catch
-                            {
+                                    <h3 class="title-single; text-center"> @buyer.FirstName  @buyer.LastName</h3>
 
-                            }
-                        </div>
+
+                                    if (User.Identity.GetUserId() == buyer.UserId)
+                                    {
+                                        <h2>Congratulations  @buyer.FirstName  @buyer.LastName</h2>
+                                        <p>
+                                            You are the Highest/Winning Bidder. Your Winning bid is subject to Confirmation, a member of our team will contact you shortly. To discuss the process as well as the next steps with you.
+                                        </p>
+
+                                    }
+                                    else
+                                    {
+                                        <p>
+                                            Thank you for taking part in today’s Auction
+                                            Unfortunately, you weren’t the highest bidder today. Your Registration fee will be refunded back to you within 48-72 hours. Make sure to join us for the next auction.
+                                        </p>
+                                    }
+
+                                }
+                                catch
+                                {
+                                    <h3 class="title-single; text-center">Oops! Something went wrong</h3>
+
+                                }
+                            </div>
+                        }
                     }
+
 
 
 
@@ -436,18 +517,15 @@
 
                 </div>
                 <div class="col-7">
-                    <div class="embed-responsive embed-responsive-16by9 hoverable">
+                    <div class="embed-responsive embed-responsive-16by9 hoverable img-fluid">
                         @try
                         {
-                            @Model.PromoVideos
-                            <iframe class="embed-responsive-item" src=@Model.PromoVideos.First().VideoPath style="height: 100%"
-                                    allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/939X8HI7Fyg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         }
                         catch
                         {
-                            <iframe class="embed-responsive-item" src="" style="height: 100%"
+                            <iframe class="embed-responsive-item" src="~/assets/img/13.png" style="height: 650px; width:650px"
                                     allowfullscreen>
-                                No Promo Video Available
                             </iframe>
                         }
 
@@ -460,7 +538,7 @@
         <br />
         <br />
         <div class="container">
-            <h4 class="text-center">Please place youre bids with more than 20 seconds on the countdown clock to insure youre bid is regestered on the server bevore time runs out.</h4>
+            <h4 class="text-center">Please place you’re bids with more than 20 seconds on the countdown clock to insure you’re bid is registered on the server before time runs out</h4>
         </div>
         <br />
         <!-- ============================================= Bidding Window ======================================================== -->
@@ -475,36 +553,67 @@
 
 
                 <div class="row" style="padding:20px; border-bottom:ridge; margin:auto">
-                    <div class="column" style=" width:33%">Bidder</div>
-                    <div class="column"  style=" width:33%">Time of bid</div>
-                    <div class="column"  style=" width:33%">Bid</div>
+                    <div class="column" style=" width:33%">Bidders Name</div>
+                    <div class="column" style=" width:33%">Time of bid</div>
+                    <div class="column" style=" width:33%">Bid Amount</div>
                 </div>
 
                 <div type="hidden" id="displayname" style="visibility:hidden">Username</div>
                 <div class="row" id="CurentBid">
 
-                    <div id="bidUser" class="column"  style=" width:33%">
+                    <div id="bidUser" class="column" style=" width:33%">
                     </div>
-                    <div id="bidTime" class="column"  style=" width:33%">
+                    <div id="bidTime" class="column" style=" width:33%">
                     </div>
-                    <div id="bidAmount" class="column"  style=" width:33%">
+                    <div id="bidAmount" class="column" style=" width:33%">
                     </div>
                 </div>
-               
+                @{
+                    List<Bid> bidLys2 = APIMethods.APIGetALL<List<Bid>>("Bids");
+                    bidLys2.Reverse();
+
+                    foreach (Bid bid in bidLys2)
+                    {
+                        if (bid.PropertyID == Model.PropertyID)
+                        {
+
+                            RegisteredBuyer bidder = APIMethods.APIGet<RegisteredBuyer>(bid.BuyerID, "RegisteredBuyers");
+                            DateTime time = bid.TimeOfbid.AddHours(9);
+                            <div class="row" id="CurentBid">
+
+
+                                <div id="bidUser" class="column" style=" width:33%">
+                                    @bidder.FirstName
+                                </div>
+                                <div id="bidTime" class="column" style=" width:33%">
+                                    @time.ToString("hh:mm:ss")';
+                                </div>
+                                <div id="bidAmount" class="column" style=" width:33%">
+                                    R @bid.AmuntOfBid.ToString("C2").Substring(1);
+                                </div>
+                            </div>
+
+
+                        }
+
+                    }
+
+                }
 
 
 
             </div>
 
 
-            <div id="USER" type="hidden"></div>
+            <div id="USER" type="hidden">@User.Identity.GetUserName()</div>
+            <div id="Possision" type="hidden"></div>
 
             <br />
             <!-- ============================================= Chat Room ======================================================== -->
             <div class="container">
-                <h2 class="title-single; text-left"><strong>ChatBox</strong></h2>
+                <h2 class="title-single; text-left"><strong>Chat Box</strong></h2>
                 <input type="text" id="message" style="border: dashed #07033c; width: 100%">
-                <ul id="discussion">
+                <ul  id="discussion" style="list-style-type:none; border: dashed #07033c; width: 100%; float:left">
                 </ul>
 
                 <div class="title-single; text-left">
@@ -518,12 +627,12 @@
 
         </div>
 
-    </main><!-- End #main -->
+    </main>
 
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
     <div id="preloader"></div>
 
-    <!-- Vendor JS Files -->
+    <!-- ====== Vendor JS Files ====== -->
     <script src="~/Scripts/jquery.min.js"></script>
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
     <script src="~/Scripts/jquery.easing.min.js"></script>
@@ -566,22 +675,58 @@
                 var encodedName = $('<div />').text(name).html();
                 var encodedMsg = $('<div />').text(message).html();
                 // Add the message to the page.
-                $('#discussion').append('<li><strong>' + encodedName
-                    + '</strong>:&nbsp;&nbsp;' + encodedMsg + '</li>');
+                $('#discussion').append('<li style="float:left;width:100%"><strong>' + encodedName
+                    + '</strong>:' + encodedMsg +"</li>");
             };
              auction.client.broadcastMessage = function (name, bid) {
-                // Html encode display name and message.
-                var encodedName = $('<div />').text(name).html();
-                var encodedBid = $('<div />').text(bid).html();
-                var time = $('<div />').text('@DateTime.Now.ToString("hh:mm:ss")').html();
-                 // Add the message to the page.
-                 $('#bidUser').prepend('<li>' + encodedName +  '</li>');
-                 $('#bidTime').prepend('<li>'  + time
-                     +  '</li>');
-                 $('#bidAmount').prepend('<li>R' +  encodedBid + '</li>');
 
-                 $('#cur').text(encodedBid );
-                 $('#Cur').text(encodedBid);
+
+                var encodedName = $('<div />').text(name).html();
+                 var encodedBid = $('<div />').text(bid).html();
+
+                  var date = new Date();
+                var hours = date.getHours();
+                var days = date.getDay(); 
+                var minutes = date.getMinutes();
+                var ampm = hours >= 12 ? 'pm' : 'am';
+                hours = hours % 12;
+                hours = hours ? hours : 12; // the hour '0' should be '12'
+                minutes = minutes < 10 ? '0'+minutes : minutes;
+                var strTime =  hours + ':' + minutes + ' ' + ampm;
+
+
+                 var time = $('<div />').text(strTime).html();
+                 // Add the message to the page.
+                 $('#bidUser').prepend('<p>' + encodedName +  '</p>');
+                 $('#bidTime').prepend('<p>'  + time
+                     +  '</p>');
+                 $('#bidAmount').prepend('<p>R' +  encodedBid + '</p>');
+
+
+                    var valueshow =  encodedBid.toString();
+
+                   var splitString = valueshow.split("");
+                    var reverseArray = splitString.reverse();
+                    var joinArray = reverseArray.join("");
+
+                 joinArray = joinArray.match(/.{0,3}/g);
+                 joinArray = joinArray.toString();
+
+                 var splitStringg = joinArray.split("");
+                 var reverseArrayy = splitStringg.reverse();
+                 var joinArrayy = reverseArrayy.join("");
+
+                 joinArrayy = joinArrayy.toString();
+                 joinArrayy = joinArrayy.substring(1);
+                 joinArrayy = "R" + joinArrayy + ".00";
+
+                 $('#cur').text(encodedBid);
+                 $('#curShow').text(joinArrayy);
+
+                 $('#Cur').text(valueshow);
+
+
+
                  $('#USER').text(encodedName)
             };
             // Get the user name and store it to prepend to messages.
@@ -606,32 +751,150 @@
                      // Call the Send method on the hub.
                      auction.server.bid2($('#displayname').val(), $('#Biddd').text(),'@Model.PropertyID','@User.Identity.GetUserId()');
                     // Clear text box and reset focus for next comment.
+
+
+
                  });
                  var $bid = $('#Biddd');
                 $('#Increment5k').click(function () {
                     var value = parseInt($bid.html());
                     value = value + 5000;
+                    var valueshow = value.toString();
+
+
+
+
+
+                   var splitString = valueshow.split("");
+                    var reverseArray = splitString.reverse();
+                    var joinArray = reverseArray.join("");
+
+                     joinArray = joinArray.match(/.{0,3}/g);
+                     joinArray = joinArray.toString();
+
+                     var splitStringg = joinArray.split("");
+                     var reverseArrayy = splitStringg.reverse();
+                     var joinArrayy = reverseArrayy.join("");
+
+                     joinArrayy = joinArrayy.toString();
+                     joinArrayy = joinArrayy.substring(1);
+                     joinArrayy = "R" + joinArrayy + ".00";
+
+
                     $('#Biddd').text(value);
+                    $('#BidddShow').text(joinArrayy);
                 });
                  $('#Decriment5k').click(function () {
                     var value = parseInt($bid.html());
                     value = value - 5000;
-                    $('#Biddd').text(value );
+                    var valueshow = value.toString();
+
+
+
+
+
+                   var splitString = valueshow.split("");
+                    var reverseArray = splitString.reverse();
+                    var joinArray = reverseArray.join("");
+
+                     joinArray = joinArray.match(/.{0,3}/g);
+                     joinArray = joinArray.toString();
+
+                     var splitStringg = joinArray.split("");
+                     var reverseArrayy = splitStringg.reverse();
+                     var joinArrayy = reverseArrayy.join("");
+
+                     joinArrayy = joinArrayy.toString();
+                     joinArrayy = joinArrayy.substring(1);
+                     joinArrayy = "R" + joinArrayy + ".00";
+
+
+                    $('#Biddd').text(value);
+                    $('#BidddShow').text(joinArrayy);
                  });
                 $('#10KIncreas').click(function () {
                     var value = parseInt($bid.html());
                     value = value + 10000;
-                    $('#Biddd').text(value );
+                    var valueshow = value.toString();
+
+
+
+
+
+                   var splitString = valueshow.split("");
+                    var reverseArray = splitString.reverse();
+                    var joinArray = reverseArray.join("");
+
+                     joinArray = joinArray.match(/.{0,3}/g);
+                     joinArray = joinArray.toString();
+
+                     var splitStringg = joinArray.split("");
+                     var reverseArrayy = splitStringg.reverse();
+                     var joinArrayy = reverseArrayy.join("");
+
+                     joinArrayy = joinArrayy.toString();
+                     joinArrayy = joinArrayy.substring(1);
+                     joinArrayy = "R" + joinArrayy + ".00";
+
+
+                    $('#Biddd').text(value);
+                    $('#BidddShow').text(joinArrayy);
                 });
                 $('#50KIncreas').click(function () {
                     var value = parseInt($bid.html());
                     value = value + 50000;
-                    $('#Biddd').text(value );
+                    var valueshow = value.toString();
+
+
+
+
+
+                   var splitString = valueshow.split("");
+                    var reverseArray = splitString.reverse();
+                    var joinArray = reverseArray.join("");
+
+                     joinArray = joinArray.match(/.{0,3}/g);
+                     joinArray = joinArray.toString();
+
+                     var splitStringg = joinArray.split("");
+                     var reverseArrayy = splitStringg.reverse();
+                     var joinArrayy = reverseArrayy.join("");
+
+                     joinArrayy = joinArrayy.toString();
+                     joinArrayy = joinArrayy.substring(1);
+                     joinArrayy = "R" + joinArrayy + ".00";
+
+
+                    $('#Biddd').text(value);
+                    $('#BidddShow').text(joinArrayy);
                 });
                 $('#100KIncreas').click(function () {
                     var value = parseInt($bid.html());
                     value = value + 100000;
-                    $('#Biddd').text(value );
+                    var valueshow = value.toString();
+
+
+
+
+
+                   var splitString = valueshow.split("");
+                    var reverseArray = splitString.reverse();
+                    var joinArray = reverseArray.join("");
+
+                     joinArray = joinArray.match(/.{0,3}/g);
+                     joinArray = joinArray.toString();
+
+                     var splitStringg = joinArray.split("");
+                     var reverseArrayy = splitStringg.reverse();
+                     var joinArrayy = reverseArrayy.join("");
+
+                     joinArrayy = joinArrayy.toString();
+                     joinArrayy = joinArrayy.substring(1);
+                     joinArrayy = "R" + joinArrayy + ".00";
+
+
+                    $('#Biddd').text(value);
+                    $('#BidddShow').text(joinArrayy);
                 });
 
 
@@ -659,7 +922,7 @@
 
             // Find the distance between now and the count down date
             var distance = countDownDate - now;
-            
+
 
 
             // Time calculations for days, hours, minutes and seconds
@@ -681,7 +944,7 @@
 
             }
 
-         
+
             // If the count down is finished, write some text
             if (distance < 0) {
                 clearInterval(x);
@@ -697,10 +960,12 @@
 
             if (Math.floor($('#Biddd').text()) > Math.floor($('#cur').text())) {
                 document.getElementById("Biddd").style.borderColor = "green";
+                document.getElementById("BidddShow").style.borderColor = "green";
                 document.getElementById("placeBid").style.borderColor = "green";
             }
             else {
                  document.getElementById("Biddd").style.borderColor = "red";
+                 document.getElementById("BidddShow").style.borderColor = "red";
                  document.getElementById("placeBid").style.borderColor = "red";
             }
 
@@ -711,7 +976,7 @@
             }
             else {
                 document.getElementById("Possision").style.borderColor = "red";
-                 $('#Possision').text($('#USER').text() + " are winning the Bid.");
+                 $('#Possision').text($('#USER').text() + " is winning the Bid.");
             }
 
 
@@ -792,7 +1057,7 @@
         <div style="padding:10px; text-align:center ; margin:auto">
             Auction By
             <div style="width:20% ; text-align:center ; margin:auto">
-              
+
             </div>
         </div>
         <div style="padding:10px">
@@ -808,7 +1073,7 @@
 
             </div>
             <div id="reserve" type="hidden" class="hidden">
-         
+
             </div>
 
         </div>

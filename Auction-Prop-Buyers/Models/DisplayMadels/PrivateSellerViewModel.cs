@@ -20,7 +20,10 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
 
         public string ProofOfResedence { get; set; }
 
+        [Required]
+        [Display(Name = "Terms And Contitions")]
         public bool Signiture { get; set; }
+
 
         public string email { get; set; }
         public string PhoneNumber { get; set; }

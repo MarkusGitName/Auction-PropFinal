@@ -29,5 +29,7 @@ namespace Auction_Prop_API.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Auction_Prop_API.Models.UserInfoViewModel> UserInfoViewModels { get; set; }
     }
 }

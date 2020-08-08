@@ -15,7 +15,7 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
 
         [Required]
 
-        [Display(Name = "Upload youre video here.")]
+        [Display(Name = "Upload youre video here")]
         public string VideoPath { get; set; }
 
         public virtual Property Property { get; set; }

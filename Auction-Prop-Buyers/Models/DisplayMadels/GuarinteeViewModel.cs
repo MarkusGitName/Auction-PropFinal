@@ -12,7 +12,7 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
         [Key]
         public int AuctionRegistrationID { get; set; }
 
-        [Display(Name = "Upload youre bank Guarintees document.")]
+        [Display(Name = "Upload youre bank Guarintees document")]
         public HttpPostedFileBase GuarinteePath { get; set; }
 
         public bool GuarinteeApproval { get; set; }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Auction_Prop_API.Models
 {
@@ -27,6 +28,7 @@ namespace Auction_Prop_API.Models
 
     public class UserInfoViewModel
     {
+        
         public string Email { get; set; }
 
         public bool HasRegistered { get; set; }

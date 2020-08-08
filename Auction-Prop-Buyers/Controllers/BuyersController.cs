@@ -41,7 +41,7 @@ namespace Auction_Prop_Buyers.Controllers
                     else
                     {
 
-                        return RedirectToAction("Login", "Account");
+                        return RedirectToAction("Login", "Account" );
                     }
                 }
 
@@ -64,7 +64,7 @@ namespace Auction_Prop_Buyers.Controllers
 
         // GET: Buyers/Create
 
-        public ActionResult Create(int id, BuyerViewModel model)
+        public ActionResult Create(int? id, BuyerViewModel model)
         {
             model.UserId = User.Identity.GetUserId();
             if (ModelState.IsValid)
@@ -80,14 +80,16 @@ namespace Auction_Prop_Buyers.Controllers
                         DateOfBirth = model.DateOfBirth,
                         Signiture = model.Signiture,
                         RegistrationDate = DateTime.Now,
+                        ProofOfBankAccount = "Disabled",
+                        IDBuyerVerifyPhoto = "Disabled"
                         
                     };
 
                     newData.ProfilePhotoPath = FileController.PostFile(model.ProfilePhotoPath, "ProfilePhotos", "ProfilePhotos");
                     newData.ProofOfResidencePath = FileController.PostFile(model.ProofOfResidencePath, "ProofOfResedence", "ProofOfResedence");
                     newData.CopyOfIDPath = FileController.PostFile(model.CopyOfIDPath, "CopyOfIDPath", "CopyOfIDPath");
-                    newData.IDBuyerVerifyPhoto = FileController.PostFile(model.IDBuyerVerifyPhoto, "IdBuyerVerifyPhoto", "IdBuyerVerifyPhoto");
-                    newData.ProofOfBankAccount = FileController.PostFile(model.ProofOfBankAccount, "ProofOfBankAccount", "ProofOfBankAccount");
+                   // newData.IDBuyerVerifyPhoto = FileController.PostFile(model.IDBuyerVerifyPhoto, "IdBuyerVerifyPhoto", "IdBuyerVerifyPhoto");
+                   // newData.ProofOfBankAccount = FileController.PostFile(model.ProofOfBankAccount, "ProofOfBankAccount", "ProofOfBankAccount");
 
 
 
@@ -109,7 +111,7 @@ namespace Auction_Prop_Buyers.Controllers
 
         // GET: Buyers/Create
 
-        public ActionResult CreateAddress(int id ,Address model)
+        public ActionResult CreateAddress(int? id ,Address model)
         {
             if (ModelState.IsValid)
             {
@@ -125,7 +127,7 @@ namespace Auction_Prop_Buyers.Controllers
 
                     if(id !=0)
                     {
-
+                        return RedirectToAction("Detailss", "home", new { id = id });
                     }
                     return RedirectToAction("Index");
                 }

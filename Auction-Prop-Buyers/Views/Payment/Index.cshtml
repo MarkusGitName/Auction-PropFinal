@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -7,18 +6,15 @@
 
 <div class="container">
     <div class="bg hidden-sm"></div>
-  
     <div class="row">
-    
         <div class="col">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Deposit</h3>
+                    <h3 class="panel-title">Registration fee</h3>
                 </div>
-
                 <div class="panel-body">
-                    <p><h5>Pay R5000 as Deosit</h5></p>
-                    <p>The Deposit wil be refunded.</p>
+                    <p><h5>Pay your R5,000 Registration fee</h5></p>
+                    <p>Should your bid be unsuccessful, or you aren't the winning bidder. Your Registration fee of R5 000 will be refunded within 24-72 hours after the auction is concluded</p>
                 </div>
                 <div class="text-right">
                     @Html.ActionLink("Pay Now", "Deposit", "Payment", new { area = "" }, new { @class = "btn btn-block btn-success" })
@@ -28,11 +24,11 @@
         <div class="col">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Administration fees</h3>
+                    <h3 class="panel-title">Administration fee</h3>
                 </div>
 
                 <div class="panel-body">
-                    <p><h5>Pay R150 for Administration fees</h5></p>
+                    <p><h5>Pay your R150 Administration fee</h5></p>
                     <p></p>
                 </div>
                 <div class="text-right">
@@ -47,16 +43,14 @@
                 </div>
 
                 <div class="panel-body">
-                    <p><h5>Pay R5 150 for registartion fees and Deposit</h5></p>
-                    <p>Youre Deposit of R5 000 will be refunded after the auction is concluded.</p>
+                    <p><h5>Pay your R5,150 Registration fee</h5></p>
+                    <p>Should your bid be unsuccessful, or you aren't the winning bidder. Your Registration fee of R5 000 will be refunded within 24-72 hours after the auction is concluded</p>
                 </div>
                 <div class="text-right">
                     @Html.ActionLink("Pay Now", "AdminAndDeposit", "Payment", new { area = "" }, new { @class = "btn btn-block btn-success" })
                 </div>
             </div>
         </div>
-       
     </div>
-
 </div>
 

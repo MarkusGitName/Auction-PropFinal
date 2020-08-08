@@ -40,7 +40,7 @@ namespace Auction_Prop_API.Controllers.MVCController
         // GET: AdminFees/Create
         public ActionResult Create()
         {
-            ViewBag.PaymentID = new SelectList(db.AuctionRegistrations, "id", "BuyerId");
+            ViewBag.PaymentID = new SelectList(db.AuctionRegistrations, "id", "id");
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace Auction_Prop_API.Controllers.MVCController
                 return RedirectToAction("Index");
             }
 
-            ViewBag.PaymentID = new SelectList(db.AuctionRegistrations, "id", "BuyerId", adminFee.PaymentID);
+            ViewBag.PaymentID = new SelectList(db.AuctionRegistrations, "id", "id", adminFee.PaymentID);
             return View(adminFee);
         }
 

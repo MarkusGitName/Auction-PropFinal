@@ -21,7 +21,7 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
         public DateTime RegesterDate { get; set; }
 
         [Required]
-        [Display(Name = "Click the checkbox if you accept our Terms And Conditions")]
+        [Display(Name = "Terms And Contitions")]
         public bool Signiture { get; set; }
 
         public bool RegistrationStatus { get; set; }
@@ -45,7 +45,10 @@ namespace Auction_Prop_Buyers.Models.DisplayMadels
 
         public DateTime RegesterDate { get; set; }
 
+        [Required]
+        [Display(Name = "Terms And Contitions")]
         public bool Signiture { get; set; }
+
 
         public bool RegistrationStatus { get; set; }
 

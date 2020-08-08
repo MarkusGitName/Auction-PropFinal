@@ -68,7 +68,40 @@ namespace Auction_Prop_Sellers.Controllers
                     if(NewProp.TitleDeedPath == "")
                     {
                         NewProp.TitleDeedPath = "N/A";
+                    }   
+                    if(NewProp.BedRooms == null)
+                    {
+                        NewProp.BedRooms = 0;
+                    }  
+                    if(NewProp.FloorSize == null)
+                    {
+                        NewProp.FloorSize = 0;
+                    }  
+                    if(NewProp.YardSize == null)
+                    {
+                        NewProp.YardSize = 0;
+                    }   
+                    if(NewProp.Reserve == null)
+                    {
+                        NewProp.Reserve = 0;
                     }
+                    if (NewProp.Garages == null)
+                    {
+                        NewProp.Garages = 0;
+                    }  
+                    if(NewProp.OpeningBid == null)
+                    {
+                        NewProp.OpeningBid = 0;
+                    }   
+                    if(NewProp.TaxesAndRate == null)
+                    {
+                        NewProp.TaxesAndRate = 0;
+                    } 
+                    if(NewProp.levies == null)
+                    {
+                        NewProp.levies = 0;
+                    } 
+              
                     NewProp.MandateSingedDate = DateTime.Now;
                     NewProp.MandateExpireDate = DateTime.Now.AddDays(90);
                     NewProp.TaxesAndRates = FileController.PostFile(model.TaxesAndRates, "TaxesAndRates", "TaxesAndRates");
@@ -154,7 +187,7 @@ namespace Auction_Prop_Sellers.Controllers
                         model.PropertyId = id;
                         model.Description = file.Description;
                         model.Title = file.Title;
-                        model.PropertyPhotoPath = FileController.PostFile(file.PropertyPhotoPath, Server.MapPath("~/App_Data/uploads/PropertyPhotos"), "propertyphotos");
+                        model.PropertyPhotoPath = FileController.PostFile(file.PropertyPhotoPath, "propertyphotos", "propertyphotos");
                        
                         //Call Post Method
                        APIMethods.APIPost<PropertyPhoto>(model, "PropertyPhotoes");

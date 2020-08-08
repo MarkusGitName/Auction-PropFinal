@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -15,20 +16,20 @@ namespace Auction_Prop_API.Controllers.MVCController
         private DataBaseModels db = new DataBaseModels();
 
         // GET: Auctioneers
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             var auctioneers = db.Auctioneers.Include(a => a.Seller);
-            return View(auctioneers.ToList());
+            return View(await auctioneers.ToListAsync());
         }
 
         // GET: Auctioneers/Details/5
-        public ActionResult Details(string id)
+        public async Task<ActionResult> Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Auctioneer auctioneer = db.Auctioneers.Find(id);
+            Auctioneer auctioneer = await db.Auctioneers.FindAsync(id);
             if (auctioneer == null)
             {
                 return HttpNotFound();
@@ -48,12 +49,12 @@ namespace Auction_Prop_API.Controllers.MVCController
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserID,CompanyName,Branch,CompanyLogo,CompanyContactNumber,CompanyEmail,Signature,CompanyDescriprion")] Auctioneer auctioneer)
+        public async Task<ActionResult> Create([Bind(Include = "UserID,CompanyName,Branch,CompanyLogo,CompanyContactNumber,CompanyEmail,Signature,CompanyDescriprion")] Auctioneer auctioneer)
         {
             if (ModelState.IsValid)
             {
                 db.Auctioneers.Add(auctioneer);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
@@ -62,13 +63,13 @@ namespace Auction_Prop_API.Controllers.MVCController
         }
 
         // GET: Auctioneers/Edit/5
-        public ActionResult Edit(string id)
+        public async Task<ActionResult> Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Auctioneer auctioneer = db.Auctioneers.Find(id);
+            Auctioneer auctioneer = await db.Auctioneers.FindAsync(id);
             if (auctioneer == null)
             {
                 return HttpNotFound();
@@ -82,12 +83,12 @@ namespace Auction_Prop_API.Controllers.MVCController
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserID,CompanyName,Branch,CompanyLogo,CompanyContactNumber,CompanyEmail,Signature,CompanyDescriprion")] Auctioneer auctioneer)
+        public async Task<ActionResult> Edit([Bind(Include = "UserID,CompanyName,Branch,CompanyLogo,CompanyContactNumber,CompanyEmail,Signature,CompanyDescriprion")] Auctioneer auctioneer)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(auctioneer).State = EntityState.Modified;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             ViewBag.UserID = new SelectList(db.Sellers, "UserID", "FirtstName", auctioneer.UserID);
@@ -95,13 +96,13 @@ namespace Auction_Prop_API.Controllers.MVCController
         }
 
         // GET: Auctioneers/Delete/5
-        public ActionResult Delete(string id)
+        public async Task<ActionResult> Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Auctioneer auctioneer = db.Auctioneers.Find(id);
+            Auctioneer auctioneer = await db.Auctioneers.FindAsync(id);
             if (auctioneer == null)
             {
                 return HttpNotFound();
@@ -112,11 +113,11 @@ namespace Auction_Prop_API.Controllers.MVCController
         // POST: Auctioneers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public async Task<ActionResult> DeleteConfirmed(string id)
         {
-            Auctioneer auctioneer = db.Auctioneers.Find(id);
+            Auctioneer auctioneer = await db.Auctioneers.FindAsync(id);
             db.Auctioneers.Remove(auctioneer);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
