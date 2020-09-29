@@ -317,7 +317,6 @@
     <Content Include="assets\img\blueman.jpg" />
     <Content Include="assets\img\blueshirt.jpg" />
     <Content Include="assets\img\Cape Town.jpg" />
-    <Content Include="assets\img\carousel1.jpg" />
     <Content Include="assets\img\Carousel2.jpg" />
     <Content Include="assets\img\client-01.jpg" />
     <Content Include="assets\img\close-btn.png" />
@@ -575,7 +574,6 @@
     <Content Include="assets\img\flags\zw.png" />
     <Content Include="assets\img\floridian.jpg" />
     <Content Include="assets\img\FNB.png" />
-    <Content Include="assets\img\Glass Dining.jpg" />
     <Content Include="assets\img\glass.jpg" />
     <Content Include="assets\img\grabbing.png" />
     <Content Include="assets\img\Guy.jpg" />

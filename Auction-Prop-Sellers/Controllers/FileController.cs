@@ -14,7 +14,7 @@ namespace Auction_Prop_Sellers.Controllers
     {
     
         //public static string uri = "https://auctionpropfiles.blob.core.windows.net/";
-        public static string uri = "http://sellers.auction-prop.com/";
+        public static string uri = "https://sellers.auction-prop.com/";
 
         [HttpPost]
         public static string PostFile(HttpPostedFileBase file, string filePath, string uriExtension)
