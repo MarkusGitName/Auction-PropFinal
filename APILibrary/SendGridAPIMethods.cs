@@ -31,13 +31,13 @@ namespace APILibrary
 
             // Retrieve the API key from an appSettings variable from the web.config
 
-            var apiKey = ConfigurationManager.AppSettings["SendGridAPIKey"];
+            //var apiKey = ConfigurationManager.AppSettings["SendGridAPIKey"];
 
 
 
             // Initialize the Twilio SendGrid client
 
-            _client = new SendGridClient(apiKey);
+           // _client = new SendGridClient(apiKey);
 
         }
 

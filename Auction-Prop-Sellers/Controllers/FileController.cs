@@ -1,5 +1,4 @@
-﻿using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -57,7 +56,7 @@ namespace Auction_Prop_Sellers.Controllers
         
     }
 
-        private static CloudBlobContainer GetContainer(string uriExtension)
+      /*  private static CloudBlobContainer GetContainer(string uriExtension)
         {
             var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageAccount"]);
             var blobClient = storageAccount.CreateCloudBlobClient();
@@ -74,7 +73,7 @@ namespace Auction_Prop_Sellers.Controllers
                     SaveToStorage(file.InputStream, file.FileName,uriExtension);
             }
             return View();
-        }*/
+        }
 
         public static void SaveToStorage(Stream inputStream, string fileName, string uriExtension)
         {
@@ -83,6 +82,6 @@ namespace Auction_Prop_Sellers.Controllers
 
             using (inputStream)
                 blob.UploadFromStream(inputStream);
-        }
+        }*/
     }
 }

@@ -5,7 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
-using System.Web.Script.Serialization;
+using Newtonsoft;
+using Newtonsoft.Json;
 
 namespace APILibrary
 {
@@ -28,11 +29,9 @@ namespace APILibrary
                 request.Accept = "application/json"; //"application/xml"; 
                 request.Method = "POST";
 
-                JavaScriptSerializer jss = new JavaScriptSerializer();
+                JsonSerializer jss = new JsonSerializer();
 
-                jss.MaxJsonLength = 10 * 8096 * 8096;
-                // serialize into json string 
-                var myContent = jss.Serialize(model);
+                string myContent = JsonConvert.SerializeObject(model);
 
                 var data = Encoding.ASCII.GetBytes(myContent);
 
@@ -47,14 +46,14 @@ namespace APILibrary
                 response = (HttpWebResponse)request.GetResponse();
 
                 ResponseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-                ad = jss.Deserialize<T>(ResponseString);
+                ad = JsonConvert.DeserializeObject<T>(ResponseString);
             }
             catch (WebException ex)
             {
                 if (ex.Status == WebExceptionStatus.ProtocolError)
                 {
                     response = (HttpWebResponse)ex.Response;
-                    throw new Exception(ResponseString = "Some error occured: " + response.StatusCode.ToString());
+                    throw new Exception(ResponseString = "Some error occured: " + response.StatusCode.ToString() + ex.Status.ToString());
 
                 }
                 else
@@ -84,29 +83,21 @@ namespace APILibrary
 
         public static T APIGet<T>(string id, string APIAddress)
         {
-            //  try
-            //     {
-            // TODO: Add insert logic here
-
             object model = new object();
             string ResponseString = "";
             HttpWebResponse response = null;
-        
+
             try
             {
                 var request = (HttpWebRequest)WebRequest.Create(url + APIAddress + "/" + id);
                 request.Accept = "application/json"; //"application/xml"; 
                 request.Method = "GET";
 
-                JavaScriptSerializer jss = new JavaScriptSerializer();
-
-
-                jss.MaxJsonLength = 10 * 8096 * 8096;
 
                 response = (HttpWebResponse)request.GetResponse();
 
                 ResponseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-                model = jss.Deserialize<T>(ResponseString);
+                model = JsonConvert.DeserializeObject<T>(ResponseString);
 
             }
             catch (WebException ex)
@@ -127,7 +118,7 @@ namespace APILibrary
             }
             else
             {
-                throw new Exception(""+response.StatusCode);
+                throw new Exception("" + response.StatusCode);
 
             }
         }
@@ -143,12 +134,7 @@ namespace APILibrary
                 request.Accept = "application/json"; //"application/xml"; 
                 request.Method = "PUT";
 
-                JavaScriptSerializer jss = new JavaScriptSerializer();
-
-
-                jss.MaxJsonLength = 10 * 8096 * 8096;
-                // serialize into json string 
-                var myContent = jss.Serialize(model);
+                var myContent = JsonConvert.SerializeObject(model);
 
                 var data = Encoding.ASCII.GetBytes(myContent);
 
@@ -163,7 +149,7 @@ namespace APILibrary
                 response = (HttpWebResponse)request.GetResponse();
 
                 ResponseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-                ad = jss.Deserialize<T>(ResponseString);
+                ad = JsonConvert.DeserializeObject<T>(ResponseString);
             }
             catch (WebException ex)
             {
@@ -171,11 +157,9 @@ namespace APILibrary
                 {
                     response = (HttpWebResponse)ex.Response;
                     throw new Exception(ResponseString = "Some error occured: " + response.StatusCode.ToString());
-
                 }
                 else
                 {
-
                     throw new Exception(ResponseString = "Some error occured: " + response.StatusCode.ToString());
                 }
             }
@@ -186,9 +170,7 @@ namespace APILibrary
             }
             else if (response.StatusCode == HttpStatusCode.OK)
             {
-
                 return (T)ad;
-
             }
             else
             {
@@ -196,6 +178,7 @@ namespace APILibrary
                 return (T)ad;
 
             }
+
 
         }
 
@@ -210,16 +193,10 @@ namespace APILibrary
                 request.Accept = "application/json"; //"application/xml"; 
                 request.Method = "DELETE";
 
-                JavaScriptSerializer jss = new JavaScriptSerializer();
-                // serialize into json string 
-
-                jss.MaxJsonLength = 10 * 8096 * 8096;
-
-
                 response = (HttpWebResponse)request.GetResponse();
 
                 ResponseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-                ad = jss.Deserialize<T>(ResponseString);
+                ad = JsonConvert.DeserializeObject<T>(ResponseString);
             }
             catch (WebException ex)
             {
@@ -253,34 +230,25 @@ namespace APILibrary
 
             }
 
+
         }
 
 
         public static T APIGetALL<T>( string APIAddress)
         {
-            //  try
-            //     {
-            // TODO: Add insert logic here
-
             object model = new object();
             string ResponseString = "";
-         HttpWebResponse response = null;
-            var request = (HttpWebRequest)WebRequest.Create(url + APIAddress );
-         
+            HttpWebResponse response = null;
+            var request = (HttpWebRequest)WebRequest.Create(url + APIAddress);
             try
-            {   
-            request.Accept = "application/json"; //"application/xml"; 
-            request.Method = "GET";
+            {
+                request.Accept = "application/json"; //"application/xml"; 
+                request.Method = "GET";
 
-                 JavaScriptSerializer jss = new JavaScriptSerializer();
-
-
-
-                jss.MaxJsonLength = 10 * 8096 * 8096;
                 response = (HttpWebResponse)request.GetResponse();
 
                 ResponseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-                model = jss.Deserialize<T>(ResponseString);
+                model = JsonConvert.DeserializeObject<T>(ResponseString);
 
             }
             catch (WebException ex)
@@ -295,12 +263,12 @@ namespace APILibrary
                     ResponseString = "Some error occured: " + ex.Status.ToString();
                 }
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             {
 
                 ResponseString = "Some error occured: " + ex.ToString();
             }
-            catch(System.StackOverflowException Stack)
+            catch (System.StackOverflowException Stack)
             {
 
             }
@@ -310,7 +278,7 @@ namespace APILibrary
             }
             else
             {
-                throw new Exception(response.StatusDescription+ url + APIAddress);
+                throw new Exception(response.StatusDescription + url + APIAddress);
 
             }
         }

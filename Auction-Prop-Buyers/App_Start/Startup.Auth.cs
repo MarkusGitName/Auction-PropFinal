@@ -38,12 +38,12 @@ namespace Auction_Prop_Buyers
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.
-            app.UseTwoFactorSignInCookie(DefaultAuthenticationTypes.TwoFactorCookie, TimeSpan.FromMinutes(5));
+           // app.UseTwoFactorSignInCookie(DefaultAuthenticationTypes.TwoFactorCookie, TimeSpan.FromMinutes(5));
 
             // Enables the application to remember the second login verification factor such as phone or email.
             // Once you check this option, your second step of verification during the login process will be remembered on the device where you logged in from.
             // This is similar to the RememberMe option when you log in.
-            app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
+           // app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(
@@ -54,15 +54,16 @@ namespace Auction_Prop_Buyers
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "1162491357481788",
+               appSecret: "06d0d42d7efaaa43913580e7fbf534a4"
+               );
 
-            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+         /*   app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
                 ClientId = "873563727223-bhbtabijavqkq9h5vmhkoj0lfhgm3b1c.apps.googleusercontent.com",
                 ClientSecret = "nQyv_SEKTND7f-PU9CxHx9B3"
-            });
+            });*/
         }
     }
 }
